@@ -304,6 +304,14 @@ jobs:
               id: 'context'
 
             # #
+            #   Generate › Install Packages
+            # #
+
+            - name: "🧱 Install Packages"
+              run: |
+                  sudo apt-get install -y ipcalc ed html2text whois uuid-runtime autoconf
+
+            # #
             #   Generate › Start
             # #
 
