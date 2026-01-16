@@ -284,7 +284,26 @@ download_list()
 
     echo -e "  🌎 Downloading ASN ${YELLOW1}${fnASN}${RESET} list to ${ORANGE2}${fnFileTemp}${RESET}"
 
-    whois -h ${ARG_WHOIS_SERVICE} -- "-i origin ${fnASN}" | grep ^route | awk '{gsub("(route:|route6:)","");print}' | awk '{gsub(/ /,""); print}' | grep -vi "^#|^;|^$" | grep -vi "${ARG_GREP_FILTER}" | awk '{if (++dup[$0] == 1) print $0;}' | sort_results > ${fnFileTemp}
+    whois_err=$(mktemp)
+
+    if ! whois -h "${ARG_WHOIS_SERVICE}" -- "-i origin ${fnASN}" 2> "$whois_err" \
+        | grep ^route \
+        | awk '{gsub("(route:|route6:)","");print}' \
+        | awk '{gsub(/ /,""); print}' \
+        | grep -vi "^#|^;|^$" \
+        | grep -vi "${ARG_GREP_FILTER}" \
+        | awk '{if (++dup[$0] == 1) print $0;}' \
+        | sort_results > "${fnFileTemp}"
+    then
+        echo "❌ WHOIS failed for ${fnASN}"
+        echo "---- whois error ----"
+        cat "$whois_err"
+        echo "---------------------"
+        rm -f "$whois_err"
+        return 1
+    fi
+
+    rm -f "$whois_err"
 
     # #
     #   calculate how many IPs are in a subnet
@@ -313,12 +332,15 @@ download_list()
             if [[ $ips =~ $REGEX_ISNUM ]]; then
                 # CIDR=$(echo $line | sed 's:.*/::')
 
-                # uncomment if you want to count ONLY usable IP addresses
-                # subtract - 2 from any cidr not ending with 31 or 32
-                # if [[ $CIDR != "31" ]] && [[ $CIDR != "32" ]]; then
-                    # COUNT_TOTAL_IP=$(( $COUNT_TOTAL_IP - 2 ))
-                    # DL_COUNT_TOTAL_IP=$(( $DL_COUNT_TOTAL_IP - 2 ))
-                # fi
+                # #
+                #   uncomment to count ONLY usable IP addresses
+                #   subtract - 2 from any cidr not ending with 31 or 32
+                # #
+
+                #  if [[ $CIDR != "31" ]] && [[ $CIDR != "32" ]]; then
+                     #  COUNT_TOTAL_IP=$(( $COUNT_TOTAL_IP - 2 ))
+                     #  DL_COUNT_TOTAL_IP=$(( $DL_COUNT_TOTAL_IP - 2 ))
+                #  fi
 
                 COUNT_TOTAL_IP=$(( $COUNT_TOTAL_IP + $ips ))                    # GLOBAL count IPs in subnet
                 COUNT_TOTAL_SUBNET=$(( $COUNT_TOTAL_SUBNET + 1 ))               # GLOBAL count subnet
@@ -327,7 +349,10 @@ download_list()
                 DL_COUNT_TOTAL_SUBNET=$(( $DL_COUNT_TOTAL_SUBNET + 1 ))         # LOCAL count subnet
             fi
 
-        # is normal IP
+        # #
+        #   normal IP
+        # #
+
         elif [[ $line =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             COUNT_TOTAL_IP=$(( $COUNT_TOTAL_IP + 1 ))
             DL_COUNT_TOTAL_IP=$(( $DL_COUNT_TOTAL_IP + 1 ))
@@ -354,7 +379,7 @@ download_list()
 
 # #
 #   Count ASN
-#
+#   
 #   To make sure we add the correct amount of commas to the ASN list, as well as break up the ASN numbers per line
 #   we need to get the total count available.
 # #
@@ -374,7 +399,7 @@ ASN_I_TOTAL=$(( $ASN_I_TOTAL - 1 ))
 
 # #
 #   Get ASN arguments
-#
+#   
 #   string must start with "AS*"
 # #
 
