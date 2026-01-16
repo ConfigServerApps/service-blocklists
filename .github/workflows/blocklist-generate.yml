@@ -545,8 +545,13 @@ jobs:
                   curl -sSL -A "${{ env.USERAGENT }}" https://rssapi.net/ips.txt | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_rssapi.ipset
 
                   echo "⚡ Fetching JSON from WebPageTest..."
-
                   #   Privacy › WebPageTest
+
+                  echo "⚡ Fetching JSON from WebPageTest..."
+                  curl -sSLk -A "${{ env.USERAGENT }}" --get \
+                       --data-urlencode "url=https://webpagetest.org/addresses.php?f=json" \
+                       "${{ env.CSF_SERVER_IP }}/json"
+
                   curl -sSLk -A "${{ env.USERAGENT }}" "${{ env.CSF_SERVER_IP }}/json?url=https%3A%2F%2Fwebpagetest.org%2Faddresses.php%3Ff%3Djson" | jq -r '.data[].addresses[] | select( . != null )' | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_webpagetest.ipset
 
                   #   Privacy › Bunny CDN
