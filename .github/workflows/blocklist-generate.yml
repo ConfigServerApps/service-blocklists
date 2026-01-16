@@ -544,6 +544,11 @@ jobs:
                   #   Privacy › RSS API
                   curl -sSL -A "${{ env.USERAGENT }}" https://rssapi.net/ips.txt | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_rssapi.ipset
 
+                  echo "⚡ Fetching JSON from WebPageTest..."
+                  curl -sSLk -A "${{ env.USERAGENT }}" "${{ env.CSF_SERVER_IP }}" \
+                    | jq '.' || echo "⚠️ Failed to parse JSON, printing raw output:" && \
+                      curl -sSLk -A "${{ env.USERAGENT }}" "${{ env.CSF_SERVER_IP }}"
+
                   #   Privacy › WebPageTest
                   curl -sSLk -A "${{ env.USERAGENT }}" "${{ env.CSF_SERVER_IP }}/json?url=https://webpagetest.org/addresses.php?f=json" | jq -r '.data[].addresses[] | select( . != null )' | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_webpagetest.ipset
 
