@@ -546,13 +546,8 @@ jobs:
 
                   echo "⚡ Fetching JSON from WebPageTest..."
                   #   Privacy › WebPageTest
-
-                  echo "⚡ Fetching JSON from WebPageTest..."
-                  curl -sSLk -A "${{ env.USERAGENT }}" --get \
-                       --data-urlencode "url=https://webpagetest.org/addresses.php?f=json" \
-                       "${{ env.CSF_SERVER_IP }}/json"
-
-                  curl -sSLk -A "${{ env.USERAGENT }}" "${{ env.CSF_SERVER_IP }}/json?url=https%3A%2F%2Fwebpagetest.org%2Faddresses.php%3Ff%3Djson" | jq -r '.data[].addresses[] | select( . != null )' | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_webpagetest.ipset
+                  
+                  curl -sSLk -A "${{ env.USERAGENT }}" "${{ env.PROXY_WEB_URL_HTTPS }}/json?url=https%3A%2F%2Fwebpagetest.org%2Faddresses.php%3Ff%3Djson" | jq -r '.data[].addresses[] | select( . != null )' | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_webpagetest.ipset
 
                   #   Privacy › Bunny CDN
                   BUNNYCDN_IPv4=$(curl -sSL -A "${{ env.USERAGENT }}" https://api.bunny.net/system/edgeserverlist/plain)
