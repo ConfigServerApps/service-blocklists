@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_nepal.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_nepal.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_nepal.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_nepal_ipset
 #   @uuid           30681ea1-120b-3183-b866-664c7e99f0a4
-#   @updated        Thu Jan 15 00:20:32 UTC 2026
+#   @updated        Fri Jan 16 08:58:23 UTC 2026
 #   @entries        603920 ips
 #                   763 subnets
 #                   763 lines

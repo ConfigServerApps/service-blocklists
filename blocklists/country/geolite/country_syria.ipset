@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_syria.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_syria.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_syria.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_syria_ipset
 #   @uuid           9a66a3c5-3d93-33bd-8b19-51515ea421f2
-#   @updated        Thu Jan 15 00:20:46 UTC 2026
+#   @updated        Fri Jan 16 08:58:35 UTC 2026
 #   @entries        1318155 ips
 #                   379 subnets
 #                   379 lines

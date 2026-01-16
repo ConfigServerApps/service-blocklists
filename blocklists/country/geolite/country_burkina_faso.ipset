@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_burkina_faso.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_burkina_faso.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_burkina_faso.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_burkina_faso_ipset
 #   @uuid           70d69e0c-84df-3898-9c0c-115094ce876d
-#   @updated        Thu Jan 15 00:19:41 UTC 2026
+#   @updated        Fri Jan 16 08:57:37 UTC 2026
 #   @entries        344700 ips
 #                   271 subnets
 #                   271 lines

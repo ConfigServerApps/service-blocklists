@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_great_britain.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_great_britain.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_great_britain.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_great_britain_ipset
 #   @uuid           5eb8e397-2174-3220-988a-4bce861d06cc
-#   @updated        Thu Jan 15 00:20:04 UTC 2026
+#   @updated        Fri Jan 16 08:57:58 UTC 2026
 #   @entries        134485668 ips
 #                   48731 subnets
 #                   48731 lines

@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_tuvalu.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_tuvalu.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_tuvalu.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_tuvalu_ipset
 #   @uuid           eac4219d-af9b-3cee-b08f-741e267524be
-#   @updated        Thu Jan 15 00:20:50 UTC 2026
+#   @updated        Fri Jan 16 08:58:39 UTC 2026
 #   @entries        11811 ips
 #                   149 subnets
 #                   149 lines

@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_saint_kitts_nevis.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_saint_kitts_nevis.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_saint_kitts_nevis.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_saint_kitts_nevis_ipset
 #   @uuid           b88b4106-17a1-3f23-9478-bd9b63dd24e9
-#   @updated        Thu Jan 15 00:20:17 UTC 2026
+#   @updated        Fri Jan 16 08:58:10 UTC 2026
 #   @entries        41718 ips
 #                   205 subnets
 #                   205 lines

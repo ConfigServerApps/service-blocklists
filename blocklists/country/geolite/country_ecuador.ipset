@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_ecuador.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_ecuador.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_ecuador.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_ecuador_ipset
 #   @uuid           1a14483e-aa0a-3c2a-a982-6087b313a94c
-#   @updated        Thu Jan 15 00:19:56 UTC 2026
+#   @updated        Fri Jan 16 08:57:51 UTC 2026
 #   @entries        2850846 ips
 #                   1345 subnets
 #                   1345 lines

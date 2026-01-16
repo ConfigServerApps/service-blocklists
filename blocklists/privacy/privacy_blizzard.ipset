@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - blocklists/privacy/privacy_blizzard.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/privacy/privacy_blizzard.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_blizzard.ipset
 #   @source         None
 #   @id             privacy_blizzard_ipset
 #   @uuid           d7cd29b9-78f0-3d01-a1d5-b694cc6f47a4
-#   @updated        Thu Jan 15 04:11:15 UTC 2026
+#   @updated        Fri Jan 16 08:54:11 UTC 2026
 #   @entries        19974 ips
 #                   7 subnets
 #                   13 lines

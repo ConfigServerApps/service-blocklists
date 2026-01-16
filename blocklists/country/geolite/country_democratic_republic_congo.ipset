@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_democratic_republic_congo.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_democratic_republic_congo.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_democratic_republic_congo.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_democratic_republic_congo_ipset
 #   @uuid           47405ec7-9e3e-317a-bccc-12f6a4cefe3f
-#   @updated        Thu Jan 15 00:19:47 UTC 2026
+#   @updated        Fri Jan 16 08:57:42 UTC 2026
 #   @entries        225639 ips
 #                   420 subnets
 #                   420 lines

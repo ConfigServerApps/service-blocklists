@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_kazakhstan.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_kazakhstan.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_kazakhstan.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_kazakhstan_ipset
 #   @uuid           f232915e-8b68-33e1-8cb2-199e1d80904a
-#   @updated        Thu Jan 15 00:20:19 UTC 2026
+#   @updated        Fri Jan 16 08:58:11 UTC 2026
 #   @entries        3468943 ips
 #                   2790 subnets
 #                   2790 lines

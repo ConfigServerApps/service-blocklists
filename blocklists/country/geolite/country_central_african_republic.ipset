@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_central_african_republic.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_central_african_republic.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_central_african_republic.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_central_african_republic_ipset
 #   @uuid           c8562bfd-a736-3a1b-91fa-35c7720d0568
-#   @updated        Thu Jan 15 00:19:47 UTC 2026
+#   @updated        Fri Jan 16 08:57:43 UTC 2026
 #   @entries        7825 ips
 #                   143 subnets
 #                   143 lines

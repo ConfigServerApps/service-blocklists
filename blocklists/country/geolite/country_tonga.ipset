@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_tonga.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_tonga.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_tonga.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_tonga_ipset
 #   @uuid           d9320a31-63f1-311a-a69d-451468a3d754
-#   @updated        Thu Jan 15 00:20:49 UTC 2026
+#   @updated        Fri Jan 16 08:58:38 UTC 2026
 #   @entries        15851 ips
 #                   163 subnets
 #                   163 lines

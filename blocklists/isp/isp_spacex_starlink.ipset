@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - blocklists/isp/isp_spacex_starlink.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/isp/isp_spacex_starlink.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/isp/isp_spacex_starlink.ipset
 #   @source         None
 #   @id             isp_spacex_starlink_ipset
 #   @uuid           1ccb3b23-6ce5-367d-b5f9-e0af72b90fba
-#   @updated        Thu Jan 15 04:11:26 UTC 2026
+#   @updated        Fri Jan 16 08:54:23 UTC 2026
 #   @entries        0 ips
 #                   0 subnets
 #                   0 lines

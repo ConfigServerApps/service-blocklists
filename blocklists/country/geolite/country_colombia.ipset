@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_colombia.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_colombia.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_colombia.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_colombia_ipset
 #   @uuid           ab937b04-db6d-372f-9da8-d549f6c42c58
-#   @updated        Thu Jan 15 00:19:50 UTC 2026
+#   @updated        Fri Jan 16 08:57:45 UTC 2026
 #   @entries        17848234 ips
 #                   3692 subnets
 #                   3692 lines

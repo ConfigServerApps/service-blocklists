@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_vanuatu.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_vanuatu.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_vanuatu.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_vanuatu_ipset
 #   @uuid           9d78205d-fb40-379a-8ab5-7195c3245fde
-#   @updated        Thu Jan 15 00:21:06 UTC 2026
+#   @updated        Fri Jan 16 08:58:54 UTC 2026
 #   @entries        18735 ips
 #                   311 subnets
 #                   311 lines

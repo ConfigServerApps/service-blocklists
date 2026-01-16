@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_guineabissau.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_guineabissau.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_guineabissau.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_guineabissau_ipset
 #   @uuid           8077ed97-e65d-301b-a830-bbf9d08eaeac
-#   @updated        Thu Jan 15 00:20:08 UTC 2026
+#   @updated        Fri Jan 16 08:58:01 UTC 2026
 #   @entries        9227 ips
 #                   159 subnets
 #                   159 lines

@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_bolivia.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_bolivia.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_bolivia.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_bolivia_ipset
 #   @uuid           e7210395-617d-30a0-900f-8b0e0117fe3a
-#   @updated        Thu Jan 15 00:19:43 UTC 2026
+#   @updated        Fri Jan 16 08:57:39 UTC 2026
 #   @entries        1215055 ips
 #                   589 subnets
 #                   589 lines

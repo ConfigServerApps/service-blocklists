@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_denmark.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_denmark.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_denmark.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_denmark_ipset
 #   @uuid           4bd40831-2214-3fe2-b7fd-12405a9b7acc
-#   @updated        Thu Jan 15 00:19:55 UTC 2026
+#   @updated        Fri Jan 16 08:57:50 UTC 2026
 #   @entries        12783245 ips
 #                   5070 subnets
 #                   5070 lines

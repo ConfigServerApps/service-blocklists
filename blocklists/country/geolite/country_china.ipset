@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_china.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_china.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_china.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_china_ipset
 #   @uuid           c7cc752e-e97e-385e-900b-3482d4efd4cd
-#   @updated        Thu Jan 15 00:19:50 UTC 2026
+#   @updated        Fri Jan 16 08:57:45 UTC 2026
 #   @entries        345181023 ips
 #                   20212 subnets
 #                   20212 lines

@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_fiji.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_fiji.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_fiji.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_fiji_ipset
 #   @uuid           a9d0f8ff-431b-388e-9ce5-b6d12e96fa02
-#   @updated        Thu Jan 15 00:20:00 UTC 2026
+#   @updated        Fri Jan 16 08:57:54 UTC 2026
 #   @entries        148712 ips
 #                   233 subnets
 #                   233 lines

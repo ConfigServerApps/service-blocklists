@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_iran.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_iran.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_iran.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_iran_ipset
 #   @uuid           a56d768c-cf9c-375d-be45-b9c82065513e
-#   @updated        Thu Jan 15 00:20:13 UTC 2026
+#   @updated        Fri Jan 16 08:58:06 UTC 2026
 #   @entries        10918763 ips
 #                   2693 subnets
 #                   2693 lines

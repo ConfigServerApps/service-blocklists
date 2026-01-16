@@ -1,17 +1,18 @@
 # #
 #   🧱 Firewall Blocklist - blocklists/privacy/privacy_fastly.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/privacy/privacy_fastly.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_fastly.ipset
 #   @source         https://api.fastly.com/public-ip-list
 #   @id             privacy_fastly_ipset
 #   @uuid           bc39e07e-ba7f-3724-bb6a-d250b2d443ff
-#   @updated        Thu Jan 15 04:11:04 UTC 2026
+#   @updated        Fri Jan 16 08:54:00 UTC 2026
 #   @entries        304128 ips
 #                   21 subnets
 #                   21 lines
 #   @expires        6 hours
 #   @category       Privacy
 #
+
 #   This list contains ip addresses associated with Fastly.
 #
 #   Fastly is classified as a "content delivery network" (CDN), much like Cloudflare. Fastly allows

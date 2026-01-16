@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_trinidad_tobago.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_trinidad_tobago.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_trinidad_tobago.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_trinidad_tobago_ipset
 #   @uuid           c5bbe7f4-f40f-3dbf-9d41-9b0fd878b811
-#   @updated        Thu Jan 15 00:20:50 UTC 2026
+#   @updated        Fri Jan 16 08:58:38 UTC 2026
 #   @entries        558968 ips
 #                   354 subnets
 #                   354 lines

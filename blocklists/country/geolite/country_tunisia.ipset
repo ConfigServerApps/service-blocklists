@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_tunisia.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_tunisia.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_tunisia.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_tunisia_ipset
 #   @uuid           01edfa66-3f18-3c72-8308-135afbe7d2bb
-#   @updated        Thu Jan 15 00:20:49 UTC 2026
+#   @updated        Fri Jan 16 08:58:38 UTC 2026
 #   @entries        7881556 ips
 #                   329 subnets
 #                   329 lines

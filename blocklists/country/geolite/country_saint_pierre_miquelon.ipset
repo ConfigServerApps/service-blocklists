@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_saint_pierre_miquelon.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_saint_pierre_miquelon.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_saint_pierre_miquelon.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_saint_pierre_miquelon_ipset
 #   @uuid           dafdc303-5d32-3134-aa6a-c7385f33cbf0
-#   @updated        Thu Jan 15 00:20:36 UTC 2026
+#   @updated        Fri Jan 16 08:58:26 UTC 2026
 #   @entries        6891 ips
 #                   156 subnets
 #                   156 lines

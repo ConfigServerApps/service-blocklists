@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_pitcairn.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_pitcairn.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_pitcairn.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_pitcairn_ipset
 #   @uuid           e55ac757-ccae-32f3-adb2-f2ceb7b158a0
-#   @updated        Thu Jan 15 00:20:36 UTC 2026
+#   @updated        Fri Jan 16 08:58:26 UTC 2026
 #   @entries        275 ips
 #                   47 subnets
 #                   47 lines

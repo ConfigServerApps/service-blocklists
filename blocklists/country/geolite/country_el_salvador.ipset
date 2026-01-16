@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_el_salvador.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_el_salvador.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_el_salvador.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_el_salvador_ipset
 #   @uuid           8dacfc48-0fbb-39b1-b688-8dc4fde049a7
-#   @updated        Thu Jan 15 00:20:46 UTC 2026
+#   @updated        Fri Jan 16 08:58:35 UTC 2026
 #   @entries        698788 ips
 #                   483 subnets
 #                   483 lines

@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_isle_of_man.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_isle_of_man.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_isle_of_man.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_isle_of_man_ipset
 #   @uuid           146a7291-5994-351c-80d6-378bcd05968b
-#   @updated        Thu Jan 15 00:20:12 UTC 2026
+#   @updated        Fri Jan 16 08:58:05 UTC 2026
 #   @entries        135887 ips
 #                   351 subnets
 #                   351 lines

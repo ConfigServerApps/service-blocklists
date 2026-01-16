@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - blocklists/isp/isp_qwest.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/isp/isp_qwest.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/isp/isp_qwest.ipset
 #   @source         None
 #   @id             isp_qwest_ipset
 #   @uuid           9c68912f-89f5-3f6c-b703-f22601fa3c54
-#   @updated        Thu Jan 15 04:11:24 UTC 2026
+#   @updated        Fri Jan 16 08:54:22 UTC 2026
 #   @entries        0 ips
 #                   0 subnets
 #                   0 lines

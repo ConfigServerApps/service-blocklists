@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_wallis_futuna.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_wallis_futuna.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_wallis_futuna.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_wallis_futuna_ipset
 #   @uuid           83f13c4a-cdda-37f4-b93a-bb0d620e2d27
-#   @updated        Thu Jan 15 00:21:07 UTC 2026
+#   @updated        Fri Jan 16 08:58:54 UTC 2026
 #   @entries        3716 ips
 #                   133 subnets
 #                   133 lines

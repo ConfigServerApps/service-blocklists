@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_turkey.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_turkey.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_turkey.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_turkey_ipset
 #   @uuid           322bc9a4-0865-3685-a429-1edd4473a429
-#   @updated        Thu Jan 15 00:20:50 UTC 2026
+#   @updated        Fri Jan 16 08:58:38 UTC 2026
 #   @entries        17180996 ips
 #                   5891 subnets
 #                   5891 lines

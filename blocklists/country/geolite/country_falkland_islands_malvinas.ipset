@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_falkland_islands_malvinas.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_falkland_islands_malvinas.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_falkland_islands_malvinas.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_falkland_islands_malvinas_ipset
 #   @uuid           2da2d619-cdc5-3819-b123-fe8f0ea2d37d
-#   @updated        Thu Jan 15 00:20:00 UTC 2026
+#   @updated        Fri Jan 16 08:57:54 UTC 2026
 #   @entries        4483 ips
 #                   98 subnets
 #                   98 lines

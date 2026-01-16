@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_romania.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_romania.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_romania.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_romania_ipset
 #   @uuid           fc647a87-d88f-315d-8834-bc3eef606cf3
-#   @updated        Thu Jan 15 00:20:39 UTC 2026
+#   @updated        Fri Jan 16 08:58:28 UTC 2026
 #   @entries        7440484 ips
 #                   4875 subnets
 #                   4875 lines

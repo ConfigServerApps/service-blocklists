@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - blocklists/privacy/privacy_cloudfront.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/privacy/privacy_cloudfront.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_cloudfront.ipset
 #   @source         https://d7uri8nf7uskq.cloudfront.net/tools/list-cloudfront-ips
 #   @id             privacy_cloudfront_ipset
 #   @uuid           faac2d95-4e94-303c-9cbf-74304f75f5fa
-#   @updated        Thu Jan 15 04:11:01 UTC 2026
+#   @updated        Fri Jan 16 08:53:57 UTC 2026
 #   @entries        4172933 ips
 #                   199 subnets
 #                   199 lines

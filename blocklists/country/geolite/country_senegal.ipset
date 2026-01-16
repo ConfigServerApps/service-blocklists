@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_senegal.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_senegal.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_senegal.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_senegal_ipset
 #   @uuid           f2695eb3-c9b5-3096-a7ab-515dbc9d85cc
-#   @updated        Thu Jan 15 00:20:44 UTC 2026
+#   @updated        Fri Jan 16 08:58:34 UTC 2026
 #   @entries        416066 ips
 #                   261 subnets
 #                   261 lines

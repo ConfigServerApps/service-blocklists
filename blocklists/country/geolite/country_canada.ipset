@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_canada.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_canada.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_canada.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_canada_ipset
 #   @uuid           8dc58e38-706f-3f7e-a0d8-739afda65ba9
-#   @updated        Thu Jan 15 00:19:46 UTC 2026
+#   @updated        Fri Jan 16 08:57:42 UTC 2026
 #   @entries        72222323 ips
 #                   27919 subnets
 #                   27919 lines

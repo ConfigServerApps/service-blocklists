@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_sri_lanka.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_sri_lanka.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_sri_lanka.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_sri_lanka_ipset
 #   @uuid           d86dc453-d004-3659-a503-cdaca8cfb8ce
-#   @updated        Thu Jan 15 00:20:20 UTC 2026
+#   @updated        Fri Jan 16 08:58:12 UTC 2026
 #   @entries        591116 ips
 #                   464 subnets
 #                   464 lines

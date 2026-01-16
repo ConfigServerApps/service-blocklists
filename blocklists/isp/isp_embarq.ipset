@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - blocklists/isp/isp_embarq.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/isp/isp_embarq.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/isp/isp_embarq.ipset
 #   @source         None
 #   @id             isp_embarq_ipset
 #   @uuid           2e51d53f-2999-31da-ae04-fbc14196827d
-#   @updated        Thu Jan 15 04:11:23 UTC 2026
+#   @updated        Fri Jan 16 08:54:21 UTC 2026
 #   @entries        0 ips
 #                   0 subnets
 #                   0 lines

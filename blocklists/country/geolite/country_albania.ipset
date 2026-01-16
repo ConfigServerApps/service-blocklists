@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_albania.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_albania.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_albania.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_albania_ipset
 #   @uuid           860e720b-f03c-3b17-926a-1896e0f6131e
-#   @updated        Thu Jan 15 00:19:36 UTC 2026
+#   @updated        Fri Jan 16 08:57:32 UTC 2026
 #   @entries        340504 ips
 #                   2059 subnets
 #                   2059 lines

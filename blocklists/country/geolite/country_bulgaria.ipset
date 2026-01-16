@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_bulgaria.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_bulgaria.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_bulgaria.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_bulgaria_ipset
 #   @uuid           98c29942-0ab1-3489-9eec-bb712af8154b
-#   @updated        Thu Jan 15 00:19:41 UTC 2026
+#   @updated        Fri Jan 16 08:57:37 UTC 2026
 #   @entries        4288437 ips
 #                   3218 subnets
 #                   3218 lines

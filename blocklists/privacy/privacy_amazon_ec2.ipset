@@ -1,14 +1,14 @@
 # #
 #   🧱 Firewall Blocklist - blocklists/privacy/privacy_amazon_ec2.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/privacy/privacy_amazon_ec2.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_amazon_ec2.ipset
 #   @source         https://ip-ranges.amazonaws.com/ip-ranges.json
 #   @id             privacy_amazon_ec2_ipset
 #   @uuid           8d68f156-5dad-39a6-83ee-bd1a62e6fd09
-#   @updated        Thu Jan 15 04:11:05 UTC 2026
-#   @entries        72873005 ips
-#                   1693 subnets
-#                   1693 lines
+#   @updated        Fri Jan 16 08:54:01 UTC 2026
+#   @entries        72873261 ips
+#                   1694 subnets
+#                   1694 lines
 #   @expires        6 hours
 #   @category       Privacy
 #
@@ -44,6 +44,7 @@
 1.178.27.0/24
 1.178.28.0/24
 1.178.29.0/24
+1.178.31.0/24
 1.178.64.0/24
 1.178.65.0/24
 1.178.88.0/24

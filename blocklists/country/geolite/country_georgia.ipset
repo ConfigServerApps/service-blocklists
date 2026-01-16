@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_georgia.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_georgia.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_georgia.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_georgia_ipset
 #   @uuid           dd1f414b-3a04-3945-8333-54ec8d6c72ff
-#   @updated        Thu Jan 15 00:20:04 UTC 2026
+#   @updated        Fri Jan 16 08:57:58 UTC 2026
 #   @entries        1291148 ips
 #                   799 subnets
 #                   799 lines

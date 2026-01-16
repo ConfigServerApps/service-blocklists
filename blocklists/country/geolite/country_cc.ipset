@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_cc.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_cc.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_cc.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_cc_ipset
 #   @uuid           d9106d0a-027b-3fd5-8505-4727d45f293f
-#   @updated        Thu Jan 15 00:19:47 UTC 2026
+#   @updated        Fri Jan 16 08:57:42 UTC 2026
 #   @entries        69 ips
 #                   65 subnets
 #                   65 lines

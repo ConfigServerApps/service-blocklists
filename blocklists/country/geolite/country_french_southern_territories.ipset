@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - country_french_southern_territories.ipset
 #
-#   @url            https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/country/geolite/country_french_southern_territories.ipset
+#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/country/geolite/country_french_southern_territories.ipset
 #   @source         http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
 #   @id             country_french_southern_territories_ipset
 #   @uuid           e91632fc-680a-3372-9d4b-fa4df3b3b847
-#   @updated        Thu Jan 15 00:20:47 UTC 2026
+#   @updated        Fri Jan 16 08:58:36 UTC 2026
 #   @entries        33 ips
 #                   56 subnets
 #                   56 lines
