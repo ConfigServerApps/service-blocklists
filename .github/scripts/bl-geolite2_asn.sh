@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # #
-#   @for                https://github.com/Aetherinox/csf-firewall
+#   @for                https://github.com/ConfigServer-Software/service-blocklists
 #   @workflow           blocklist-generate.yml
 #   @type               bash script
 #   @summary            Aetherx Blocklists > GeoLite2 ASN IPsets
@@ -207,7 +207,7 @@ cyan="${esc}[38;5;6m"
 app_name="GeoLite2 Database Script"                                 # name of app
 app_desc="This script downloads the asn databases from the MaxMind GeoLite2 servers. \n\n  They are then broken up into their respective ASN files. Duplicates are removed, IPs\n  are re-sorted, and then all files are pushed to the repository."
 app_ver="1.2.0.0"                                                   # current script version
-app_repo="Aetherinox/csf-firewall"                                  # repository
+app_repo="ConfigServer-Software/service-blocklists"                 # repository
 app_repo_branch="main"                                              # repository branch
 app_agent="Mozilla/5.0 (Windows NT 10.0; WOW64) "\
 "AppleWebKit/537.36 (KHTML, like Gecko) "\

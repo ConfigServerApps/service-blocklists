@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # #
-#   @for                https://github.com/Aetherinox/csf-firewall
+#   @for                https://github.com/ConfigServer-Software/service-blocklists
 #   @assoc              blocklist-generate.yml
 #   @type               bash script
 #   @summary            Uses a URL to download various files from online websites.

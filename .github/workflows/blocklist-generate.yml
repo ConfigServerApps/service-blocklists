@@ -1,5 +1,5 @@
 # #
-#   @usage              https://github.com/Aetherinox/csf-firewall
+#   @usage              https://github.com/ConfigServer-Software/service-blocklists
 #   @type               github workflow
 #   @updated            09.28.25
 #   @usage              generates a list of ipsets which can then be used within host files, config server firewall, and various other apps

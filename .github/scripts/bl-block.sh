@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # #
-#   @app                https://github.com/Aetherinox/csf-firewall
+#   @app                https://github.com/ConfigServer-Software/service-blocklists
 #   @workflow           blocklist-generate.yml
 #   @type               bash script
 #   @summary            generate ipset by fetching locally specified file in /blocks/ repo folder

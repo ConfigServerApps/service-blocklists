@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # #
-#   @for                https://github.com/Aetherinox/csf-firewall
+#   @for                https://github.com/ConfigServer-Software/service-blocklists
 #   @workflow           blocklist-generate.yml
 #   @type               bash script
 #   @summary            generate ipset by fetching HTML in web url, pulls only ips with grep rule (cant be changed) | URLs: SINGLE

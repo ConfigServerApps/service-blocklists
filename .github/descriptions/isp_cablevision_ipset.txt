@@ -6,7 +6,7 @@
 #
 #   If you wish to block this internet service provider, it is recommended that you use both this blocklist,
 #   as well as the blocklist for Suddenlink / Optimum.
-#      - https://raw.githubusercontent.com/Aetherinox/blocklists/main/blocklists/isp/isp_suddenlink_optimum.ipset
+#      - https://blocklist.configserver.dev/isp_suddenlink_altice_optimum.ipset
 #
 #   After Altice acquired Cablevision Systems Corporation on November 30, 2016, Suddenlink was combined with
 #   Cablevision. Together with Optimum, the name used by Cablevision for its products, Altice USA became the

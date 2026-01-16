@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # #
-#   @for                https://github.com/Aetherinox/csf-firewall
+#   @for                https://github.com/ConfigServer-Software/service-blocklists
 #   @workflow           blocklist-generate.yml
 #   @type               bash script
 #   @summary            utilizes various whois services and allows you to fetch a list of IP addresses associated with an ASN.

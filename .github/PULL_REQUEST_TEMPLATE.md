@@ -44,7 +44,7 @@
 ### Before You Submit
 <small>Please ensure you check the following items to indicate that you've read this section and completed each task</small>
 
-- [ ] My code follows the [Contributor Guidelines](https://github.com/Aetherinox/csf-firewall/blob/main/CONTRIBUTING.md)
+- [ ] My code follows the [Contributor Guidelines](https://github.com/ConfigServer-Software/service-blocklists/blob/main/CONTRIBUTING.md)
 - [ ] I give expressed consent for my work to be used in this repo
 - [ ] I have tested my work and it functions as intended
 - [ ] I have included docs, if the change requires such; which will be pushed to [https://docs.configserver.dev](https://docs.configserver.dev)

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # #
-#   @for                https://github.com/Aetherinox/blocklists
+#   @for                https://github.com/ConfigServer-Software/service-blocklists
 #   @workflow           blocklist-generate.yml
 #   @type               bash script
 #   @summary            updates the repository readme file with the ability to replace
@@ -46,7 +46,7 @@ app_dir_github="${app_dir_this}/.github"                        # .github folder
 #   define > repo
 # #
 
-repo_name="Aetherinox/blocklists"                               # repository
+repo_name="ConfigServer-Software/service-blocklists"            # repository
 repo_branch="main"                                              # repository branch
 
 # #
