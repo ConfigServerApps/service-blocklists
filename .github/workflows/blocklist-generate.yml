@@ -304,14 +304,6 @@ jobs:
               id: 'context'
 
             # #
-            #   Generate › Install Packages
-            # #
-
-            - name: "🧱 Install Packages"
-              run: |
-                  sudo apt-get install -y ipcalc ed html2text whois uuid-runtime autoconf
-
-            # #
             #   Generate › Start
             # #
 
@@ -412,6 +404,24 @@ jobs:
                   echo "‎"
 
             # #
+            #   Generate › Install Packages
+            # #
+
+            - name: "🧱 Install Packages"
+              run: |
+                  sudo apt-get install -y ipcalc ed html2text whois uuid-runtime autoconf
+
+            # #
+            #   Generate › Cache Packages
+            # #
+
+            - name: "🧱 Cache Packages"
+              uses: awalsh128/cache-apt-pkgs-action@latest
+              with:
+                  packages: ipcalc ed html2text whois uuid-runtime
+                  version: 1.0
+
+            # #
             #   Generate › Configure
             #
             #   this step installs packages we need to manage ipsets.
@@ -463,6 +473,10 @@ jobs:
               run: |
                   useragent="${{ vars.API_USERAGENT }}"
                   echo "USERAGENT=$(echo $useragent)" >> $GITHUB_ENV
+
+            # #
+            #   Generate › Privacy
+            # #
 
             - name: "🧱 Generate › Privacy"
               id: task_blocklist_generate_privacy
@@ -529,6 +543,11 @@ jobs:
 
                   #   Privacy › RSS API
                   curl -sSL -A "${{ env.USERAGENT }}" https://rssapi.net/ips.txt | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_rssapi.ipset
+
+                  echo "⚡ Fetching JSON from WebPageTest..."
+                  curl -sSL -A "${{ env.USERAGENT }}" "https://www.webpagetest.org/addresses.php?f=json" \
+                    | jq '.' || echo "⚠️ Failed to parse JSON, printing raw output:" && \
+                      curl -sSL -A "${{ env.USERAGENT }}" "https://www.webpagetest.org/addresses.php?f=json"
 
                   #   Privacy › WebPageTest
                   curl -sSL -A "${{ env.USERAGENT }}" https://www.webpagetest.org/addresses.php?f=json | jq -r '.data[].addresses[] | select( . != null )' | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_webpagetest.ipset
