@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 # #
 #   @for                https://github.com/ConfigServer-Software/service-blocklists
@@ -9,37 +10,37 @@
 #   @terminal           .github/scripts/bl-whois.sh \
 #                           blocklists/privacy/privacy_facebook.ipset
 #                           AS32934
-#
+#   
 #                       .github/scripts/bl-whois.sh \
 #                           blocklists/privacy/privacy_facebook.ipset
 #                           AS32934 \
 #                           whois.radb.net
-#
+#   
 #                       .github/scripts/bl-whois.sh \
 #                           blocklists/privacy/privacy_facebook.ipset
 #                           AS32934 \
 #                           whois.radb.net \
 #                           '#|^;|^$'
-#
+#   
 #   @workflow           # Privacy › Facebook
 #                       chmod +x ".github/scripts/bl-whois.sh"
 #                       run_facebook=".github/scripts/bl-whois.sh blocklists/privacy/privacy_facebook.ipset AS32934"
 #                       eval "./$run_facebook"
-#
+#   
 #   @command            bl-whois.sh
 #                           <ARG_SAVEFILE>              required
 #                           <ARG_ASN>                   required
 #                           <ARG_WHOIS_SERVICE>         optional
 #                           <ARG_GREP_FILTER>           optional
-#
+#   
 #                       bl-whois.sh blocklists/privacy/privacy_facebook.ipset AS32934 whois.radb.net '#|^;|^$'
-#
+#   
 #                       📁 .github
 #                           📁 scripts
 #                               📄 bl-whois.sh
 #                           📁 workflows
 #                               📄 blocklist-generate.yml
-#
+#   
 # #
 
 APP_THIS_FILE=$(basename "$0")                          # current script file
@@ -80,6 +81,18 @@ YELLOW3="\e[38;5;193m"
 GREY1="\e[38;5;240m"
 GREY2="\e[38;5;244m"
 GREY3="\e[38;5;250m"
+
+# #
+#   Set PATH
+# #
+
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
+
+# #
+#   Set Binaries
+# #
+
+WHOIS_BIN=$(which whois || echo "/usr/bin/whois")
 
 # #
 #   print an error and exit with failure
@@ -134,7 +147,12 @@ sort_results()
 #                                           - if string arg STARTS with `AS`
 # #
 
+# #
+#   Define Regex URL
+# #
+
 REGEX_URL='^(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]\.[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]$'
+
 for arg in "${@:1}"; do
     if [[ $arg == whois* ]] || [[ $arg =~ $REGEX_URL ]]; then
         ARG_WHOIS_SERVICE=${arg}
@@ -144,6 +162,12 @@ for arg in "${@:1}"; do
     fi
 done
 
+# #
+#   Defaults
+# #
+
+ARG_WHOIS_SERVICE="${ARG_WHOIS_SERVICE:-whois.radb.net}"
+ARG_GREP_FILTER="${ARG_GREP_FILTER:-^#|^;|^$}"
 ARG_SAVEFILE=$1
 
 # #
