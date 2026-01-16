@@ -1,0 +1,1325 @@
+# #
+#   @type               github workflow
+#   @author             Aetherinox
+#   @url                https://github.com/Aetherinox
+#   @updated            10.14.25
+#   @usage              releases a new public copy of ConfigServer Firewall
+#
+#   @secrets            secrets.SELF_TOKEN                                          self github personal access token (fine-grained)
+#                       secrets.SELF_TOKEN_CL                                       self github personal access token (classic)
+#                       secrets.NPM_TOKEN                                           self npmjs access token
+#                       secrets.PYPI_API_TOKEN                                      self Pypi API token (production site) - https://pypi.org/
+#                       secrets.PYPI_API_TEST_TOKEN                                 self Pypi API token (test site) - https://test.pypi.org/
+#                       secrets.SELF_DOCKERHUB_TOKEN                                self Dockerhub token
+#                       secrets.CODECOV_TOKEN                                       codecov upload token for nodejs projects
+#                       secrets.API_GEOLITE2_KEY                                    maxmind API token
+#                       secrets.CF_ACCOUNT_ID                                       cloudflare account id
+#                       secrets.CF_ACCOUNT_TOKEN                                    cloudflare account token
+#                       secrets.ARTIFACTS_DOMAIN                                    github artifacts domain name
+#                       secrets.ARTIFACTS_PORT                                      github artifacts port
+#                       secrets.ARTIFACTS_GITHUB_SSH_PRIVATE_KEY                    github artifacts server ssh private key
+#                       secrets.ORG_TOKEN                                           org github personal access token (fine-grained)
+#                       secrets.ORG_TOKEN_CL                                        org github personal access token (classic)
+#                       secrets.ORG_DOCKERHUB_TOKEN                                 org dockerhub secret
+#                       secrets.ORG_GITEA_TOKEN                                     org gitea personal access token (classic) with package:write permission
+#                       secrets.BOT_GPG_KEY_ASC                                     bot gpg private key (armored) | BEGIN PGP PRIVATE KEY BLOCK
+#                       secrets.BOT_GPG_KEY_B64                                     bot gpg private key (binary) converted to base64
+#                       secrets.BOT_GPG_PASSPHRASE                                  bot gpg private key passphrase
+#                       secrets.DISCORD_WEBHOOK_CHAN_GITHUB_RELEASES                discord webhook to report release notifications from github to discord
+#                       secrets.DISCORD_WEBHOOK_CHAN_GITHUB_WORKFLOWS               discord webhook to report workflow notifications from github to discord
+#                       secrets.DISCORD_WEBHOOK_CHAN_GITHUB_UPDATES                 discord webhook to report activity notifications from github to discord
+#
+#   @local              these workflows can be tested locally through the use of `act`
+#                           https://github.com/nektos/act
+#                       Extract act to folder
+#                       Add system env var with path to act.exe
+#                       Run the commands:
+#                           git pull https://github.com/username/repo
+#                           act -W .github/workflows/release.yml -P ubuntu-latest=catthehacker/ubuntu:full-22.04
+#                           act -W .github/workflows/release.yml -s TOKEN_CL=XXXXXXXXXX --pull=false
+# #
+
+name: '📦 Release › Publish'
+run-name: '📦 Release › Publish'
+
+on:
+    workflow_dispatch:
+        inputs:
+
+            # #
+            #   Name of the plugin to use when creating the release zip filename
+            #     e.g: csf-firewall-v1.0.0.zip
+            # #
+
+            PROJECT_NAME:
+                description:        '📦 Name of Plugin'
+                required:           true
+                default:            'csf-firewall'
+                type:               string
+
+            # #
+            #   true            the changelog generated in releases tab will only display single commits.
+            #   false           the changelog shows pull requests completed based on their labels
+            # #
+
+            CHANGELOG_MODE_COMMIT:
+                description:        '📑 Use Commits Instead of PRs'
+                required:           true
+                default:            true
+                type:               boolean
+
+            # #
+            #   true            Will show all types of commits, including uncategorized
+            #   false           WIll only show actions that have been categorized using the format
+            #                       type(scope): description
+            #                       type: description
+            # #
+
+            SHOW_UNCATEGORIZED:
+                description:        '🗂️ Show Uncategorized Commits'
+                required:           true
+                default:            false
+                type:               boolean
+
+            # #
+            #   true            released version will be marked as a development build and will have the v1.x.x-development tag instead of -latest
+            #   false           release version will be marked with -latest docker tag
+            # #
+
+            RC_RELEASE:
+                description:        '🧪 Build RC (Pre-release)'
+                required:           true
+                default:            false
+                type:               boolean
+
+            # #
+            #   only needed if env variable `RC_ONLY` = true
+            #   sets the version number for the release candidate
+            #       e.g: csf-firewall-v15.0.0-rc.1
+            # #
+
+            RC_VERSION:
+                description:        '🧪 RC (Pre-release) Ver (csf-firewall-rc.v1)'
+                required:           false
+                type:               string
+                default:            '1'
+
+# #
+#   environment variables
+# #
+
+env:
+    PROJECT_NAME:                   ${{ github.event.inputs.PROJECT_NAME || 'csf-firewall' }}
+    CHANGELOG_MODE_COMMIT:          ${{ github.event.inputs.CHANGELOG_MODE_COMMIT || true }}
+    SHOW_UNCATEGORIZED:             ${{ github.event.inputs.SHOW_UNCATEGORIZED || false }}
+    RC_RELEASE:                     ${{ github.event.inputs.RC_RELEASE || false }}
+    RC_VERSION:                     ${{ github.event.inputs.RC_VERSION || '1' }}
+    ASSIGN_USER:                    Aetherinox
+    BOT_NAME_1:                     BinaryServ
+    BOT_NAME_DEPENDABOT:            dependabot[bot]
+    BOT_NAME_RENOVATE:              renovate[bot]
+    GPG_KEY_BASE64:                 ${{ secrets.ADMINSERV_GPG_KEY_B64 }}
+    GPG_KEY_PASSPHRASE:             ${{ secrets.ADMINSERV_GPG_PASSPHRASE }}
+
+# #
+#   jobs
+# #
+
+jobs:
+
+    # #
+    #   Jobs › Precheck
+    # #
+
+    job-precheck:
+        name: >-
+            📦 Package › Precheck
+        runs-on: ubuntu-latest
+      # runs-on: apollo-x64
+        timeout-minutes: 15
+        permissions:
+            contents: write
+            packages: write
+        outputs:
+            version_csf: ${{ steps.task_build_env.outputs.VERSION_CSF }}
+            version_build: ${{ steps.task_build_env.outputs.VERSION_BUILD }}
+            version_tag_prev: ${{ steps.task_build_env.outputs.VERSION_TAG_PREV }}
+            version_commit_last: ${{ steps.task_build_env.outputs.VERSION_COMMIT_LAST }}
+        steps:
+
+            # #
+            #   Upload › Checkout
+            # #
+
+            - name: >-
+                  ☑️ Checkout
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            # #
+            #   Upload › Job Information
+            # #
+
+            - name: >-
+                  🔄 Load Job
+              uses: qoomon/actions--context@v4
+              id: 'context'
+
+            # #
+            #   Upload › Start
+            # #
+
+            - name: >-
+                  ✅ Start
+              run: |
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo " Starting Job ${{ steps.context.outputs.job_name }}"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+
+                  YEAR="$(date +'%Y')"
+                  echo "YEAR=${YEAR}" >> $GITHUB_ENV
+
+                  NOW="$(date +'%m-%d-%Y %H:%M:%S')"                                                #  02-25-2025 12:49:48
+                  echo "NOW=${NOW}" >> $GITHUB_ENV
+
+                  NOW_SHORT="$(date +'%m-%d-%Y')"                                                   #  02-25-2025
+                  echo "NOW_SHORT=${NOW_SHORT}" >> $GITHUB_ENV
+
+                  NOW_LONG="$(date +'%m-%d-%Y %H:%M')"                                              #  02-25-2025 12:49
+                  echo "NOW_LONG=${NOW_LONG}" >> $GITHUB_ENV
+
+                  NOW_DOCKER="$(date +'%Y%m%d')"                                                    #  20250225
+                  echo "NOW_DOCKER=${NOW_DOCKER}" >> $GITHUB_ENV
+
+                  NOW_DOCKER_TS="$(date -u +'%FT%T.%3NZ')"                                          #  2025-02-25T12:50:11.569Z
+                  echo "NOW_DOCKER_TS=${NOW_DOCKER_TS}" >> $GITHUB_ENV
+
+                  SHA1="$(git rev-parse HEAD)"                                                      #  71fad013cfce9116ec62779e4a7e627fe4c33627
+                  echo "SHA1=${SHA1}" >> $GITHUB_ENV
+
+                  SHA1_GH="$(echo ${GITHUB_SHA})"                                                   #  71fad013cfce9116ec62779e4a7e627fe4c33627
+                  echo "SHA1_GH=${SHA1_GH}" >> $GITHUB_ENV
+
+                  PKG_VER_1DIGIT="$(echo ${{ env.IMAGE_VERSION }} | cut -d '.' -f1-1)"              #  15.52.35 > 15
+                  echo "PKG_VER_1DIGIT=${PKG_VER_1DIGIT}" >> $GITHUB_ENV
+
+                  PKG_VER_2DIGIT="$(echo ${{ env.IMAGE_VERSION }} | cut -d '.' -f1-2)"              #  15.52.35 > 15.52
+                  echo "PKG_VER_2DIGIT=${PKG_VER_2DIGIT}" >> $GITHUB_ENV
+
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "‎"
+                  sudo apt -qq update
+                  sudo apt -qq install tree
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "‎"
+                  echo " Runner .............. ${{ runner.name }}"
+                  echo " Workflow ............ ${{ github.workflow }} (#${{ github.workflow_ref }})"
+                  echo " Run Number .......... ${{ github.run_number }}"
+                  echo " Ref ................. ${{ github.ref }}"
+                  echo " Ref Name ............ ${{ github.ref_name }}"
+                  echo " Event Name .......... ${{ github.event_name }}"
+                  echo " Repo ................ ${{ github.repository }}"
+                  echo " Repo Owner .......... ${{ github.repository_owner }}"
+                  echo " Run ID .............. https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                  echo " Triggered By ........ ${{ github.actor }}"
+                  echo " SHA 1 (GITHUB_SHA) .. ${GITHUB_SHA}"
+                  echo " SHA 2 (github.sha) .. ${{ github.sha }}"
+                  echo " SHA 3 (env.SHA1) .... ${SHA1}"
+                  echo " SHA 4 (env.SHA1_GH) . ${SHA1_GH}"
+                  echo " Workspace ........... ${{ github.workspace }}"
+                  echo " PWD ................. ${PWD}"
+                  echo " Job Name ............ ${{ steps.context.outputs.job_name }}"
+                  echo " Job ID .............. ${{ steps.context.outputs.job_id }}"
+                  echo " Job URL ............. ${{ steps.context.outputs.job_url }}"
+                  echo " Run ID .............. ${{ steps.context.outputs.run_id }}"
+                  echo " Run Attempt ......... ${{ steps.context.outputs.run_attempt }}"
+                  echo " Run Number .......... ${{ steps.context.outputs.run_number }}"
+                  echo " Run URL ............. ${{ steps.context.outputs.run_url }}"
+                  echo " Run Env ............. ${{ steps.context.outputs.environment }}"
+                  echo " Run Env URL ......... ${{ steps.context.outputs.environment_url }}"
+                  echo " Run Deployment ...... ${{ steps.context.outputs.deployment_id }}"
+                  echo " Run Deployment URL .. ${{ steps.context.outputs.deployment_url }}"
+                  echo " Run Deployment ...... ${{ steps.context.outputs.deployment_id }}"
+                  echo " Run Runner Name ..... ${{ steps.context.outputs.runner_name }}"
+                  echo " Run Runner ID ....... ${{ steps.context.outputs.runner_id }}"
+                  echo " Year ................ ${YEAR}"
+                  echo " Now ................. ${NOW}"
+                  echo " Now (Short) ......... ${NOW_SHORT}"
+                  echo " Now (Long) .......... ${NOW_LONG}"
+                  echo " Now (Docker) ........ ${NOW_DOCKER}"
+                  echo " Now (Docker TS) ..... ${NOW_DOCKER_TS}"
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "‎"
+                  tree -I 'node_modules|.git|blocklists' --prune
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "‎"
+
+            # #
+            #   Upload › Get Previous Tag
+            #   
+            #   @outputs                  steps.task_tag_prev.outputs.tag
+            # #
+
+            - name: >-
+                🏷️ Get Previous tag (Remote)
+              id: task_tag_prev
+              run: |
+                  echo "Fetching remote tags..."
+                  prev_tag=$(git ls-remote --tags origin \
+                    | awk -F/ '{print $3}' \
+                    | grep -E '^[0-9]+\.[0-9]+$' \
+                    | sort -V \
+                    | tail -n 1)
+                  if [ -z "$prev_tag" ]; then
+                      prev_tag="1.0.0"
+                  fi
+                  echo "Found previous tag: $prev_tag"
+                  echo "tag=$prev_tag" >> $GITHUB_OUTPUT
+
+            # #
+            #   Upload › Get Build Variables
+            #   
+            #   Gets the values needed to build csf in the next job
+            # #
+
+            - name: >-
+                  🔨 Get Build Variables
+              id: task_build_env
+              run: |
+                  # #
+                  #  current csf version
+                  # #
+                
+                  version_csf=$(grep -m1 -o '.*' src/version.txt | xargs)
+                  echo "VERSION_CSF=$version_csf" >> $GITHUB_OUTPUT
+
+                  # #
+                  #  build nmber
+                  # #
+  
+                  version_build=$(date -u '+%y%m-%d')
+                  echo "VERSION_BUILD=$version_build" >> $GITHUB_OUTPUT
+
+                  # #
+                  #  previous tag
+                  # #
+  
+                  echo "VERSION_TAG_PREV=${{ steps.task_tag_prev.outputs.tag }}" >> $GITHUB_OUTPUT
+
+                  # #
+                  #   Last commit
+                  # #
+
+                  commit_last=$(git rev-parse HEAD)
+                  echo "VERSION_COMMIT_LAST=$commit_last" >> $GITHUB_OUTPUT
+
+                  # #
+                  #   Output
+                  # #
+
+                  echo -e "CSF Version ........... $version_csf"
+                  echo -e "CSF Build ............. $version_build"
+                  echo -e "Previous Tag .......... ${{ steps.task_tag_prev.outputs.tag }}"
+                  echo -e "Last Commit ........... $commit_last"
+
+            # #
+            #   Upload › Verbose › List Tree
+            # #
+
+            - name: >-
+                  🌲 Verbose › Tree Listing
+              run: |
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo " 🌲 TREE LISTING"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo " PWD ......................................... ${PWD}"
+                  echo " GITHUB.WORKSPACE ............................ ${{ github.workspace }}"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  tree -I 'node_modules|.git|blocklists' --prune
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "‎"
+
+    # #
+    #   Job > Release
+    # #
+
+    job-release:
+        name: >-
+            📦 Package › Release
+        runs-on: ubuntu-latest
+      # runs-on: apollo-x64
+        timeout-minutes: 10
+        needs: [ job-precheck ]
+        permissions:
+            contents: write
+            packages: write
+        env:
+            VERSION_CSF: ${{ needs.job-precheck.outputs.version_csf }}
+            VERSION_BUILD: ${{ needs.job-precheck.outputs.version_build }}
+            VERSION_TAG_PREV: ${{ needs.job-precheck.outputs.version_tag_prev }}
+            VERSION_COMMIT_LAST: ${{ needs.job-precheck.outputs.version_tag_prev }}
+        steps:
+
+            # #
+            #   Release › Checkout
+            # #
+
+            - name: >-
+                  ☑️ Checkout
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            # #
+            #   Release › Job Information
+            # #
+
+            - name: >-
+                  🔄 Load Job
+              uses: qoomon/actions--context@v4
+              id: 'context'
+
+            # #
+            #   elease › Debug › View passed values
+            # #
+
+            - name: >-
+                  ⚙️ Debug › Passed Values
+              run: |
+                  echo "TAG VERSION (Previous) ........... ${{ env.VERSION_TAG_PREV }}"
+                  echo "TAG VERSION (Next) ............... ${{ env.VERSION_CSF }}"
+                  echo "RELEASE BUILD .................... ${{ env.VERSION_BUILD }}"
+                  echo "LAST COMMIT ...................... ${{ env.VERSION_COMMIT_LAST }}"
+                  
+            # #
+            #   Release › Summary Digest
+            # #
+
+            - name: >-
+                  ✅ Summary Digest
+              run: |
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo " Starting Job ${{ steps.context.outputs.job_name }}"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+
+                  YEAR="$(date +'%Y')"
+                  echo "YEAR=${YEAR}" >> $GITHUB_ENV
+
+                  NOW="$(date +'%m-%d-%Y %H:%M:%S')"                                                #  02-25-2025 12:49:48
+                  echo "NOW=${NOW}" >> $GITHUB_ENV
+
+                  NOW_SHORT="$(date +'%m-%d-%Y')"                                                   #  02-25-2025
+                  echo "NOW_SHORT=${NOW_SHORT}" >> $GITHUB_ENV
+
+                  NOW_LONG="$(date +'%m-%d-%Y %H:%M')"                                              #  02-25-2025 12:49
+                  echo "NOW_LONG=${NOW_LONG}" >> $GITHUB_ENV
+
+                  NOW_DOCKER="$(date +'%Y%m%d')"                                                    #  20250225
+                  echo "NOW_DOCKER=${NOW_DOCKER}" >> $GITHUB_ENV
+
+                  NOW_DOCKER_TS="$(date -u +'%FT%T.%3NZ')"                                          #  2025-02-25T12:50:11.569Z
+                  echo "NOW_DOCKER_TS=${NOW_DOCKER_TS}" >> $GITHUB_ENV
+
+                  SHA1="$(git rev-parse HEAD)"                                                      #  71fad013cfce9116ec62779e4a7e627fe4c33627
+                  echo "SHA1=${SHA1}" >> $GITHUB_ENV
+
+                  SHA1_GH="$(echo ${GITHUB_SHA})"                                                   #  71fad013cfce9116ec62779e4a7e627fe4c33627
+                  echo "SHA1_GH=${SHA1_GH}" >> $GITHUB_ENV
+
+                  PKG_VER_1DIGIT="$(echo ${{ env.IMAGE_VERSION }} | cut -d '.' -f1-1)"              #  15.52.35 > 15
+                  echo "PKG_VER_1DIGIT=${PKG_VER_1DIGIT}" >> $GITHUB_ENV
+
+                  PKG_VER_2DIGIT="$(echo ${{ env.IMAGE_VERSION }} | cut -d '.' -f1-2)"              #  15.52.35 > 15.52
+                  echo "PKG_VER_2DIGIT=${PKG_VER_2DIGIT}" >> $GITHUB_ENV
+
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "‎"
+                  sudo apt -qq update
+                  sudo apt -qq install tree
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "‎"
+                  echo " Runner .............. ${{ runner.name }}"
+                  echo " Workflow ............ ${{ github.workflow }} (#${{ github.workflow_ref }})"
+                  echo " Run Number .......... ${{ github.run_number }}"
+                  echo " Ref ................. ${{ github.ref }}"
+                  echo " Ref Name ............ ${{ github.ref_name }}"
+                  echo " Event Name .......... ${{ github.event_name }}"
+                  echo " Repo ................ ${{ github.repository }}"
+                  echo " Repo Owner .......... ${{ github.repository_owner }}"
+                  echo " Run ID .............. https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                  echo " Triggered By ........ ${{ github.actor }}"
+                  echo " SHA 1 (GITHUB_SHA) .. ${GITHUB_SHA}"
+                  echo " SHA 2 (github.sha) .. ${{ github.sha }}"
+                  echo " SHA 3 (env.SHA1) .... ${SHA1}"
+                  echo " SHA 4 (env.SHA1_GH) . ${SHA1_GH}"
+                  echo " Workspace ........... ${{ github.workspace }}"
+                  echo " PWD ................. ${PWD}"
+                  echo " Job Name ............ ${{ steps.context.outputs.job_name }}"
+                  echo " Job ID .............. ${{ steps.context.outputs.job_id }}"
+                  echo " Job URL ............. ${{ steps.context.outputs.job_url }}"
+                  echo " Run ID .............. ${{ steps.context.outputs.run_id }}"
+                  echo " Run Attempt ......... ${{ steps.context.outputs.run_attempt }}"
+                  echo " Run Number .......... ${{ steps.context.outputs.run_number }}"
+                  echo " Run URL ............. ${{ steps.context.outputs.run_url }}"
+                  echo " Run Env ............. ${{ steps.context.outputs.environment }}"
+                  echo " Run Env URL ......... ${{ steps.context.outputs.environment_url }}"
+                  echo " Run Deployment ...... ${{ steps.context.outputs.deployment_id }}"
+                  echo " Run Deployment URL .. ${{ steps.context.outputs.deployment_url }}"
+                  echo " Run Deployment ...... ${{ steps.context.outputs.deployment_id }}"
+                  echo " Run Runner Name ..... ${{ steps.context.outputs.runner_name }}"
+                  echo " Run Runner ID ....... ${{ steps.context.outputs.runner_id }}"
+                  echo " Year ................ ${YEAR}"
+                  echo " Now ................. ${NOW}"
+                  echo " Now (Short) ......... ${NOW_SHORT}"
+                  echo " Now (Long) .......... ${NOW_LONG}"
+                  echo " Now (Docker) ........ ${NOW_DOCKER}"
+                  echo " Now (Docker TS) ..... ${NOW_DOCKER_TS}"
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "‎"
+                  tree -I 'node_modules|.git|blocklists' --prune
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "‎"
+
+            # #
+            #   Release › Build › Stable
+            # #
+
+            - name: '🔨 Build › Stable ( ${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }} )'
+              id: task_release_build_st
+              if: |
+                  startsWith( inputs.RC_RELEASE, false ) ||
+                  startsWith( env.RC_RELEASE, false )
+              run: |
+                  BASE_PATH="${GITHUB_WORKSPACE}"
+
+                  echo "‎"
+                  echo "‎"
+
+                  # #
+                  #   Move required files to csf folder
+                  # #
+
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "⚙️ Moving files to csf folder"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+
+                  mkdir -p csf
+                  cp README.md LICENSE.md csf/
+                  cp -r src/* csf/
+
+                  # #
+                  #   Zip contents of "📁 src" | first add readme and license | then add all files from src folddr
+                  # #
+
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "⚙️ Building STABLE Package .zip ${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}.zip"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+
+                  zip -r "${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}.zip" csf
+                  
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "⚙️ Building STABLE Package .tgz ${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}.tgz"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+
+                  tar -czf "${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}.tgz" -C . csf
+
+                  echo "‎"
+                  echo "‎"
+
+                  # #
+                  #   Zip contents of "📁 extras/helper_scripts"
+                  # #
+
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "⚙️ Building STABLE Package .zip ${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}-helpers.zip"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+
+                  zip -r "${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}-helpers.zip" README.md LICENSE.md -j extras/helper_scripts/*
+
+                  echo "‎"
+                  echo "‎"
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.ADMINSERV_TOKEN_CL }}
+
+            # #
+            #   Release › Build › Release Candidate
+            # #
+
+            - name: "🔨 Build › RC ( ${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}-rc.${{ env.RC_VERSION }} )"
+              id: task_release_build_rc
+              if: |
+                  startsWith( inputs.RC_RELEASE, true ) ||
+                  startsWith( env.RC_RELEASE, true )
+              run: |
+                  BASE_PATH="${GITHUB_WORKSPACE}"
+
+                  echo "‎"
+                  echo "‎"
+                  
+                  # #
+                  #   Move required files to csf folder
+                  # #
+
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "⚙️ Moving files to csf folder"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+
+                  mkdir -p csf
+                  cp README.md LICENSE.md csf/
+                  cp -r src/* csf/
+
+                  # #
+                  #   Zip contents of "📁 src" | first add readme and license | then add all files from src folddr
+                  # #
+
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "⚙️ Building RC Package .zip ${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}-rc.${{ env.RC_VERSION }}.zip"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+
+                  zip -r "${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}-rc.${{ env.RC_VERSION }}.zip" csf
+                  
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "⚙️ Building RC Package .tgz ${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}-rc.${{ env.RC_VERSION }}.tgz"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+
+                  tar -czf "${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}-rc.${{ env.RC_VERSION }}.tgz" -C . csf
+
+                  echo "‎"
+                  echo "‎"
+
+                  # #
+                  #  Zip contents of "📁 extras/helper_scripts"
+                  # #
+
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "⚙️ Building RC Package .zip ${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}-rc.${{ env.RC_VERSION }}-helpers.zip"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  
+                  zip -r "${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}-rc.${{ env.RC_VERSION }}-helpers.zip" README.md LICENSE.md -j extras/helper_scripts/*
+
+                  echo "‎"
+                  echo "‎"
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.ADMINSERV_TOKEN_CL }}
+
+            # #
+            #   Release › Verbose › List Tree
+            # #
+
+            - name: >-
+                  🌲 Verbose › Tree Listing
+              run: |
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo " 🌲 TREE LISTING"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo " PWD ......................................... ${PWD}"
+                  echo " GITHUB.WORKSPACE ............................ ${{ github.workspace }}"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  tree -I 'node_modules|.git|blocklists' --prune
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "‎"
+
+            # #
+            #   Release › Tags › Pre Create
+            #   
+            #   in order to use the changelog github action, you must pre-create the tag otherwise
+            #   the changelog action will have no idea what tag you are going to be creating and
+            #   the list of commits will not be for the correct release.
+            # #
+
+            - name: '🔖 Tag › Pre Create ${{ env.VERSION_CSF }}'
+              uses: rickstaa/action-create-tag@v1
+              id: task_release_tag_create
+              with:
+                  tag: ${{ env.VERSION_CSF }}
+                  tag_exists_error: false
+                  message: "Latest release"
+                  gpg_private_key: ${{ secrets.ADMINSERV_GPG_KEY_ASC }}
+                  gpg_passphrase: ${{ secrets.ADMINSERV_GPG_PASSPHRASE }}
+
+            # #
+            #   Release › Tags › Confirm
+            # #
+
+            - name: '🔖 Tag › Confirm ${{ env.VERSION_CSF }}'
+              run: |
+                  echo "Tag already present: ${{ env.TAG_EXISTS }}"
+                  echo "Tag already present: ${{ steps.task_release_tag_create.outputs.tag_exists }}"
+
+            # #
+            #   Release › GPG › Import Key (No Passphrase)
+            #   
+            #   requires your GPG private key, converted to base64 binary .gpg (not armored .asc)
+            #   
+            #   this is utilized to generate signed hash digest
+            #   
+            #       find . -maxdepth 1 \( -name '*.zip' -o -name '*.gz' \) -printf '%P\n' | xargs -r sha1sum | gpg --digest-algo sha256 --clearsign > sha1sum.txt.asc
+            #       find . -maxdepth 1 \( -name '*.zip' -o -name '*.gz' \) -printf '%P\n' | xargs -r sha256sum | gpg --digest-algo sha256 --clearsign > sha256
+            # #
+
+            - name: '🪪 Release › GPG › Import Signing Key › W/o Passphrase'
+              if: env.GPG_KEY_BASE64 != '' && env.GPG_KEY_PASSPHRASE == ''
+              run: |
+                  echo "$GPG_KEY_BASE64" | base64 -di | gpg --import
+
+            # #
+            #   Release › GPG › Import Key (With Passphrase)
+            #   
+            #   requires your GPG private key, converted to base64 binary .gpg (not armored .asc)
+            #   
+            #   this is utilized to generate signed hash digest
+            #   
+            #       find . -maxdepth 1 \( -name '*.zip' -o -name '*.gz' \) -printf '%P\n' | xargs -r sha1sum | gpg --digest-algo sha256 --clearsign > sha1sum.txt.asc
+            #       find . -maxdepth 1 \( -name '*.zip' -o -name '*.gz' \) -printf '%P\n' | xargs -r sha256sum | gpg --digest-algo sha256 --clearsign > sha256
+            # #
+
+            - name: '🪪 Release › GPG › Import Signing Key › w/ Passphrase'
+              if: env.GPG_KEY_BASE64 != '' && env.GPG_KEY_PASSPHRASE != ''
+              run: |
+                  echo "$GPG_KEY_BASE64" | base64 -di > "/tmp/signing-key.gpg"
+                  echo "$GPG_KEY_PASSPHRASE" | gpg --pinentry-mode loopback --passphrase-fd 0 --import "/tmp/signing-key.gpg"
+                  (echo "$GPG_KEY_PASSPHRASE"; echo; echo) | gpg --command-fd 0 --pinentry-mode loopback --change-passphrase $(gpg --list-secret-keys --with-colons 2> /dev/null | grep '^sec:' | cut --delimiter ':' --fields 5 | tail -n 1)
+
+            # #
+            #   Release › Verbose › List Tree
+            # #
+
+            - name: >-
+                  🌲 Verbose › Tree Listing
+              run: |
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo " 🌲 TREE LISTING"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo " PWD ......................................... ${PWD}"
+                  echo " GITHUB.WORKSPACE ............................ ${{ github.workspace }}"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  tree -I 'node_modules|.git|blocklists' --prune
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "‎"
+
+            # #
+            #   Release › Checksum › Stable
+            # #
+
+            - name: '🆔 Checksum › Stable'
+              if: |
+                  startsWith( inputs.RC_RELEASE, false ) ||
+                  startsWith( env.RC_RELEASE, false )
+              run: |
+                  #  Filename › Csf › tgz
+                  file_csf_tgz="${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}.tgz"
+                  echo "FILE_CSF_TGZ=${file_csf_tgz}" >> $GITHUB_ENV
+
+                  #  Filename › Csf › zip
+                  file_csf_zip="${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}.zip"
+                  echo "FILE_CSF_ZIP=${file_csf_zip}" >> $GITHUB_ENV
+
+                  #  Filename › Extra › Helpers
+                  file_extra_helpers="${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}-helpers.zip"
+                  echo "FILE_EXTRA_HELPERS=${file_extra_helpers}" >> $GITHUB_ENV
+
+
+                  #  SHA1SUM › Csf › tgz
+                  sha1sum_csf_tgz="$(shasum --algorithm 1 ${file_csf_tgz} | awk '{ print $1 }')"
+                  echo "SHA1SUM_CSF_TGZ=${sha1sum_csf_tgz}" >> $GITHUB_ENV
+
+                  #  SHA1SUM › Csf › zip
+                  sha1sum_csf_zip="$(shasum --algorithm 1 ${file_csf_zip} | awk '{ print $1 }')"
+                  echo "SHA1SUM_CSF_ZIP=${sha1sum_csf_zip}" >> $GITHUB_ENV
+  
+                  #  SHA1SUM › Extra › Helpers
+                  sha1sum_extra_helpers="$(shasum --algorithm 1 ${file_extra_helpers} | awk '{ print $1 }')"
+                  echo "SHA1SUM_EXTRA_HELPERS=${sha1sum_extra_helpers}" >> $GITHUB_ENV
+
+
+
+                  #  SHA256SUM › Csf › tgz
+                  sha256sum_csf_tgz="$(shasum --algorithm 256 "$file_csf_tgz" | awk '{ print $1 }')"
+                  echo "SHA256SUM_CSF_TGZ=$sha256sum_csf_tgz" >> $GITHUB_ENV
+
+                  #  SHA256SUM › Csf › zip
+                  sha256sum_csf_zip="$(shasum --algorithm 256 "$file_csf_zip" | awk '{ print $1 }')"
+                  echo "SHA256SUM_CSF_ZIP=$sha256sum_csf_zip" >> $GITHUB_ENV
+
+                  #  SHA256SUM › Extra › Helpers 
+                  sha256sum_extra_helpers="$(shasum --algorithm 256 "$file_extra_helpers" | awk '{ print $1 }')"
+                  echo "SHA256SUM_EXTRA_HELPERS=$sha256sum_extra_helpers" >> $GITHUB_ENV
+
+
+                
+                  #  get sha1 and sha256 for .zip and .gz files
+                  find . -maxdepth 1 \( -name '*.zip' -o -name '*.tgz' \) -printf '%P\n' | xargs -r sha1sum | gpg --digest-algo sha256 --clearsign > sha1sum.txt.asc
+                  find . -maxdepth 1 \( -name '*.zip' -o -name '*.tgz' \) -printf '%P\n' | xargs -r sha256sum | gpg --digest-algo sha256 --clearsign > sha256sum.txt.asc
+
+
+
+                  #  create sha .sig from .asc
+                  gpg --batch --yes --quiet --armor --detach-sig --sign --output "sha256sum.sig" "sha256sum.txt.asc"
+                  gpg --batch --yes --quiet --armor --detach-sig --sign --output "sha1sum.sig" "sha1sum.txt.asc"
+
+            # #
+            #   Release › Checksum › RC
+            # #
+
+            - name: '🆔 Checksum › Release Candidate'
+              if: |
+                  startsWith( inputs.RC_RELEASE, true ) ||
+                  startsWith( env.RC_RELEASE, true )
+              run: |
+                  #  Filename › Csf › zip
+                  file_csf_zip="${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}-rc.${{ env.RC_VERSION }}.zip"
+                  echo "FILE_CSF_ZIP=${file_csf_zip}" >> $GITHUB_ENV
+
+                  #  Filename › Csf › tgz
+                  file_csf_tgz="${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}-rc.${{ env.RC_VERSION }}.tgz"
+                  echo "FILE_CSF_TGZ=${file_csf_tgz}" >> $GITHUB_ENV
+
+                  #  Filename › Extra › Helpers
+                  file_extra_helpers="${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}-rc.${{ env.RC_VERSION }}-helpers.zip"
+                  echo "FILE_EXTRA_HELPERS=${file_extra_helpers}" >> $GITHUB_ENV
+
+
+
+                  #  SHA1SUM › Csf › zip
+                  sha1sum_csf_zip="$(shasum --algorithm 1 ${file_csf_zip} | awk '{ print $1 }')"
+                  echo "SHA1SUM_CSF_ZIP=${sha1sum_csf_zip}" >> $GITHUB_ENV
+
+                  #  SHA1SUM › Csf › tgz
+                  sha1sum_csf_tgz="$(shasum --algorithm 1 ${file_csf_tgz} | awk '{ print $1 }')"
+                  echo "SHA1SUM_CSF_TGZ=${sha1sum_csf_tgz}" >> $GITHUB_ENV
+
+                  #  SHA1SUM › Extra › Helpers
+                  sha1sum_extra_helpers="$(shasum --algorithm 1 ${file_extra_helpers} | awk '{ print $1 }')"
+                  echo "SHA1SUM_EXTRA_HELPERS=${sha1sum_extra_helpers}" >> $GITHUB_ENV
+
+
+
+                  #  SHA256SUM › Csf › tgz
+                  sha256sum_csf_tgz="$(shasum --algorithm 256 "$file_csf_tgz" | awk '{ print $1 }')"
+                  echo "SHA256SUM_CSF_TGZ=$sha256sum_csf_tgz" >> $GITHUB_ENV
+
+                  #  SHA256SUM › Csf › zip
+                  sha256sum_csf_zip="$(shasum --algorithm 256 "$file_csf_zip" | awk '{ print $1 }')"
+                  echo "SHA256SUM_CSF_ZIP=$sha256sum_csf_zip" >> $GITHUB_ENV
+
+                  #  SHA256SUM › Extra › Helpers 
+                  sha256sum_extra_helpers="$(shasum --algorithm 256 "$file_extra_helpers" | awk '{ print $1 }')"
+                  echo "SHA256SUM_EXTRA_HELPERS=$sha256sum_extra_helpers" >> $GITHUB_ENV
+
+
+                  
+                  #  get sha1 and sha256 for .zip and .gz files
+                  find . -maxdepth 1 \( -name '*.zip' -o -name '*.tgz' \) -printf '%P\n' | xargs -r sha1sum | gpg --digest-algo sha256 --clearsign > sha1sum.txt.asc
+                  find . -maxdepth 1 \( -name '*.zip' -o -name '*.tgz' \) -printf '%P\n' | xargs -r sha256sum | gpg --digest-algo sha256 --clearsign > sha256sum.txt.asc
+
+
+
+                  #  create sha .sig from .asc
+                  gpg --batch --yes --quiet --armor --detach-sig --sign --output "sha256sum.sig" "sha256sum.txt.asc"
+                  gpg --batch --yes --quiet --armor --detach-sig --sign --output "sha1sum.sig" "sha1sum.txt.asc"
+
+            # #
+            #   Release › Checksum › Print
+            # #
+
+            - name: '🆔 Checksum › Print'
+              run: |
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo " 🆔 CHECKSUMS"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo " ${{ env.FILE_CSF_TGZ }} .................... ${{ env.SHA256SUM_CSF_TGZ }}"
+                  echo " ${{ env.FILE_CSF_ZIP }} .................... ${{ env.SHA256SUM_CSF_ZIP }}"
+                  echo " ${{ env.FILE_EXTRA_HELPERS }} ............... ${{ env.SHA256SUM_EXTRA_HELPERS }}"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "‎"
+
+            # #
+            #   Release › Contributor Images
+            # #
+
+            - name: '🥸 Contributors › Generate'
+              id: task_release_contribs_generate
+              uses: jaywcjlove/github-action-contributors@main
+              with:
+                  filter-author: (renovate\[bot\]|renovate-bot|dependabot\[bot\])
+                  output: CONTRIBUTORS.svg
+                  avatarSize: 42
+
+            # #
+            #   Release › Variables
+            # #
+
+            - name: >-
+                  ✅ Release Variables
+              run: |
+                  YEAR="$(date +'%Y')"
+                  VERSION_CLEAN="$(echo "${VERSION_CSF}" | tr -d '.')"
+                  echo "YEAR=${YEAR}" >> $GITHUB_ENV
+                  echo "VERSION_CLEAN=${VERSION_CLEAN}" >> $GITHUB_ENV
+
+            # #
+            #   Release › Changelog › Build (Categorized)
+            #
+            #   generates a changelog from the github api. requires a VERSION_TAG_PREV in order to figure
+            #   out the changes made between the two versions.
+            #
+            #   outputs:
+            #       ${{ steps.task_release_changelog_categorized.outputs.changelog }}
+            # #
+
+            - name: '📝 Changelog › Build (Categorized)'
+              id: task_release_changelog_categorized
+              uses: mikepenz/release-changelog-builder-action@v5
+              if: |
+                  startsWith( inputs.SHOW_UNCATEGORIZED, false ) ||
+                  startsWith( env.SHOW_UNCATEGORIZED, false )
+              with:
+                  token: ${{ secrets.ADMINSERV_TOKEN }}
+                  fromTag: "${{ env.VERSION_TAG_PREV }}"
+                  #toTag: "${{ github.ref }}"
+                  configuration: ".github/changelog-configuration.json"
+                  ignorePreReleases: false
+                  commitMode: ${{ inputs.CHANGELOG_MODE_COMMIT || env.CHANGELOG_MODE_COMMIT }}
+                  fetchReleaseInformation: true
+                  fetchViaCommits: true
+                  configurationJson: |
+                    {
+                      "template": "## Release Info \n| Item | Value |\n| --- | --- |\n| 🏷️ Version | v${{ env.VERSION_CSF }} |\n| 📕 Blog | [https://docs.configserver.dev/blog/${{ env.YEAR }}/release-v${{ env.VERSION_CLEAN }}/](https://docs.configserver.dev/blog/${{ env.YEAR }}/release-v${{ env.VERSION_CLEAN }}) |\n| 🕟 Stamp | `#{{FROM_TAG}}-#{{FROM_TAG_DATE}} 🔺 #{{TO_TAG}}-#{{TO_TAG_DATE}}` |\n| 📅 Last Release | `#{{DAYS_SINCE}} days ago` |\n| 📄 ${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}.tgz | ConfigServer Firewall app<br /><sub>${{ env.SHA256SUM_CSF_TGZ }}</sub> |\n| 📄 ${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}.zip | ConfigServer Firewall app<br /><sub>${{ env.SHA256SUM_CSF_ZIP }}</sub> |\n| 📄 ${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}-helpers.zip | Helper patches. View README for instructions<br /><sub>${{ env.SHA256SUM_EXTRA_HELPERS }}</sub> |\n\n<br>\n\n---\n\n<br>\n\n### What's New\nThis release contains the following changes:\n\n<br>\n\n---\n\n<br>\n\n### Statistics\nHow the files have changed:\n<ul><li><a href='#{{RELEASE_DIFF}}'>Changed files</a>  : <b>#{{CHANGED_FILES}}</b> </li><li>Changes  : <b>#{{CHANGES}}</b> </li><li>Commits : <b>#{{COMMITS}}</b> </li><li>Additions : <b>#{{ADDITIONS}}</b></li><li>Deletions : <b>#{{DELETIONS}}</b></li><li>PRs (categorized) : <b>#{{CATEGORIZED_COUNT}}</b></li><li>PRs (uncategorized) : <b>#{{UNCATEGORIZED_COUNT}}</b></li><li>PRs (open) : <b>#{{OPEN_COUNT}}</b></li>\n<br />\n</ul>\n\n<br>\n\n---\n\n<br>\n\n### Statistics\nHow the files have changed:\n<ul><li><a href='#{{RELEASE_DIFF}}'>Changed files</a>  : <b>#{{CHANGED_FILES}}</b> </li><li>Changes  : <b>#{{CHANGES}}</b> </li><li>Commits : <b>#{{COMMITS}}</b> </li><li>Additions : <b>#{{ADDITIONS}}</b></li><li>Deletions : <b>#{{DELETIONS}}</b></li><li>PRs (categorized) : <b>#{{CATEGORIZED_COUNT}}</b></li><li>PRs (uncategorized) : <b>#{{UNCATEGORIZED_COUNT}}</b></li><li>PRs (open) : <b>#{{OPEN_COUNT}}</b></li>\n<br />\n</ul>\n\n<br>\n\n---\n\n<br>\n\n### Pull Requests\nThis release is associated with the following pull requests:\n#{{CHANGELOG}}\n\n<br>\n\n---\n\n<br>\n\n"
+                    }
+              env:
+                  GITHUB_TOKEN: ${{ secrets.ADMINSERV_TOKEN }}
+
+            # #
+            #   Release › Changelog › Build (Uncategorized)
+            #   
+            #   generates a changelog from the github api. requires a VERSION_TAG_PREV in order to figure
+            #   out the changes made between the two versions.
+            #   
+            #   outputs:
+            #       ${{ steps.task_release_changelog_categorized.outputs.changelog }}
+            #   
+            #   shows only categorized commits using the commit standards
+            #                type(scope): description
+            #                type: description
+            # #
+
+            - name: '📝 Changelog › Build (Uncategorized)'
+              id: task_release_changelog_uncategorized
+              uses: mikepenz/release-changelog-builder-action@v5
+              if: |
+                  startsWith( inputs.SHOW_UNCATEGORIZED, true ) ||
+                  startsWith( env.SHOW_UNCATEGORIZED, true )
+              with:
+                  token: ${{ secrets.ADMINSERV_TOKEN }}
+                  fromTag: "${{ env.VERSION_TAG_PREV }}"
+                  #toTag: "${{ github.ref }}"
+                  configuration: ".github/changelog-configuration.json"
+                  ignorePreReleases: false
+                  commitMode: ${{ inputs.CHANGELOG_MODE_COMMIT || env.CHANGELOG_MODE_COMMIT }}
+                  fetchReleaseInformation: true
+                  fetchViaCommits: true
+                  configurationJson: |
+                    {
+                      "template": "## Release Info \n| Item | Value |\n| --- | --- |\n| 🏷️ Version | v${{ env.VERSION_CSF }} |\n| 📕 Blog | [https://docs.configserver.dev/blog/${{ env.YEAR }}/release-v${{ env.VERSION_CLEAN }}/](https://docs.configserver.dev/blog/${{ env.YEAR }}/release-v${{ env.VERSION_CLEAN }}) |\n| 🕟 Stamp | `#{{FROM_TAG}}-#{{FROM_TAG_DATE}} 🔺 #{{TO_TAG}}-#{{TO_TAG_DATE}}` |\n| 📅 Last Release | `#{{DAYS_SINCE}} days ago` |\n| 📄 ${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}.tgz | ConfigServer Firewall app<br /><sub>${{ env.SHA256SUM_CSF_TGZ }}</sub> |\n| 📄 ${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}.zip | ConfigServer Firewall app<br /><sub>${{ env.SHA256SUM_CSF_ZIP }}</sub> |\n| 📄 ${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}-helpers.zip | Helper patches. View README for instructions<br /><sub>${{ env.SHA256SUM_EXTRA_HELPERS }}</sub> |\n\n<br>\n\n---\n\n<br>\n\n### What's New\nThis release contains the following changes:\n\n<br>\n\n---\n\n<br>\n\n### Statistics\nHow the files have changed:\n<ul><li><a href='#{{RELEASE_DIFF}}'>Changed files</a>  : <b>#{{CHANGED_FILES}}</b> </li><li>Changes  : <b>#{{CHANGES}}</b> </li><li>Commits : <b>#{{COMMITS}}</b> </li><li>Additions : <b>#{{ADDITIONS}}</b></li><li>Deletions : <b>#{{DELETIONS}}</b></li><li>PRs (categorized) : <b>#{{CATEGORIZED_COUNT}}</b></li><li>PRs (uncategorized) : <b>#{{UNCATEGORIZED_COUNT}}</b></li><li>PRs (open) : <b>#{{OPEN_COUNT}}</b></li>\n<br />\n</ul>\n\n<br>\n\n---\n\n<br>\n\n### Pull Requests\nThis release is associated with the following pull requests:\n#{{CHANGELOG}}\n\n<br>\n\n"
+                    }
+              env:
+                  GITHUB_TOKEN: ${{ secrets.ADMINSERV_TOKEN }}
+
+            # #
+            #   Release › Changelog › Convert step into ENV
+            #
+            #   This is a requirement in order for the action mikepenz/release-changelog-builder-action@v5 to work properly.
+            #   If you use special characters like quotes and tildes in your push comments, bash will have no way of knowing
+            #   if it's part of the changelog, or code itself.
+            #
+            #   By converting the step into an env var, we quote the text, and it fixes the issue.
+            #
+            #   For every step that you need to print the changelog text, first define the env var
+            #   env:
+            #       CHANGELOG_CATEGORIZED: ${{ steps.task_release_changelog_categorized.outputs.changelog }}
+            #
+            #   Then you can call the changelog in the body / run command with
+            #       echo "$CHANGELOG_CATEGORIZED"
+            # #
+
+            - name: '🙊 Changelog › Step to Env › Categorized'
+              id: task_release_changelog_escape_categorized
+              if: |
+                  startsWith( inputs.SHOW_UNCATEGORIZED, false ) ||
+                  startsWith( env.SHOW_UNCATEGORIZED, false )
+              env:
+                  CHANGELOG_CATEGORIZED: ${{ steps.task_release_changelog_categorized.outputs.changelog }}
+              run: |
+                  echo "$CHANGELOG_CATEGORIZED"
+
+            - name: '🙊 Changelog › Step to Env › Uncategorized'
+              id: task_release_changelog_escape_uncategorized
+              if: |
+                  startsWith( inputs.SHOW_UNCATEGORIZED, true ) ||
+                  startsWith( env.SHOW_UNCATEGORIZED, true )
+              env:
+                  CHANGELOG_UNCATEGORIZED: ${{ steps.task_release_changelog_categorized.outputs.changelog }}
+              run: |
+                  echo "$CHANGELOG_UNCATEGORIZED"
+
+            # #
+            #   Release › SFTP / SSH › Setup SSH Key
+            # #
+
+            - name: '📁 Release › Upload Artifacts › .zip'
+              env:
+                  repo: ${{ github.event.repository.name }}
+                  username: github
+                  port: ${{ secrets.ARTIFACTS_PORT }}
+                  domain: ${{ secrets.ARTIFACTS_DOMAIN }}
+                  sshkey: ${{ secrets.ARTIFACTS_GITHUB_SSH_PRIVATE_KEY }}
+                  artifact: "releases/${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}.zip"
+              run: |
+                  mkdir -p ~/.ssh
+                  echo "$sshkey" > "$HOME/.ssh/github_sftp_key"
+                  chmod 600 "$HOME/.ssh/github_sftp_key"
+
+                  folder=$(dirname "$artifact")
+                  file=$(basename "$artifact")
+
+                  sftp -P "$port" -i "$HOME/.ssh/github_sftp_key" -o StrictHostKeyChecking=no "$username@$domain" <<EOF
+                  mkdir $repo
+                  cd $repo
+
+                  # Create remote directories
+                  $(IFS=/; for d in $folder; do
+                        if [ "$d" != "." ]; then
+                            echo "mkdir $d"
+                            echo "cd $d"
+                        fi
+                  done)
+
+                  # Upload the file
+                  put $file
+                  bye
+                  EOF
+
+            - name: '📁 Release › Upload Artifacts › .tgz'
+              env:
+                  repo: ${{ github.event.repository.name }}
+                  username: github
+                  port: ${{ secrets.ARTIFACTS_PORT }}
+                  domain: ${{ secrets.ARTIFACTS_DOMAIN }}
+                  sshkey: ${{ secrets.ARTIFACTS_GITHUB_SSH_PRIVATE_KEY }}
+                  artifact: "releases/${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}.tgz"
+              run: |
+                  mkdir -p ~/.ssh
+                  echo "$sshkey" > "$HOME/.ssh/github_sftp_key"
+                  chmod 600 "$HOME/.ssh/github_sftp_key"
+
+                  folder=$(dirname "$artifact")
+                  file=$(basename "$artifact")
+
+                  sftp -P "$port" -i "$HOME/.ssh/github_sftp_key" -o StrictHostKeyChecking=no "$username@$domain" <<EOF
+                  mkdir $repo
+                  cd $repo
+
+                  # Create remote directories
+                  $(IFS=/; for d in $folder; do
+                        if [ "$d" != "." ]; then
+                            echo "mkdir $d"
+                            echo "cd $d"
+                        fi
+                  done)
+
+                  # Upload the file
+                  put $file
+                  bye
+                  EOF
+
+            # #
+            #   Release › Verbose › List Tree
+            # #
+
+            - name: '🌲 Debug › Verbose Tree Listing'
+              run: |
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo " 🌲 PATHS & TREE"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo " PWD ..................... ${PWD}"
+                  echo " GITHUB.WORKSPACE ........ ${{ github.workspace }}"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  tree -I 'node_modules|.git|blocklists' --prune
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "‎"
+
+            # #
+            #   Release › Verbose › Changelog › Print Categorized
+            # #
+
+            - name: '⚙️ Verbose › Changelog › Categorized'
+              id: task_release_changelog_verbose_categorized
+              if: |
+                  startsWith( inputs.SHOW_UNCATEGORIZED, false ) ||
+                  startsWith( env.SHOW_UNCATEGORIZED, false )
+              env:
+                  CHANGELOG_CATEGORIZED: ${{ steps.task_release_changelog_categorized.outputs.changelog }}
+                  CHANGELOG_UNCATEGORIZED: ${{ steps.task_release_changelog_categorized.outputs.changelog }}
+              run: |
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo " CHANGELOG [ Categorized ]"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "$CHANGELOG_CATEGORIZED"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "‎"
+
+            # #
+            #   Release › Verbose › Changelog › Print Uncategorized
+            # #
+
+            - name: '⚙️ Verbose › Changelog › Uncategorized'
+              id: task_release_changelog_verbose_uncategorized
+              if: |
+                  startsWith( inputs.SHOW_UNCATEGORIZED, true ) ||
+                  startsWith( env.SHOW_UNCATEGORIZED, true )
+              env:
+                  CHANGELOG_CATEGORIZED: ${{ steps.task_release_changelog_categorized.outputs.changelog }}
+                  CHANGELOG_UNCATEGORIZED: ${{ steps.task_release_changelog_categorized.outputs.changelog }}
+              run: |
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo " CHANGELOG [ Uncategorized ]"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "$CHANGELOG_UNCATEGORIZED"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "‎"
+
+            # #
+            #   Release › Post Release (Stable)
+            #
+            #   outputs:
+            #       [RELEASE ID]:
+            #           ${{ steps.task_release_bundle_rc.outputs.id
+            #           ${{ steps.task_release_bundle_st.outputs.id
+            # #
+
+            - name: '🏳️ Post › Stable'
+              id: task_release_bundle_st
+              if: |
+                  startsWith( inputs.RC_RELEASE, false ) ||
+                  startsWith( env.RC_RELEASE, false )
+              uses: softprops/action-gh-release@v2
+              env:
+                  GITHUB_TOKEN: ${{ secrets.ADMINSERV_TOKEN_CL }}
+              with:
+                  token: ${{ secrets.ADMINSERV_TOKEN_CL }}
+                  name: v${{ env.VERSION_CSF }}
+                  tag_name: ${{ env.VERSION_CSF }}
+                  target_commitish: ${{ github.event.inputs.branch }}
+                  draft: false
+                  generate_release_notes: false
+                  files: |
+                      ${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}.tgz
+                      ${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}.zip
+                      ${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}-helpers.zip
+
+                      sha1sum.txt.asc
+                      sha256sum.txt.asc
+                      sha256sum.sig
+                      sha1sum.sig
+                  prerelease: false
+                  body: |
+                      ${{ steps.task_release_changelog_categorized.outputs.changelog }}
+                      ${{ steps.task_release_changelog_uncategorized.outputs.changelog }}
+
+            # #
+            #   Release › Post Release (Release Candidate)
+            #
+            #   outputs:
+            #       [RELEASE ID]:
+            #           ${{ steps.task_release_bundle_rc.outputs.id
+            #           ${{ steps.task_release_bundle_st.outputs.id
+            # #
+
+            - name: '🏳️ Post › Release Candidate'
+              id: task_release_bundle_rc
+              uses: softprops/action-gh-release@v2
+              if: |
+                  startsWith( inputs.RC_RELEASE, true ) ||
+                  startsWith( env.RC_RELEASE, true )
+              env:
+                  GITHUB_TOKEN: ${{ secrets.ADMINSERV_TOKEN }}
+              with:
+                  token: ${{ secrets.ADMINSERV_TOKEN }}
+                  name: v${{ env.VERSION_CSF }}
+                  tag_name: ${{ env.VERSION_CSF }}
+                  target_commitish: ${{ github.event.inputs.branch }}
+                  draft: false
+                  generate_release_notes: false
+                  files: |
+                      ${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}-rc.${{ env.RC_VERSION }}.tgz
+                      ${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}-rc.${{ env.RC_VERSION }}.zip
+                      ${{ env.PROJECT_NAME }}-v${{ env.VERSION_CSF }}-rc.${{ env.RC_VERSION }}-helpers.zip
+
+                      sha1sum.txt.asc
+                      sha256sum.txt.asc
+                      sha256sum.sig
+                      sha1sum.sig
+                  prerelease: false
+                  body: |
+                      > [!WARNING]
+                      > This is a **release candidate**, which means it is not a stable release and could contain bugs. You should download it at your own risk.
+
+                      ${{ steps.task_release_changelog_categorized.outputs.changelog }}
+                      ${{ steps.task_release_changelog_uncategorized.outputs.changelog }}
+
+            # #
+            #   Release › Print Status
+            #
+            #   For every step that you need to print the changelog text, first define the env var
+            #   env:
+            #       CHANGELOG_CATEGORIZED: ${{ steps.task_release_changelog_categorized.outputs.changelog }}
+            #
+            #   Then you can call the changelog in the body / run command with
+            #       echo "$CHANGELOG_CATEGORIZED"
+            # #
+
+            - name: '🎛️ Status › Print'
+              id: task_release_status_print
+              env:
+                  CHANGELOG_CATEGORIZED: ${{ steps.task_release_changelog_categorized.outputs.changelog }}
+                  CHANGELOG_UNCATEGORIZED: ${{ steps.task_release_changelog_categorized.outputs.changelog }}
+              run: |
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo " 🎛️ CHANGELOG [Cateorgized]"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "$CHANGELOG_CATEGORIZED"
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo " 🎛️ CHANGELOG [Uncateorgized]"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "$CHANGELOG_UNCATEGORIZED"
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo " 🌲 VARIABLES"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo " Package Version ............................. ${{ env.VERSION_CSF }}"
+                  echo " Tag: Previous ............................... ${{ env.VERSION_TAG_PREV }}"
+                  echo " Tag: Now .................................... ${{ env.VERSION_CSF }}"
+                  echo " GH: Ref ..................................... ${{ github.ref }}"
+                  echo " Last Commit ................................. ${{ env.VERSION_COMMIT_LAST }}"
+                  echo " ST Output ID ................................ ${{ steps.task_release_bundle_st.outputs.id }}"
+                  echo " RC Output ID ................................ ${{ steps.task_release_bundle_rc.outputs.id }}"
+                  echo "‎"
+                  echo "‎"
+
+            # #
+            #   Release > Complete > Summary of publish
+            # #
+
+            - name: "🆗 Completed: ${{ env.NOW }}"
+              run: |
+                  echo "‎"
+                  echo "‎"
+                  echo "## Summary"
+                  echo "A new version of `${{ env.PROJECT_NAME }}` has been released on Github; the following is a summary of the workflow's results:"
+                  echo "\n"
+                  echo "| Data                                | Result                                  |" >> $GITHUB_STEP_SUMMARY
+                  echo "| ----------------------------------- | --------------------------------------- |" >> $GITHUB_STEP_SUMMARY
+                  echo "| 📦 **Project**                      | ${{ env.PROJECT_NAME }}                 |" >> $GITHUB_STEP_SUMMARY
+                  echo "| 🕛 **Build Time**                   | ${{ env.NOW }}                          | " >> $GITHUB_STEP_SUMMARY
+                  echo "| 🏷️ Tag (Previous)                   | ${{ env.VERSION_TAG_PREV }}             |" >> $GITHUB_STEP_SUMMARY
+                  echo "| 🏷️ Tag (Next)                       | ${{ env.VERSION_CSF }}                  |" >> $GITHUB_STEP_SUMMARY
+                  echo "| ↔️ Branch                           | ${{ github.ref }}                       |" >> $GITHUB_STEP_SUMMARY
+                  echo "| 🖍️ Last Commit                      | ${{ env.VERSION_COMMIT_LAST }}          |" >> $GITHUB_STEP_SUMMARY
+                  echo "| 🆔 ST Output ID                     | ${{ steps.task_release_bundle_st.outputs.id }} |" >> $GITHUB_STEP_SUMMARY
+                  echo "| 🆔 RC Output ID                     | ${{ steps.task_release_bundle_rc.outputs.id }} |" >> $GITHUB_STEP_SUMMARY
+                  echo "\n\n\n"
+                  echo ""
+                  echo "### 📄 File (${{ env.FILE_CSF_TGZ }})                                    " >> $GITHUB_STEP_SUMMARY
+                  echo "The main application release" >> $GITHUB_STEP_SUMMARY
+                  echo "| File                                | Result                                 |" >> $GITHUB_STEP_SUMMARY
+                  echo "| ----------------------------------- | -------------------------------------- |" >> $GITHUB_STEP_SUMMARY
+                  echo "| 🆔 **SHA1**                         | ${{ env.SHA1SUM_CSF_TGZ }}            |" >> $GITHUB_STEP_SUMMARY
+                  echo "| 🆔 **SHA256**                       | ${{ env.SHA256SUM_CSF_TGZ }}          |" >> $GITHUB_STEP_SUMMARY
+                  echo "\n\n\n"
+                  echo ""
+                  echo "### 📄 File (${{ env.FILE_CSF_ZIP }})                                    " >> $GITHUB_STEP_SUMMARY
+                  echo "The main application release" >> $GITHUB_STEP_SUMMARY
+                  echo "| File                                | Result                                 |" >> $GITHUB_STEP_SUMMARY
+                  echo "| ----------------------------------- | -------------------------------------- |" >> $GITHUB_STEP_SUMMARY
+                  echo "| 🆔 **SHA1**                         | ${{ env.SHA1SUM_CSF_ZIP }}            |" >> $GITHUB_STEP_SUMMARY
+                  echo "| 🆔 **SHA256**                       | ${{ env.SHA256SUM_CSF_ZIP }}          |" >> $GITHUB_STEP_SUMMARY
+                  echo "\n\n\n"
+                  echo ""
+                  echo "### 📄 File (${{ env.FILE_EXTRA_HELPERS }})                               " >> $GITHUB_STEP_SUMMARY
+                  echo "Helper scripts which include OpenVPN and Docker integration" >> $GITHUB_STEP_SUMMARY
+                  echo "| File                                | Result                                |" >> $GITHUB_STEP_SUMMARY
+                  echo "| ----------------------------------- | ------------------------------------- |" >> $GITHUB_STEP_SUMMARY
+                  echo "| 🆔 **SHA1**                         | ${{ env.SHA1SUM_EXTRA_HELPERS }}      |" >> $GITHUB_STEP_SUMMARY
+                  echo "| 🆔 **SHA256**                       | ${{ env.SHA256SUM_EXTRA_HELPERS }}    |" >> $GITHUB_STEP_SUMMARY
+                  echo "\n\n\n"
+                  echo ""
+                  echo "‎"
+                  echo "‎"

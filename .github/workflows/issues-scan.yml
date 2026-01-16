@@ -1,0 +1,926 @@
+# #
+#   @type               github workflow
+#   @author             Aetherinox
+#   @url                https://github.com/Aetherinox
+#   @usage              pull request auto-scan
+#                           scans all of the files related to a particular pull request
+#                           if the code in the files being submitted contains code that is forbidden,
+#                           a report is generated and posted as a comment in the PR.
+#                       sends notifications to discord using webhooks
+#
+#   @notes              skips title changes if the author of the PR is renovate[bat]
+#
+#   @secrets            secrets.SELF_TOKEN                                          self github personal access token (fine-grained)
+#                       secrets.SELF_TOKEN_CL                                       self github personal access token (classic)
+#                       secrets.NPM_TOKEN                                           self npmjs access token
+#                       secrets.PYPI_API_TOKEN                                      self Pypi API token (production site) - https://pypi.org/
+#                       secrets.PYPI_API_TEST_TOKEN                                 self Pypi API token (test site) - https://test.pypi.org/
+#                       secrets.SELF_DOCKERHUB_TOKEN                                self Dockerhub token
+#                       secrets.CODECOV_TOKEN                                       codecov upload token for nodejs projects
+#                       secrets.API_GEOLITE2_KEY                                    maxmind API token
+#                       secrets.CF_ACCOUNT_ID                                       cloudflare account id
+#                       secrets.CF_ACCOUNT_TOKEN                                    cloudflare account token
+#                       secrets.ARTIFACTS_DOMAIN                                    github artifacts domain name
+#                       secrets.ARTIFACTS_PORT                                      github artifacts port
+#                       secrets.ARTIFACTS_GITHUB_SSH_PRIVATE_KEY                    github artifacts server ssh private key
+#                       secrets.ORG_TOKEN                                           org github personal access token (fine-grained)
+#                       secrets.ORG_TOKEN_CL                                        org github personal access token (classic)
+#                       secrets.ORG_DOCKERHUB_TOKEN                                 org dockerhub secret
+#                       secrets.ORG_GITEA_TOKEN                                     org gitea personal access token (classic) with package:write permission
+#                       secrets.BOT_GPG_KEY_ASC                                     bot gpg private key (armored) | BEGIN PGP PRIVATE KEY BLOCK
+#                       secrets.BOT_GPG_KEY_B64                                     bot gpg private key (binary) converted to base64
+#                       secrets.BOT_GPG_PASSPHRASE                                  bot gpg private key passphrase
+#                       secrets.DISCORD_WEBHOOK_CHAN_GITHUB_RELEASES                discord webhook to report release notifications from github to discord
+#                       secrets.DISCORD_WEBHOOK_CHAN_GITHUB_WORKFLOWS               discord webhook to report workflow notifications from github to discord
+#                       secrets.DISCORD_WEBHOOK_CHAN_GITHUB_UPDATES                 discord webhook to report activity notifications from github to discord
+#
+#   @local              these workflows can be tested locally through the use of `act`
+#                           https://github.com/nektos/act
+#                       Extract act to folder
+#                       Add system env var with path to act.exe
+#                       Run the commands:
+#                           git pull https://github.com/username/repo
+#                           act -W .github/workflows/issues-scan.yml -P ubuntu-latest=catthehacker/ubuntu:full-22.04
+#                           act -W .github/workflows/issues-scan.yml -s TOKEN_CL=XXXXXXXXXX --pull=false
+# #
+
+name: '🎫 PR › Scan'
+run-name: '🎫 PR › Scan'
+
+# #
+#   triggers
+#       conditions:
+#           - if PR created targeting branch `main`
+#           - if user `Aetherinox` types `!rescan`
+# #
+
+on:
+    pull_request_target:
+        branches:
+            - main
+    issue_comment:
+        types:
+            - created
+
+# #
+#   environment variables
+# #
+
+env:
+    LABEL_CHECK_STATUS_FAILED:      AC › Failed
+    LABEL_CHECK_REVIEW_READY:       AC › Passed
+    LABEL_CHECK_STATUS_MERGED:      AC › Merged
+    LABEL_CHECK_CHANGES_REQ:        AC › Changes Required
+    LABEL_CHECK_REVIEW_REQ:         AC › Review Required
+    LABEL_CHECK_REBASE_REQ:         AC › Needs Rebase
+    LABEL_CHECK_SECURITY_ERR:       AC › Security Warning
+    LABEL_CHECK_STATUS_CHGMADE:     AC › Changes Made
+    LABEL_CHECK_SCAN_SKIPPED:       AC › Skipped Scan
+    LABEL_TYPE_PR:                  Type › Pull Request
+    LABEL_TYPE_DEPENDENCY:          Type › Dependency
+    LABEL_TYPE_GITACTION:           Type › Git Action
+    LABEL_TYPE_MAINTENANCE:         Type › Lock Maintenance
+
+    ASSIGN_USER:                    Aetherinox
+    BOT_NAME_1:                     EuropaServ
+    BOT_NAME_2:                     BinaryServ
+    BOT_NAME_DEPENDABOT:            dependabot[bot]
+    BOT_NAME_RENOVATE:              renovate[bot]
+
+    LABELS_JSON: |
+      [
+          { "name": "AC › Changes Made",            "color": "8F1784", "description": "Requested changes have been made and are pending a re-scan" },
+          { "name": "AC › Changes Required",        "color": "8F1784", "description": "Requires changes to be made to the package before being accepted" },
+          { "name": "AC › Failed",                  "color": "a61f2d", "description": "Autocheck failed to run through a complete cycle, requires investigation" },
+          { "name": "AC › Needs Rebase",            "color": "8F1784", "description": "Due to the permissions on the requesting repo, this pull request must be rebased by the author" },
+          { "name": "AC › Passed",                  "color": "146b4a", "description": "Ready to be reviewed" },
+          { "name": "AC › Approved",                "color": "24996d", "description": "PR has been approved for merge" },
+          { "name": "AC › Merged",                  "color": "35b987", "description": "PR has been merged with branch" },
+          { "name": "AC › Review Required",         "color": "8F1784", "description": "PR needs to be reviewed by another person, after the requested changes have been made" },
+          { "name": "AC › Security Warning",        "color": "761620", "description": "Does not conform to developer policies, or includes potentially dangerous code" },
+          { "name": "AC › Skipped Scan",            "color": "8F1784", "description": "Author has skipped code scan" },
+          { "name": "Status › Duplicate",           "color": "75536b", "description": "Issue or pull request already exists" },
+          { "name": "Status › Accepted",            "color": "2e7539", "description": "This pull request has been accepted" },
+          { "name": "Status › Autoclosed",          "color": "3E0915", "description": "Originally stale and was autoclosed for no activity" },
+          { "name": "Status › Denied",              "color": "ba4058", "description": "Pull request has been denied" },
+          { "name": "Status › Locked",              "color": "550F45", "description": "Automatically locked by AdminServ for a prolonged period of inactivity" },
+          { "name": "Status › Need Info",           "color": "2E3C4C", "description": "Not enough information to resolve" },
+          { "name": "Status › No Action",           "color": "030406", "description": "Closed without any action being taken" },
+          { "name": "Status › Pending Pull",        "color": "984b12", "description": "Pending pull request" },
+          { "name": "Status › Released",            "color": "1b6626", "description": "Issues or PR has been implemented and is now live" },
+          { "name": "Status › Reopened",            "color": "8a6f14", "description": "A previously closed PR which has been re-opened" },
+          { "name": "Status › Under Review",        "color": "9e1451", "description": "Currently pending review" },
+          { "name": "Status › Stale",               "color": "928282", "description": "Has not had any activity in over 30 days" },
+          { "name": "Status › Hold",                "color": "d93f0b", "description": "Awaiting additional feedback or issues" },
+          { "name": "Type › Bug",                   "color": "9a2c2c", "description": "Something isn't working" },
+          { "name": "Type › Dependency",            "color": "243759", "description": "Item is associated to dependency" },
+          { "name": "Type › Lock Maintenance",      "color": "FBCA04", "description": "Sync package-lock.json" },
+          { "name": "Type › Docs",                  "color": "0e588d", "description": "Improvements or modifications to docs" },
+          { "name": "Type › Feature",               "color": "3c4e93", "description": "Feature request" },
+          { "name": "Type › Git Action",            "color": "030406", "description": "GitHub Action / workflow" },
+          { "name": "Type › Pull Request",          "color": "8F1784", "description": "Normal pull request" },
+          { "name": "Type › Roadmap",               "color": "8F1784", "description": "Accepted feature or bug currently planned for implementation" },
+          { "name": "Type › Internal",              "color": "A51994", "description": "Assigned items are for internal developer use" },
+          { "name": "Build › Desktop",              "color": "c7ca4a", "description": "Specific to desktop" },
+          { "name": "Build › Linux",                "color": "c7ca4a", "description": "Specific to Linux" },
+          { "name": "Build › MacOS",                "color": "c7ca4a", "description": "Specific to MacOS" },
+          { "name": "Build › Mobile",               "color": "c7ca4a", "description": "Specific to mobile" },
+          { "name": "Build › Web",                  "color": "c7ca4a", "description": "Specific to web" },
+          { "name": "Build › Windows",              "color": "c7ca4a", "description": "Specific to Windows" },
+          { "name": "CP › All",                     "color": "0a2968", "description": "Control Panel › Affects all web panels" },
+          { "name": "CP › Generic",                 "color": "0a2968", "description": "Control Panel › Generic" },
+          { "name": "CP › Other",                   "color": "0a2968", "description": "Control Panel › Other" },
+          { "name": "CP › CyberPanel",              "color": "0a2968", "description": "Control Panel › Cyberpanel" },
+          { "name": "CP › cPanel",                  "color": "0a2968", "description": "Control Panel › cPanel / WHM" },
+          { "name": "CP › VestaCP",                 "color": "0a2968", "description": "Control Panel › VestaCP" },
+          { "name": "CP › Interworx",               "color": "0a2968", "description": "Control Panel › Interworx" },
+          { "name": "CP › DirectAdmin",             "color": "0a2968", "description": "Control Panel › DirectAdmin" },
+          { "name": "CP › CWP",                     "color": "0a2968", "description": "Control Panel › CentOS Web Panel" },
+          { "name": "› API",                        "color": "F99B50", "description": "Plugin API, CLI, browser JS API" },
+          { "name": "› Auto-type",                  "color": "9141E0", "description": "Auto-type functionality in desktop apps" },
+          { "name": "› Bots",                       "color": "E3F0FC", "description": "Affects CSF bot services (discord, etc)" },
+          { "name": "› Browser",                    "color": "9141E0", "description": "Browser plugins and passing data to <=> from app" },
+          { "name": "› Customization",              "color": "E3F0FC", "description": "Customizations: plugins, themes, configs" },
+          { "name": "› Design/UI",                  "color": "FA70DE", "description": "Design related queries" },
+          { "name": "› Dist",                       "color": "FA70DE", "description": "Installers and other forms of software distribution" },
+          { "name": "› Enterprise",                 "color": "11447a", "description": "Issues about collaboration, administration, and so on" },
+          { "name": "› Hardware",                   "color": "5a7503", "description": "YubiKey, other tokens, biometrics" },
+          { "name": "› Import/Export",              "color": "F5FFCC", "description": "Import from and export to different file formats" },
+          { "name": "› Improvement",                "color": "185c98", "description": "Enhance an existing feature" },
+          { "name": "› Performance",                "color": "006b75", "description": "Web and desktop performance issues" },
+          { "name": "› Plugin Request",             "color": "FCE9CA", "description": "Requested changes should be implemented as a plugin" },
+          { "name": "› Security",                   "color": "F75D39", "description": "Security issues" },
+          { "name": "› Self-Hosting",               "color": "fad8c7", "description": "Self-hosting installations and configs" },
+          { "name": "› Storage",                    "color": "5319e7", "description": "Storage providers: Dropbox, Google, WebDAV, etc." },
+          { "name": "› Updater",                    "color": "1BADDE", "description": "Auto-updater issues" },
+          { "name": "› UX",                         "color": "1BADDE", "description": "UX and usability" },
+          { "name": "› Website",                    "color": "fef2c0", "description": "Website related issues" },
+          { "name": "⚠ Urgent",                     "color": "a8740e", "description": "Requires urgent attention" },
+          { "name": "⚠ Announcement",               "color": "DB4712", "description": "Announcements" },
+          { "name": "📰 Progress Report",           "color": "392297", "description": "Development updates" },
+          { "name": "📦 Release",                   "color": "277542", "description": "Release announcements" },
+          { "name": "✔️ Poll",                      "color": "972255", "description": "Community polls" },
+          { "name": "❔ Question",                  "color": "FFFFFF", "description": "All questions" }
+      ]
+
+# #
+#   jobs
+# #
+
+jobs:
+
+    # #
+    #   Job › PR Scan
+    #
+    #   automatically scan a pull request once it is submitted
+    # #
+
+    job-pr-scan:
+        name: >-
+            🎫 Issues › Autoscan
+        runs-on: ubuntu-latest
+        # runs-on: apollo-x64
+        timeout-minutes: 5
+        permissions:
+            contents: read
+            actions: read
+            issues: write
+            pull-requests: read
+        steps:
+
+            # #
+            #   PR › Scan › Prerequisites › Check
+            # #
+
+            - name: >-
+                  ☑️ Prerequisites › Check
+              id: pr_scan_prerequisites
+              run: |
+                  if [[ "$GITHUB_EVENT_NAME" != "pull_request_target" ]] && \
+                    { [[ "$GITHUB_EVENT_NAME" != "issue_comment" ]] || \
+                      [[ "$GITHUB_ACTOR" != "$ASSIGN_USER" ]] || \
+                      [[ "$(jq -r .comment.body "$GITHUB_EVENT_PATH")" != "!rescan"* ]]; }; then
+                      echo "Prerequisite conditions not met. Skipping job."
+                      echo "PRECHECK_RESULT=abort" >> $GITHUB_OUTPUT
+                  else
+                      echo "Prerequisite conditions met. Running job."
+                      echo "PRECHECK_RESULT=run" >> $GITHUB_OUTPUT
+                  fi
+
+            # #
+            #   PR › Scan › Prerequisites › Abort
+            # #
+
+            - name: >-
+                  ❌ Prerequisites › Abort
+              if: steps.pr_scan_prerequisites.outputs.PRECHECK_RESULT == 'abort'
+              run: |
+                  echo "Stopping job gracefully — prerequisites not met."
+              env:
+                  GH_TOKEN: ${{ secrets.SELF_TOKEN_CL }}
+
+            # #
+            #   PR › Scan › Checkout
+            # #
+
+            - name: >-
+                  ☑️ Checkout
+              if: steps.pr_scan_prerequisites.outputs.PRECHECK_RESULT == 'run'
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            # #
+            #   PR › Scan › Job Information
+            # #
+
+            - name: >-
+                  🔄 Load Job
+              if: steps.pr_scan_prerequisites.outputs.PRECHECK_RESULT == 'run'
+              uses: qoomon/actions--context@v4
+              id: 'context'
+
+            # #
+            #   PR › Scan › Start
+            # #
+
+            - name: >-
+                  ✅ Start
+              if: steps.pr_scan_prerequisites.outputs.PRECHECK_RESULT == 'run'
+              run: |
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo " Starting Job ${{ steps.context.outputs.job_name }}"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+
+                  YEAR="$(date +'%Y')"
+                  echo "YEAR=${YEAR}" >> $GITHUB_ENV
+
+                  NOW="$(date +'%m-%d-%Y %H:%M:%S')"                                                #  02-25-2025 12:49:48
+                  echo "NOW=${NOW}" >> $GITHUB_ENV
+
+                  NOW_SHORT="$(date +'%m-%d-%Y')"                                                   #  02-25-2025
+                  echo "NOW_SHORT=${NOW_SHORT}" >> $GITHUB_ENV
+
+                  NOW_LONG="$(date +'%m-%d-%Y %H:%M')"                                              #  02-25-2025 12:49
+                  echo "NOW_LONG=${NOW_LONG}" >> $GITHUB_ENV
+
+                  NOW_DOCKER="$(date +'%Y%m%d')"                                                    #  20250225
+                  echo "NOW_DOCKER=${NOW_DOCKER}" >> $GITHUB_ENV
+
+                  NOW_DOCKER_TS="$(date -u +'%FT%T.%3NZ')"                                          #  2025-02-25T12:50:11.569Z
+                  echo "NOW_DOCKER_TS=${NOW_DOCKER_TS}" >> $GITHUB_ENV
+
+                  SHA1="$(git rev-parse HEAD)"                                                      #  71fad013cfce9116ec62779e4a7e627fe4c33627
+                  echo "SHA1=${SHA1}" >> $GITHUB_ENV
+
+                  SHA1_GH="$(echo ${GITHUB_SHA})"                                                   #  71fad013cfce9116ec62779e4a7e627fe4c33627
+                  echo "SHA1_GH=${SHA1_GH}" >> $GITHUB_ENV
+
+                  PKG_VER_1DIGIT="$(echo ${{ env.IMAGE_VERSION }} | cut -d '.' -f1-1)"              #  15.52.35 > 15
+                  echo "PKG_VER_1DIGIT=${PKG_VER_1DIGIT}" >> $GITHUB_ENV
+
+                  PKG_VER_2DIGIT="$(echo ${{ env.IMAGE_VERSION }} | cut -d '.' -f1-2)"              #  15.52.35 > 15.52
+                  echo "PKG_VER_2DIGIT=${PKG_VER_2DIGIT}" >> $GITHUB_ENV
+
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "‎"
+                  sudo apt -qq update
+                  sudo apt -qq install tree
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "‎"
+                  echo " Runner .............. ${{ runner.name }}"
+                  echo " Workflow ............ ${{ github.workflow }} (#${{ github.workflow_ref }})"
+                  echo " Run Number .......... ${{ github.run_number }}"
+                  echo " Ref ................. ${{ github.ref }}"
+                  echo " Ref Name ............ ${{ github.ref_name }}"
+                  echo " Event Name .......... ${{ github.event_name }}"
+                  echo " Repo ................ ${{ github.repository }}"
+                  echo " Repo Owner .......... ${{ github.repository_owner }}"
+                  echo " Run ID .............. https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                  echo " Triggered By ........ ${{ github.actor }}"
+                  echo " SHA 1 (GITHUB_SHA) .. ${GITHUB_SHA}"
+                  echo " SHA 2 (github.sha) .. ${{ github.sha }}"
+                  echo " SHA 3 (env.SHA1) .... ${SHA1}"
+                  echo " SHA 4 (env.SHA1_GH) . ${SHA1_GH}"
+                  echo " Workspace ........... ${{ github.workspace }}"
+                  echo " PWD ................. ${PWD}"
+                  echo " Job Name ............ ${{ steps.context.outputs.job_name }}"
+                  echo " Job ID .............. ${{ steps.context.outputs.job_id }}"
+                  echo " Job URL ............. ${{ steps.context.outputs.job_url }}"
+                  echo " Run ID .............. ${{ steps.context.outputs.run_id }}"
+                  echo " Run Attempt ......... ${{ steps.context.outputs.run_attempt }}"
+                  echo " Run Number .......... ${{ steps.context.outputs.run_number }}"
+                  echo " Run URL ............. ${{ steps.context.outputs.run_url }}"
+                  echo " Run Env ............. ${{ steps.context.outputs.environment }}"
+                  echo " Run Env URL ......... ${{ steps.context.outputs.environment_url }}"
+                  echo " Run Deployment ...... ${{ steps.context.outputs.deployment_id }}"
+                  echo " Run Deployment URL .. ${{ steps.context.outputs.deployment_url }}"
+                  echo " Run Deployment ...... ${{ steps.context.outputs.deployment_id }}"
+                  echo " Run Runner Name ..... ${{ steps.context.outputs.runner_name }}"
+                  echo " Run Runner ID ....... ${{ steps.context.outputs.runner_id }}"
+                  echo " Year ................ ${YEAR}"
+                  echo " Now ................. ${NOW}"
+                  echo " Now (Short) ......... ${NOW_SHORT}"
+                  echo " Now (Long) .......... ${NOW_LONG}"
+                  echo " Now (Docker) ........ ${NOW_DOCKER}"
+                  echo " Now (Docker TS) ..... ${NOW_DOCKER_TS}"
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "‎"
+                  tree -I node_modules -I .git
+                  echo "‎"
+                  echo "‎"
+                  echo "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――"
+                  echo "‎"
+                  echo "‎"
+
+            # #
+            #   PR Scan › Labels › Verify Existing
+            #   
+            #   check if repo has all of the needed issue / pr labels; create label if not exists
+            #   
+            #   action needed if using 'pull_request' and 'issue_comment'
+            #   to get the pull request, you would normally use ${{ github.event.number }}
+            #   however this isnt available for 'issue_comment'
+            # #
+
+            - name: >-
+                  🎫 Labels › Verify Existing
+              if: steps.pr_scan_prerequisites.outputs.PRECHECK_RESULT == 'run'
+              uses: actions/github-script@v7
+              with:
+                  github-token: ${{ secrets.ADMINSERV_TOKEN_CL || github.token }}
+                  script: |
+                      const labels = JSON.parse( process.env.LABELS_JSON );
+                      for ( const label of labels )
+                      {
+                          try
+                          {
+                              await github.rest.issues.createLabel(
+                              {
+                                  owner:        context.repo.owner,
+                                  repo:         context.repo.repo,
+                                  name:         label.name,
+                                  description:  label.description || 'No Description',
+                                  color:        label.color
+                              });
+                          }
+                          catch ( err )
+                          {
+                              if ( err.status === 422 )
+                              {
+                                  console.log( `Label '${label.name}' already exists. Skipping.` );
+                              }
+                              else
+                              {
+                                  console.error( `Error creating label '${label.name}': ${err}` );
+                              }
+                          }
+                      }
+
+            # #
+            #   PR Scan › Assign Pull Request ID to variable
+            #
+            #   get id (number) for pr when submitted
+            # #
+
+            - name: >-
+                  #️⃣ Pull-Request ID › Set
+              id: task_prscan_issue_num_set
+              if: steps.pr_scan_prerequisites.outputs.PRECHECK_RESULT == 'run'
+              uses: actions/github-script@v7
+              with:
+                  github-token: ${{ secrets.ADMINSERV_TOKEN_CL || github.token }}
+                  script: |
+                      if ( context.issue.number )
+                      {
+                          // Return issue number if present
+                          return context.issue.number;
+                      }
+                      else
+                      {
+                          const data = (
+                              await github.rest.repos.listPullRequestsAssociatedWithCommit(
+                              {
+                                    commit_sha: context.sha,
+                                    owner:      context.repo.owner,
+                                    repo:       context.repo.repo,
+                              })
+                          ).data[0];
+
+                          if (data) {
+                              return data.number;
+                          } else {
+                              return '32';
+                          }
+                      }
+                  result-encoding: string
+
+            # #
+            #   PR Scan › Pull-Request ID › Print
+            #
+            #   prints the pr number detected
+            # #
+
+            - name: >-
+                  #️⃣ Pull-Request ID › Print
+              if: steps.pr_scan_prerequisites.outputs.PRECHECK_RESULT == 'run'
+              run: |
+                  echo '${{ steps.task_prscan_issue_num_set.outputs.result }}'
+
+            # #
+            #   PR Scan › Checkout
+            # #
+
+            - name: >-
+                  ☑️ Checkout
+              uses: actions/checkout@v4
+              if: |
+                  steps.pr_scan_prerequisites.outputs.PRECHECK_RESULT == 'run' &&
+                  (
+                      github.event_name == 'pull_request_target' ||
+                      github.event_name == 'pull_request' ||
+                      (
+                          github.event_name == 'issue_comment' &&
+                          contains(github.event.comment.html_url, '/pull/') &&
+                          contains(github.event.comment.body, '/rescan')
+                      )
+                  )
+              with:
+                  token: ${{ secrets.ADMINSERV_TOKEN_CL || github.token }}
+                  fetch-depth: 0
+                  ref: "refs/pull/${{ steps.task_prscan_issue_num_set.outputs.result }}/merge"
+
+            # #
+            #   PR Scan › Setup NodeJS
+            # #
+
+            - name: >-
+                  ⚙️ Setup Node
+              if: steps.pr_scan_prerequisites.outputs.PRECHECK_RESULT == 'run'
+              uses: actions/setup-node@v4
+
+            # #
+            #     PR Scan › Get List of Changed Files
+            #
+            #     Effortlessly track all changed files and directories relative to a target branch,
+            #     the current branch (preceding commit or the last remote commit), multiple branches,
+            #     or custom commits returning relative paths from the project root using this
+            #     GitHub action.
+            # #
+
+            - name: >-
+                  📄 Get changed files
+              id: task_prscan_changed_files_get
+              if: steps.pr_scan_prerequisites.outputs.PRECHECK_RESULT == 'run'
+              uses: tj-actions/changed-files@v46
+              with:
+                  separator: ","
+
+            # #
+            #   PR Scan › List All Changed Files
+            # #
+
+            - name: >-
+                  📄 List all added files
+              id: task_prscan_added_files_get
+              if: steps.pr_scan_prerequisites.outputs.PRECHECK_RESULT == 'run'
+              run: |
+                  for file in ${CHANGED_FILES}; do
+                      echo "$file was changed"
+                  done
+              env:
+                  ADDED_FILES:      ${{ steps.task_prscan_changed_files_get.outputs.added_files }}
+                  MODIFIED_FILES:   ${{ steps.task_prscan_changed_files_get.outputs.modified_files }}
+                  CHANGED_FILES:    ${{ steps.task_prscan_changed_files_get.outputs.all_changed_files }}
+                  COUNT_ADDED:      ${{ steps.task_prscan_changed_files_get.outputs.added_files_count }}
+                  COUNT_MODIFIED:   ${{ steps.task_prscan_changed_files_get.outputs.modified_files_count }}
+                  COUNT_DELETED:    ${{ steps.task_prscan_changed_files_get.outputs.deleted_files_count }}
+                  COUNT_RENAMED:    ${{ steps.task_prscan_changed_files_get.outputs.renamed_files_count }}
+                  COUNT_COPIED:     ${{ steps.task_prscan_changed_files_get.outputs.copied_files_count }}
+
+            # #
+            #   PR Scan › List Directories / File Structure
+            # #
+
+            - name: >-
+                  📂 List Directories
+              if: steps.pr_scan_prerequisites.outputs.PRECHECK_RESULT == 'run'
+              run: |
+                  ls
+
+            # #
+            #   PR Scan › Autocheck
+            # #
+
+            - name: >-
+                  ☑️ Run Autocheck
+              if: steps.pr_scan_prerequisites.outputs.PRECHECK_RESULT == 'run'
+              uses: actions/github-script@v7
+              with:
+                  github-token: ${{ secrets.ADMINSERV_TOKEN_CL }}
+                  script: |
+                      console.log('Running Autoscan')
+                      console.log(JSON.stringify(context, null, 4));
+                      console.log(JSON.stringify(github, null, 4));
+                      let ct = context;
+
+                      if (!ct) {
+                        ct = context;
+                      }
+
+                      const fs                = require( 'fs' );
+                      const escape_html       = ( unsafe ) => unsafe.replace( /&/g, '&amp;' ).replace( /</g, '&lt;' ).replace( />/g, '&gt;' ).replace( /"/g, '&quot;' ).replace( /'/g, '&#039;' );
+                      const labels            = [];
+
+                      const files_List  = `${{ steps.task_prscan_changed_files_get.outputs.all_changed_files }}` || ''
+                      const files_Array = files_List.split(',')
+
+                      let branch_ref    = '';
+                      let base_ref      = '';
+                      let pr_created_at = '';
+                      let pr_title      = '';
+                      let pr_number     = 0;
+                      let pr_html_url   = '';
+                      let pr_author     = '';
+
+                      if (ct.payload.pull_request) {
+                          branch_ref    = ct.payload.pull_request.head.ref;
+                          base_ref      = ct.payload.pull_request.base.ref;
+                          pr_created_at = ct.payload.pull_request.created_at;
+                          pr_title      = ct.payload.pull_request.title;
+                          pr_number     = ct.payload.pull_request.number;
+                          pr_html_url   = ct.payload.pull_request.html_url;
+                          pr_author     = ct.payload.pull_request.user.login;
+                      } else if (ct.payload.comment && ct.issue) {
+                          const pr_num_from_issue = ct.issue.number;
+                          const { data: pr } = await github.rest.pulls.get({
+                              owner: ct.repo.owner,
+                              repo: ct.repo.repo,
+                              pull_number: pr_num_from_issue
+                          });
+                          branch_ref    = pr.head.ref;
+                          base_ref      = pr.base.ref;
+                          pr_created_at = pr.created_at;
+                          pr_title      = pr.title;
+                          pr_number     = pr.number;
+                          pr_html_url   = pr.html_url;
+                          pr_author     = pr.user.login;
+                      } else {
+                          branch_ref    = 'unknown';
+                          base_ref      = 'unknown';
+                          pr_created_at = '';
+                          pr_title      = 'unknown';
+                          pr_number     = 0;
+                          pr_html_url   = '';
+                          pr_author     = 'unknown';
+                      }
+
+                      const prLabelsData = await github.rest.issues.listLabelsOnIssue({
+                          issue_number: pr_number,
+                          owner: ct.repo.owner,
+                          repo: ct.repo.repo
+                      });
+                      const existingLabelNames = prLabelsData.data.map(label => label.name);
+
+                      let message             = [ "\n<br />\n" ]
+                      message.push            ( "## Automatic Self-Check - #" + ct.issue.number + "\n" );
+                      message.push            ( `The details of our automated scan for your pull request are listed below. If our scan detected errors, they must be corrected before this pull request will be advanced to the review stage:\n` );
+                      message.push            ( "\n<br />\n\n---\n\n<br />\n\n" );
+                      message.push            ( "### About\nThis pull request includes the following information:" );
+
+                      let bHasError           = false;
+                      let bHasWarning         = false;
+
+                      let date                = new Date( `${ pr_created_at }` );
+                      date.toISOString( )
+
+                      const actor             = '${{ github.actor }}';
+
+                      const dateTimeformat = ( date ) =>
+                      {
+                          let month           = date.getMonth( ) + 1;
+                          month               = month.toString( ).padStart( 2, '0' );
+                          let day             = date.getDate( ).toString( ).padStart( 2, '0' );
+                          let year            = date.getFullYear( ).toString( ).padStart( 2, '0' );
+
+                          let hours           = date.getHours();
+                          let minutes         = date.getMinutes();
+                          let x               = hours >= 12 ? 'PM' : 'AM';
+                          hours               = hours % 12;
+                          hours               = hours ? hours : 12;
+                          minutes             = minutes.toString( ).padStart( 2, '0' );
+
+                          let mergeTime       = month + '.' + day + '.' + year + ' ' + hours + ':' + minutes + ' ' + x;
+
+                          return mergeTime;
+                      }
+
+                      let date_created        = dateTimeformat( date ) + " UTC";
+
+                      let md_table =
+                      `
+                      | Category | Value |
+                      | --- | --- |
+                      | Title | [ ` + pr_title + ` ](https://github.com/` + ct.repo.owner + `/` + ct.repo.repo + `/pull/` + pr_number + `) |
+                      | Created | [ ` + date_created + ` ](https://worldtimebuddy.com) |
+                      | ID | ` + pr_html_url + ` |
+                      | Author | [ ` + pr_author + ` ](https://github.com/` + ct.repo.owner + `/) |
+                      | Repo | [ ` + ct.repo.repo + ` ](https://github.com/` + ct.repo.owner + `/` + ct.repo.repo + `) |
+                      | Branch | [ ` + branch_ref + `](https://github.com/` + ct.repo.owner + `/` + ct.repo.repo + `/tree/` + branch_ref + `) ⇁ [ ` + base_ref + `](https://github.com/` + ct.repo.owner + `/` + ct.repo.repo + `/tree/` + base_ref + `) |
+                      | Added Files | ${{ steps.task_prscan_changed_files_get.outputs.added_files_count }} |
+                      | Modified Files | ${{ steps.task_prscan_changed_files_get.outputs.all_modified_files_count }} |
+                      | Renamed Files | ${{ steps.task_prscan_changed_files_get.outputs.renamed_files_count }} |
+                      | Copied Files | ${{ steps.task_prscan_changed_files_get.outputs.deleted_files_count }} |
+                      | Deleted Files | ${{ steps.task_prscan_changed_files_get.outputs.deleted_files_count }} |
+                      `;
+
+                      message.push        ( md_table );
+
+                      let error_Generic = "\n" +
+                      "- `MyPlugin`\n" +
+                      "- `MyPluginSettings`\n" +
+                      "- `SampleSettings`\n" +
+                      "- `SampleSettingTab`\n" +
+                      "- `SampleModal`\n"
+
+                      let warn_BadWords = "\n" +
+                      "- `General`\n" +
+                      "- `Settings`\n"
+
+                      const files_skipped = [];
+
+                      const type_dependency =
+                      [
+                          "dependabot/npm_and_yarn",
+                          "renovate/github_actions",
+                          "renovate/testing-library",
+                          "renovate/electron",
+                          "renovate/aetherinox/noxenv",
+                          "renovate/playwright",
+                          "renovate/types",
+                          "renovate/@types",
+                          "renovate/eslint",
+                          "renovate/stylistic",
+                          "renovate/jimp",
+                          "renovate/custom-electron-prompt",
+                          "renovate/moment",
+                          "renovate/semver",
+                          "renovate/toasted",
+                          "renovate/uuid"
+                      ];
+
+                      const type_gitaction =
+                      [
+                          "dependabot/github_actions",
+                          "renovate/github_actions"
+                      ];
+
+                      const type_maint =
+                      [
+                          "renovate/lock-file-maintenance"
+                      ];
+
+                      const files_skipList =
+                      [
+                          ".github",
+                          ".gitea",
+                          ".gitignore",
+                          "LICENSE",
+                          ".md",
+                          ".yml",
+                          "plugins.json",
+                          "package.json",
+                          "package-lock.json",
+                          "rollup.config.js",
+                          "index.js",
+                          "gistr.js",
+                          "Docs/",
+                          "tests/"
+                      ];
+
+                      for ( const file of files_Array )
+                      {
+
+                          const errors      = [];
+                          const addError    = ( error ) =>
+                          {
+                              errors.push   ( `:x: ${error}` );
+                              console.log   ( 'Found Issues: ' + error );
+
+                              bHasError     = true;
+                          };
+
+                          const warnings    = [];
+                          const addWarning  = ( warning ) =>
+                          {
+                              warnings.push ( `:warning: ${warning}` );
+                              console.log   ( 'Found Warnings: ' + warning );
+
+                              bHasWarning   = true;
+                          }
+
+                          const file_current                  = file;
+                          const filesData                     = fs.readFileSync( file_current, 'utf8' );
+                          const bContainsStyle                = /([A-Za-z]+\.style\.[A-Za-z]+)/gi.test( filesData );
+                          const bFuncFetch                    = /(fetch)\((.*)\)(\[([^\]]*)\])?/gim.test( filesData );
+                          const bVar                          = /^(?:var|)\s(\w+)\s*=\s*/gm.test( filesData );
+                          const bLookBehind                   = /\(\?<[=!].*?\)/gmi.test( filesData );
+                          const bMarkdownHtmlNode             = /new\s+NodeHtmlMarkdown/gmi.test( filesData );
+                          const bAsTFile                      = /as\s+TFile/g.test( filesData );
+                          const bAsTFolder                    = /as\s+TFolder/g.test( filesData );
+                          const bAsAny                        = /\((.*? as Any\s*)\)/gi.test( filesData );
+                          const bInnerHTML                    = /^\s?.*[a-zA-Z0-9_]+\.innerHTML*\s?.*$/gm.test( filesData );
+                          const bOuterHTML                    = /^\s?.*[a-zA-Z0-9_]+\.outerHTML*\s?.*$/gm.test( filesData );
+                      //  const bFuncConsoleLog               = /(console.log)\((.*)\)(\[([^\]]*)\])?/gim.test( filesData );
+                          const bFuncSetTimeout               = /(setTimeout)\((.*)\)(\[([^\]]*)\])?/gim.test( filesData );
+                          const bFuncFS_Chk1                  = /(require)\s?\((\s?(?:'|")fs(?:'|"))\s?\)?/gim.test( filesData );
+                          const bFuncFS_Chk2                  = /from\s+(?:'|")fs(?:'|")\s?/gim.test( filesData );
+                          const bFuncFS_ExistsSync            = /(fs.existsSync)\((.*)\)(\[([^\]]*)\])?/gm.test( filesData );
+                          const bFuncFS_MkdirSync             = /(fs.mkdirSync)\((.*)\)(\[([^\]]*)\])?/gm.test( filesData );
+                          const bFoundBadWord                 = /(?:'|").*(Settings|General).*(?:'|")?/gmi.test( filesData );
+                          const bContainsGeneric              = /(?:^|(?<= ))(MyPlugin|MyPluginSettings|SampleSettings|SampleSettingTab|SampleModal|Sample Plugin|my-plugin)(?:(?= )|$)/gim.test( filesData );
+
+                          const bFileSkip                     = files_skipList.some( s => s.includes( file_current ) || file_current.includes( s ) );
+
+                          if ( bFileSkip == true )
+                          {
+                              files_skipped.push( file_current );
+                              continue;
+                          }
+
+                          message.push        ( "\n<br />\n\n---\n\n<br />\n" );
+                          message.push        ( "### 📄 " + file_current + "\n" );
+                          message             = message.concat( warnings );
+
+                          if ( bContainsStyle == true )
+                              addError( "Avoid assigning `inline styles` via JavaScript or in HTML. Move these styles to CSS so that they are adaptable by themes and other plugins." );
+
+                          if ( bFuncFetch == true )
+                              addError( "Do not handle http data with `fetch( )`. Use the Obsidian API -> `requestUrl` method instead, which will make sure that network requests work on every platform." );
+
+                          if ( bVar == true )
+                              addError( "Change all instances of `var` to **const** or **let**. var has function-level scope, and leads to bugs." );
+
+                          if ( bLookBehind == true )
+                              addError( "Lookbehinds are not supported in iOS < 16.4" );
+
+                          if ( bMarkdownHtmlNode == true )
+                              addError( "Do not use `NodeHtmlMarkdown`. Use Obsidian API -> `htmlToMarkdown` instead." );
+
+                          if ( bAsTFile == true )
+                              addError( "Do not cast `as TFile`, use `instanceof` instead to check if the item is actually a file / folder" );
+
+                          if ( bAsTFolder == true )
+                              addError( "Do not cast `as TFolder`, use `instanceof` instead to check if the item is actually a file / folder" );
+
+                          if ( bAsAny == true )
+                              addError( "Do not cast to `Any`" );
+
+                          if ( bInnerHTML == true )
+                              addError( `Using \`innerHTML\` is a security risk.` );
+
+                          if ( bOuterHTML == true )
+                              addError( `Using \`outerHTML\` is a security risk.` );
+
+                          if ( bFuncSetTimeout == true )
+                              addError( "Do not utilize `setTimeout`, utilize Obsidian API -> `sleep`. E.g: `await sleep( X )`" );
+
+                          if ( bFuncFS_Chk1 == true || bFuncFS_Chk2 == true  )
+                              addError( "`fs` import only available from Node.js runtime, this will throw errors for users running on mobile" );
+
+                          if ( bFuncFS_ExistsSync == true  )
+                              addError( "`fs` import only available from Node.js runtime, this will throw errors for users running on mobile." );
+
+                          if ( bFuncFS_MkdirSync == true  )
+                              addError( "`fs` import only available from Node.js runtime, this will throw errors for users running on mobile." );
+
+                          if ( bContainsGeneric == true )
+                              addError( "Rename sample classes to something that makes sense. You are not allowed to have names such as: " + error_Generic );
+
+                          if ( bFoundBadWord == true && file != "package.json" && file != "manifest.json" )
+                              addWarning( "A restricted word was found in your code. Generic words are not allowed in strings such as: " + warn_BadWords );
+
+                          if ( errors.length > 0 || warnings.length > 0 )
+                          {
+
+                              if ( errors.length > 0 )
+                              {
+                                  message.push    ( "\n\n\n> [!CAUTION]\n> Errors must be fixed prior to a pull request being reviewed and accepted.<br />The file `" + file + "` contains the following errors:\n\n<br>\n\n" );
+                                  message         = message.concat( errors );
+                              }
+
+                              if ( warnings.length > 0 )
+                              {
+                                  if ( errors.length > 0 )
+                                  {
+                                      message.push    ( "\n<br />\n<br />\n" )
+                                  }
+                                  message.push    ( "\n\n\n> [!WARNING]\n> Warnings are suggestions that do not require fixing, but are recommended before this pull request is reviewed and accepted.<br />The file `" + file + "` contains the following warnings:\n\n<br>\n\n" );
+                                  message         = message.concat( warnings );
+                              }
+                          }
+                          else
+                          {
+                              message.push    ( "\n\n\n> [!NOTE]\n> The file `" + file + "` contains no errors\n\n<br>\n\n" );
+                          }
+                      }
+
+                      if ( files_skipped.length > 0 )
+                      {
+                          message.push        ( "\n<br />\n\n---\n<br />\n" );
+                          message.push        ( "### ❌ Skipped Files\n" );
+
+                          message.push    ( "\n\n\n> [!TIP]\n> The following file(s) have been skipped:\n\n<br>\n\n" );
+
+                          for ( const file_skipped of files_skipped )
+                          {
+                              message.push    ( "- " + file_skipped );
+                          }
+                      }
+
+                      message.push    ( "\n<br />\n\n---\n<br />\n" );
+                      message.push    ( `<sup>This check was done automatically. Do <b>NOT</b> open a new PR for re-validation. Instead, to trigger this check again, make a change to your PR and wait a few minutes, or close and re-open it.</sup>` );
+
+                      if ( bHasError == true )
+                      {
+                          labels.push( "${{ env.LABEL_CHECK_STATUS_FAILED }}" );
+                          core.setFailed( "Pull Request Failed Autocheck: " + ct.issue.number + ": " + pr_title + "." );
+                      }
+
+                      if (bHasError == false) {
+                          const pr_title_append = `PR ${ct.issue.number}:`;
+
+                          if (pr_title !== 'unknown' && !pr_title.startsWith(pr_title_append) && actor != "${{ env.BOT_NAME_RENOVATE }}") {
+                              await github.rest.pulls.update({
+                                  owner: ct.repo.owner,
+                                  repo: ct.repo.repo,
+                                  pull_number: ct.issue.number,
+                                  title: `${pr_title_append} ${pr_title}`
+                              });
+                          }
+
+                          if (!existingLabelNames.includes("${{ env.LABEL_CHECK_CHANGES_REQ }}")) {
+                              labels.push("${{ env.LABEL_CHECK_REVIEW_READY }}");
+                          }
+                      }
+
+                      const bGitaction    = type_gitaction.some( s => s.includes( branch_ref ) || branch_ref.includes( s ) );
+                      const bDependency   = type_dependency.some( s => s.includes( branch_ref ) || branch_ref.includes( s ) );
+                      const bMaintenance  = type_maint.some( s => s.includes( branch_ref ) || branch_ref.includes( s ) );
+
+                      if ( actor ==  "${{ env.BOT_NAME_DEPENDABOT }}" && bDependency || actor ==  "${{ env.BOT_NAME_RENOVATE }}" && bDependency )
+                          labels.push( "${{ env.LABEL_TYPE_DEPENDENCY }}" );
+                      else if ( actor ==  "${{ env.BOT_NAME_DEPENDABOT }}" && bGitaction || actor ==  "${{ env.BOT_NAME_RENOVATE }}" && bGitaction )
+                          labels.push( "${{ env.LABEL_TYPE_GITACTION }}" );
+                      else if ( actor ==  "${{ env.BOT_NAME_DEPENDABOT }}" && bMaintenance || actor ==  "${{ env.BOT_NAME_RENOVATE }}" && bMaintenance )
+                          labels.push( "${{ env.LABEL_TYPE_MAINTENANCE }}" );
+
+                      for (const labelName of [
+                          "${{ env.LABEL_CHECK_CHANGES_REQ }}",
+                          "${{ env.LABEL_CHECK_REBASE_REQ }}",
+                          "${{ env.LABEL_CHECK_SECURITY_ERR }}",
+                          "${{ env.LABEL_CHECK_STATUS_CHGMADE }}",
+                          "${{ env.LABEL_CHECK_SCAN_SKIPPED }}"
+                      ]) {
+                          if (existingLabelNames.includes(labelName)) {
+                              labels.push(labelName);
+                          }
+                      }
+
+                      labels.push( "${{ env.LABEL_TYPE_PR }}" );
+
+                      await github.rest.issues.setLabels(
+                      {
+                          issue_number:   ct.issue.number,
+                          owner:          ct.repo.owner,
+                          repo:           ct.repo.repo,
+                          labels,
+                      } );
+
+                      await github.rest.issues.createComment(
+                      {
+                          issue_number:   ct.issue.number,
+                          owner:          ct.repo.owner,
+                          repo:           ct.repo.repo,
+                          body:           message.join('\n'),
+                      } );
+
+            # #
+            #   Autoscan › Get Weekly Commits
+            # #
+
+            - name: >-
+                🕛 Get Weekly Commit List
+              if: steps.pr_scan_prerequisites.outputs.PRECHECK_RESULT == 'run'
+              run: |
+                  echo 'WEEKLY_COMMITS<<EOF' >> $GITHUB_ENV
+                  git log --format="[\`%h\`](${{ github.server_url }}/${{ github.repository }}/commit/%H) %s - %an" --since=7.days >> $GITHUB_ENV
+                  echo 'EOF' >> $GITHUB_ENV
