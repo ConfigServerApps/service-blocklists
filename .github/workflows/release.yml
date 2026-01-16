@@ -914,7 +914,7 @@ jobs:
 
             - name: '📝 Changelog › Build (Categorized)'
               id: task_release_changelog_categorized
-              uses: mikepenz/release-changelog-builder-action@v5
+              uses: mikepenz/release-changelog-builder-action@v6
               if: |
                   startsWith( inputs.SHOW_UNCATEGORIZED, false ) ||
                   startsWith( env.SHOW_UNCATEGORIZED, false )
@@ -950,7 +950,7 @@ jobs:
 
             - name: '📝 Changelog › Build (Uncategorized)'
               id: task_release_changelog_uncategorized
-              uses: mikepenz/release-changelog-builder-action@v5
+              uses: mikepenz/release-changelog-builder-action@v6
               if: |
                   startsWith( inputs.SHOW_UNCATEGORIZED, true ) ||
                   startsWith( env.SHOW_UNCATEGORIZED, true )
@@ -973,7 +973,7 @@ jobs:
             # #
             #   Release › Changelog › Convert step into ENV
             #
-            #   This is a requirement in order for the action mikepenz/release-changelog-builder-action@v5 to work properly.
+            #   This is a requirement in order for the action mikepenz/release-changelog-builder-action@v6 to work properly.
             #   If you use special characters like quotes and tildes in your push comments, bash will have no way of knowing
             #   if it's part of the changelog, or code itself.
             #
