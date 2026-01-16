@@ -1,5 +1,4 @@
 #!/bin/bash
-set -euo pipefail
 
 # #
 #   @for                https://github.com/ConfigServer-Software/service-blocklists
