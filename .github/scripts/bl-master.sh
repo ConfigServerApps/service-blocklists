@@ -351,7 +351,7 @@ fi
 SECONDS=0                                               # set seconds count for beginning of script
 APP_VER=("1" "0" "0" "0")                               # current script version
 APP_DEBUG=false                                         # debug mode
-APP_REPO="Aetherinox/blocklists"                        # repository
+APP_REPO="configserver-software/service-blocklists"     # repository
 APP_REPO_BRANCH="main"                                  # repository branch
 APP_OUT=""                                              # each ip fetched from stdin will be stored in this var
 APP_FILE_PERM="${ARG_SAVEFILE}"                         # perm file when building ipset list

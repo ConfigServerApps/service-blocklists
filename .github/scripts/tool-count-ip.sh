@@ -82,7 +82,7 @@ sort_results()
 SECONDS=0                                               # set seconds count for beginning of script
 APP_VER=("1" "0" "0" "0")                               # current script version
 APP_DEBUG=false                                         # debug mode
-APP_REPO="Aetherinox/blocklists"                        # repository
+APP_REPO="configserver-software/service-blocklists"     # repository
 APP_REPO_BRANCH="main"                                  # repository branch
 APP_FILE=$1                                             # file specified
 APP_THIS_DIR="${PWD}"                                   # Current script directory
