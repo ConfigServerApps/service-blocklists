@@ -9,37 +9,37 @@
 #   @terminal           .github/scripts/bl-whois.sh \
 #                           blocklists/privacy/privacy_facebook.ipset
 #                           AS32934
-#   
+#
 #                       .github/scripts/bl-whois.sh \
 #                           blocklists/privacy/privacy_facebook.ipset
 #                           AS32934 \
 #                           whois.radb.net
-#   
+#
 #                       .github/scripts/bl-whois.sh \
 #                           blocklists/privacy/privacy_facebook.ipset
 #                           AS32934 \
 #                           whois.radb.net \
 #                           '#|^;|^$'
-#   
+#
 #   @workflow           # Privacy › Facebook
 #                       chmod +x ".github/scripts/bl-whois.sh"
 #                       run_facebook=".github/scripts/bl-whois.sh blocklists/privacy/privacy_facebook.ipset AS32934"
 #                       eval "./$run_facebook"
-#   
+#
 #   @command            bl-whois.sh
 #                           <ARG_SAVEFILE>              required
 #                           <ARG_ASN>                   required
 #                           <ARG_WHOIS_SERVICE>         optional
 #                           <ARG_GREP_FILTER>           optional
-#   
+#
 #                       bl-whois.sh blocklists/privacy/privacy_facebook.ipset AS32934 whois.radb.net '#|^;|^$'
-#   
+#
 #                       📁 .github
 #                           📁 scripts
 #                               📄 bl-whois.sh
 #                           📁 workflows
 #                               📄 blocklist-generate.yml
-#   
+#
 # #
 
 APP_THIS_FILE=$(basename "$0")                          # current script file
@@ -80,18 +80,6 @@ YELLOW3="\e[38;5;193m"
 GREY1="\e[38;5;240m"
 GREY2="\e[38;5;244m"
 GREY3="\e[38;5;250m"
-
-# #
-#   Set PATH
-# #
-
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
-
-# #
-#   Set Binaries
-# #
-
-WHOIS_BIN=$(which whois || echo "/usr/bin/whois")
 
 # #
 #   print an error and exit with failure
@@ -146,12 +134,7 @@ sort_results()
 #                                           - if string arg STARTS with `AS`
 # #
 
-# #
-#   Define Regex URL
-# #
-
 REGEX_URL='^(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]\.[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]$'
-
 for arg in "${@:1}"; do
     if [[ $arg == whois* ]] || [[ $arg =~ $REGEX_URL ]]; then
         ARG_WHOIS_SERVICE=${arg}
@@ -161,12 +144,6 @@ for arg in "${@:1}"; do
     fi
 done
 
-# #
-#   Defaults
-# #
-
-ARG_WHOIS_SERVICE="${ARG_WHOIS_SERVICE:-whois.radb.net}"
-ARG_GREP_FILTER="${ARG_GREP_FILTER:-^#|^;|^$}"
 ARG_SAVEFILE=$1
 
 # #
@@ -307,41 +284,7 @@ download_list()
 
     echo -e "  🌎 Downloading ASN ${YELLOW1}${fnASN}${RESET} list to ${ORANGE2}${fnFileTemp}${RESET}"
 
-    whois_err=$(mktemp)
-
-    # #
-    #   Build full command as a single string for echoing
-    # #
-
-    full_cmd="whois -h \"${ARG_WHOIS_SERVICE}\" -- \"-i origin ${fnASN}\" \
-    | grep ^route \
-    | awk '{gsub(\"(route:|route6:)\",\"\"); print}' \
-    | awk '{gsub(/ /,\"\"); print}' \
-    | grep -vi \"^#|^;|^$\" \
-    | grep -vi \"${ARG_GREP_FILTER}\" \
-    | awk '{if (++dup[\$0] == 1) print \$0;}' \
-    | sort_results > \"${fnFileTemp}\""
-
-    # #
-    #   (Debug) Print the command being ran
-    # #
-
-    echo -e "\n⚡ Running WHOIS command:\n$full_cmd\n"
-
-    # #
-    #   Run whois
-    # #
-
-    if ! eval "$full_cmd" 2> "$whois_err"; then
-        echo "❌ WHOIS failed for ${fnASN}"
-        echo "---- whois error ----"
-        cat "$whois_err"
-        echo "---------------------"
-        rm -f "$whois_err"
-        return 1
-    fi
-
-    rm -f "$whois_err"
+    whois -h ${ARG_WHOIS_SERVICE} -- "-i origin ${fnASN}" | grep ^route | awk '{gsub("(route:|route6:)","");print}' | awk '{gsub(/ /,""); print}' | grep -vi "^#|^;|^$" | grep -vi "${ARG_GREP_FILTER}" | awk '{if (++dup[$0] == 1) print $0;}' | sort_results > ${fnFileTemp}
 
     # #
     #   calculate how many IPs are in a subnet
@@ -370,16 +313,6 @@ download_list()
             if [[ $ips =~ $REGEX_ISNUM ]]; then
                 # CIDR=$(echo $line | sed 's:.*/::')
 
-                # #
-                #   uncomment to count ONLY usable IP addresses
-                #   subtract - 2 from any cidr not ending with 31 or 32
-                # #
-
-                #  if [[ $CIDR != "31" ]] && [[ $CIDR != "32" ]]; then
-                     #  COUNT_TOTAL_IP=$(( $COUNT_TOTAL_IP - 2 ))
-                     #  DL_COUNT_TOTAL_IP=$(( $DL_COUNT_TOTAL_IP - 2 ))
-                #  fi
-
                 COUNT_TOTAL_IP=$(( $COUNT_TOTAL_IP + $ips ))                    # GLOBAL count IPs in subnet
                 COUNT_TOTAL_SUBNET=$(( $COUNT_TOTAL_SUBNET + 1 ))               # GLOBAL count subnet
 
@@ -387,10 +320,7 @@ download_list()
                 DL_COUNT_TOTAL_SUBNET=$(( $DL_COUNT_TOTAL_SUBNET + 1 ))         # LOCAL count subnet
             fi
 
-        # #
-        #   normal IP
-        # #
-
+        # is normal IP
         elif [[ $line =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             COUNT_TOTAL_IP=$(( $COUNT_TOTAL_IP + 1 ))
             DL_COUNT_TOTAL_IP=$(( $DL_COUNT_TOTAL_IP + 1 ))
@@ -417,7 +347,7 @@ download_list()
 
 # #
 #   Count ASN
-#   
+#
 #   To make sure we add the correct amount of commas to the ASN list, as well as break up the ASN numbers per line
 #   we need to get the total count available.
 # #
@@ -437,7 +367,7 @@ ASN_I_TOTAL=$(( $ASN_I_TOTAL - 1 ))
 
 # #
 #   Get ASN arguments
-#   
+#
 #   string must start with "AS*"
 # #
 
