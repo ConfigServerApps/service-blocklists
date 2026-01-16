@@ -544,13 +544,8 @@ jobs:
                   #   Privacy › RSS API
                   curl -sSL -A "${{ env.USERAGENT }}" https://rssapi.net/ips.txt | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_rssapi.ipset
 
-                  echo "⚡ Fetching JSON from WebPageTest..."
-                  curl -sSL -A "${{ env.USERAGENT }}" "https://www.webpagetest.org/addresses.php?f=json" \
-                    | jq '.' || echo "⚠️ Failed to parse JSON, printing raw output:" && \
-                      curl -sSL -A "${{ env.USERAGENT }}" "https://www.webpagetest.org/addresses.php?f=json"
-
                   #   Privacy › WebPageTest
-                  curl -sSL -A "${{ env.USERAGENT }}" https://www.webpagetest.org/addresses.php?f=json | jq -r '.data[].addresses[] | select( . != null )' | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_webpagetest.ipset
+                  curl -sSLk -A "${{ env.USERAGENT }}" "${{ env.CSF_SERVER_IP }}/json?url=https://webpagetest.org/addresses.php?f=json" | jq -r '.data[].addresses[] | select( . != null )' | $GITHUB_WORKSPACE/.github/scripts/bl-format.sh blocklists/privacy/privacy_webpagetest.ipset
 
                   #   Privacy › Bunny CDN
                   BUNNYCDN_IPv4=$(curl -sSL -A "${{ env.USERAGENT }}" https://api.bunny.net/system/edgeserverlist/plain)
