@@ -1723,7 +1723,7 @@ function GENERATE_CONTINENTS()
         TEMPL_DESC=$(curl -sSL -A "${APP_CURL_AGENT}" "https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/.github/descriptions/countries/geolite2_ipset.txt")
         TEMPL_CAT=$(curl -sSL -A "${APP_CURL_AGENT}" "https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/.github/categories/countries/geolite2_ipset.txt")
         TEMPL_EXP=$(curl -sSL -A "${APP_CURL_AGENT}" "https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/.github/expires/countries/geolite2_ipset.txt")
-        TEMP_URL_SRC=$(curl -sSL -A "${APP_CURL_AGENT}" "https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/.github/url-source/countries/geolite2_ipset.txt")
+        templ_url_service=$(curl -sSL -A "${APP_CURL_AGENT}" "https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/.github/url-source/countries/geolite2_ipset.txt")
 
         # #
         #   Continents > Default Values
@@ -1741,8 +1741,8 @@ function GENERATE_CONTINENTS()
             TEMPL_EXP="6 hours"
         fi
 
-        if [[ "$TEMP_URL_SRC" == *"404: Not Found"* ]]; then
-            TEMP_URL_SRC="None"
+        if [[ "$templ_url_service" == *"404: Not Found"* ]]; then
+            templ_url_service="None"
         fi
 
         # #
@@ -1755,8 +1755,8 @@ ed -s ${FILE_CONTINENT_PERM} <<END_ED
 # #
 #   🧱 Firewall Blocklist - ${TEMPL_NAME}
 #
-#   @url            https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/${FILE_CONTINENT_PERM}
-#   @source         ${TEMP_URL_SRC}
+#   @repo           https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/${APP_FILE_PERM}
+#   @service        ${templ_url_service}
 #   @id             ${TEMPL_ID}
 #   @uuid           ${TEMPL_UUID}
 #   @updated        ${TEMPL_NOW}
@@ -1923,7 +1923,7 @@ function GENERATE_COUNTRIES()
         TEMPL_DESC=$(curl -sSL -A "${APP_CURL_AGENT}" "https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/.github/descriptions/countries/geolite2_ipset.txt")
         TEMPL_CAT=$(curl -sSL -A "${APP_CURL_AGENT}" "https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/.github/categories/countries/geolite2_ipset.txt")
         TEMPL_EXP=$(curl -sSL -A "${APP_CURL_AGENT}" "https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/.github/expires/countries/geolite2_ipset.txt")
-        TEMP_URL_SRC=$(curl -sSL -A "${APP_CURL_AGENT}" "https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/.github/url-source/countries/geolite2_ipset.txt")
+        templ_url_service=$(curl -sSL -A "${APP_CURL_AGENT}" "https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/.github/url-source/countries/geolite2_ipset.txt")
 
         # #
         #   Default Values
@@ -1941,8 +1941,8 @@ function GENERATE_COUNTRIES()
             TEMPL_EXP="6 hours"
         fi
 
-        if [[ "$TEMP_URL_SRC" == *"404: Not Found"* ]]; then
-            TEMP_URL_SRC="None"
+        if [[ "$templ_url_service" == *"404: Not Found"* ]]; then
+            templ_url_service="None"
         fi
 
         # #
@@ -1955,8 +1955,8 @@ ed -s ${APP_FILE_PERM} <<END_ED
 # #
 #   🧱 Firewall Blocklist - ${TEMPL_NAME}
 #
-#   @url            https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/${APP_FILE_PERM}
-#   @source         ${TEMP_URL_SRC}
+#   @repo           https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/${APP_FILE_PERM}
+#   @service        ${templ_url_service}
 #   @id             ${TEMPL_ID}
 #   @uuid           ${TEMPL_UUID}
 #   @updated        ${TEMPL_NOW}

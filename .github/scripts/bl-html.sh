@@ -164,7 +164,7 @@ TEMPL_UUID=$(uuidgen -m -N "${TEMPL_ID}" -n @url)       # uuid associated to eac
 TEMPL_DESC=$(curl -sSL -A "${APP_AGENT}" "https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/.github/descriptions/${TEMPL_ID}.txt")
 TEMPL_CAT=$(curl -sSL -A "${APP_AGENT}" "https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/.github/categories/${TEMPL_ID}.txt")
 TEMPL_EXP=$(curl -sSL -A "${APP_AGENT}" "https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/.github/expires/${TEMPL_ID}.txt")
-TEMP_URL_SRC=$(curl -sSL -A "${APP_AGENT}" "https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/.github/url-source/${TEMPL_ID}.txt")
+templ_url_service=$(curl -sSL -A "${APP_AGENT}" "https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/.github/url-source/${TEMPL_ID}.txt")
 REGEX_URL='^(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]\.[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]$'
 REGEX_ISNUM='^[0-9]+$'
 
@@ -184,8 +184,8 @@ if [[ "$TEMPL_EXP" == *"404: Not Found"* ]]; then
     TEMPL_EXP="6 hours"
 fi
 
-if [[ "$TEMP_URL_SRC" == *"404: Not Found"* ]]; then
-    TEMP_URL_SRC="None"
+if [[ "$templ_url_service" == *"404: Not Found"* ]]; then
+    templ_url_service="None"
 fi
 
 # #
@@ -358,8 +358,8 @@ ed -s ${APP_FILE_PERM} <<END_ED
 # #
 #   🧱 Firewall Blocklist - ${APP_FILE_PERM}
 #
-#   @url            https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/${APP_FILE_PERM}
-#   @source         ${TEMP_URL_SRC}
+#   @repo           https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/${APP_FILE_PERM}
+#   @service        ${templ_url_service}
 #   @id             ${TEMPL_ID}
 #   @uuid           ${TEMPL_UUID}
 #   @updated        ${TEMPL_NOW}

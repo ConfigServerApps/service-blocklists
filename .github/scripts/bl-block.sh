@@ -375,7 +375,7 @@ wait
 templ_desc=$(<desc.txt)
 templ_cat=$(<cat.txt)
 templ_exp=$(<exp.txt)
-templ_url_src=$(<src.txt)
+templ_url_service=$(<src.txt)
 rm -f desc.txt cat.txt exp.txt src.txt
 
 # #
@@ -385,7 +385,7 @@ rm -f desc.txt cat.txt exp.txt src.txt
 if [[ "${templ_desc}" == *"404: Not Found"* ]]; then templ_desc="#   No description provided"; fi
 if [[ "${templ_cat}" == *"404: Not Found"* ]]; then templ_cat="Uncategorized"; fi
 if [[ "${templ_exp}" == *"404: Not Found"* ]]; then templ_exp="6 hours"; fi
-if [[ "${templ_url_src}" == *"404: Not Found"* ]]; then templ_url_src="None"; fi
+if [[ "${templ_url_service}" == *"404: Not Found"* ]]; then templ_url_service="None"; fi
 
 # #
 #   Define › Regex
@@ -581,8 +581,8 @@ ed -s "${APP_FILE_PERM}" <<END_ED
 # #
 #   🧱 Firewall Blocklist - ${APP_FILE_PERM}
 #   
-#   @url            https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/${APP_FILE_PERM}
-#   @source         ${templ_url_src}
+#   @repo           https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/${APP_FILE_PERM}
+#   @service        ${templ_url_service}
 #   @id             ${templ_id}
 #   @uuid           ${templ_uuid}
 #   @updated        ${templ_now}
