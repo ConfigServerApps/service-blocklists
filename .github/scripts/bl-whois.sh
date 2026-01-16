@@ -310,15 +310,30 @@ download_list()
 
     whois_err=$(mktemp)
 
-    if ! whois -h "${ARG_WHOIS_SERVICE}" -- "-i origin ${fnASN}" 2> "$whois_err" \
-        | grep ^route \
-        | awk '{gsub("(route:|route6:)","");print}' \
-        | awk '{gsub(/ /,""); print}' \
-        | grep -vi "^#|^;|^$" \
-        | grep -vi "${ARG_GREP_FILTER}" \
-        | awk '{if (++dup[$0] == 1) print $0;}' \
-        | sort_results > "${fnFileTemp}"
-    then
+    # #
+    #   Build full command as a single string for echoing
+    # #
+
+    full_cmd="whois -h \"${ARG_WHOIS_SERVICE}\" -- \"-i origin ${fnASN}\" \
+    | grep ^route \
+    | awk '{gsub(\"(route:|route6:)\",\"\"); print}' \
+    | awk '{gsub(/ /,\"\"); print}' \
+    | grep -vi \"^#|^;|^$\" \
+    | grep -vi \"${ARG_GREP_FILTER}\" \
+    | awk '{if (++dup[\$0] == 1) print \$0;}' \
+    | sort_results > \"${fnFileTemp}\""
+
+    # #
+    #   (Debug) Print the command being ran
+    # #
+
+    echo -e "\n⚡ Running WHOIS command:\n$full_cmd\n"
+
+    # #
+    #   Run whois
+    # #
+
+    if ! eval "$full_cmd" 2> "$whois_err"; then
         echo "❌ WHOIS failed for ${fnASN}"
         echo "---- whois error ----"
         cat "$whois_err"
