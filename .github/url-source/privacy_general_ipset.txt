@@ -1,1 +1,1 @@
-https://raw.githubusercontent.com/Aetherinox/dev-kw/main/blocklists/02_privacy_general.ipset
+https://blocklist.configserver.dev/privacy_general.ipset

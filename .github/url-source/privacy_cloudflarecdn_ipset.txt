@@ -1,1 +1,1 @@
-https://www.cloudflare.com/ips-v4 | https://www.cloudflare.com/ips-v6
+https://cloudflare.com/ips-v4 | https://cloudflare.com/ips-v6
