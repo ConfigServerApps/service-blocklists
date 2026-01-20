@@ -42,44 +42,486 @@
 #   
 # #
 
-APP_THIS_FILE=$(basename "$0")                          # current script file
-APP_THIS_DIR="${PWD}"                                   # current script directory
-APP_GITHUB_DIR="${APP_THIS_DIR}/.github"                # .github folder
+app_file_this=$(basename "$0")                                                      #  bl-geolite2_asn.sh   (with ext)
+app_file_bin="${app_file_this%.*}"                                                  #  bl-geolite2_asn      (without ext)
 
 # #
-#   vars > colors
-#
+#   define > folders
+# #
+
+app_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"            #  path where script was last found in
+app_dir_this_dir="${PWD}"                                                           #  current script directory
+app_dir_github="${app_dir_this_dir}/.github"                                        #  .github folder
+
+# #
+#   Define › Colors
+#   
 #   Use the color table at:
 #       - https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797
 # #
 
-RESET="\e[0m"
-WHITE="\e[97m"
-BOLD="\e[1m"
-DIM="\e[2m"
-UNDERLINE="\e[4m"
-BLINK="\e[5m"
-INVERTED="\e[7m"
-HIDDEN="\e[8m"
-BLACK="\e[38;5;0m"
-FUCHSIA1="\e[38;5;125m"
-FUCHSIA2="\e[38;5;198m"
-RED1="\e[38;5;160m"
-RED2="\e[38;5;196m"
-ORANGE1="\e[38;5;202m"
-ORANGE2="\e[38;5;208m"
-MAGENTA="\e[38;5;5m"
-BLUE1="\e[38;5;033m"
-BLUE2="\e[38;5;39m"
-CYAN="\e[38;5;6m"
-GREEN1="\e[38;5;2m"
-GREEN2="\e[38;5;76m"
-YELLOW1="\e[38;5;184m"
-YELLOW2="\e[38;5;190m"
-YELLOW3="\e[38;5;193m"
-GREY1="\e[38;5;240m"
-GREY2="\e[38;5;244m"
-GREY3="\e[38;5;250m"
+esc=$(printf '\033')
+end="${esc}[0m"
+bgEnd="${esc}[49m"
+fgEnd="${esc}[39m"
+bold="${esc}[1m"
+dim="${esc}[2m"
+underline="${esc}[4m"
+blink="${esc}[5m"
+white="${esc}[97m"
+black="${esc}[0;30m"
+redl="${esc}[0;91m"
+redd="${esc}[38;5;196m"
+magental="${esc}[38;5;197m"
+magentad="${esc}[38;5;161m"
+fuchsial="${esc}[38;5;206m"
+fuchsiad="${esc}[38;5;199m"
+bluel="${esc}[38;5;33m"
+blued="${esc}[38;5;27m"
+greenl="${esc}[38;5;47m"
+greend="${esc}[38;5;35m"
+orangel="${esc}[38;5;208m"
+oranged="${esc}[38;5;202m"
+yellowl="${esc}[38;5;226m"
+yellowd="${esc}[38;5;214m"
+greyl="${esc}[38;5;250m"
+greym="${esc}[38;5;244m"
+greyd="${esc}[38;5;240m"
+navy="${esc}[38;5;62m"
+olive="${esc}[38;5;144m"
+peach="${esc}[38;5;204m"
+cyan="${esc}[38;5;6m"
+bgVerbose="${esc}[1;38;5;15;48;5;125m"
+bgDebug="${esc}[1;38;5;15;48;5;237m"
+bgInfo="${esc}[1;38;5;15;48;5;27m"
+bgOk="${esc}[1;38;5;15;48;5;64m"
+bgWarn="${esc}[1;38;5;16;48;5;214m"
+bgDanger="${esc}[1;38;5;15;48;5;202m"
+bgError="${esc}[1;38;5;15;48;5;160m"
+
+# #
+#   Define › App
+# #
+
+app_name="Whois Lookup"                                             # name of app
+app_desc="Fetch list of IP addresses utilizing whois binary"        # desc
+app_ver="1.2.0.0"                                                   # current script version
+app_repo="configserver-software/service-blocklists"                 # repository
+app_repo_branch="main"                                              # repository branch
+app_agent="Mozilla/5.0 (Windows NT 10.0; WOW64) "\
+"AppleWebKit/537.36 (KHTML, like Gecko) "\
+"Chrome/51.0.2704.103 Safari/537.36"                                # user agent used with curl
+
+# #
+#   Define › Args
+# #
+
+argDryrun="false"                                                   # Enable dryrun
+argASN=""                                                           # Process specific ASN
+argDevMode="false"                                                  # dev mode
+argFolder=""
+argFile=""
+
+# #
+#   Define › Logging functions
+#   
+#   verbose "This is an verbose message"
+#   debug "This is an debug message"
+#   info "This is an info message"
+#   ok "This is an ok message"
+#   warn "This is a warn message"
+#   danger "This is a danger message"
+#   error "This is an error message"
+# #
+
+verbose( )
+{
+    case "${argVerbose:-0}" in
+        1|true|TRUE|yes|YES)
+            printf '\033[0m\r%-42s %-65s\n' "   ${bgVerbose} VRBO ${end}" "${greym} $1 ${end}"
+            ;;
+    esac
+}
+
+debug( )
+{
+    if [ "$argDevEnabled" = "true" ] || [ "$argDryrun" = "true" ]; then
+        printf '\033[0m\r%-42s %-65s\n' "   ${bgDebug} DBUG ${end}" "${greym} $1 ${end}"
+    fi
+}
+
+info( )
+{
+    printf '\033[0m\r%-41s %-65s\n' "   ${bgInfo} INFO ${end}" "${greym} $1 ${end}"
+}
+
+ok( )
+{
+    printf '\033[0m\r%-41s %-65s\n' "   ${bgOk} PASS ${end}" "${greym} $1 ${end}"
+}
+
+warn( )
+{
+    printf '\033[0m\r%-42s %-65s\n' "   ${bgWarn} WARN ${end}" "${greym} $1 ${end}"
+}
+
+danger( )
+{
+    printf '\033[0m\r%-42s %-65s\n' "   ${bgDanger} DNGR ${end}" "${greym} $1 ${end}"
+}
+
+error( )
+{
+    printf '\033[0m\r%-42s %-65s\n' "   ${bgError} FAIL ${end}" "${greym} $1 ${end}"
+}
+
+label( )
+{
+    printf '\033[0m\r%-31s %-65s\n' "   ${greyd}        ${end}" "${greyd} $1 ${end}"
+}
+
+print( )
+{
+    echo "${greym}$1${end}"
+}
+
+# #
+#   truncate text; add ...
+#   
+#   @usage
+#       truncate "This is a long string" 10 "..."
+# #
+
+truncate()
+{
+    text=$1
+    maxlen=$2
+    suffix=${3:-}
+
+    len=$(printf %s "${text}" | wc -c | tr -d '[:space:]')
+
+    if [ "${len}" -gt "${maxlen}" ]; then
+        printf '%s%s\n' "$(printf %s "${text}" | cut -c1-"${maxlen}")" "${suffix}"
+    else
+        printf '%s\n' "${text}"
+    fi
+}
+
+# #
+#   Print › Demo Notifications
+#   
+#   Outputs a list of example notifications
+#   
+#   @usage          demoNoti
+# #
+
+demoNoti()
+{
+    verbose "This is an verbose message"
+    debug "This is an debug message"
+    info "This is an info message"
+    ok "This is an ok message"
+    warn "This is a warn message"
+    danger "This is a danger message"
+    error "This is an error message"
+}
+
+# #
+#   Print › Line
+#   
+#   Prints single line horizontal line, no text
+#   
+#   @usage          prin0
+# #
+
+prin0()
+{
+    _p0_indent="  "
+    _p0_box_width=110
+    _p0_line_width=$(( _p0_box_width + 2 ))
+
+    _p0_line=""
+    i=1
+    while [ "$i" -le "${_p0_line_width}" ]; do
+        _p0_line="${_p0_line}─"
+        i=$(( i + 1 ))
+    done
+
+    printf '\n'
+    printf "%b%s%s%b\n" "${greyd}" "${_p0_indent}" "${_p0_line}" "${reset}"
+    printf '\n'
+
+    unset _p0_indent _p0_box_width _p0_line_width _p0_line i
+}
+
+
+# #
+#   Print › Box › Single
+#   
+#   Prints single line with a box surrounding it.
+#   
+#   @usage          prinb "${APP_NAME_SHORT:-CSF} › Customize csf.config"
+# #
+
+prinb()
+{
+    _prinb_title="$*"
+    _prinb_indent="   "                                                         # Left padding
+    _prinb_padding=6                                                            # Extra horizontal space around text
+    _prinb_title_length=${#_prinb_title}
+    _prinb_inner_width=$(( _prinb_title_length + _prinb_padding ))
+    _prinb_box_width=110
+
+    # Minimum width for aesthetics
+    if [ "$_prinb_inner_width" -lt "$_prinb_box_width" ]; then
+        _prinb_inner_width=$_prinb_box_width
+    fi
+
+    # Horizontal border
+    _prinb_line=""
+    i=1
+    while [ "$i" -le "$_prinb_inner_width" ]; do
+        _prinb_line="${_prinb_line}─"
+        i=$(( i + 1 ))
+    done
+
+    # Draw box
+    printf '\n'
+    printf '\n'
+    printf "%b%s┌%s┐\n" "${greym}" "$_prinb_indent" "$_prinb_line"
+    printf "%b%s│  %-${_prinb_inner_width}s \n" "${greym}" "$_prinb_indent" "$_prinb_title"
+    printf "%b%s└%s┘%b\n" "${greym}" "$_prinb_indent" "$_prinb_line" "${reset}"
+    printf '\n'
+
+    unset _prinb_title _prinb_indent _prinb_padding \
+          _prinb_title_length _prinb_inner_width _prinb_box_width \
+          _prinb_line i
+}
+
+# #
+#   Print › Box › Paragraph
+#   
+#   Places an ASCII box around text. Supports multi-lines with \n.
+#   
+#   Determines the character count if color codes are used and ensures that the box borders are aligned properly.
+#   
+#   If using emojis; adjust the spacing so that the far-right line will align with the rest. Add the number of spaces
+#   to increase the value, which is represented with a number enclosed in square brackets.
+#     [1]           add 1 space to the right.
+#     [2]           add 2 spaces to the right.
+#     [-1]          remove 1 space to the right (needed for some emojis depending on if the emoji is 1 or 2 bytes)
+#   
+#   @usage          prinp "Certificate Generation Successful" "Your new certificate and keys have been generated successfully.\n\nYou can find them in the ${greenl}${app_dir_output}${greyd} folder."
+#                   prinp "🎗️[1]  ${file_domain_base}" "The following description will show on multiple lines with a ASCII box around it."
+#                   prinp "📄[-1] File Overview" "The following list outlines the files that you have generated using this utility, and what certs/keys may be missing."
+#                   prinp "➡️[15]  ${bluel}Paths${end}"
+# #
+
+prinp()
+{
+    local title="$1"
+    shift
+    local text="$*"
+
+    local indent="  "
+    local box_width=110
+    local pad=1
+
+    local content_width=$(( box_width ))
+    local inner_width=$(( box_width - pad*2 ))
+
+    print
+    print
+
+    local hline
+    hline=$(printf '─%.0s' $(seq 1 "$content_width"))
+
+    printf "${greyd}%s┌%s┐\n" "$indent" "$hline"
+
+    # #
+    #   Title
+    #   
+    #   Extract optional [N] adjustment from title (signed integer), portably
+    # #
+
+    local emoji_adjust=0
+    local display_title="$title"
+
+    # #
+    #   Get content inside first [...] (if present)
+    # #
+
+    if printf '%s\n' "$title" | grep -q '\[[[:space:]]*[-0-9][-0-9[:space:]]*\]'; then
+
+        # #
+        #   Extract numeric inside brackets (allow optional leading -)
+        #   - use sed to capture first bracketed token, then strip non-digit except leading -
+        # #
+
+        local bracket
+        bracket=$(printf '%s' "$title" | sed -n 's/.*\[\([-0-9][-0-9]*\)\].*/\1/p')
+
+        # #
+        #   Validate numeric and assign, otherwise fallback to 0
+        # #
+    
+        if printf '%s\n' "$bracket" | grep -qE '^-?[0-9]+$'; then
+            emoji_adjust=$bracket
+        else
+            emoji_adjust=0
+        fi
+
+        # #
+        #   Remove the first [...] token from the display_title
+        # #
+    
+        display_title=$(printf '%s' "$title" | sed 's/\[[^]]*\]//')
+    fi
+
+    # #
+    #   Sanity: ensure emoji_adjust is a decimal integer so math works
+    # #
+
+    case "$emoji_adjust" in
+        ''|*[!0-9-]*)
+            emoji_adjust=0
+            ;;
+    esac
+
+    local title_width=$(( content_width - pad ))
+
+    # #
+    #   Account for emoji adjustment in visible length calculation
+    # #
+  
+    local title_vis_len=$(( ${#display_title} - emoji_adjust ))
+    printf "${greyd}%s│%*s${bluel}%s${greyd}%*s│\n" \
+        "$indent" "$pad" "" "$display_title" "$(( title_width - title_vis_len ))" ""
+
+    # #
+    #   Only render body text if provided
+    # #
+
+    if [ -n "$text" ]; then
+        printf "${greyd}%s│%-${content_width}s│\n" "$indent" ""
+
+        # #
+        #   Convert literal \n to real newlines
+        # #
+
+        text=$(printf "%b" "$text")
+
+        # #
+        #   Handle each line with ANSI-aware wrapping and true padding
+        # #
+
+        printf "%s" "$text" | while IFS= read -r line || [ -n "$line" ]; do
+
+        # #
+        #   Blank line
+        # #
+    
+        if [ -z "$line" ]; then
+            printf "${greyd}%s│%-*s│\n" "$indent" "$content_width" ""
+            continue
+        fi
+
+        local out="" word
+        for word in $line; do
+            # #
+            #   Strip ANSI for visible width
+            # #
+        
+            local vis_out vis_len vis_word
+            vis_out=$(printf "%s" "$out" | sed 's/\x1B\[[0-9;]*[A-Za-z]//g')
+            vis_word=$(printf "%s" "$word" | sed 's/\x1B\[[0-9;]*[A-Za-z]//g')
+            vis_len=$(( ${#vis_out} + ( ${#vis_out} > 0 ? 1 : 0 ) + ${#vis_word} ))
+
+            if [ -z "$out" ]; then
+                out="$word"
+            elif [ $vis_len -le $inner_width ]; then
+                out="$out $word"
+            else
+                # #
+                #   Print and pad manually based on visible length
+                # #
+
+                local vis_len_full
+                vis_len_full=$(printf "%s" "$out" | sed 's/\x1B\[[0-9;]*[A-Za-z]//g' | wc -c | tr -d ' ')
+                local pad_spaces=$(( inner_width - vis_len_full ))
+                [ $pad_spaces -lt 0 ] && pad_spaces=0
+                printf "${greyd}%s│%*s%s%*s│\n" "$indent" "$pad" "" "$out" "$(( pad + pad_spaces ))" ""
+                out="$word"
+            fi
+        done
+
+        # #
+        #   Final flush line
+        # #
+    
+        if [ -n "$out" ]; then
+            local vis_len_full pad_spaces
+            vis_len_full=$(printf "%s" "$out" | sed 's/\x1B\[[0-9;]*[A-Za-z]//g' | wc -c | tr -d ' ')
+            pad_spaces=$(( inner_width - vis_len_full ))
+            [ $pad_spaces -lt 0 ] && pad_spaces=0
+            printf "${greyd}%s│%*s%s%*s│\n" "$indent" "$pad" "" "$out" "$(( pad + pad_spaces ))" ""
+        fi
+
+        done
+    fi
+
+    printf "${greyd}%s└%s┘${reset}\n" "$indent" "$hline"
+    print
+}
+
+# #
+#   Define › Logging › Verbose
+# #
+
+log()
+{
+    case "${argVerbose:-0}" in
+        1|true|TRUE|yes|YES)
+            verbose "$@"
+            ;;
+    esac
+}
+
+# #
+#   Check Sudo
+# #
+
+check_sudo( )
+{
+    if [ "$(id -u)" != "0" ]; then
+        error "    ❌ Must run script with ${redl}sudo"
+        exit 1
+    fi
+}
+
+# #
+#   Run Command
+#   
+#   Added when dryrun mode was added to the install.sh.
+#   Allows for a critical command to be skipped if in --dryrun mode.
+#       Throws a debug message instead of executing.
+#   
+#   argDryrun comes from global export in csf/install.sh
+#   
+#   @usage          run /sbin/chkconfig csf off
+#                   run echo "ConfigServer"
+#                   run chmod -v 700 "./${CSF_AUTO_GENERIC}"
+# #
+
+run()
+{
+    if [ "${argDryrun}" = "true" ]; then
+        debug "    Drymode (skip): $*"
+    else
+        debug "    Run: $*"
+        "$@"
+    fi
+}
 
 # #
 #   Set PATH
@@ -94,20 +536,8 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
 WHOIS_BIN=$(which whois || echo "/usr/bin/whois")
 
 # #
-#   print an error and exit with failure
-#   $1: error message
-# #
-
-function error()
-{
-    echo -e "  ⭕ ${GREY2}${APP_THIS_FILE}${RESET}: \n     ${BOLD}${RED}Error${NORMAL}: ${RESET}$1"
-    echo -e
-    exit 0
-}
-
-# #
 #   Sort Results
-#
+#   
 #   @usage          line=$(parse_spf_record "${ip}" | sort_results)
 # #
 
@@ -129,10 +559,10 @@ sort_results()
 
 # #
 #   Arguments
-#
+#   
 #   We are attempting to add dynamic arguments, meaning they can be in any order. this is because some of the arguments are
 #   optional, and we support providing multiple ASN.
-#
+#   
 #       ARG_SAVEFILE        (str)       always the first arg
 #       ARG_WHOIS_SERVICE   (str)       specifies what whois service to use
 #                                           - if string arg is valid URL (checked by regex)
@@ -173,17 +603,17 @@ ARG_SAVEFILE=$1
 #   Arguments > Validate
 # #
 
-if [[ -z "${ARG_SAVEFILE}" ]]; then
-    echo -e
-    echo -e "  ⭕ ${YELLOW1}[${APP_THIS_FILE}]${RESET}: No target file specified"
-    echo -e
+if [ -z "$ARG_SAVEFILE" ]; then
+    echo
+    echo "  ⭕ ${yellowd}[${app_file_this}]${end}: No target file specified"
+    echo
     exit 0
 fi
 
-if test "$#" -lt 2; then
-    echo -e
-    echo -e "  ⭕ ${YELLOW1}[${APP_THIS_FILE}]${RESET}: Invalid ASN list specified for ${YELLOW1}${ARG_SAVEFILE}${RESET}"
-    echo -e
+if [ "$#" -lt 2 ]; then
+    echo
+    echo "  ⭕ ${yellowd}[${app_file_this}]${end}: Invalid ASN list specified for ${yellowd}${ARG_SAVEFILE}${end}"
+    echo
     exit 0
 fi
 
@@ -192,9 +622,7 @@ fi
 #       
 # #
 
-if [[ -z "${ARG_WHOIS_SERVICE}" ]]; then
-    ARG_WHOIS_SERVICE="whois.radb.net"
-fi
+: "${ARG_WHOIS_SERVICE:=whois.radb.net}"
 
 # #
 #   Grep search pattern not provided, ignore comments and blank lines.
@@ -202,98 +630,88 @@ fi
 #   we need a default grep pattern if one is not provided.
 # #
 
-if [[ -z "${ARG_GREP_FILTER}" ]]; then
-    ARG_GREP_FILTER="^#|^;|^$"
-fi
+: "${ARG_GREP_FILTER:=^#|^;|^$}"
 
 # #
-#    Define > General
+#   Define > app
 # #
 
-SECONDS=0                                               # set seconds count for beginning of script
-APP_VER=("1" "0" "0" "0")                               # current script version
-APP_DEBUG=false                                         # debug mode
-APP_REPO="configserver-software/service-blocklists"     # repository
-APP_REPO_BRANCH="main"                                  # repository branch
-APP_OUT=""                                              # each ip fetched from stdin will be stored in this var
-APP_FILE_TEMP="${ARG_SAVEFILE}.tmp"                     # temp file when building ipset list
-APP_FILE_PERM="${ARG_SAVEFILE}"                         # perm file when building ipset list
-COUNT_LINES=0                                           # number of lines in doc
-COUNT_TOTAL_SUBNET=0                                    # number of IPs in all subnets combined
-COUNT_TOTAL_IP=0                                        # number of single IPs (counts each line)
-BLOCKS_COUNT_TOTAL_IP=0                                 # number of ips for one particular file
-BLOCKS_COUNT_TOTAL_SUBNET=0                             # number of subnets for one particular file
-APP_AGENT="Mozilla/5.0 (Windows NT 10.0; WOW64) "\
-"AppleWebKit/537.36 (KHTML, like Gecko) "\
-"Chrome/51.0.2704.103 Safari/537.36"                    # user agent used with curl
-TEMPL_NOW=`date -u`                                     # get current date in utc format
-TEMPL_ID=$(basename -- ${APP_FILE_PERM})                # ipset id, get base filename
-TEMPL_ID="${TEMPL_ID//[^[:alnum:]]/_}"                  # ipset id, only allow alphanum and underscore, /description/* and /category/* files must match this value
-TEMPL_UUID=$(uuidgen -m -N "${TEMPL_ID}" -n @url)       # uuid associated to each release
-TEMPL_DESC=$(curl -sSL -A "${APP_AGENT}" "https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/.github/descriptions/${TEMPL_ID}.txt")
-TEMPL_CAT=$(curl -sSL -A "${APP_AGENT}" "https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/.github/categories/${TEMPL_ID}.txt")
-TEMPL_EXP=$(curl -sSL -A "${APP_AGENT}" "https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/.github/expires/${TEMPL_ID}.txt")
-templ_url_service=$(curl -sSL -A "${APP_AGENT}" "https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/.github/url-source/${TEMPL_ID}.txt")
-REGEX_ISNUM='^[0-9]+$'
+START_TIME=$(date +%s)
+SECONDS=0                                                           # set seconds count for beginning of script
+APP_FILE_PERM="${ARG_SAVEFILE}"                                     # perm file when building ipset list
+total_lines=0                                                       # number of lines in doc
+total_subnets=0                                                     # number of IPs in all subnets combined
+total_ips=0                                                         # number of single IPs (counts each line)
+templ_now=$(date -u)                                                # get current date in utc format
+templ_id=$(basename -- ${APP_FILE_PERM})                            # ipset id, get base filename
+templ_id="${templ_id//[^[:alnum:]]/_}"                              # ipset id, only allow alphanum and underscore, /description/* and /category/* files must match this value
+templ_uuid=$(uuidgen -m -N "${templ_id}" -n @url)                   # uuid associated to each release
+templ_desc=$(curl -sSL -A "${app_agent}" "https://raw.githubusercontent.com/${app_repo}/${app_repo_branch}/.github/descriptions/${templ_id}.txt")
+templ_category=$(curl -sSL -A "${app_agent}" "https://raw.githubusercontent.com/${app_repo}/${app_repo_branch}/.github/categories/${templ_id}.txt")
+templ_exp=$(curl -sSL -A "${app_agent}" "https://raw.githubusercontent.com/${app_repo}/${app_repo_branch}/.github/expires/${templ_id}.txt")
+templ_url_service=$(curl -sSL -A "${app_agent}" "https://raw.githubusercontent.com/${app_repo}/${app_repo_branch}/.github/url-source/${templ_id}.txt")
+regex_rule_isnum='^[0-9]+$'
 
 # #
 #   Default Values
 # #
 
-if [[ "$TEMPL_DESC" == *"404: Not Found"* ]]; then
-    TEMPL_DESC="#   No description provided"
-fi
+case $templ_desc in
+    *"404: Not Found"*) templ_desc="#   No description provided" ;;
+esac
 
-if [[ "$TEMPL_CAT" == *"404: Not Found"* ]]; then
-    TEMPL_CAT="Uncategorized"
-fi
+case $templ_category in
+    *"404: Not Found"*) templ_category="Uncategorized" ;;
+esac
 
-if [[ "$TEMPL_EXP" == *"404: Not Found"* ]]; then
-    TEMPL_EXP="6 hours"
-fi
+case $templ_exp in
+    *"404: Not Found"*) templ_exp="6 hours" ;;
+esac
 
-if [[ "$templ_url_service" == *"404: Not Found"* ]]; then
-    templ_url_service="None"
-fi
+case $templ_url_service in
+    *"404: Not Found"*) templ_url_service="None" ;;
+esac
 
 # #
 #   Output > Header
 # #
 
-echo -e
-echo -e " ──────────────────────────────────────────────────────────────────────────────────────────────"
-echo -e "  ${YELLOW1}${APP_FILE_PERM}${RESET}"
-echo -e
-echo -e "  ${GREY2}ID:          ${TEMPL_ID}${RESET}"
-echo -e "  ${GREY2}UUID:        ${TEMPL_UUID}${RESET}"
-echo -e "  ${GREY2}CATEGORY:    ${TEMPL_CAT}${RESET}"
-echo -e "  ${GREY2}ACTION:      ${APP_THIS_FILE}${RESET}"
-echo -e " ──────────────────────────────────────────────────────────────────────────────────────────────"
+prinp "${APP_NAME_SHORT:-CSF} > ${APP_FILE_PERM}" \
+       "Generating blocklist using whois service. \
+${greyd}\n\n${greym}id: 	    ${greyd}................${yellowl} ${templ_id}${greyd} \
+${greyd}\n${greym}uuid:	        ${greyd}..............${yellowl} ${templ_uuid}${greyd} \
+${greyd}\n${greym}category:  	${greyd}..........${yellowl} ${templ_category}${greyd} \
+${greyd}\n${greym}action: 	    ${greyd}............${yellowl} ${app_file_this}${greyd}"
 
 # #
 #   output
 # #
 
-echo -e
-echo -e "  ⭐ Starting script ${GREEN1}${APP_THIS_FILE}${RESET}"
+echo 
+echo "  ⭐ Starting script ${greend}${app_file_this}${end}"
 
 # #
 #   Create or Clean file
 # #
 
 if [ -f $APP_FILE_PERM ]; then
-    echo -e "  📄 Clean ${BLUE2}${APP_FILE_PERM}${RESET}"
-    echo -e
-   > ${APP_FILE_PERM}       # clean file
+    echo "  📄 Clean ${bluel}${APP_FILE_PERM}${end}"
+    echo 
+   > ${APP_FILE_PERM}
 else
-    echo -e "  📁 Create ${BLUE2}${APP_FILE_PERM}${RESET}"
-    echo -e
+    echo "  📁 Create ${bluel}${APP_FILE_PERM}${end}"
+    echo 
     mkdir -p $(dirname "${APP_FILE_PERM}")
     touch ${APP_FILE_PERM}
 fi
 
 # #
 #   Func > Download List
+#   
+#   Downloads list of IPs and Subnets dependent on what ASN is provided.
+#   
+#   @arg        { asn_numbers, ... }
+#   @arg        fileTemp
 # #
 
 download_list()
@@ -302,117 +720,84 @@ download_list()
     local fnASN=$1
     local fnFile=$2
     local fnFileTemp="${2}.tmp"
-    local DL_COUNT_TOTAL_IP=0
-    local DL_COUNT_TOTAL_SUBNET=0
+    local dl_total_ips=0
+    local dl_total_subnets=0
 
-    echo -e "  🌎 Downloading ASN ${YELLOW1}${fnASN}${RESET} list to ${ORANGE2}${fnFileTemp}${RESET}"
+    echo "  🌎 Downloading ASN ${yellowd}${fnASN}${end} list to ${oranged}${fnFileTemp}${end}"
 
     whois_err=$(mktemp)
 
     # #
-    #   Build full command as a single string for echoing
+    #   Get raw WHOIS output into a variable
     # #
 
-    full_cmd="whois -h \"${ARG_WHOIS_SERVICE}\" -- \"-i origin ${fnASN}\" \
-    | grep ^route \
-    | awk '{gsub(\"(route:|route6:)\",\"\"); print}' \
-    | awk '{gsub(/ /,\"\"); print}' \
-    | grep -vi \"^#|^;|^$\" \
-    | grep -vi \"${ARG_GREP_FILTER}\" \
-    | awk '{if (++dup[\$0] == 1) print \$0;}' \
-    | sort_results > \"${fnFileTemp}\""
+    raw_list=$(whois -h "${ARG_WHOIS_SERVICE}" -- "-i origin ${fnASN}" 2> "${whois_err}" \
+        | grep ^route \
+        | awk '{gsub("(route:|route6:)",""); print}' \
+        | awk '{gsub(/ /,""); print}' \
+        | grep -vi "^#|^;|^$" \
+        | grep -vi "$ARG_GREP_FILTER" \
+        | awk '{if (++dup[$0] == 1) print $0;}')
 
-    # #
-    #   (Debug) Print the command being ran
-    # #
-
-    echo -e "\n⚡ Running WHOIS command:\n$full_cmd\n"
-
-    # #
-    #   Run whois
-    # #
-
-    if ! eval "$full_cmd" 2> "$whois_err"; then
+    if [ $? -ne 0 ] || [ -z "${raw_list}" ]; then
         echo "❌ WHOIS failed for ${fnASN}"
         echo "---- whois error ----"
         cat "$whois_err"
         echo "---------------------"
         rm -f "$whois_err"
+    
         return 1
     fi
 
     rm -f "$whois_err"
 
     # #
-    #   calculate how many IPs are in a subnet
-    #   if you want to calculate the USABLE IP addresses, subtract -2 from any subnet not ending with 31 or 32.
-    #   
-    #   for our purpose, we want to block them all in the event that the network has reconfigured their network / broadcast IPs,
-    #   so we will count every IP in the block.
+    #   Sort using the existing function in the main shell
     # #
 
-    echo -e "  📊 Fetching statistics for clean file ${ORANGE2}${fnFileTemp}${RESET}"
-    for line in $(cat ${fnFileTemp}); do
-        # is ipv6
-        if [ "$line" != "${line#*:[0-9a-fA-F]}" ]; then
-            if [[ $line =~ /[0-9]{1,3}$ ]]; then
-                COUNT_TOTAL_SUBNET=$(( $COUNT_TOTAL_SUBNET + 1 ))                       # GLOBAL count subnet
-                BLOCKS_COUNT_TOTAL_SUBNET=$(( $BLOCKS_COUNT_TOTAL_SUBNET + 1 ))         # LOCAL count subnet
+    printf "%s\n" "$raw_list" | sort_results > "$fnFileTemp"
+
+    # #
+    #   Calculate total num of IPs and subnets from ASN temp file
+    # #
+
+    echo "  📊 Fetching statistics for clean file ${oranged}${fnFileTemp}${end}"
+
+    while IFS= read -r line || [ -n "$line" ]; do
+        [[ -z "$line" ]] && continue
+        case "$line" in \#*|\;*) continue ;; esac
+
+        if [[ "$line" =~ : ]]; then
+            dl_total_subnets=$((dl_total_subnets + 1))
+            dl_total_ips=$((dl_total_ips + 1))
+        elif [[ "$line" =~ / ]]; then
+            dl_total_subnets=$((dl_total_subnets + 1))
+            prefix=${line##*/}
+            if [[ "$prefix" =~ ^[0-9]+$ ]] && [ "$prefix" -ge 0 ] && [ "$prefix" -le 32 ]; then
+                ips=$((1 << (32 - prefix)))
             else
-                COUNT_TOTAL_IP=$(( $COUNT_TOTAL_IP + 1 ))                               # GLOBAL count ip
-                BLOCKS_COUNT_TOTAL_IP=$(( $BLOCKS_COUNT_TOTAL_IP + 1 ))                 # LOCAL count ip
+                ips=1
             fi
-
-        # is subnet
-        elif [[ $line =~ /[0-9]{1,2}$ ]]; then
-            ips=$(( 1 << (32 - ${line#*/}) ))
-
-            if [[ $ips =~ $REGEX_ISNUM ]]; then
-                # CIDR=$(echo $line | sed 's:.*/::')
-
-                # #
-                #   uncomment to count ONLY usable IP addresses
-                #   subtract - 2 from any cidr not ending with 31 or 32
-                # #
-
-                #  if [[ $CIDR != "31" ]] && [[ $CIDR != "32" ]]; then
-                     #  COUNT_TOTAL_IP=$(( $COUNT_TOTAL_IP - 2 ))
-                     #  DL_COUNT_TOTAL_IP=$(( $DL_COUNT_TOTAL_IP - 2 ))
-                #  fi
-
-                COUNT_TOTAL_IP=$(( $COUNT_TOTAL_IP + $ips ))                    # GLOBAL count IPs in subnet
-                COUNT_TOTAL_SUBNET=$(( $COUNT_TOTAL_SUBNET + 1 ))               # GLOBAL count subnet
-
-                DL_COUNT_TOTAL_IP=$(( $DL_COUNT_TOTAL_IP + $ips ))              # LOCAL count IPs in subnet
-                DL_COUNT_TOTAL_SUBNET=$(( $DL_COUNT_TOTAL_SUBNET + 1 ))         # LOCAL count subnet
-            fi
-
-        # #
-        #   normal IP
-        # #
-
-        elif [[ $line =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            COUNT_TOTAL_IP=$(( $COUNT_TOTAL_IP + 1 ))
-            DL_COUNT_TOTAL_IP=$(( $DL_COUNT_TOTAL_IP + 1 ))
+            dl_total_ips=$((dl_total_ips + ips))
+        else
+            dl_total_subnets=$((dl_total_subnets + 1))
+            dl_total_ips=$((dl_total_ips + 1))
         fi
-    done
-
-    # #
-    #   Count lines and subnets
-    # #
-
-    DL_COUNT_TOTAL_IP=$(printf "%'d" "$DL_COUNT_TOTAL_IP")                      # LOCAL add commas to thousands
-    DL_COUNT_TOTAL_SUBNET=$(printf "%'d" "$DL_COUNT_TOTAL_SUBNET")              # LOCAL add commas to thousands
+    done < "$fnFileTemp"
 
     # #
     #   Move temp file to final
     # #
 
-    echo -e "  🚛 Move ${ORANGE2}${fnFileTemp}${RESET} to ${BLUE2}${fnFile}${RESET}"
-    cat ${fnFileTemp} >> ${fnFile}                                              # copy .tmp contents to real file
-    rm ${fnFileTemp}                                                            # delete temp file
+    echo "  🚛 Move ${oranged}${fnFileTemp}${end} to ${bluel}${fnFile}${end}"
+    cat "$fnFileTemp" >> "$fnFile"
+    rm "$fnFileTemp"
 
-    echo -e "  ➕ Added ${FUCHSIA2}${DL_COUNT_TOTAL_IP} IPs${RESET} and ${FUCHSIA2}${DL_COUNT_TOTAL_SUBNET} subnets${RESET} to ${BLUE2}${fnFile}${RESET}"
+    # #
+    #   Print correct per-ASN stats now
+    # #
+
+    echo "  ➕ Added ${fuchsial}${dl_total_ips} IPs${end} and ${fuchsial}${dl_total_subnets} subnets${end} to ${bluel}${fnFile}${end}"
 }
 
 # #
@@ -422,45 +807,42 @@ download_list()
 #   we need to get the total count available.
 # #
 
-ASN_I_TOTAL=0                           # start at one, since the last step is base continent file
-ASN_I_STEP=0                            # count current asn in step
-TEMPL_ASN_LIST=""                       # ASN list
+asn_total=0                             # start at one, since the last step is base continent file
+asn_step=0                              # count current asn in step
+templ_asns=""                           # ASN list
 
 for arg in "${@:2}"; do
     if [[ $arg == AS* ]]; then
-        ASN_I_TOTAL=$(( ASN_I_TOTAL + 1 ))
+        asn_total=$(( asn_total + 1 ))
     fi
 done
 
 # Hacky, remove one from total since step starts at 0
-ASN_I_TOTAL=$(( $ASN_I_TOTAL - 1 ))
+asn_total=$(( $asn_total - 1 ))
 
 # #
-#   Get ASN arguments
-#   
-#   string must start with "AS*"
+#   Print list of ASN in template header.
+#   Shows the first 5, and then the 6th is on a new line.
 # #
 
 for arg in "${@:2}"; do
     if [[ $arg == AS* ]]; then
-        download_list ${arg} ${APP_FILE_PERM}
-        echo -e
+        download_list "$arg" "$APP_FILE_PERM"
+        echo
 
-        if [ "${ASN_I_TOTAL}" == "${ASN_I_STEP}" ]; then
-            if [ $((ASN_I_STEP%3)) -eq 0 ]; then
-                TEMPL_ASN_LIST+=$'\n'"#                   ${arg}"
-            else
-                TEMPL_ASN_LIST+="${arg}"
-            fi
+        if [ $((asn_step % 5)) -eq 0 ] && [ $asn_step -ne 0 ]; then
+            # Start a new line after every 5 ASNs
+            templ_asns+=$'\n#                   '"$arg"
         else
-            if [ $((ASN_I_STEP%3)) -eq 0 ]; then
-                TEMPL_ASN_LIST+=$'\n'"#                   ${arg}, "
+            # Append with comma
+            if [ $asn_step -eq 0 ]; then
+                templ_asns+="$arg"
             else
-                TEMPL_ASN_LIST+="${arg}, "
+                templ_asns+=", $arg"
             fi
         fi
 
-        ASN_I_STEP=$(( ASN_I_STEP + 1 ))
+        asn_step=$((asn_step + 1))
     fi
 done
 
@@ -471,7 +853,7 @@ done
 #       - remove .sort temp file
 # #
 
-sorting=$(cat ${APP_FILE_PERM} | grep -vi "^#|^;|^$" | awk '{if (++dup[$0] == 1) print $0;}' | sort_results > ${APP_FILE_PERM}.sort)
+sorting=$(cat "${APP_FILE_PERM}" | grep -vi "^#|^;|^$" | awk '{if (++dup[$0] == 1) print $0;}' | sort_results > ${APP_FILE_PERM}.sort)
 > ${APP_FILE_PERM}
 cat ${APP_FILE_PERM}.sort >> ${APP_FILE_PERM}
 rm ${APP_FILE_PERM}.sort
@@ -480,18 +862,44 @@ rm ${APP_FILE_PERM}.sort
 #   Format Counts
 # #
 
-COUNT_LINES=$(wc -l < ${APP_FILE_PERM})                                     # count ip lines
-COUNT_LINES=$(printf "%'d" "$COUNT_LINES")                                  # GLOBAL add commas to thousands
+# Recalculate totals AFTER all temp files are merged
+total_ips=0
+total_subnets=0
+
+while IFS= read -r line || [ -n "$line" ]; do
+    [[ -z "$line" ]] && continue
+    case "$line" in \#*|\;*) continue ;; esac
+
+    if [[ "$line" =~ : ]]; then
+        total_subnets=$((total_subnets + 1))
+        total_ips=$((total_ips + 1))
+    elif [[ "$line" =~ / ]]; then
+        total_subnets=$((total_subnets + 1))
+        prefix=${line##*/}
+        if [[ "$prefix" =~ ^[0-9]+$ ]] && [ "$prefix" -ge 0 ] && [ "$prefix" -le 32 ]; then
+            ips=$((1 << (32 - prefix)))
+        else
+            ips=1
+        fi
+        total_ips=$((total_ips + ips))
+    else
+        total_subnets=$((total_subnets + 1))
+        total_ips=$((total_ips + 1))
+    fi
+done < "$APP_FILE_PERM"
 
 # #
-#   Format count totals since we no longer need to add
+#   Add commas to thousands
 # #
 
-COUNT_TOTAL_IP=$(printf "%'d" "$COUNT_TOTAL_IP")                            # GLOBAL add commas to thousands
-COUNT_TOTAL_SUBNET=$(printf "%'d" "$COUNT_TOTAL_SUBNET")                    # GLOBAL add commas to thousands
+total_lines=$(wc -l < "$APP_FILE_PERM")
+total_lines=$(printf "%'d" "$total_lines")
+total_ips=$(printf "%'d" "$total_ips")
+total_subnets=$(printf "%'d" "$total_subnets")
 
 # #
-#   ed
+#   ed placement:
+#   
 #       0a  top of file
 # #
 
@@ -500,19 +908,19 @@ ed -s ${APP_FILE_PERM} <<END_ED
 # #
 #   🧱 Firewall Blocklist - ${APP_FILE_PERM}
 #
-#   @repo           https://raw.githubusercontent.com/${APP_REPO}/${APP_REPO_BRANCH}/${APP_FILE_PERM}
+#   @repo           https://raw.githubusercontent.com/${app_repo}/${app_repo_branch}/${APP_FILE_PERM}
 #   @service        ${templ_url_service}
-#   @id             ${TEMPL_ID}
-#   @uuid           ${TEMPL_UUID}
-#   @updated        ${TEMPL_NOW}
-#   @entries        ${COUNT_TOTAL_IP} ips
-#                   ${COUNT_TOTAL_SUBNET} subnets
-#                   ${COUNT_LINES} lines
-#   @asn            ${TEMPL_ASN_LIST}
-#   @expires        ${TEMPL_EXP}
-#   @category       ${TEMPL_CAT}
+#   @id             ${templ_id}
+#   @uuid           ${templ_uuid}
+#   @updated        ${templ_now}
+#   @entries        ${total_ips} ips
+#                   ${total_subnets} subnets
+#                   ${total_lines} lines
+#   @asn            ${templ_asns}
+#   @expires        ${templ_exp}
+#   @category       ${templ_category}
 #
-${TEMPL_DESC}
+${templ_desc}
 # #
 
 .
@@ -524,20 +932,25 @@ END_ED
 #   Finished
 # #
 
-T=$SECONDS
-D=$((T/86400))
-H=$((T/3600%24))
-M=$((T/60%60))
-S=$((T%60))
+# Capture end time
+END_TIME=$(date +%s)
 
-echo -e "  🎌 ${GREY2}Finished! ${YELLOW2}${D} days ${H} hrs ${M} mins ${S} secs${RESET}"
+# Compute elapsed seconds
+T=$(( END_TIME - START_TIME ))
+
+# Calculate days, hours, minutes, seconds
+D=$(( T / 86400 ))
+H=$(( (T % 86400) / 3600 ))
+M=$(( (T % 3600) / 60 ))
+S=$(( T % 60 ))
+
+echo "  🎌 ${greym}Finished! ${yellowd}${D} days ${H} hrs ${M} mins ${S} secs${end}"
 
 # #
 #   Output
 # #
 
-echo -e
-echo -e " ──────────────────────────────────────────────────────────────────────────────────────────────"
-echo -e "  #️⃣ ${BLUE2}${APP_FILE_PERM}${RESET} | Added ${FUCHSIA2}${COUNT_TOTAL_IP} IPs${RESET} and ${FUCHSIA2}${COUNT_TOTAL_SUBNET} Subnets${RESET}"
-echo -e " ──────────────────────────────────────────────────────────────────────────────────────────────"
-echo -e
+prinp "${APP_NAME_SHORT:-CSF} > ${APP_FILE_PERM}" \
+       "Blocklist has finished generating successfully \
+${greyd}\n\n${greym}ips: 	    ${greyd}...............${yellowl} ${total_ips}${greyd} \
+${greyd}\n${greym}subnets:	        ${greyd}...........${yellowl} ${total_subnets}${greyd}"
