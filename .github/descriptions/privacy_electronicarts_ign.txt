@@ -1,0 +1,20 @@
+#   Electronic Arts (EA) Blocklist
+#   
+#   Electronic Arts (EA) is a global video game publisher known for popular
+#   franchises such as FIFA, Battlefield, The Sims, and Apex Legends. EA's
+#   online services support multiplayer gaming, matchmaking, content delivery,
+#   and digital store operations across millions of users worldwide.
+#   
+#   This blocklist contains IP addresses associated with EA servers. Using it
+#   will prevent EA services from accessing your server, blocking game traffic,
+#   updates, and online interactions from their network.
+#   
+#   IGN Blocklist
+#   
+#   IGN is a media network focused on gaming, entertainment, and technology
+#   news, reviews, and videos. Its online services include website traffic,
+#   content feeds, and API access to news articles, game guides, and videos.
+#   
+#   This blocklist contains IP addresses associated with IGN servers. Using it
+#   will prevent IGN from accessing your server, blocking content feeds,
+#   automated crawlers, and other interactions from their network.

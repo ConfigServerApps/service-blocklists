@@ -1,3 +1,5 @@
-#   This list contains ip addresses associated with Google crawlers.
+#   This list contains IP addresses associated with Google web crawlers.
 #   
-#   These are useful if you do not wish for search engines to grab content from your website.
+#   Use this list if you want to stop Google search engines from indexing or
+#   crawling any content from your website, effectively blocking automated
+#   search bot access.

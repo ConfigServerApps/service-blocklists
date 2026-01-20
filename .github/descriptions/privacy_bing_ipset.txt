@@ -1,3 +1,9 @@
-#   This list contains ip addresses associated with Bing crawlers.
+#   Bing Crawler Blocklist
 #   
-#   These are useful if you do not wish for search engines to grab content from your website.
+#   This list contains IP addresses used by Bing web crawlers, the automated
+#   bots operated by Microsoft to index and analyze websites for its search
+#   engine.
+#   
+#   By using this blocklist, you can prevent Bing from crawling or indexing
+#   your website content, stopping it from appearing in Bing search results
+#   and related Microsoft services.

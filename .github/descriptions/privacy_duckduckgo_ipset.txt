@@ -1,12 +1,13 @@
-#   DuckDuckBot is a web crawler / spider for DuckDuckGo. DuckDuckBot's job is to constantly 
-#   crawl websites on the internet which are used to populate DuckDuckGo's search results
-#   through the action of "web crawling".
-#
-#   A web crawler, or spider, is a type of bot that is typically operated by search
-#   engines like DuckDuckGo, Google and Bing. Their purpose is to index the content of websites
-#   all across the Internet so that those websites can appear in search engine results.
-#
-#   The crawler's user agent will appear as DuckDuckBot/1.1; (+http://duckduckgo.com/duckduckbot.html)
-#
-#   You should use this ipset if you do not wish for DuckDuckGo to be able to crawl
+#   DuckDuckBot is the web crawler used by DuckDuckGo to index sites
+#   for its search results. It continuously scans websites via web
+#   crawling to collect content for search engine listings.
+#   
+#   Web crawlers, or spiders, are automated bots run by search engines
+#   like DuckDuckGo, Google, and Bing. Their goal is to index website
+#   content so it can appear in search results.
+#   
+#   DuckDuckBot identifies itself with the user agent:
+#       DuckDuckBot/1.1; (+http://duckduckgo.com/duckduckbot.html)
+#   
+#   Use this IP list if you want to prevent DuckDuckGo from crawling
 #   your server.

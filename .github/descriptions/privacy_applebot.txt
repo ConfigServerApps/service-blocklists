@@ -1,0 +1,10 @@
+#   Applebot Blocklist
+#   
+#   Applebot is Apple’s web crawler, designed to index content for Apple
+#   services such as Siri, Spotlight Suggestions, and Apple News. It scans
+#   websites to gather information that powers search results, recommendations,
+#   and content previews across Apple devices and apps.
+#   
+#   Applebot-Extended specifically enhances indexing for Apple News and other
+#   content-rich services. This blocklist prevents Applebot from crawling or
+#   accessing your server, stopping its data collection and indexing activities.

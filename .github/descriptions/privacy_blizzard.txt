@@ -1,0 +1,11 @@
+#   Blizzard Entertainment Blocklist
+#   
+#   Blizzard Entertainment is a major video game developer and publisher,
+#   known for franchises such as World of Warcraft, Overwatch, Diablo, and
+#   Hearthstone. Its servers handle multiplayer gaming, matchmaking, digital
+#   distribution, and online services for millions of players worldwide.
+#   
+#   This blocklist contains IP addresses associated with Blizzard servers.
+#   By using it, you can prevent Blizzard services from accessing your
+#   server, blocking game traffic, updates, and online interactions from
+#   their network.

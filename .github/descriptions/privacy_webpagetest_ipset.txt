@@ -1,2 +1,6 @@
-#   WebPageTest is an open-source tool designed to help website owners and developers monitor and
-#   optimize their website’s performance.
+#   WebPageTest API
+#   
+#   WebPageTest is an open-source tool that helps website owners and developers
+#   monitor, test, and optimize the performance of their websites. It provides
+#   detailed metrics on page load times, resource usage, and overall site
+#   responsiveness to improve user experience and site efficiency.

@@ -1,10 +1,10 @@
-#   Cloudflare is known as a Content Delivery Network (CDN) which offers a variety of tools which
-#   allows you to speed up loading times of your website. Adding your domain to the Cloudflare CDN
-#   means that your site becomes part of the Cloudflare network. This network routes web site
-#   traffic through Cloudflare's global network of data centers. 
+#   Cloudflare operates as a content delivery network (CDN) that
+#   provides tools to improve website performance and reliability.
+#   When a domain is added to Cloudflare, site traffic is routed
+#   through Cloudflare's global network of data centers.
 #   
-#   Cloudflare optimizes web content delivery by storing duplicates of static content (such as CSS,
-#   JavaScript and image files) on its servers. Your web site content is served from the Cloudflare
-#   server located nearest to your visitors, which decreases page load times. If a server in
-#   Cloudflare's network is very busy, web traffic is automatically routed to the next server nearest
-#   to your visitors.
+#   Cloudflare speeds up content delivery by caching static assets
+#   such as CSS, JavaScript, and images on its servers. Content is
+#   served from the data center closest to the visitor, reducing
+#   page load times. If a server is under heavy load, traffic is
+#   automatically routed to the next closest location.

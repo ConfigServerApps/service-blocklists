@@ -1,0 +1,1 @@
+https://blocklist.configserver.dev/privacy_censysio.ipset

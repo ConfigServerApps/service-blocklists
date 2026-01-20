@@ -1,10 +1,13 @@
 #   Stripe API
-#
-#   Stripe is a payment service provider that lets merchants accept credit and debit cards or other payments.
-#   Its payment processing solution, Stripe Payments, is best suited for businesses that make most of their
-#   sales online, as most of its unique features are primarily geared toward online sales.
-#
-#   The Stripe REST API allows developers to integrate Stripe's payment functionalities into their applications.
-#
-#   This service is available via
+#   
+#   Stripe is a payment service provider that enables merchants to accept
+#   credit cards, debit cards, and other forms of payment. Its Stripe
+#   Payments solution is optimized for businesses that conduct most of
+#   their sales online, with features specifically designed for e-commerce
+#   transactions.
+#   
+#   The Stripe REST API allows developers to integrate Stripe payment
+#   functionalities directly into their applications and services.
+#   
+#   Service URL:
 #       https://api.stripe.com

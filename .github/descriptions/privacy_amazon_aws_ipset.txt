@@ -1,11 +1,13 @@
-#   This list contains ip addresses associated with Amazon AWS servers.
+#   This list contains IP addresses associated with Amazon AWS infrastructure.
 #   
-#   Amazon leases servers / products like hosted software and AI analytics to companies. Customers
-#   can rent servers using the Amazon AWS service which allows them to pay a monthly fee to rent a
-#   box they can utilize for whatever purpose.
-#
-#   Illegal activities are against Amazon's Terms of Service, however, it does happen. This blocklist
-#   allows you to stop any communication between your server, and the Amazon AWS servers.
-#
-#   If you believe an Amazon AWS server is being used to attack you, file a report at:
-#       - https://repost.aws/knowledge-center/report-aws-abuse
+#   Amazon provides leased servers and services such as hosted applications
+#   and analytics platforms. Customers can rent virtual servers through AWS
+#   on a subscription basis and use them for a wide range of purposes.
+#   
+#   Although illegal activity violates Amazon's Terms of Service, abuse does
+#   occur. This blocklist allows you to prevent communication between your
+#   server and AWS-hosted systems.
+#   
+#   If you believe an AWS server is being used to attack your infrastructure,
+#   report the abuse at:
+#      - https://repost.aws/knowledge-center/report-aws-abuse

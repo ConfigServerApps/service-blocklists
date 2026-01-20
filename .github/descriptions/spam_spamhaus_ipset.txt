@@ -1,17 +1,17 @@
-#   The Spamhaus Project is an international organisation based in
-#   the Principality of Andorra, founded in 1998 by Steve Linford
-#   to track email spammers and spam-related activity
-#
-#   The DROP (Don't Route Or Peer) lists are a subset of the
-#   Spamhaus Blocklist (SBL), designed for a total protection
-#   from all the activity involving the listed networks over all
-#   the Internet protocols. This also specifically includes
-#   traffic directed to these networks, such as access to web
-#   sites hosted there.
-#
-#   DROP will only include netblocks allocated directly by an
-#   established Regional Internet Registry (RIR) or 
-#   National Internet Registry (NIR) such as ARIN, RIPE, AFRINIC,
-#   APNIC, LACNIC or KRNIC or direct RIR allocations.
-#
-#   Contains 1300+ subnets, 1,590,0000+ unique IPs
+#   The Spamhaus Project is an international organization based in the
+#   Principality of Andorra, founded in 1998 by Steve Linford to track
+#   email spammers and spam-related activity across the Internet.
+#   
+#   The DROP (Don't Route Or Peer) lists are a subset of the Spamhaus
+#   Blocklist (SBL), created to provide complete protection from all
+#   malicious activity originating from the listed networks across all
+#   Internet protocols. This includes traffic targeting these networks,
+#   such as access to websites hosted within them.
+#   
+#   DROP only includes netblocks allocated directly by established
+#   Regional Internet Registries (RIRs) or National Internet Registries
+#   (NIRs), including ARIN, RIPE, AFRINIC, APNIC, LACNIC, and KRNIC,
+#   or via direct RIR allocations.
+#   
+#   The list contains over 1,300 subnets and more than 1,590,000 unique
+#   IP addresses.

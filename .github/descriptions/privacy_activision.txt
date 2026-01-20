@@ -1,0 +1,11 @@
+#   Activision Blocklist
+#   
+#   Activision is a major video game publisher known for popular titles
+#   such as Call of Duty, Destiny, and World of Warcraft. Its online
+#   services connect millions of players worldwide for multiplayer gaming,
+#   matchmaking, and content delivery.
+#   
+#   This blocklist contains IP addresses associated with Activision
+#   servers. By using it, you can prevent Activision services from
+#   accessing your server, blocking game-related traffic and connections
+#   from their network.

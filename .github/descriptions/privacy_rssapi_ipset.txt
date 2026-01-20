@@ -1,2 +1,7 @@
-#   Subscribe to RSS feeds and receive nearly real-time updates via webhooks.
-#   Consume any RSS, ATOM, and JSON feed.
+#   RSS Webhook API
+#   
+#   Subscribe to RSS feeds and receive near real-time updates via webhooks.
+#   
+#   This service allows you to consume RSS, ATOM, and JSON feeds from any
+#   source, enabling automated content updates and integration into your
+#   applications or services.
