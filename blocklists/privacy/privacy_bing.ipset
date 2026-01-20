@@ -1,20 +1,26 @@
 # #
 #   🧱 Firewall Blocklist - blocklists/privacy/privacy_bing.ipset
 #
-#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_bing.ipset
-#   @source         https://bing.com/toolbox/bingbot.json
+#   @repo           https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_bing.ipset
+#   @service        https://bing.com/toolbox/bingbot.json
 #   @id             privacy_bing_ipset
 #   @uuid           242d7bf6-08d5-31e1-8a0d-37a730bed1b8
-#   @updated        Fri Jan 16 09:20:19 UTC 2026
+#   @updated        Tue Jan 20 08:13:27 UTC 2026
 #   @entries        4736 ips
 #                   28 subnets
 #                   28 lines
 #   @expires        6 hours
 #   @category       Privacy
 #
-#   This list contains ip addresses associated with Bing crawlers.
+#   Bing Crawler Blocklist
 #   
-#   These are useful if you do not wish for search engines to grab content from your website.
+#   This list contains IP addresses used by Bing web crawlers, the automated
+#   bots operated by Microsoft to index and analyze websites for its search
+#   engine.
+#   
+#   By using this blocklist, you can prevent Bing from crawling or indexing
+#   your website content, stopping it from appearing in Bing search results
+#   and related Microsoft services.
 # #
 
 13.66.139.0/24

@@ -1,20 +1,22 @@
 # #
 #   🧱 Firewall Blocklist - blocklists/privacy/privacy_google.ipset
 #
-#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_google.ipset
-#   @source         https://developers.google.com/static/search/apis/ipranges/googlebot.json
+#   @repo           https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_google.ipset
+#   @service        https://developers.google.com/static/search/apis/ipranges/googlebot.json
 #   @id             privacy_google_ipset
 #   @uuid           ffadb25f-c1da-3844-93c3-f67e573b7ce8
-#   @updated        Fri Jan 16 09:20:16 UTC 2026
+#   @updated        Tue Jan 20 08:13:38 UTC 2026
 #   @entries        4928 ips
 #                   307 subnets
 #                   307 lines
 #   @expires        6 hours
 #   @category       Privacy
 #
-#   This list contains ip addresses associated with Google crawlers.
+#   This list contains IP addresses associated with Google web crawlers.
 #   
-#   These are useful if you do not wish for search engines to grab content from your website.
+#   Use this list if you want to stop Google search engines from indexing or
+#   crawling any content from your website, effectively blocking automated
+#   search bot access.
 # #
 
 34.22.85.0/27

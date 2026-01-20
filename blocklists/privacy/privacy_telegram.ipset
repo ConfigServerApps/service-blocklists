@@ -1,19 +1,24 @@
 # #
 #   🧱 Firewall Blocklist - blocklists/privacy/privacy_telegram.ipset
 #
-#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_telegram.ipset
-#   @source         https://core.telegram.org/resources/cidr.txt
+#   @repo           https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_telegram.ipset
+#   @service        https://core.telegram.org/resources/cidr.txt
 #   @id             privacy_telegram_ipset
 #   @uuid           d1bc7fff-3756-30cb-b376-b1ed8fdc511b
-#   @updated        Fri Jan 16 09:20:25 UTC 2026
+#   @updated        Tue Jan 20 08:13:51 UTC 2026
 #   @entries        11008 ips
 #                   14 subnets
 #                   14 lines
 #   @expires        6 hours
 #   @category       Privacy
 #
-#   Telegram Messenger, commonly known as Telegram, is a cloud-based, cross-platform, social media
-#   and instant messaging service.
+#   Telegram Messenger API
+#   
+#   Telegram, often called Telegram Messenger, is a cloud-based,
+#   cross-platform instant messaging and social media service. It allows
+#   users to send messages, media, and files securely and quickly across
+#   devices while supporting group chats, channels, and bots for extended
+#   functionality.
 # #
 
 2a0a:f280::/32

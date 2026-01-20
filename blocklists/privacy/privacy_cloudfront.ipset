@@ -1,23 +1,25 @@
 # #
 #   🧱 Firewall Blocklist - blocklists/privacy/privacy_cloudfront.ipset
 #
-#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_cloudfront.ipset
-#   @source         https://d7uri8nf7uskq.cloudfront.net/tools/list-cloudfront-ips
+#   @repo           https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_cloudfront.ipset
+#   @service        https://d7uri8nf7uskq.cloudfront.net/tools/list-cloudfront-ips
 #   @id             privacy_cloudfront_ipset
 #   @uuid           faac2d95-4e94-303c-9cbf-74304f75f5fa
-#   @updated        Fri Jan 16 09:20:17 UTC 2026
+#   @updated        Tue Jan 20 08:13:31 UTC 2026
 #   @entries        4172933 ips
 #                   199 subnets
 #                   199 lines
 #   @expires        6 hours
 #   @category       Privacy
 #
-#   This list contains ip addresses associated with CloudFront.
-#
-#   Amazon CloudFront is a content delivery network operated by Amazon Web Services. The content
-#   delivery network was created to provide a globally-distributed network of proxy servers to
-#   cache content, such as web videos or other bulky media, more locally to consumers, to improve
-#   access speed for downloading the content.
+#   This list contains IP addresses associated with Amazon CloudFront.
+#   
+#   Amazon CloudFront is a content delivery network operated by AWS.
+#   It provides a globally distributed network of edge locations that
+#   cache content such as videos and large media files closer to users.
+#   
+#   By serving content from nearby locations, CloudFront improves
+#   download speeds and reduces latency for end users.
 # #
 
 3.10.17.128/25

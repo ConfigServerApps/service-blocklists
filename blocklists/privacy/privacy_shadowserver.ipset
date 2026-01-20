@@ -1,0 +1,51 @@
+# #
+#   🧱 Firewall Blocklist - blocklists/privacy/privacy_shadowserver.ipset
+#
+#   @repo           https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_shadowserver.ipset
+#   @service        None
+#   @id             privacy_shadowserver_ipset
+#   @uuid           1e020598-1b53-3795-8d12-34242a9f4bdf
+#   @updated        Tue Jan 20 08:13:46 UTC 2026
+#   @entries        9235 ips
+#                   33 subnets
+#                   33 lines
+#   @asn            AS22168
+#   @expires        6 hours
+#   @category       Uncategorized
+#
+#   No description provided
+# #
+
+45.143.160.0/24
+50.114.88.0/24
+64.62.156.0/24
+64.62.197.0/24
+64.157.28.0/24
+65.49.1.0/24
+66.28.12.48/28
+108.165.44.0/24
+146.19.20.0/24
+154.16.223.0/24
+154.16.230.0/24
+154.16.240.0/24
+154.16.250.0/24
+162.249.64.0/21
+166.0.195.0/24
+179.61.168.0/24
+181.41.192.0/24
+181.214.62.0/24
+181.214.90.0/24
+181.214.234.0/24
+181.214.245.0/24
+181.215.138.0/24
+181.215.145.0/24
+181.215.208.0/24
+185.91.204.0/24
+185.181.1.0/24
+191.96.20.0/24
+191.96.22.0/24
+191.96.127.0/24
+191.101.103.0/24
+2001:470:2cc::/48
+2001:470:3f6::/48
+2620:24:c040::/48

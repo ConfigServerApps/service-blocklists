@@ -1,28 +1,30 @@
 # #
 #   🧱 Firewall Blocklist - blocklists/privacy/privacy_amazon_aws.ipset
 #
-#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_amazon_aws.ipset
-#   @source         https://ip-ranges.amazonaws.com/ip-ranges.json
+#   @repo           https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_amazon_aws.ipset
+#   @service        https://ip-ranges.amazonaws.com/ip-ranges.json
 #   @id             privacy_amazon_aws_ipset
 #   @uuid           0dad23a4-276f-3f28-9f0b-3d543e375f70
-#   @updated        Fri Jan 16 09:20:20 UTC 2026
-#   @entries        95705751 ips
-#                   5583 subnets
-#                   5583 lines
+#   @updated        Tue Jan 20 08:13:25 UTC 2026
+#   @entries        95706055 ips
+#                   5590 subnets
+#                   5590 lines
 #   @expires        6 hours
 #   @category       Privacy
 #
-#   This list contains ip addresses associated with Amazon AWS servers.
+#   This list contains IP addresses associated with Amazon AWS infrastructure.
 #   
-#   Amazon leases servers / products like hosted software and AI analytics to companies. Customers
-#   can rent servers using the Amazon AWS service which allows them to pay a monthly fee to rent a
-#   box they can utilize for whatever purpose.
-#
-#   Illegal activities are against Amazon's Terms of Service, however, it does happen. This blocklist
-#   allows you to stop any communication between your server, and the Amazon AWS servers.
-#
-#   If you believe an Amazon AWS server is being used to attack you, file a report at:
-#       - https://repost.aws/knowledge-center/report-aws-abuse
+#   Amazon provides leased servers and services such as hosted applications
+#   and analytics platforms. Customers can rent virtual servers through AWS
+#   on a subscription basis and use them for a wide range of purposes.
+#   
+#   Although illegal activity violates Amazon's Terms of Service, abuse does
+#   occur. This blocklist allows you to prevent communication between your
+#   server and AWS-hosted systems.
+#   
+#   If you believe an AWS server is being used to attack your infrastructure,
+#   report the abuse at:
+#      - https://repost.aws/knowledge-center/report-aws-abuse
 # #
 
 1.178.1.0/24
@@ -1921,7 +1923,6 @@
 23.20.0.0/14
 23.91.0.0/19
 23.160.0.0/24
-23.228.194.0/24
 23.228.196.0/24
 23.228.197.0/24
 23.228.198.0/24
@@ -1964,6 +1965,7 @@
 35.34.98.0/24
 35.34.99.0/24
 35.34.100.0/24
+35.34.101.0/24
 35.42.0.0/16
 35.43.0.0/16
 35.44.0.0/15
@@ -2254,6 +2256,7 @@
 43.192.0.0/16
 43.192.156.0/23
 43.192.160.0/22
+43.192.202.0/24
 43.193.0.0/18
 43.193.64.0/24
 43.193.65.0/24
@@ -4278,6 +4281,12 @@
 69.107.11.184/29
 69.107.11.192/29
 69.107.11.200/29
+69.107.11.208/29
+69.107.11.216/29
+69.107.11.224/29
+69.107.11.232/29
+69.107.11.240/29
+69.107.11.248/29
 69.230.192.0/18
 69.231.128.0/18
 69.234.192.0/18

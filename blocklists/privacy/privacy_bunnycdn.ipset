@@ -1,20 +1,23 @@
 # #
 #   🧱 Firewall Blocklist - blocklists/privacy/privacy_bunnycdn.ipset
 #
-#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_bunnycdn.ipset
-#   @source         https://api.bunny.net/system/edgeserverlist/plain | https://api.bunny.net/system/edgeserverlist/ipv6
+#   @repo           https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_bunnycdn.ipset
+#   @service        https://api.bunny.net/system/edgeserverlist/plain | https://api.bunny.net/system/edgeserverlist/ipv6
 #   @id             privacy_bunnycdn_ipset
 #   @uuid           6526e73d-f7e2-3927-8d8e-7e8873d0b484
-#   @updated        Fri Jan 16 09:20:29 UTC 2026
+#   @updated        Tue Jan 20 08:13:29 UTC 2026
 #   @entries        936 ips
 #                   0 subnets
 #                   936 lines
 #   @expires        6 hours
 #   @category       Privacy
 #
-#   BunnyCDN is a Slovenia based company which is known as a Content Delivery Network (CDN) which
-#   offers a variety of tools which allows you to speed up loading times of your website. It is
-#   commonly compared to CloudflareCDN.
+#   BunnyCDN is a Slovenia-based company that operates a content
+#   delivery network (CDN). It provides tools designed to improve
+#   website performance and reduce load times.
+#   
+#   BunnyCDN is commonly compared to Cloudflare due to its similar
+#   CDN-focused services.
 # #
 
 2a01:4f8:10a:201f::2

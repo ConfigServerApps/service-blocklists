@@ -1,23 +1,25 @@
 # #
 #   🧱 Firewall Blocklist - blocklists/privacy/privacy_pingdom.ipset
 #
-#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_pingdom.ipset
-#   @source         https://my.pingdom.com/probes/ipv4 | https://my.pingdom.com/probes/ipv6
+#   @repo           https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_pingdom.ipset
+#   @service        https://my.pingdom.com/probes/ipv4 | https://my.pingdom.com/probes/ipv6
 #   @id             privacy_pingdom_ipset
 #   @uuid           b5c33ba7-0bce-3d84-b803-c055dbe15e0f
-#   @updated        Fri Jan 16 09:20:26 UTC 2026
+#   @updated        Tue Jan 20 08:13:41 UTC 2026
 #   @entries        150 ips
 #                   0 subnets
 #                   150 lines
 #   @expires        6 hours
 #   @category       Privacy
 #
-#   Pingdom AB is a Swedish website monitoring software as a service company launched in Stockholm
-#   and later acquired by the Austin, Texas–based SolarWinds. is a website monitoring and performance
-#   optimization tool.
-#
-#   It allows users to monitor the uptime, availability, and performance of websites, servers, and
-#   online services from various locations globally.
+#   Pingdom AB is a Swedish company providing website monitoring software
+#   as a service. It was founded in Stockholm and later acquired by the
+#   Austin, Texas company SolarWinds. Pingdom offers tools for monitoring
+#   and optimizing website performance.
+#   
+#   Users can track uptime, availability, and overall performance of
+#   websites, servers, and online services from multiple locations around
+#   the world.
 # #
 
 2a00:1a28:2000::4055

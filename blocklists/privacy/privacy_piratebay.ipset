@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - blocklists/privacy/privacy_piratebay.ipset
 #
-#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_piratebay.ipset
-#   @source         None
+#   @repo           https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_piratebay.ipset
+#   @service        None
 #   @id             privacy_piratebay_ipset
 #   @uuid           65a124a5-fb37-319e-90de-713055602f0a
-#   @updated        Fri Jan 16 09:20:36 UTC 2026
+#   @updated        Tue Jan 20 08:13:42 UTC 2026
 #   @entries        323 ips
 #                   2 subnets
 #                   5 lines

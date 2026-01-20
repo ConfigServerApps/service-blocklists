@@ -1,24 +1,28 @@
 # #
 #   🧱 Firewall Blocklist - blocklists/privacy/privacy_uptimerobot.ipset
 #
-#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_uptimerobot.ipset
-#   @source         https://uptimerobot.com/inc/files/ips/IPv4andIPv6.txt
+#   @repo           https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_uptimerobot.ipset
+#   @service        https://uptimerobot.com/inc/files/ips/IPv4andIPv6.txt
 #   @id             privacy_uptimerobot_ipset
 #   @uuid           0dc165b7-5bfc-32de-ab69-c4b8b99332dc
-#   @updated        Fri Jan 16 09:20:25 UTC 2026
+#   @updated        Tue Jan 20 08:13:52 UTC 2026
 #   @entries        232 ips
 #                   0 subnets
 #                   232 lines
 #   @expires        6 hours
 #   @category       Privacy
 #
-#   UptimeRobot is a service that monitors your website’s uptime and alerts you when it goes
-#   down. By integrating UptimeRobot with RunCloud, you can monitor all of your websites hosted
-#   on RunCloud servers, and access a number of features and benefits from both.
-#
-#   It achieves this by sending requests to your website at regular intervals and checking the
-#   response status code, response time, and keyword presence. If the response is not satisfactory,
-#   UptimeRobot will notify you via email, SMS, webhook, or other method of your choice.
+#   UptimeRobot API
+#   
+#   UptimeRobot is a service that monitors your websites’ uptime and sends
+#   alerts when a site goes down. By integrating UptimeRobot with RunCloud,
+#   you can track all websites hosted on RunCloud servers and leverage
+#   features from both platforms.
+#   
+#   The service works by sending requests to your sites at regular intervals,
+#   checking response status codes, response times, and keyword presence.
+#   If a response is unsatisfactory, UptimeRobot notifies you via email, SMS,
+#   webhooks, or other preferred methods.
 # #
 
 2a01:4f8:1c1a:3d53::1

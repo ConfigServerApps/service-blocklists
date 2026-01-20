@@ -1,11 +1,11 @@
 # #
 #   🧱 Firewall Blocklist - blocklists/privacy/privacy_nintendo.ipset
 #
-#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_nintendo.ipset
-#   @source         None
+#   @repo           https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_nintendo.ipset
+#   @service        None
 #   @id             privacy_nintendo_ipset
 #   @uuid           e6901bfd-d281-300f-9638-2b2d85345d08
-#   @updated        Fri Jan 16 09:20:33 UTC 2026
+#   @updated        Tue Jan 20 08:13:39 UTC 2026
 #   @entries        3927 ips
 #                   44 subnets
 #                   45 lines

@@ -1,24 +1,26 @@
 # #
 #   🧱 Firewall Blocklist - blocklists/privacy/privacy_amazon_ec2.ipset
 #
-#   @url            https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_amazon_ec2.ipset
-#   @source         https://ip-ranges.amazonaws.com/ip-ranges.json
+#   @repo           https://raw.githubusercontent.com/configserver-software/service-blocklists/main/blocklists/privacy/privacy_amazon_ec2.ipset
+#   @service        https://ip-ranges.amazonaws.com/ip-ranges.json
 #   @id             privacy_amazon_ec2_ipset
 #   @uuid           8d68f156-5dad-39a6-83ee-bd1a62e6fd09
-#   @updated        Fri Jan 16 09:20:21 UTC 2026
-#   @entries        72873261 ips
-#                   1694 subnets
-#                   1694 lines
+#   @updated        Tue Jan 20 08:13:26 UTC 2026
+#   @entries        72873005 ips
+#                   1693 subnets
+#                   1693 lines
 #   @expires        6 hours
 #   @category       Privacy
 #
-#   This list contains ip addresses associated with Amazon EC2 servers.
+#   This list contains IP addresses associated with Amazon EC2 instances.
 #   
-#   Amazon Elastic Compute Cloud (Amazon EC2) allows for customers to rent and deploy a virtual
-#   machine (vm) which can sometimes attempt to access your server.
-#
-#   Illegal activities are against Amazon's Terms of Service, however, it does happen. This
-#   blocklist allows you to stop any communication between your server, and the Amazon EC2 servers.
+#   Amazon Elastic Compute Cloud (EC2) allows customers to deploy and run
+#   virtual machines on demand. These instances may sometimes attempt to
+#   connect to or scan external servers.
+#   
+#   While illegal activity violates Amazon's Terms of Service, abuse can
+#   occur. This blocklist helps prevent communication between your server
+#   and Amazon EC2-hosted systems.
 # #
 
 1.178.1.0/24
@@ -606,7 +608,6 @@
 18.253.0.0/16
 18.254.0.0/16
 23.20.0.0/14
-23.228.194.0/24
 23.228.196.0/24
 23.228.197.0/24
 23.228.198.0/24
