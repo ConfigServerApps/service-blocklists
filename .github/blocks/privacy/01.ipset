@@ -1,257 +1,328 @@
-
-# #
-#   https://search.censys.io
-# #
-
-66.132.159.0/24
-162.142.125.0/24
-167.94.138.0/24
-167.94.145.0/24
-167.94.146.0/24
-167.248.133.0/24
-192.35.168.0/24
-192.35.169.0/24
-199.45.154.0/24
-199.45.155.0/24
-206.168.34.0/24
-206.168.35.0/24
-2602:80d:1000:b0cc:e::/80
-2620:96:e000:b0cc:e::/80
-2602:80d:1003::/112
-2602:80d:1004::/112
-
-# #
-#   https://internet-census.org
-# #
-
-45.156.73.0/24
-98.96.193.0/24
-185.119.81.0/24
-185.226.197.0/24
-193.118.53.0/24
-
-# #
-#   https://internet-albedo.net
-# #
-
-146.88.240.0/23
-146.88.241.0/23
-
-# #
-#   https://recyber.net
-# #
-
-89.248.163.0/24
-89.248.165.0/24
-
-# #
-#   CariNet, Inc.
-#
-#   a wide variety of bots come from this company (or customers of the company),
-#   including scrapers, brute-forcing, email spam, data collection, etc.
-#
-#   https://raw.githubusercontent.com/cbuijs/ipasn/master/asn/as10439.list
-# #
-
-66.240.192.0/18
-71.6.128.0/17
-135.84.216.0/24
-209.126.128.0/17
-216.75.0.0/18
-216.98.128.0/19
-
-# #
-#   Shodan is a search engine which does not index web sites or web contents,
-#   but vulnerable devices on the internet. To set up this index and to keep
-#   it up to date, Shodan uses at least 16 scanners with different AS numbers
-#   and different physical locations.
-# #
-
-64.227.90.185
-66.240.192.138
-66.240.205.34
-66.240.219.133
-66.240.219.146
-66.240.236.119
-71.6.135.131
-71.6.135.131
-71.6.146.130
-71.6.146.185
-71.6.146.186
-71.6.147.198
-71.6.147.254
-71.6.150.153
-71.6.158.166
-71.6.165.200
-71.6.167.125
-71.6.167.142
-71.6.199.23
-80.82.77.33
-80.82.77.139
-82.221.105.6
-82.221.105.7
-85.25.43.94
-85.25.103.50
-89.248.167.131
-89.248.172.7
-89.248.172.16
-93.120.27.62
-93.174.95.106
-94.102.49.190
-94.102.49.193
-104.131.0.69
-104.236.198.48
-137.184.9.17
-137.184.13.100
-137.184.94.133
-137.184.95.216
-137.184.112.103
-137.184.112.192
-137.184.180.190
-137.184.190.188
-137.184.190.194
-137.184.190.205
-137.184.190.246
-143.110.239.2
-143.198.50.234
-143.198.68.20
-143.198.225.197
-143.198.238.87
-159.203.176.62
-162.159.244.38
-165.227.55.4
-165.227.62.247
-167.172.219.157
-185.142.236.34
-185.142.236.35
-185.142.236.36
-185.142.236.40
-185.142.236.41
-185.142.236.43
-185.142.239.16
-185.163.109.66
-185.165.190.17
-185.165.190.34
-185.181.102.18
-188.138.9.50
-195.144.21.56
-198.20.69.74
-198.20.69.96/29
-198.20.69.98
-198.20.70.112/29
-198.20.70.114
-198.20.87.96/29
-198.20.87.98
-198.20.99.128/29
-198.20.99.130
-207.90.244.0/24
-207.90.244.0/28
-208.180.20.97
-209.126.110.38
-216.117.2.180
-216.117.2.180
-
-# #
-#   Project25499.com
-# #
-
-98.143.148.107
-98.143.148.135
-155.94.222.12
-155.94.254.133
-155.94.254.143
-
-# #
-#   InternetArchive
-# #
-
-207.241.224.0/20
-207.241.238.0/24
-208.70.24.0/21
-
-# #
-#   https://securitytrails.com
-# #
-
-193.3.53.0/24
-195.230.103.0/24
-
-# #
-#   https://*.probe.onyphe.net
-# #
-
-5.135.238.157
-5.196.113.13
-15.204.37.0/24
-15.235.189.145
-45.43.33.218
-51.81.181.0/24
-51.81.215.0/24
-51.178.236.242
-51.178.236.247
-54.38.100.151
-91.134.185.84
-135.148.10.171
-135.148.25.118
-135.148.57.185
-135.148.57.188
-135.148.213.241
-137.74.239.0/24
-137.74.239.145
-137.74.239.158
-139.99.9.0/24
-147.135.23.0/24
-147.135.85.131
-149.202.132.200
-178.32.72.211
-213.32.32.84
-217.182.186.42
-217.182.186.46
-
-# #
-#   https://internet-measurement.com
-# #
-
-68.183.53.77/32
-87.236.176.0/24
-104.248.203.191/32
-104.248.204.195/32
-142.93.191.98/32
-157.245.216.203/32
-165.22.39.64/32
-167.99.209.184/32
-185.247.137.0/24
-188.166.26.88/32
-193.163.125.0/24
-206.189.7.178/32
-209.97.152.248/32
-
-# #
-#   https://cyberresilience.io
-# #
-
-46.101.122.0/24
-46.101.157.0/24
-138.68.71.0/24
-152.42.136.0/24
-157.230.225.0/24
-165.227.85.0/24
-188.166.49.0/24
-188.166.165.0/24
-192.241.155.0/24
-209.38.33.0/24
-209.38.46.0/24
-209.38.206.0/24
-
-# #
-#   ShadowServer Foundation
-# #
-
-64.62.156.0/24
-64.62.197.0/24
-65.49.1.0/24
-65.49.20.0/24
-74.82.47.0/24
-184.105.139.0/24
-184.105.247.0/24
-216.218.206.0/24
+45.55.151.3/32                      # AS399628 internet-measurement.com
+45.55.153.86/32                     # AS399628 internet-measurement.com
+45.55.158.168/32                    # AS399628 internet-measurement.com
+45.55.185.224/32                    # AS399628 internet-measurement.com
+45.55.186.92/32                     # AS399628 internet-measurement.com
+45.156.128.0/24                     # internet-census.org
+45.156.129.0/24                     # internet-census.org
+64.62.156.0/24                      # AS22168 ShadowServer Foundation
+64.62.197.0/24                      # AS22168 ShadowServer Foundation
+64.225.101.76/32                    # cyberresilience.io
+64.227.76.184/32                    # cyberresilience.io
+64.227.90.185                       # draft.census.shodan.io
+64.227.99.138/32                    # AS399628 internet-measurement.com
+64.227.108.146/32                   # AS399628 internet-measurement.com
+64.227.109.89/32                    # AS399628 internet-measurement.com
+64.227.110.161/32                   # AS399628 internet-measurement.com
+65.49.1.0/24                        # AS22168 ShadowServer Foundation
+65.49.20.0/24                       # AS22168 ShadowServer Foundation
+66.132.148.0/24                     # AS398324 Censys
+66.132.153.0/24                     # AS398324 Censys
+66.132.159.0/24                     # AS398324 Censys
+66.132.172.0/24                     # AS398324 Censys
+66.132.175.0/24                     # AS398324 Censys
+66.132.180.0/24                     # AS398324 Censys
+66.132.186.0/24                     # AS398324 Censys
+66.132.195.0/24                     # AS398324 Censys
+66.132.198.0/24                     # AS398324 Censys
+66.132.209.0/24                     # AS398324 Censys
+66.132.224.0/24                     # AS398324 Censys
+66.132.228.0/24                     # AS398324 Censys
+66.132.233.0/24                     # AS398324 Censys
+66.132.237.0/24                     # AS398324 Censys
+66.132.245.0/24                     # AS398324 Censys
+66.132.255.0/24                     # AS398324 Censys
+66.234.1.0/24                       # AS398324 Censys
+66.240.192.138                      # census8.shodan.io
+66.240.205.34                       # malware-hunter.census.shodan.io
+66.240.219.133                      # wall.census.shodan.io
+66.240.219.146                      # burger.census.shodan.io
+66.240.236.119                      # census6.shodan.io
+66.240.244.144/29                   # AS398324 Censys
+71.6.135.131                        # census7.shodan.io
+71.6.135.131                        # soda.census.shodan.io
+71.6.146.130                        # refrigerator.census.shodan.io
+71.6.146.185                        # pirate.census.shodan.io
+71.6.146.186                        # inspire.census.shodan.io
+71.6.147.198                        # board.census.shodan.io
+71.6.147.254                        # tesla.census.shodan.io
+71.6.150.153                        # thor.data.shodan.io
+71.6.158.166                        # ninja.census.shodan.io
+71.6.165.200                        # census12.shodan.io
+71.6.167.125                        # grimace.data.shodan.io
+71.6.167.142                        # census9.shodan.io
+71.6.199.23                         # einstein.census.shodan.io
+74.82.47.0/24                       # AS22168 ShadowServer Foundation
+74.120.14.0/24                      # AS398324 Censys
+80.82.65.70                         # security.criminalip.com
+80.82.66.22                         # security.criminalip.com
+80.82.66.23                         # security.criminalip.com
+80.82.66.24                         # security.criminalip.com
+80.82.77.19                         # security.criminalip.com
+80.82.77.33                         # sky.census.shodan.io
+80.82.77.41                         # security.criminalip.com
+80.82.77.42                         # security.criminalip.com
+80.82.77.57/32                      # recyber.net
+80.82.77.57                         # security.criminalip.com
+80.82.77.62                         # security.criminalip.com
+80.82.77.82                         # security.criminalip.com
+80.82.77.86                         # security.criminalip.com
+80.82.77.139                        # dojo.census.shodan.io
+80.82.77.192/31                     # security.criminalip.com
+80.82.77.192                        # security.criminalip.com
+80.82.77.193                        # security.criminalip.com
+80.82.77.211/32                     # security.criminalip.com
+80.82.77.211                        # security.criminalip.com
+80.82.77.212                        # security.criminalip.com
+80.82.77.216                        # security.criminalip.com
+80.82.77.227/32                     # security.criminalip.com
+80.82.77.227                        # security.criminalip.com
+80.82.77.228/31                     # security.criminalip.com
+80.82.77.228                        # security.criminalip.com
+80.82.77.229                        # security.criminalip.com
+80.82.77.230/32                     # scanner.openportstats.com
+80.82.77.230                        # security.criminalip.com
+80.82.77.235/32                     # scanner.openportstats.com
+80.82.77.235                        # security.criminalip.com
+80.82.77.245                        # security.criminalip.com
+80.82.78.100                        # security.criminalip.com
+82.221.105.6                        # census10.shodan.io
+82.221.105.7                        # census11.shodan.io
+85.25.103.50                        # rim.census.shodan.io
+87.236.176.0/24                     # AS399628 internet-measurement.com
+89.248.160.78/31                    # security.criminalip.com
+89.248.160.78                       # security.criminalip.com
+89.248.160.79                       # security.criminalip.com
+89.248.160.80                       # security.criminalip.com
+89.248.160.132                      # security.criminalip.com
+89.248.160.135                      # security.criminalip.com
+89.248.160.150                      # security.criminalip.com
+89.248.165.33/32                    # recyber.net
+89.248.167.131                      # mason.census.shodan.io
+89.248.168.3                        # security.criminalip.com
+89.248.168.16/31                    # security.criminalip.com
+89.248.168.16                       # security.criminalip.com
+89.248.168.17                       # security.criminalip.com
+89.248.168.51                       # security.criminalip.com
+89.248.168.60/31                    # security.criminalip.com
+89.248.168.60                       # security.criminalip.com
+89.248.168.61                       # security.criminalip.com
+89.248.168.108                      # security.criminalip.com
+89.248.168.112/30                   # security.criminalip.com
+89.248.168.112                      # security.criminalip.com
+89.248.168.113                      # security.criminalip.com
+89.248.168.114                      # security.criminalip.com
+89.248.168.115                      # security.criminalip.com
+89.248.168.138                      # security.criminalip.com
+89.248.168.140/31                   # security.criminalip.com
+89.248.168.140                      # security.criminalip.com
+89.248.168.141                      # security.criminalip.com
+89.248.168.143                      # security.criminalip.com
+89.248.168.157                      # security.criminalip.com
+89.248.168.170                      # security.criminalip.com
+89.248.168.176                      # security.criminalip.com
+89.248.168.192                      # security.criminalip.com
+89.248.168.217                      # security.criminalip.com
+89.248.168.220/32                   # scanner.openportstats.com
+89.248.168.220                      # security.criminalip.com
+89.248.168.222/32                   # scanner.openportstats.com
+89.248.168.222                      # security.criminalip.com
+89.248.169.12/30                    # security.criminalip.com
+89.248.169.12                       # security.criminalip.com
+89.248.169.13                       # security.criminalip.com
+89.248.169.14                       # security.criminalip.com
+89.248.169.15                       # security.criminalip.com
+89.248.171.144                      # security.criminalip.com
+89.248.172.7                        # house.census.shodan.io
+89.248.172.16                       # house.census.shodan.io
+89.248.174.3                        # security.criminalip.com
+89.248.174.144                      # security.criminalip.com
+89.248.174.193/32                   # security.criminalip.com
+89.248.174.193                      # security.criminalip.com
+89.248.174.194                      # security.criminalip.com
+89.248.174.196/31                   # security.criminalip.com
+89.248.174.196                      # security.criminalip.com
+89.248.174.197                      # security.criminalip.com
+91.196.152.0/24                     # AS213412 ONYPHE SAS / onyphe.io
+91.230.168.0/24                     # AS213412 ONYPHE SAS / onyphe.io
+91.231.89.0/24                      # AS213412 ONYPHE SAS / onyphe.io
+93.120.27.62                        # census5.shodan.io
+93.174.93.10                        # security.criminalip.com
+93.174.93.65                        # security.criminalip.com
+93.174.93.76                        # security.criminalip.com
+93.174.93.195                       # security.criminalip.com
+93.174.93.226                       # security.criminalip.com
+93.174.93.241                       # security.criminalip.com
+93.174.95.106                       # battery.census.shodan.io
+94.102.49.190                       # flower.census.shodan.io
+94.102.49.193                       # cloud.census.shodan.io
+94.102.51.22                        # security.criminalip.com
+94.102.56.18                        # security.criminalip.com
+94.102.56.215                       # security.criminalip.com
+94.231.206.0/24                     # AS213412 ONYPHE SAS / onyphe.io
+98.143.148.107                      # scanner01.project25499.com
+98.143.148.135                      # scanner05.project25499.com
+104.131.0.69                        # hello.data.shodan.io
+104.236.198.48                      # blog.shodan.io
+107.170.65.169/32                   # AS399628 internet-measurement.com
+128.199.8.140/32                    # AS399628 internet-measurement.com
+137.184.9.17                        # heimdal.scan6x.shodan.io
+137.184.13.100                      # gravy.scanf.shodan.io
+137.184.94.133                      # scanme.scanf.shodan.io
+137.184.95.216                      # dog.census.shodan.io
+137.184.112.103                     # frame.census.shodan.io
+137.184.112.192                     # jug.census.shodan.io
+137.184.180.190                     # collector.chrono.shodan.io
+137.184.190.188                     # elk.census.shodan.io
+137.184.190.194                     # sparkle.census.shodan.io
+137.184.190.205                     # pack.census.shodan.io
+137.184.190.246                     # fish.census.shodan.io
+143.110.239.2                       # buffet.census.shodan.io
+143.198.68.20                       # deer.census.shodan.io
+143.198.225.197                     # floss.census.shodan.io
+143.198.238.87                      # can.census.shodan.io
+144.121.129.128/30                  # AS398324 Censys
+144.129.235.40/29                   # AS398324 Censys
+155.94.222.12                       # scanner04.project25499.com
+155.94.254.133                      # scanner02.project25499.com
+155.94.254.143                      # scanner03.project25499.com
+157.245.243.118/32                  # AS399628 internet-measurement.com
+157.245.245.246/32                  # AS399628 internet-measurement.com
+159.65.216.50/32                    # AS399628 internet-measurement.com
+159.65.219.252/32                   # AS399628 internet-measurement.com
+159.203.176.62                      # ny.private.shodan.io
+162.142.125.0/24                    # AS398324 Censys
+162.159.244.38                      # www.shodan.io
+162.243.114.171/32                  # AS399628 internet-measurement.com
+162.243.116.182/32                  # AS399628 internet-measurement.com
+162.243.208.127/32                  # AS399628 internet-measurement.com
+165.227.55.4                        # kiwi.census.shodan.io
+165.227.62.247                      # manfo.census.shodan.io
+167.94.138.0/24                     # AS398324 Censys
+167.94.144.0/23                     # AS398324 Censys
+167.99.149.55/32                    # cyberresilience.io
+167.99.234.119/32                   # AS399628 internet-measurement.com
+167.172.219.157                     # tab.census.shodan.io
+167.248.133.0/24                    # AS398324 Censys
+169.197.108.0/24                    # internet-census.org
+178.128.242.174/32                  # cyberresilience.io
+184.105.139.0/24                    # AS22168 ShadowServer Foundation
+184.105.247.0/24                    # AS22168 ShadowServer Foundation
+185.142.236.34                      # hat.census.shodan.io
+185.142.236.35                      # wine.census.shodan.io
+185.142.236.36                      # green.census.shodan.io
+185.142.236.40                      # blue.census.shodan.io
+185.142.236.41                      # guitar.census.shodan.io
+185.142.236.43                      # blue2.census.shodan.io
+185.142.239.16                      # red2.census.shodan.io
+185.163.109.66                      # goldfish.census.shodan.io
+185.165.190.17                      # purple.census.shodan.io
+185.165.190.34                      # red.census.shodan.io
+185.180.140.0/24                    # internet-census.org
+185.180.142.0/24                    # internet-census.org
+185.180.143.0/24                    # internet-census.org
+185.181.102.18                      # turtle.census.shodan.io
+185.247.137.0/24                    # AS399628 internet-measurement.com
+188.138.9.50                        # atlantic.census.shodan.io
+192.35.168.0/24                     # AS398324 Censys
+192.35.169.0/24                     # AS398324 Censys
+192.241.154.87/32                   # cyberresilience.io
+192.241.179.235/32                  # AS399628 internet-measurement.com
+193.163.125.0/24                    # AS399628 internet-measurement.com
+195.144.21.56                       # red3.census.shodan.io
+195.184.76.0/24                     # AS213412 ONYPHE SAS / onyphe.io
+198.20.69.74                        # census2.shodan.io
+198.20.69.96/29                     # census2.shodan.io
+198.20.70.112/29                    # census3.shodan.io
+198.20.70.114                       # census3.shodan.io
+198.20.87.96/29                     # border.census.shodan.io
+198.20.87.98                        # border.census.shodan.io
+198.20.99.128/29                    # census4.shodan.io
+198.20.99.130                       # census4.shodan.io
+198.108.204.216/29                  # AS398324 Censys
+198.199.84.120/32                   # cyberresilience.io
+199.45.154.0/23                     # AS398324 Censys
+199.45.154.0/24                     # AS398324 Censys
+199.45.155.0/24                     # AS398324 Censys
+206.81.29.46/32                     # cyberresilience.io
+206.168.32.0/24                     # AS398324 Censys
+206.168.33.0/24                     # AS398324 Censys
+206.168.34.0/24                     # AS398324 Censys
+206.168.35.0/24                     # AS398324 Censys
+207.154.228.110/32                  # cyberresilience.io
+208.180.20.97                       # census1.shodan.io
+209.126.110.38                      # atlantic.dns.shodan.io
+216.117.2.180                       # shodan.io
+216.117.2.180                       # red1.census.shodan.io
+2602:80d:1000:b0cc:e::/80           # AS398324 Censys
+2620:96:e000:b0cc:e::/80            # AS398324 Censys
+2602:80d:1003::/112                 # AS398324 Censys
+2602:80d:1004::/112                 # AS398324 Censys
+128.1.91.0/24                       # internet-census.org
+128.1.248.0/24                      # internet-census.org
+128.14.128.0/24                     # internet-census.org
+128.14.136.0/24                     # internet-census.org
+128.14.137.0/24                     # internet-census.org
+128.14.141.0/24                     # internet-census.org
+2a10:3c0:1::/48                     # internet-census.org
+2a10:3c0:100::/48                   # internet-census.org
+2a10:3c0:2::/48                     # internet-census.org
+2a10:3c0:101::/48                   # internet-census.org
+66.240.192.0/18                     # AS10439 CariNet, Inc.
+71.6.128.0/17                       # AS10439 CariNet, Inc.
+80.82.66.22/31                      # security.criminalip.com
+80.82.77.41/32                      # security.criminalip.com
+89.248.163.0/24                     # recyber.net
+89.248.165.0/24                     # recyber.net
+135.84.216.0/24                     # AS10439 CariNet, Inc.
+146.88.240.0/23                     # internet-albedo.net
+146.88.241.0/23                     # internet-albedo.net
+185.216.140.6                       # security.criminalip.com
+185.216.140.12                      # security.criminalip.com
+185.216.140.26/32                   # scanner.openportstats.com
+185.216.140.26                      # security.criminalip.com
+185.216.140.29                      # security.criminalip.com
+185.216.140.31/32                   # scanner.openportstats.com
+185.216.140.31                      # security.criminalip.com
+185.242.226.0/24                    # security.criminalip.com
+209.126.128.0/17                    # AS10439 CariNet, Inc.
+216.75.0.0/18                       # AS10439 CariNet, Inc.
+216.98.128.0/19                     # AS10439 CariNet, Inc.
+2607:ff10::/32                      # AS10439 CariNet, Inc.
+104.143.83.0/24                     # AS211607 Securitytrails, LLC
+193.3.53.0/24                       # AS211607 Securitytrails, LLC
+195.230.103.0/24                    # AS211607 Securitytrails, LLC
+207.241.224.0/24                    # AS7941 Internet Archive
+207.241.231.0/24                    # AS7941 Internet Archive
+207.241.234.0/24                    # AS7941 Internet Archive
+207.241.237.0/24                    # AS7941 Internet Archive
+208.70.24.0/21                      # AS7941 Internet Archive
+216.218.206.0/24                    # AS22168 ShadowServer Foundation
+2a06:4880::/30                      # AS399628 internet-measurement.com
+2604:a880:0:202a::b41:8000/124      # AS399628 internet-measurement.com
+2604:a880:0:202a::b41:a000/124      # AS399628 internet-measurement.com
+2604:a880:0:202a::b41:b000/124      # AS399628 internet-measurement.com
+2604:a880:0:202a::b42:d000/124      # AS399628 internet-measurement.com
+2604:a880:0:202a::b42:e000/124      # AS399628 internet-measurement.com
+2604:a880:4:1d0::2fa6:a000/124      # AS399628 internet-measurement.com
+2604:a880:4:1d0::2fa6:b000/124      # AS399628 internet-measurement.com
+2604:a880:4:1d0::2fa6:c000/124      # AS399628 internet-measurement.com
+2604:a880:4:1d0::2fa6:d000/124      # AS399628 internet-measurement.com
+2604:a880:4:1d0::2fa6:e000/124      # AS399628 internet-measurement.com
+2604:a880:400:d1::91e4:a000/124     # AS399628 internet-measurement.com
+2604:a880:400:d1::91e4:b000/124     # AS399628 internet-measurement.com
+2604:a880:400:d1::91e4:c000/124     # AS399628 internet-measurement.com
+2604:a880:400:d1::91e4:d000/124     # AS399628 internet-measurement.com
+2604:a880:400:d1::91e4:e000/124     # AS399628 internet-measurement.com
+2604:a880:800:14::5633:8000/124     # AS399628 internet-measurement.com
+2604:a880:800:14::5633:9000/124     # AS399628 internet-measurement.com
+2604:a880:800:14::5633:a000/124     # AS399628 internet-measurement.com
+2604:a880:800:14::5633:b000/124     # AS399628 internet-measurement.com
+2604:a880:800:14::5633:c000/124     # AS399628 internet-measurement.com
+134.209.86.24/32                    # cyberresilience.io
+134.209.235.25/32                   # cyberresilience.io
+143.244.152.105/32                  # cyberresilience.io
+146.190.29.141/32                   # cyberresilience.io
+165.22.72.144/32                    # cyberresilience.io
+165.22.184.62/32                    # cyberresilience.io
+167.99.142.36/32                    # cyberresilience.io
