@@ -5,10 +5,10 @@
 #   @service        https://blocklist.configserver.dev/privacy_general.ipset
 #   @id             privacy_general_ipset
 #   @uuid           6a2bb2a1-edca-33d8-9dd5-75c3ec3c6ef7
-#   @updated        Sat Jan 31 19:46:13 UTC 2026
-#   @entries        30 ips
+#   @updated        Sun Feb  1 01:58:06 UTC 2026
+#   @entries        29 ips
 #                   0 subnets
-#                   328 lines
+#                   327 lines
 #   @expires        6 hours
 #   @category       Privacy
 #
@@ -277,6 +277,7 @@
 2620:96:e000:b0cc:e::/80            # AS398324 Censys
 2602:80d:1003::/112                 # AS398324 Censys
 2602:80d:1004::/112                 # AS398324 Censys
+104.143.83.0/24                     # AS211607 Securitytrails, LLC
 128.1.91.0/24                       # internet-census.org
 128.1.248.0/24                      # internet-census.org
 128.14.128.0/24                     # internet-census.org
@@ -293,9 +294,16 @@
 80.82.77.41/32                      # security.criminalip.com
 89.248.163.0/24                     # recyber.net
 89.248.165.0/24                     # recyber.net
+134.209.86.24/32                    # cyberresilience.io
+134.209.235.25/32                   # cyberresilience.io
 135.84.216.0/24                     # AS10439 CariNet, Inc.
+143.244.152.105/32                  # cyberresilience.io
 146.88.240.0/23                     # internet-albedo.net
 146.88.241.0/23                     # internet-albedo.net
+146.190.29.141/32                   # cyberresilience.io
+165.22.72.144/32                    # cyberresilience.io
+165.22.184.62/32                    # cyberresilience.io
+167.99.142.36/32                    # cyberresilience.io
 185.216.140.6                       # security.criminalip.com
 185.216.140.12                      # security.criminalip.com
 185.216.140.26/32                   # scanner.openportstats.com
@@ -304,11 +312,6 @@
 185.216.140.31/32                   # scanner.openportstats.com
 185.216.140.31                      # security.criminalip.com
 185.242.226.0/24                    # security.criminalip.com
-209.126.128.0/17                    # AS10439 CariNet, Inc.
-216.75.0.0/18                       # AS10439 CariNet, Inc.
-216.98.128.0/19                     # AS10439 CariNet, Inc.
-2607:ff10::/32                      # AS10439 CariNet, Inc.
-104.143.83.0/24                     # AS211607 Securitytrails, LLC
 193.3.53.0/24                       # AS211607 Securitytrails, LLC
 195.230.103.0/24                    # AS211607 Securitytrails, LLC
 207.241.224.0/24                    # AS7941 Internet Archive
@@ -316,7 +319,11 @@
 207.241.234.0/24                    # AS7941 Internet Archive
 207.241.237.0/24                    # AS7941 Internet Archive
 208.70.24.0/21                      # AS7941 Internet Archive
+209.126.128.0/17                    # AS10439 CariNet, Inc.
+216.75.0.0/18                       # AS10439 CariNet, Inc.
+216.98.128.0/19                     # AS10439 CariNet, Inc.
 216.218.206.0/24                    # AS22168 ShadowServer Foundation
+2607:ff10::/32                      # AS10439 CariNet, Inc.
 2a06:4880::/30                      # AS399628 internet-measurement.com
 2604:a880:0:202a::b41:8000/124      # AS399628 internet-measurement.com
 2604:a880:0:202a::b41:a000/124      # AS399628 internet-measurement.com
@@ -338,10 +345,3 @@
 2604:a880:800:14::5633:a000/124     # AS399628 internet-measurement.com
 2604:a880:800:14::5633:b000/124     # AS399628 internet-measurement.com
 2604:a880:800:14::5633:c000/124     # AS399628 internet-measurement.com
-134.209.86.24/32                    # cyberresilience.io
-134.209.235.25/32                   # cyberresilience.io
-143.244.152.105/32                  # cyberresilience.io
-146.190.29.141/32                   # cyberresilience.io
-165.22.72.144/32                    # cyberresilience.io
-165.22.184.62/32                    # cyberresilience.io
-167.99.142.36/32                    # cyberresilience.io
