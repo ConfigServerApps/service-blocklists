@@ -1034,7 +1034,7 @@ jobs:
 
             - name: >-
                   🔒 Inactive › Lock
-              uses: dessant/lock-threads@v5
+              uses: dessant/lock-threads@v6
               with:
                   github-token: ${{ secrets.ADMINSERV_TOKEN_CL || github.token }}
                   exclude-any-issue-labels: '${{ env.LABEL_AC_REVIEW }},${{ env.LABEL_ACCEPTED }},${{ env.LABEL_REVIEW }},${{ env.LABEL_PENDING }},${{ env.LABEL_BUG }},${{ env.LABEL_DEPENDENCY }},${{ env.LABEL_DOCS }},${{ env.LABEL_FEATURE }},${{ env.LABEL_GIT }},${{ env.LABEL_ROADMAP }},${{ env.LABEL_INTERNAL }}'
