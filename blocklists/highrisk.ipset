@@ -5,7 +5,7 @@
 #   @service        https://blocklist.configserver.dev/highrisk.ipset
 #   @id             highrisk_ipset
 #   @uuid           036a7f19-6a5a-3109-af90-7e946d57b164
-#   @updated        Sat Feb 14 01:44:42 UTC 2026
+#   @updated        Sat Feb 14 12:39:17 UTC 2026
 #   @entries        8631705 ips
 #                   1375 subnets
 #                   7794 lines
