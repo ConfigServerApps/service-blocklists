@@ -5,10 +5,10 @@
 #   @source         https://iplists.firehol.org/files/cybercrime.ipset
 #   @id             3rdparty_firehol_cybercrime_ipset
 #   @uuid           0ed566eb-4d6c-3794-9727-282a6cc32127
-#   @updated        Tue Sep 08 15:50:46 UTC 2026
-#   @entries        457 ips
+#   @updated        Tue Sep 08 19:22:18 UTC 2026
+#   @entries        458 ips
 #                   1 subnets
-#                   456 lines
+#                   457 lines
 #   @expires        4 hours
 #   @category       3rdParty
 #
@@ -85,6 +85,7 @@
 34.30.204.208
 34.31.192.115
 34.32.96.192
+34.55.234.170
 34.58.49.194
 34.58.124.205
 34.73.3.157
