@@ -5,7 +5,7 @@
 #   @source         http://reputation.alienvault.com/reputation.data
 #   @id             3rdparty_alienvault_bad_reputation_ipset
 #   @uuid           6819b770-fe10-320d-9dac-de21c26f18bb
-#   @updated        Tue Sep 08 22:20:11 UTC 2026
+#   @updated        Wed Sep 09 02:08:12 UTC 2026
 #   @entries        609 ips
 #                   7 subnets
 #                   602 lines
