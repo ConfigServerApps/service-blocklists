@@ -5,7 +5,7 @@
 #   @source         https://feodotracker.abuse.ch/downloads/ipblocklist_aggressive.txt
 #   @id             3rdparty_feodotracker_blocklist_c2_iocs_aggressive_ipset
 #   @uuid           3d5ac30f-7bd1-3bb8-836d-d4ea71bf31fc
-#   @updated        Wed Sep 09 19:10:18 UTC 2026
+#   @updated        Wed Sep 09 22:22:38 UTC 2026
 #   @entries        7,607 ips
 #                   99 subnets
 #                   7,498 lines
