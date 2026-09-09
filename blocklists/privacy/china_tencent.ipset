@@ -5,10 +5,10 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_china_tencent_ipset
 #   @uuid           484c5ca9-c6b1-34dd-b49e-e06a79cc845b
-#   @updated        Tue Sep 08 06:21:01 UTC 2026
-#   @entries        9,855,817 ips
-#                   143 subnets
-#                   143 lines
+#   @updated        Wed Sep 09 06:22:50 UTC 2026
+#   @entries        9,904,713 ips
+#                   144 subnets
+#                   144 lines
 #   @asn            AS132203, AS45090, AS137876, AS132591, AS139341
 #   @expires        4 hours
 #   @category       Uncategorized
@@ -50,7 +50,6 @@
 81.68.0.0/14
 81.168.109.0/24
 82.156.0.0/15
-84.75.159.0/24
 86.51.92.0/24
 87.83.216.0/23
 87.83.234.0/23
@@ -112,6 +111,8 @@
 144.225.191.0/24
 146.56.192.0/18
 148.70.0.0/16
+149.41.0.0/17
+149.41.128.0/18
 150.109.0.0/16
 150.158.0.0/16
 152.32.166.0/24

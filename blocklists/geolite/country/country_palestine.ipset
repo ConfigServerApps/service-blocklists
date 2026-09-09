@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Sep  8 06:51:01 UTC 2026
-#   @entries        854,745 ips
-#                   457 subnets
-#                   457 lines
+#   @updated        Wed Sep  9 06:54:37 UTC 2026
+#   @entries        852,953 ips
+#                   460 subnets
+#                   460 lines
 #   @country        Palestine (PS)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -82,7 +82,10 @@
 66.9.0.0/19
 66.96.116.128/26
 72.14.201.92/32
-77.91.128.0/18
+77.91.128.0/21
+77.91.139.0/24
+77.91.144.0/20
+77.91.160.0/19
 77.95.223.0/24
 79.176.0.0/24
 81.168.63.0/24

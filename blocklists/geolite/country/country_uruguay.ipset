@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Sep  8 06:51:27 UTC 2026
-#   @entries        2,562,510 ips
-#                   419 subnets
-#                   419 lines
+#   @updated        Wed Sep  9 06:55:15 UTC 2026
+#   @entries        2,562,254 ips
+#                   422 subnets
+#                   422 lines
 #   @country        Uruguay (UY)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -236,7 +236,10 @@
 187.251.8.56/30
 190.0.128.0/19
 190.64.0.0/16
-190.99.96.0/20
+190.99.96.0/22
+190.99.100.0/23
+190.99.103.0/24
+190.99.104.0/21
 190.108.0.0/21
 190.108.8.0/22
 190.108.12.0/25

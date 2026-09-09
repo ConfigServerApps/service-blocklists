@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Sep  8 06:50:39 UTC 2026
-#   @entries        35,697 ips
-#                   188 subnets
-#                   188 lines
+#   @updated        Wed Sep  9 06:54:07 UTC 2026
+#   @entries        32,369 ips
+#                   189 subnets
+#                   189 lines
 #   @country        Grenada (GD)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -27,7 +27,8 @@
 45.62.191.128/28
 45.138.10.152/30
 57.74.124.0/23
-63.245.48.0/20
+63.245.56.0/23
+63.245.58.0/24
 63.245.66.0/23
 65.48.134.0/23
 65.48.136.0/22
