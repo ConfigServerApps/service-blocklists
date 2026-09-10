@@ -5,7 +5,7 @@
 #   @source         https://view.sentinel.turris.cz/greylist-data/greylist-latest.csv
 #   @id             3rdparty_sentinel_turris_greylist_ipset
 #   @uuid           59b4c9ab-a8a6-3781-8dc1-c7d22dc974ab
-#   @updated        Thu Sep 10 08:47:44 UTC 2026
+#   @updated        Thu Sep 10 15:42:34 UTC 2026
 #   @entries        10,037 ips
 #                   368 subnets
 #                   9,438 lines
