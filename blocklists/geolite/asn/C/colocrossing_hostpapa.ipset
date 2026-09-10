@@ -5,8 +5,8 @@
 #   @source         None
 #   @id             geolite_asn_C_colocrossing_hostpapa_ipset
 #   @uuid           c5ba17f4-df06-35a5-b3ae-7aea9e2738bb
-#   @updated        Wed Sep 09 06:57:13 UTC 2026
-#   @entries        967,951 ips
+#   @updated        Thu Sep 10 07:07:06 UTC 2026
+#   @entries        968,207 ips
 #                   1,147 subnets
 #                   1,147 lines
 #   @asn            AS36352, AS394738
@@ -637,7 +637,7 @@
 155.94.157.0/24
 155.94.160.0/23
 155.94.162.0/24
-155.94.164.0/24
+155.94.164.0/23
 155.94.170.0/23
 155.94.172.0/23
 155.94.175.0/24
