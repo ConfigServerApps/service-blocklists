@@ -5,7 +5,7 @@
 #   @source         https://feodotracker.abuse.ch/downloads/ipblocklist.txt
 #   @id             3rdparty_feodotracker_blocklist_c2_iocs_normal_ipset
 #   @uuid           09f03421-bc19-3432-a4f9-35d500de38ea
-#   @updated        Fri Sep 11 08:39:03 UTC 2026
+#   @updated        Fri Sep 11 15:41:13 UTC 2026
 #   @entries        5 ips
 #                   0 subnets
 #                   5 lines
