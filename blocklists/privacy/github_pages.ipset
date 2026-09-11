@@ -5,23 +5,13 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_github_pages_ipset
 #   @uuid           f49aec1b-20c3-38df-ba42-118deb86549d
-#   @updated        Thu Sep 10 06:31:57 UTC 2026
-#   @entries        10 ips
+#   @updated        Fri Sep 11 06:33:07 UTC 2026
+#   @entries        0 ips
 #                   0 subnets
-#                   10 lines
+#                   0 lines
 #   @expires        4 hours
 #   @category       Uncategorized
 #
 #   No description provided
 # #
 
-185.199.108.153
-185.199.109.153
-185.199.110.153
-185.199.111.153
-192.30.252.153
-192.30.252.154
-2606:50c0:8000::153
-2606:50c0:8001::153
-2606:50c0:8002::153
-2606:50c0:8003::153

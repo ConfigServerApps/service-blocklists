@@ -5,30 +5,13 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_github_copilot_ipset
 #   @uuid           0f5eb85f-a38d-385c-b2c7-8161fd4ab47d
-#   @updated        Thu Sep 10 06:32:12 UTC 2026
-#   @entries        10,253 ips
-#                   6 subnets
-#                   17 lines
+#   @updated        Fri Sep 11 06:33:10 UTC 2026
+#   @entries        0 ips
+#                   0 subnets
+#                   0 lines
 #   @expires        4 hours
 #   @category       Uncategorized
 #
 #   No description provided
 # #
 
-4.225.11.192
-4.228.31.153
-4.237.22.41
-4.249.131.160
-13.107.5.93
-20.85.130.105
-20.199.39.224
-20.250.119.64
-52.140.63.241
-52.175.140.176
-138.91.182.224
-140.82.112.0/20
-143.55.64.0/20
-185.199.108.0/22
-192.30.252.0/22
-2606:50c0::/32
-2a0a:a440::/29
