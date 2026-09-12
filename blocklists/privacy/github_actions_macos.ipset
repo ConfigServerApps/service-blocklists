@@ -5,13 +5,21 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_github_actions_macos_ipset
 #   @uuid           9b920a30-a2d7-39ce-a7e2-18dc7370420a
-#   @updated        Fri Sep 11 06:33:09 UTC 2026
-#   @entries        0 ips
-#                   0 subnets
-#                   0 lines
+#   @updated        Sat Sep 12 06:18:32 UTC 2026
+#   @entries        702 ips
+#                   8 subnets
+#                   8 lines
 #   @expires        4 hours
 #   @category       Uncategorized
 #
 #   No description provided
 # #
 
+13.105.49.0/24
+13.105.117.0/24
+13.105.220.0/25
+13.105.220.128/27
+13.105.220.160/28
+13.105.220.176/29
+13.105.220.184/30
+13.105.220.188/31

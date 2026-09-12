@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_S_stackpath_blackhost_ipset
 #   @uuid           95578599-7c46-3c63-b355-138ec448d5fe
-#   @updated        Fri Sep 11 07:09:01 UTC 2026
-#   @entries        5,126 ips
-#                   18 subnets
-#                   18 lines
+#   @updated        Sat Sep 12 06:51:02 UTC 2026
+#   @entries        5,382 ips
+#                   19 subnets
+#                   19 lines
 #   @asn            AS12989, AS67211
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -24,6 +24,7 @@
 165.49.254.0/24
 168.222.185.0/24
 168.222.186.0/23
+172.84.78.0/24
 172.121.180.0/24
 194.54.180.0/22
 212.104.140.0/23

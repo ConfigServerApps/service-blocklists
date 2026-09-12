@@ -5,8 +5,8 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Sep 11 07:04:18 UTC 2026
-#   @entries        1,806,048 ips
+#   @updated        Sat Sep 12 06:46:59 UTC 2026
+#   @entries        1,806,304 ips
 #                   457 subnets
 #                   457 lines
 #   @country        Cote d'Ivoire (CI)
@@ -151,7 +151,7 @@
 102.215.226.0/24
 102.215.252.0/22
 102.216.81.0/24
-102.216.83.0/24
+102.216.82.0/23
 102.216.100.0/22
 102.216.204.0/22
 102.217.105.0/24

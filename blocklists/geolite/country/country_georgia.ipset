@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Sep 11 07:04:44 UTC 2026
-#   @entries        1,306,179 ips
-#                   738 subnets
-#                   738 lines
+#   @updated        Sat Sep 12 06:47:24 UTC 2026
+#   @entries        1,305,923 ips
+#                   737 subnets
+#                   737 lines
 #   @country        Georgia (GE)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -507,7 +507,6 @@
 213.217.16.0/22
 217.11.160.0/23
 217.11.162.0/23
-217.11.164.0/24
 217.11.172.0/24
 217.70.4.0/24
 217.147.224.0/20

@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Sep 11 07:04:46 UTC 2026
-#   @entries        710,067 ips
-#                   728 subnets
-#                   728 lines
+#   @updated        Sat Sep 12 06:47:26 UTC 2026
+#   @entries        709,555 ips
+#                   731 subnets
+#                   731 lines
 #   @country        Guatemala (GT)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -334,7 +334,10 @@
 187.251.22.0/24
 189.84.97.0/24
 189.84.98.0/24
-190.0.192.0/19
+190.0.192.0/20
+190.0.208.0/21
+190.0.216.0/22
+190.0.220.0/23
 190.4.47.16/32
 190.14.0.0/24
 190.14.1.0/27

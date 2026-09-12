@@ -5,13 +5,18 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_github_importer_ipset
 #   @uuid           77f3bab9-d42b-3924-9454-98c7d330a254
-#   @updated        Fri Sep 11 06:33:07 UTC 2026
-#   @entries        0 ips
-#                   0 subnets
-#                   0 lines
+#   @updated        Sat Sep 12 06:18:21 UTC 2026
+#   @entries        35 ips
+#                   2 subnets
+#                   5 lines
 #   @expires        4 hours
 #   @category       Uncategorized
 #
 #   No description provided
 # #
 
+20.51.87.64/28
+52.0.228.224
+52.22.155.48
+52.23.85.212
+172.184.222.112/28

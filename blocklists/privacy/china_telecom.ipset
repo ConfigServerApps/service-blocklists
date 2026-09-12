@@ -5,10 +5,10 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_china_telecom_ipset
 #   @uuid           2953bb09-3cee-3d6f-8892-cb3d53c3faf0
-#   @updated        Fri Sep 11 06:27:20 UTC 2026
-#   @entries        128,026,359 ips
-#                   1,599 subnets
-#                   1,599 lines
+#   @updated        Sat Sep 12 06:12:55 UTC 2026
+#   @entries        128,026,615 ips
+#                   1,598 subnets
+#                   1,598 lines
 #   @asn            AS4811, AS4134, AS131285, AS131325, AS132225
 #                   AS132437, AS132833, AS4816, AS4835, AS140359
 #                   AS23764, AS4809, AS4812
@@ -1038,8 +1038,7 @@
 196.223.48.0/21
 196.250.224.0/21
 196.251.94.0/23
-196.251.96.0/24
-196.251.98.0/23
+196.251.96.0/22
 196.251.113.0/24
 196.251.114.0/23
 196.251.116.0/22
