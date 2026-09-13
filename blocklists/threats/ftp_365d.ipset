@@ -5,10 +5,10 @@
 #   @source         https://blocklist.configserver.dev/threats/ftp_365d.ipset
 #   @id             threats_ftp_365d_ipset
 #   @uuid           830593b0-6127-3255-b34b-409c95071199
-#   @updated        Sun Sep 13 18:38:39 UTC 2026
-#   @entries        45,069 ips
-#                   2,326 subnets
-#                   40,154 lines
+#   @updated        Sun Sep 13 22:06:01 UTC 2026
+#   @entries        45,071 ips
+#                   2,327 subnets
+#                   40,155 lines
 #   @expires        4 hours
 #   @category       Threats
 #
@@ -13383,6 +13383,7 @@
 58.212.237.179
 58.212.237.187
 58.212.237.205
+58.212.237.212
 58.212.237.251
 58.220.229.226
 58.240.188.69
@@ -17347,7 +17348,7 @@
 87.236.176.72/31
 87.236.176.77
 87.236.176.78/31
-87.236.176.81
+87.236.176.80/31
 87.236.176.83
 87.236.176.84/31
 87.236.176.87
