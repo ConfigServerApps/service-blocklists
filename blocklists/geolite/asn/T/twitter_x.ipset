@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_T_twitter_x_ipset
 #   @uuid           57b0c6e2-f495-3a79-914f-ffb777baf772
-#   @updated        Sat Sep 12 06:51:11 UTC 2026
-#   @entries        30,467 ips
-#                   21 subnets
-#                   21 lines
+#   @updated        Sun Sep 13 07:09:22 UTC 2026
+#   @entries        30,211 ips
+#                   20 subnets
+#                   20 lines
 #   @asn            AS13414, AS63179, AS35995, AS54888
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -21,7 +21,6 @@
 64.63.0.0/18
 69.12.56.0/21
 103.252.112.0/22
-104.244.41.0/24
 104.244.42.0/24
 104.244.44.0/22
 185.45.4.0/22
