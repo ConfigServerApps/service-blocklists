@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_C_china_tencent_net_ipset
 #   @uuid           2c3a7a6d-3f12-38da-9645-014fb9f444b0
-#   @updated        Sun Sep 13 07:08:10 UTC 2026
-#   @entries        8,571,546 ips
-#                   772 subnets
-#                   772 lines
+#   @updated        Mon Sep 14 07:15:12 UTC 2026
+#   @entries        8,571,034 ips
+#                   771 subnets
+#                   771 lines
 #   @asn            AS132203, AS45090, AS137876, AS132591, AS139341
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -586,7 +586,6 @@
 162.62.246.0/23
 162.62.248.0/23
 162.62.250.0/24
-162.62.252.0/23
 162.62.254.0/24
 170.106.0.0/17
 170.106.128.0/18

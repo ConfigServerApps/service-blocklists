@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_D_digitalocean_ipset
 #   @uuid           bf8b0714-53b5-38d9-b02d-41dc8b89b3e5
-#   @updated        Sun Sep 13 07:08:29 UTC 2026
-#   @entries        3,140,109 ips
-#                   209 subnets
-#                   209 lines
+#   @updated        Mon Sep 14 07:15:28 UTC 2026
+#   @entries        3,144,205 ips
+#                   210 subnets
+#                   210 lines
 #   @asn            AS14061, AS39690, AS62567, AS133165, AS135340
 #                   AS200130, AS201229, AS202018, AS202109, AS205301
 #                   AS393406, AS394362
@@ -202,6 +202,7 @@
 198.211.96.0/19
 201.49.188.0/24
 201.79.0.0/19
+201.79.32.0/20
 204.48.16.0/20
 206.81.0.0/19
 206.189.0.0/16
