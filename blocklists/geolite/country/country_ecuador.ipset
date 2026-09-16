@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Sep 15 07:12:46 UTC 2026
-#   @entries        2,890,379 ips
-#                   1,410 subnets
-#                   1,410 lines
+#   @updated        Wed Sep 16 06:58:25 UTC 2026
+#   @entries        2,890,380 ips
+#                   1,411 subnets
+#                   1,411 lines
 #   @country        Ecuador (EC)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -1040,6 +1040,7 @@
 2803:56a0:3000::/36
 2803:56a0:4000::/34
 2803:56a0:8000::/33
+2803:5730::/32
 2803:5740::/32
 2803:57c0::/32
 2803:5810::/32

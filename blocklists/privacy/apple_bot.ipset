@@ -5,10 +5,10 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_apple_bot_ipset
 #   @uuid           4401e591-9273-376c-b9dd-c7388b1a6493
-#   @updated        Tue Sep 15 06:24:51 UTC 2026
-#   @entries        7,056 ips
-#                   21 subnets
-#                   21 lines
+#   @updated        Wed Sep 16 06:17:29 UTC 2026
+#   @entries        4,752 ips
+#                   12 subnets
+#                   12 lines
 #   @expires        6 hours
 #   @category       Uncategorized
 #
@@ -17,9 +17,6 @@
 #   These are useful if you do not wish for Apple to crawl your data.
 # #
 
-17.22.237.0/24
-17.22.245.0/24
-17.22.253.0/24
 17.166.20.0/22
 17.166.24.0/23
 17.166.150.0/23
@@ -29,12 +26,6 @@
 17.166.236.0/23
 17.166.240.48/28
 17.166.248.48/28
-17.241.75.0/24
 17.241.193.160/27
 17.241.200.160/27
 17.241.208.160/27
-17.241.219.0/24
-17.241.227.0/24
-17.246.15.0/24
-17.246.19.0/24
-17.246.23.0/24

@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Sep 15 07:13:15 UTC 2026
-#   @entries        2,197,079 ips
-#                   1,842 subnets
-#                   1,842 lines
+#   @updated        Wed Sep 16 06:58:55 UTC 2026
+#   @entries        2,196,823 ips
+#                   1,841 subnets
+#                   1,841 lines
 #   @country        Latvia (LV)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -590,7 +590,6 @@
 109.229.192.0/20
 109.229.208.0/21
 109.229.217.0/24
-109.229.218.0/24
 109.229.223.0/24
 109.248.147.0/24
 109.248.148.0/23
