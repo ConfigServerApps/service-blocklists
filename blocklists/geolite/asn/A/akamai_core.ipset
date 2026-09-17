@@ -5,7 +5,7 @@
 #   @source         None
 #   @id             geolite_asn_A_akamai_core_ipset
 #   @uuid           4f5f5672-5495-310b-a5b2-6be4402bfcee
-#   @updated        Wed Sep 16 07:00:58 UTC 2026
+#   @updated        Thu Sep 17 07:07:12 UTC 2026
 #   @entries        4,504,586 ips
 #                   3,793 subnets
 #                   3,793 lines
@@ -2510,7 +2510,7 @@
 2a02:2370:106::/48
 2a02:2370:200::/45
 2a02:2370:208::/46
-2a02:2370:20c::/48
+2a02:2370:20c::/47
 2a02:2370:20e::/48
 2a02:2370:4000::/48
 2a02:2370:5::/48

@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_C_china_net_mobile_ipset
 #   @uuid           faa454f5-0fb2-35dc-8b4d-210d9df65d95
-#   @updated        Wed Sep 16 07:01:35 UTC 2026
-#   @entries        22,830,921 ips
-#                   5,383 subnets
-#                   5,383 lines
+#   @updated        Thu Sep 17 07:07:47 UTC 2026
+#   @entries        22,830,922 ips
+#                   5,384 subnets
+#                   5,384 lines
 #   @asn            AS9808, AS24400, AS24444, AS38019, AS24547
 #                   AS24445, AS24311
 #   @expires        6 hours
@@ -3028,6 +3028,7 @@
 2402:f140:ff20::/47
 2402:f140:ff24::/48
 2407:6c40:1210::/48
+2407:8f40:2::/48
 2409:8000:100::/40
 2409:8000:1100::/40
 2409:8000:1200::/39
