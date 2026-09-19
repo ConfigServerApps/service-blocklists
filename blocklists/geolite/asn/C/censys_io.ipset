@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_C_censys_io_ipset
 #   @uuid           cf1be5ee-2c7a-38f3-a605-30ec6f966e84
-#   @updated        Fri Sep 18 07:04:08 UTC 2026
-#   @entries        3,844 ips
-#                   19 subnets
-#                   19 lines
+#   @updated        Sat Sep 19 07:05:44 UTC 2026
+#   @entries        4,100 ips
+#                   20 subnets
+#                   20 lines
 #   @asn            AS398324
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -21,6 +21,7 @@
 66.132.159.0/24
 66.132.172.0/24
 66.132.175.0/24
+66.132.180.0/24
 66.132.186.0/24
 66.132.195.0/24
 66.132.198.0/24

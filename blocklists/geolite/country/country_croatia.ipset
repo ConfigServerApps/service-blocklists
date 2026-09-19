@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Sep 18 07:01:33 UTC 2026
-#   @entries        2,470,280 ips
-#                   1,100 subnets
-#                   1,100 lines
+#   @updated        Sat Sep 19 06:59:00 UTC 2026
+#   @entries        2,470,279 ips
+#                   1,099 subnets
+#                   1,099 lines
 #   @country        Croatia (HR)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -1101,7 +1101,6 @@
 2a0e:ec05:a800::/40
 2a0e:ec05:a900::/41
 2a0e:ec05:a980::/42
-2a0f:31c1:3500::/48
 2a10:940::/29
 2a10:5700::/29
 2a10:c140::/29

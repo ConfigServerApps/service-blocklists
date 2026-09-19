@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Sep 18 07:01:00 UTC 2026
-#   @entries        172,898 ips
-#                   226 subnets
-#                   226 lines
+#   @updated        Sat Sep 19 06:58:26 UTC 2026
+#   @entries        172,642 ips
+#                   225 subnets
+#                   225 lines
 #   @country        Botswana (BW)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -148,7 +148,6 @@
 172.225.220.48/28
 185.112.132.61/32
 186.247.59.0/24
-193.93.52.0/24
 193.108.104.0/24
 194.50.99.35/32
 196.2.2.0/24
