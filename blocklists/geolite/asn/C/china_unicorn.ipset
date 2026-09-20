@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_C_china_unicorn_ipset
 #   @uuid           6cd2c7eb-7fc9-30ec-b814-6f9ddafd687d
-#   @updated        Sat Sep 19 07:06:09 UTC 2026
-#   @entries        71,241,550 ips
-#                   12,297 subnets
-#                   12,297 lines
+#   @updated        Sun Sep 20 07:18:12 UTC 2026
+#   @entries        71,242,062 ips
+#                   12,298 subnets
+#                   12,298 lines
 #   @asn            AS4837, AS10099, AS10206, AS133118, AS133119
 #                   AS134542, AS134543, AS135061, AS136958, AS136959
 #                   AS137539, AS138421, AS140979, AS152120, AS17621
@@ -2512,6 +2512,7 @@
 140.207.251.0/24
 140.207.252.0/22
 140.210.32.0/22
+140.210.40.0/23
 140.210.65.0/24
 140.210.67.0/24
 140.210.69.0/24
