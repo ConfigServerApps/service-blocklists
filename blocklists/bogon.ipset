@@ -5,7 +5,7 @@
 #   @source         https://blocklist.configserver.dev/bogon.ipset
 #   @id             bogon_ipset
 #   @uuid           6a335245-924c-3fa2-bc51-ba0ffbffda42
-#   @updated        Sun Sep 13 04:27:09 UTC 2026
+#   @updated        Sun Sep 20 04:36:21 UTC 2026
 #   @entries        592,708,620 ips
 #                   25 subnets
 #                   26 lines
