@@ -5,7 +5,7 @@
 #   @source         https://iplists.firehol.org/files/firehol_webserver.netset
 #   @id             3rdparty_firehol_webserver_ipset
 #   @uuid           37136268-b622-33d1-ad96-6c3f38a5975a
-#   @updated        Sun Sep 20 18:40:23 UTC 2026
+#   @updated        Sun Sep 20 22:19:23 UTC 2026
 #   @entries        60,712 ips
 #                   141 subnets
 #                   1,125 lines
