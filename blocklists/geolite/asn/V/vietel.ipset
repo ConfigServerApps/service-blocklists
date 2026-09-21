@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_V_vietel_ipset
 #   @uuid           ea0264aa-f769-3658-b8f8-b3516240b7f2
-#   @updated        Sun Sep 20 07:19:36 UTC 2026
-#   @entries        5,027,336 ips
-#                   271 subnets
-#                   271 lines
+#   @updated        Mon Sep 21 07:33:00 UTC 2026
+#   @entries        5,027,337 ips
+#                   272 subnets
+#                   272 lines
 #   @asn            AS7552, AS38731
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -284,6 +284,7 @@
 2401:5f80::/34
 2401:d800::/32
 2402:800::/29
+2405:4340::/48
 2406:4c40::/48
 2600:1417:9400::/48
 2600:1417:cc00::/48
