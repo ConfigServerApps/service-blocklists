@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Sep 22 07:23:34 UTC 2026
-#   @entries        1,899,905 ips
-#                   192 subnets
-#                   192 lines
+#   @updated        Wed Sep 23 06:48:43 UTC 2026
+#   @entries        1,899,906 ips
+#                   193 subnets
+#                   193 lines
 #   @country        Sudan (SD)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -34,6 +34,7 @@
 74.244.188.0/23
 79.135.105.148/30
 80.88.131.72/29
+82.118.19.243/32
 85.255.21.160/28
 98.97.72.0/23
 98.97.172.0/23

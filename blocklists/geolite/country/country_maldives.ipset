@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Sep 22 07:23:14 UTC 2026
-#   @entries        99,373 ips
-#                   234 subnets
-#                   234 lines
+#   @updated        Wed Sep 23 06:48:32 UTC 2026
+#   @entries        99,374 ips
+#                   235 subnets
+#                   235 lines
 #   @country        Maldives (MV)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -136,6 +136,7 @@
 186.247.61.0/24
 192.109.41.200/29
 194.50.99.156/32
+195.123.237.98/32
 196.48.128.0/24
 196.56.128.0/24
 196.58.128.0/24

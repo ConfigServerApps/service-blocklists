@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Sep 22 07:23:00 UTC 2026
-#   @entries        160,553 ips
-#                   200 subnets
-#                   200 lines
+#   @updated        Wed Sep 23 06:48:23 UTC 2026
+#   @entries        160,554 ips
+#                   201 subnets
+#                   201 lines
 #   @country        Haiti (HT)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -100,6 +100,7 @@
 190.120.192.0/19
 190.196.192.0/20
 194.50.99.100/32
+195.123.237.83/32
 196.48.97.0/24
 196.56.97.0/24
 196.57.97.0/24

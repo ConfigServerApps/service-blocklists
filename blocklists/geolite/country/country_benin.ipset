@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Sep 22 07:22:22 UTC 2026
-#   @entries        158,371 ips
-#                   180 subnets
-#                   180 lines
+#   @updated        Wed Sep 23 06:48:01 UTC 2026
+#   @entries        159,396 ips
+#                   182 subnets
+#                   182 lines
 #   @country        Benin (BJ)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -34,6 +34,7 @@
 85.255.21.208/28
 88.202.1.0/25
 102.38.128.0/19
+102.201.64.0/22
 102.202.108.0/22
 102.203.12.0/22
 102.207.72.0/22
@@ -108,6 +109,7 @@
 185.112.135.2/32
 186.247.53.0/24
 194.50.99.25/32
+195.123.237.3/32
 196.48.50.0/24
 196.49.8.0/24
 196.49.110.0/24

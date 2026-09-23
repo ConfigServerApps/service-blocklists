@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Sep 22 07:22:21 UTC 2026
-#   @entries        415,172 ips
-#                   236 subnets
-#                   236 lines
+#   @updated        Wed Sep 23 06:48:00 UTC 2026
+#   @entries        415,173 ips
+#                   237 subnets
+#                   237 lines
 #   @country        Burkina Faso (BF)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -134,6 +134,7 @@
 192.136.55.0/24
 192.136.56.0/23
 194.50.99.21/32
+195.123.237.61/32
 196.13.207.0/24
 196.28.240.0/20
 196.43.247.0/24

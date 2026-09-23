@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_M_microsoft_corp_ipset
 #   @uuid           cb89b344-4c64-316c-9c03-df8fce796121
-#   @updated        Tue Sep 22 07:26:45 UTC 2026
-#   @entries        82,656,557 ips
-#                   1,803 subnets
-#                   1,803 lines
+#   @updated        Wed Sep 23 06:50:44 UTC 2026
+#   @entries        82,656,813 ips
+#                   1,804 subnets
+#                   1,804 lines
 #   @asn            AS8075, AS8070, AS3598, AS8069, AS8068
 #                   AS59067, AS12076, AS54396, AS46182, AS30520
 #                   AS17144, AS58862, AS63314, AS45139, AS35106
@@ -1421,6 +1421,7 @@
 204.80.33.0/24
 204.80.58.0/24
 204.87.58.0/24
+204.137.21.0/24
 204.137.22.0/23
 204.152.95.0/24
 204.152.140.0/23

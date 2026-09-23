@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Sep 22 07:22:22 UTC 2026
-#   @entries        2,342 ips
-#                   107 subnets
-#                   107 lines
+#   @updated        Wed Sep 23 06:48:01 UTC 2026
+#   @entries        2,323 ips
+#                   103 subnets
+#                   103 lines
 #   @country        Saint Barthelemy (BL)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -51,7 +51,6 @@
 172.225.32.0/27
 172.225.173.32/27
 172.225.238.48/28
-172.226.13.176/28
 172.226.78.0/28
 185.121.178.128/29
 185.212.73.0/24
@@ -97,9 +96,6 @@
 2a02:26f7:eb4c:4000::/64
 2a02:26f7:eb4c:c100::/64
 2a02:26f7:eb4d:4000::/64
-2a02:26f7:eb50:4000::/64
-2a02:26f7:eb50:c100::/64
-2a02:26f7:eb51:4000::/64
 2a04:4e41:181::/48
 2a04:4e41:3210::/48
 2a04:4e41:3a16::/48

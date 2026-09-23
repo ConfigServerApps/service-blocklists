@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Sep 22 07:23:37 UTC 2026
-#   @entries        56,413 ips
-#                   188 subnets
-#                   188 lines
+#   @updated        Wed Sep 23 06:48:45 UTC 2026
+#   @entries        56,414 ips
+#                   189 subnets
+#                   189 lines
 #   @country        Somalia (SO)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -85,6 +85,7 @@
 187.13.219.0/24
 192.145.168.0/21
 194.50.99.207/32
+195.123.237.96/32
 196.11.62.0/24
 196.48.178.0/24
 196.49.58.0/24
