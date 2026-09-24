@@ -5,10 +5,10 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_bluehost_eig_ipset
 #   @uuid           54f1dc61-d87d-3324-8569-943ad9473105
-#   @updated        Wed Sep 23 06:11:51 UTC 2026
-#   @entries        1,408,000 ips
-#                   134 subnets
-#                   134 lines
+#   @updated        Thu Sep 24 06:28:11 UTC 2026
+#   @entries        1,409,024 ips
+#                   135 subnets
+#                   135 lines
 #   @asn            AS46606
 #   @expires        4 hours
 #   @category       Uncategorized
@@ -133,6 +133,7 @@
 205.207.104.0/22
 206.188.192.0/23
 206.188.219.0/24
+206.188.220.0/22
 207.148.224.0/19
 207.174.212.0/22
 207.204.32.0/20
