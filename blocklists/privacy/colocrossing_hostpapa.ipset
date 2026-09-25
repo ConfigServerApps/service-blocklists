@@ -5,10 +5,10 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_colocrossing_hostpapa_ipset
 #   @uuid           10aa1c2b-bb21-3432-8c76-ebd4afdb0336
-#   @updated        Thu Sep 24 06:41:33 UTC 2026
-#   @entries        1,539,351 ips
-#                   361 subnets
-#                   361 lines
+#   @updated        Fri Sep 25 06:34:55 UTC 2026
+#   @entries        1,537,303 ips
+#                   359 subnets
+#                   359 lines
 #   @asn            AS36352, AS394738
 #   @expires        4 hours
 #   @category       Uncategorized
@@ -191,7 +191,6 @@
 121.46.80.0/22
 125.62.85.0/24
 125.62.86.0/24
-128.254.228.0/22
 140.99.244.0/23
 141.98.46.0/24
 142.11.192.0/18
@@ -240,7 +239,6 @@
 162.218.208.0/22
 162.222.192.0/21
 162.244.8.0/21
-162.245.100.0/22
 162.251.112.0/21
 165.140.167.0/24
 167.160.160.0/19

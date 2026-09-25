@@ -5,10 +5,10 @@
 #   @source         whois.radb.net
 #   @id             isp_att_ipset
 #   @uuid           c2a8f492-a17f-36a3-821d-aae3d9b8669e
-#   @updated        Thu Sep 24 06:49:47 UTC 2026
-#   @entries        111,950,987 ips
-#                   1,781 subnets
-#                   1,781 lines
+#   @updated        Fri Sep 25 06:42:29 UTC 2026
+#   @entries        111,950,731 ips
+#                   1,780 subnets
+#                   1,780 lines
 #   @asn            AS7018, AS2686, AS2687, AS2688, AS2685
 #                   AS2386, AS13979, AS7287, AS6389, AS20057
 #                   AS16473, AS25993, AS14654, AS19957, AS10770
@@ -289,7 +289,6 @@
 69.51.32.0/22
 69.54.244.0/22
 69.54.252.0/22
-69.60.178.0/24
 69.60.188.0/23
 69.91.176.0/24
 69.104.0.0/15
