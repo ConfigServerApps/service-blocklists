@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Sep 25 07:03:58 UTC 2026
-#   @entries        2,219,704 ips
-#                   559 subnets
-#                   559 lines
+#   @updated        Sat Sep 26 07:07:44 UTC 2026
+#   @entries        2,219,703 ips
+#                   558 subnets
+#                   558 lines
 #   @country        Ghana (GH)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -308,7 +308,6 @@
 193.108.28.0/24
 193.194.128.0/24
 193.194.160.0/19
-194.50.99.83/32
 196.1.118.0/24
 196.3.64.0/24
 196.10.215.0/24

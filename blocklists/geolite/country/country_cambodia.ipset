@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Sep 25 07:04:10 UTC 2026
-#   @entries        498,352 ips
-#                   730 subnets
-#                   730 lines
+#   @updated        Sat Sep 26 07:07:55 UTC 2026
+#   @entries        498,351 ips
+#                   729 subnets
+#                   729 lines
 #   @country        Cambodia (KH)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -448,7 +448,6 @@
 188.215.235.0/24
 191.96.158.0/24
 192.109.41.32/29
-194.50.99.118/32
 195.80.149.0/24
 195.158.205.0/24
 195.158.207.128/25

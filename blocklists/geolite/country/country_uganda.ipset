@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Sep 25 07:04:41 UTC 2026
-#   @entries        1,466,297 ips
-#                   363 subnets
-#                   363 lines
+#   @updated        Sat Sep 26 07:08:22 UTC 2026
+#   @entries        1,466,296 ips
+#                   362 subnets
+#                   362 lines
 #   @country        Uganda (UG)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -230,7 +230,6 @@
 172.225.224.64/28
 193.108.214.0/24
 193.108.252.0/22
-194.50.99.232/32
 196.0.0.0/16
 196.10.119.0/24
 196.10.138.0/23

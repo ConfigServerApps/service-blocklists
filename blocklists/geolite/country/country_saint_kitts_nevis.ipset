@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Sep 25 07:04:10 UTC 2026
-#   @entries        46,800 ips
-#                   162 subnets
-#                   162 lines
+#   @updated        Sat Sep 26 07:07:55 UTC 2026
+#   @entries        46,799 ips
+#                   161 subnets
+#                   161 lines
 #   @country        Saint Kitts Nevis (KN)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -79,7 +79,6 @@
 172.226.67.240/28
 172.226.143.32/27
 173.249.168.0/22
-194.50.99.121/32
 196.1.168.0/22
 199.21.164.0/22
 200.50.84.0/23

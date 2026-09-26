@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Sep 25 07:04:17 UTC 2026
-#   @entries        447,038 ips
-#                   287 subnets
-#                   287 lines
+#   @updated        Sat Sep 26 07:08:01 UTC 2026
+#   @entries        446,525 ips
+#                   285 subnets
+#                   285 lines
 #   @country        Nicaragua (NI)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -119,7 +119,6 @@
 172.225.171.192/27
 172.225.239.218/31
 179.60.149.0/24
-181.79.176.0/23
 181.79.211.0/24
 181.119.102.0/24
 181.119.234.0/23
@@ -157,7 +156,6 @@
 192.136.42.0/23
 192.136.44.0/22
 192.151.181.0/24
-194.50.99.166/32
 195.123.237.97/32
 196.48.147.0/24
 196.56.147.0/24

@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Sep 25 07:03:18 UTC 2026
-#   @entries        353,382 ips
-#                   1,527 subnets
-#                   1,527 lines
+#   @updated        Sat Sep 26 07:07:08 UTC 2026
+#   @entries        353,368 ips
+#                   1,513 subnets
+#                   1,513 lines
 #   @country        Albania (AL)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -1391,7 +1391,6 @@
 2a0d:ab40::/32
 2a0d:cc00::/29
 2a0d:ccc0::/29
-2a0d:d940:70::/44
 2a0d:d940:d0::/44
 2a0d:d940:90a0::/48
 2a0e:ec0::/29
@@ -1504,20 +1503,7 @@
 2a13:c8c4:7200::/39
 2a13:c8c4:7400::/38
 2a13:c8c4:7800::/37
-2a13:c8c4:8000::/35
-2a13:c8c4:a000::/47
-2a13:c8c4:a003::/48
-2a13:c8c4:a004::/46
-2a13:c8c4:a008::/45
-2a13:c8c4:a010::/44
-2a13:c8c4:a020::/43
-2a13:c8c4:a040::/42
-2a13:c8c4:a080::/41
-2a13:c8c4:a100::/40
-2a13:c8c4:a200::/39
-2a13:c8c4:a400::/38
-2a13:c8c4:a800::/37
-2a13:c8c4:b000::/36
+2a13:c8c4:8000::/34
 2a13:c8c4:c000::/35
 2a13:c8c4:e000::/36
 2a13:c8c4:f000::/40

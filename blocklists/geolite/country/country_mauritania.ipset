@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Sep 25 07:04:15 UTC 2026
-#   @entries        57,620 ips
-#                   144 subnets
-#                   144 lines
+#   @updated        Sat Sep 26 07:07:59 UTC 2026
+#   @entries        57,619 ips
+#                   143 subnets
+#                   143 lines
 #   @country        Mauritania (MR)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -90,7 +90,6 @@
 179.64.102.0/23
 185.112.135.22/32
 187.14.58.0/24
-194.50.99.152/32
 195.123.237.90/32
 196.49.18.0/24
 196.223.45.0/24

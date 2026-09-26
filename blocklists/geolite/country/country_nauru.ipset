@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Sep 25 07:04:25 UTC 2026
-#   @entries        13,047 ips
-#                   110 subnets
-#                   110 lines
+#   @updated        Sat Sep 26 07:08:08 UTC 2026
+#   @entries        13,046 ips
+#                   109 subnets
+#                   109 lines
 #   @country        Nauru (NR)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -54,7 +54,6 @@
 172.225.175.160/28
 172.225.230.192/28
 172.225.244.128/28
-194.50.99.170/32
 196.48.144.0/24
 196.56.144.0/24
 196.57.144.0/24

@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Sep 25 07:04:36 UTC 2026
-#   @entries        555 ips
-#                   43 subnets
-#                   43 lines
+#   @updated        Sat Sep 26 07:08:18 UTC 2026
+#   @entries        554 ips
+#                   42 subnets
+#                   42 lines
 #   @country        Svalbard Jan Mayen (SJ)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -29,7 +29,6 @@
 162.120.206.16/32
 162.120.215.137/32
 185.112.132.46/32
-194.50.99.202/32
 212.105.148.0/23
 2001:470:5:162::/64
 2001:470:d:32f::/64

@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Sep 25 07:04:25 UTC 2026
-#   @entries        961 ips
-#                   93 subnets
-#                   93 lines
+#   @updated        Sat Sep 26 07:08:08 UTC 2026
+#   @entries        960 ips
+#                   92 subnets
+#                   92 lines
 #   @country        Niue (NU)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -56,7 +56,6 @@
 172.225.230.208/28
 172.225.244.144/28
 185.121.178.136/30
-194.50.99.171/32
 2001:470:19:efa::/64
 2001:470:24:8a2::/64
 2001:470:36:15d::/64
