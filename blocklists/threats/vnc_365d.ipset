@@ -5,10 +5,10 @@
 #   @source         https://blocklist.configserver.dev/threats/vnc_365d.ipset
 #   @id             threats_vnc_365d_ipset
 #   @uuid           c992cba6-d4db-3cb8-b5a6-eeeaa23616cb
-#   @updated        Sun Sep 27 19:38:17 UTC 2026
-#   @entries        18,234 ips
+#   @updated        Sun Sep 27 22:53:48 UTC 2026
+#   @entries        18,236 ips
 #                   1,169 subnets
-#                   15,028 lines
+#                   15,030 lines
 #   @expires        4 hours
 #   @category       Threats
 #
@@ -107,6 +107,7 @@
 2.27.153.72
 2.27.153.84
 2.27.153.106
+2.27.153.182
 2.27.153.188
 2.27.165.137
 2.27.165.140/31
@@ -6357,6 +6358,7 @@
 89.117.104.46
 89.117.104.51
 89.125.37.150
+89.125.42.209
 89.125.154.15
 89.125.154.185
 89.125.154.188/30
