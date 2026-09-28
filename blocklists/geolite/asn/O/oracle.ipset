@@ -5,8 +5,8 @@
 #   @source         None
 #   @id             geolite_asn_O_oracle_ipset
 #   @uuid           d7e5f0f4-95af-3539-acac-0233bc9e52b6
-#   @updated        Sun Sep 27 07:40:52 UTC 2026
-#   @entries        6,065,238 ips
+#   @updated        Mon Sep 28 08:20:58 UTC 2026
+#   @entries        6,064,982 ips
 #                   2,142 subnets
 #                   2,142 lines
 #   @asn            AS31898, AS54253, AS1219, AS20054, AS6142
@@ -652,7 +652,7 @@
 134.185.240.0/21
 134.195.212.0/24
 134.217.129.0/24
-134.217.160.0/23
+134.217.161.0/24
 136.228.15.0/24
 136.228.16.0/24
 136.248.64.0/18

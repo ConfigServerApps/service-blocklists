@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_A_akamai_linode_ipset
 #   @uuid           587085ee-d44b-3218-9a56-402620c3a251
-#   @updated        Sun Sep 27 07:39:28 UTC 2026
-#   @entries        1,350,441 ips
-#                   177 subnets
-#                   177 lines
+#   @updated        Mon Sep 28 08:19:38 UTC 2026
+#   @entries        1,358,634 ips
+#                   178 subnets
+#                   178 lines
 #   @asn            AS63949
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -53,7 +53,7 @@
 104.64.128.0/18
 104.64.192.0/19
 104.66.160.0/19
-104.67.0.0/19
+104.67.0.0/18
 104.67.64.0/19
 104.105.0.0/17
 104.105.128.0/18
@@ -190,6 +190,7 @@
 2600:3c14::/30
 2600:3c18::/30
 2600:3c1c::/32
+2600:3c1e::/32
 2a01:7e00::/30
 2a01:7e04::/32
 2a02:26f0:1280::/48
