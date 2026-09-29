@@ -5,7 +5,7 @@
 #   @source         https://blocklist.configserver.dev/iana-reserved.ipset
 #   @id             iana_reserved_ipset
 #   @uuid           5ace3e36-f97d-3d61-a1d4-07f33dc3b9ac
-#   @updated        Sat Aug 29 05:06:32 UTC 2026
+#   @updated        Tue Sep 29 03:31:18 UTC 2026
 #   @entries        536,870,912 ips
 #                   54 subnets
 #                   56 lines
