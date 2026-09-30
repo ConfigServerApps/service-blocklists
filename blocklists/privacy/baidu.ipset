@@ -5,10 +5,10 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_baidu_ipset
 #   @uuid           b662b683-1eff-3e0f-a722-ffdf0cc8a556
-#   @updated        Tue Sep 29 07:15:36 UTC 2026
-#   @entries        605,190 ips
-#                   49 subnets
-#                   49 lines
+#   @updated        Wed Sep 30 07:01:27 UTC 2026
+#   @entries        604,934 ips
+#                   48 subnets
+#                   48 lines
 #   @asn            AS38365, AS55967, AS38627
 #   @expires        4 hours
 #   @category       Uncategorized
@@ -58,7 +58,6 @@
 185.10.104.0/22
 202.46.48.0/20
 202.181.120.0/21
-203.90.238.0/24
 2400:da00::/32
 2402:2b40::/32
 2403:ed40::/32

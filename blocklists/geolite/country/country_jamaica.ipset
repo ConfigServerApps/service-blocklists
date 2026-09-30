@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Sep 29 07:59:19 UTC 2026
-#   @entries        282,287 ips
-#                   359 subnets
-#                   359 lines
+#   @updated        Wed Sep 30 07:42:49 UTC 2026
+#   @entries        282,288 ips
+#                   360 subnets
+#                   360 lines
 #   @country        Jamaica (JM)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -139,6 +139,7 @@
 140.248.62.111/32
 140.248.63.111/32
 142.0.224.0/20
+143.246.176.114/32
 146.75.232.22/31
 146.75.232.24/31
 146.75.248.22/31

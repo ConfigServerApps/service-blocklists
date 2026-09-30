@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Sep 29 07:59:51 UTC 2026
-#   @entries        554,925 ips
-#                   281 subnets
-#                   281 lines
+#   @updated        Wed Sep 30 07:43:21 UTC 2026
+#   @entries        554,926 ips
+#                   282 subnets
+#                   282 lines
 #   @country        Trinidad Tobago (TT)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -83,6 +83,7 @@
 140.248.63.225/32
 143.0.172.0/22
 143.137.192.0/22
+143.246.176.228/32
 146.75.132.150/31
 146.75.132.152/31
 146.75.160.150/31
