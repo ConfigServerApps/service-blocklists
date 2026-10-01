@@ -5,10 +5,10 @@
 #   @source         https://lists.blocklist.de/lists/ftp.txt
 #   @id             3rdparty_blocklist_de_attacks_ftp_ipset
 #   @uuid           dbdc342e-d7bb-3875-bfe0-4852687fa92e
-#   @updated        Wed Sep 30 23:40:54 UTC 2026
-#   @entries        30 ips
+#   @updated        Thu Oct 01 03:09:21 UTC 2026
+#   @entries        26 ips
 #                   0 subnets
-#                   30 lines
+#                   26 lines
 #   @expires        4 hours
 #   @category       3rdParty
 #
@@ -34,14 +34,10 @@
 5.188.22.24
 34.53.198.41
 34.156.238.208
-45.252.191.33
 46.30.161.190
 47.75.108.191
 47.236.24.219
-54.91.68.68
-54.165.219.52
 54.221.141.122
-60.217.198.83
 102.214.172.102
 106.255.223.173
 111.46.219.233
