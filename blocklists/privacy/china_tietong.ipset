@@ -5,10 +5,10 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_china_tietong_ipset
 #   @uuid           c3fab9d2-a25d-3f7b-8913-0b67b3c4db75
-#   @updated        Fri Oct 02 07:25:23 UTC 2026
-#   @entries        23,842,816 ips
-#                   81 subnets
-#                   81 lines
+#   @updated        Sat Oct 03 06:57:02 UTC 2026
+#   @entries        23,838,208 ips
+#                   79 subnets
+#                   79 lines
 #   @asn            AS9394, AS24138, AS45057
 #   @expires        4 hours
 #   @category       Uncategorized
@@ -80,10 +80,8 @@
 121.70.160.0/19
 122.14.192.0/18
 122.64.0.0/11
-123.58.0.0/20
 123.64.0.0/11
 124.206.0.0/16
-161.207.18.0/23
 175.48.0.0/12
 175.64.0.0/11
 182.239.48.0/20

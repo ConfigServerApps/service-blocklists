@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Oct  2 07:53:29 UTC 2026
-#   @entries        69,373 ips
-#                   171 subnets
-#                   171 lines
+#   @updated        Sat Oct  3 07:29:31 UTC 2026
+#   @entries        69,376 ips
+#                   173 subnets
+#                   173 lines
 #   @country        Guernsey (GG)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -63,6 +63,7 @@
 104.28.239.183/32
 104.28.239.184/31
 104.28.239.186/32
+104.29.200.28/31
 140.248.24.50/31
 140.248.40.112/31
 140.248.41.50/31
@@ -144,6 +145,7 @@
 2606:40:2240:c000::/54
 2606:40:22c0:8000::/54
 2606:54c0:3848::/45
+2606:54c1:1:209::/64
 2606:54c3:0:d38::/64
 2a00:8300::/32
 2a01:b00::/29

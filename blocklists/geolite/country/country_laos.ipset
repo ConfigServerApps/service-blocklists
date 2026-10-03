@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Oct  2 07:53:38 UTC 2026
-#   @entries        103,840 ips
-#                   272 subnets
-#                   272 lines
+#   @updated        Sat Oct  3 07:29:40 UTC 2026
+#   @entries        103,845 ips
+#                   275 subnets
+#                   275 lines
 #   @country        Laos (LA)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -97,6 +97,8 @@
 104.28.182.66/32
 104.28.214.104/29
 104.28.246.104/29
+104.29.203.86/31
+104.29.203.88/31
 104.234.71.0/24
 108.171.111.0/26
 109.111.197.0/25
@@ -240,6 +242,7 @@
 2600:70ff:aac9::/48
 2600:70ff:ac33::/48
 2606:54c0:4778::/45
+2606:54c1:1:2ea::/64
 2606:54c3:0:80e::/64
 2607:740:74::/48
 2607:6b80:38::/48

@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Oct  2 07:53:38 UTC 2026
-#   @entries        122,059 ips
-#                   245 subnets
-#                   245 lines
+#   @updated        Sat Oct  3 07:29:40 UTC 2026
+#   @entries        122,063 ips
+#                   248 subnets
+#                   248 lines
 #   @country        Cayman Islands (KY)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -68,6 +68,8 @@
 104.28.233.62/31
 104.28.233.64/31
 104.28.233.66/32
+104.29.196.201/32
+104.29.196.202/31
 108.171.107.0/26
 134.82.73.248/29
 138.43.115.0/24
@@ -211,6 +213,7 @@
 2606:40:214b:4000::/54
 2606:600::/32
 2606:54c0:4730::/45
+2606:54c1:1:12b::/64
 2606:54c3:0:12e7::/64
 2606:b200::/32
 2606:f580::/32

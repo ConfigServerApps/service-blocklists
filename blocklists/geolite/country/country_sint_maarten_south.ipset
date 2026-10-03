@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Oct  2 07:53:56 UTC 2026
-#   @entries        38,125 ips
-#                   107 subnets
-#                   107 lines
+#   @updated        Sat Oct  3 07:29:55 UTC 2026
+#   @entries        38,128 ips
+#                   110 subnets
+#                   110 lines
 #   @country        Sint Maarten (South) (SX)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -32,6 +32,8 @@
 104.28.220.112/30
 104.28.252.111/32
 104.28.252.112/30
+104.29.206.71/32
+104.29.206.72/32
 131.161.84.0/22
 140.248.14.46/31
 140.248.46.124/31
@@ -79,6 +81,7 @@
 2606:40:205e:e000::/54
 2606:40:214c:6000::/54
 2606:54c0:5578::/45
+2606:54c1:1:3ad::/64
 2606:54c3:0:2ef::/64
 2800:280::/32
 2800:470::/32

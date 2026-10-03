@@ -5,10 +5,10 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             isp_spacex_starlink_ipset
 #   @uuid           1ccb3b23-6ce5-367d-b5f9-e0af72b90fba
-#   @updated        Fri Oct 02 07:50:12 UTC 2026
-#   @entries        1,278,987 ips
-#                   111 subnets
-#                   111 lines
+#   @updated        Sat Oct 03 07:25:58 UTC 2026
+#   @entries        1,344,523 ips
+#                   112 subnets
+#                   112 lines
 #   @asn            AS14593, AS34602, AS45700, AS25076, AS212210
 #                   AS49854, AS50494, AS204791
 #   @expires        4 hours
@@ -65,6 +65,7 @@
 137.83.112.0/20
 138.84.32.0/19
 141.109.64.0/19
+143.49.0.0/16
 143.105.0.0/16
 143.131.0.0/20
 144.126.64.0/18

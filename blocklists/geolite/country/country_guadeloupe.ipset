@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Oct  2 07:53:29 UTC 2026
-#   @entries        268,623 ips
-#                   299 subnets
-#                   299 lines
+#   @updated        Sat Oct  3 07:29:32 UTC 2026
+#   @entries        268,626 ips
+#                   302 subnets
+#                   302 lines
 #   @country        Guadeloupe (GP)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -110,6 +110,8 @@
 104.28.209.28/32
 104.28.241.24/30
 104.28.241.28/32
+104.29.200.195/32
+104.29.200.196/32
 104.245.113.0/24
 104.245.114.0/24
 104.245.116.0/24
@@ -263,6 +265,7 @@
 2606:2480:2400::/38
 2606:3180::/32
 2606:54c0:38a0::/45
+2606:54c1:1:238::/64
 2606:54c3:0:c2e::/64
 2a01:e08::/38
 2a01:cb20:4000::/36
