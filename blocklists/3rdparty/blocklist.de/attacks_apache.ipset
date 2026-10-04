@@ -5,10 +5,10 @@
 #   @source         https://lists.blocklist.de/lists/apache.txt
 #   @id             3rdparty_blocklist_de_attacks_apache_ipset
 #   @uuid           1f20446c-49d3-3609-83a2-e6adccd6c4dc
-#   @updated        Sun Oct 04 16:22:45 UTC 2026
-#   @entries        7,967 ips
-#                   16 subnets
-#                   31 lines
+#   @updated        Sun Oct 04 22:49:17 UTC 2026
+#   @entries        7,711 ips
+#                   15 subnets
+#                   30 lines
 #   @expires        4 hours
 #   @category       3rdParty
 #
@@ -37,7 +37,6 @@
 77.109.139.87
 82.221.99.224/28
 95.134.130.182
-95.141.17.0/24
 95.143.192.159
 96.44.142.250
 96.47.224.42

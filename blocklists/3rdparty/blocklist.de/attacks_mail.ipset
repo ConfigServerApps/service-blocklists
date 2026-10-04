@@ -5,10 +5,10 @@
 #   @source         https://lists.blocklist.de/lists/mail.txt
 #   @id             3rdparty_blocklist_de_attacks_mail_ipset
 #   @uuid           99e3603f-7a29-32f3-9d3a-42b81912fab4
-#   @updated        Sun Oct 04 16:22:43 UTC 2026
-#   @entries        7,967 ips
-#                   16 subnets
-#                   31 lines
+#   @updated        Sun Oct 04 22:49:16 UTC 2026
+#   @entries        7,711 ips
+#                   15 subnets
+#                   30 lines
 #   @expires        4 hours
 #   @category       3rdParty
 #
@@ -37,7 +37,6 @@
 77.109.139.87
 82.221.99.224/28
 95.134.130.182
-95.141.17.0/24
 95.143.192.159
 96.44.142.250
 96.47.224.42
