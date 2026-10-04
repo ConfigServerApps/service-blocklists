@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_E_embarq_ipset
 #   @uuid           9b82af82-baf5-3eb3-bc29-996a785dfdb5
-#   @updated        Sat Oct 03 07:31:41 UTC 2026
-#   @entries        905,216 ips
-#                   660 subnets
-#                   660 lines
+#   @updated        Sun Oct 04 07:55:16 UTC 2026
+#   @entries        905,472 ips
+#                   658 subnets
+#                   658 lines
 #   @asn            AS2379, AS5778, AS11398, AS14905, AS17402
 #                   AS14921, AS6222, AS22186, AS13787, AS32855
 #                   AS3447, AS4212, AS6367, AS11530, AS14910
@@ -175,9 +175,7 @@
 67.238.96.0/21
 67.238.109.0/24
 67.238.110.0/23
-67.239.65.0/24
-67.239.66.0/23
-67.239.68.0/22
+67.239.64.0/21
 67.239.159.0/24
 67.239.192.0/19
 67.239.224.0/20
