@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_U_usa_internet_corp_ipset
 #   @uuid           ed4177b8-ee39-385f-9aed-da65d651d7b2
-#   @updated        Sun Oct 04 07:56:09 UTC 2026
-#   @entries        131,039 ips
-#                   373 subnets
-#                   373 lines
+#   @updated        Mon Oct 05 08:07:17 UTC 2026
+#   @entries        131,038 ips
+#                   379 subnets
+#                   379 lines
 #   @asn            AS10242
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -87,7 +87,13 @@
 50.93.249.0/24
 50.93.250.0/23
 50.93.252.0/23
-50.93.254.0/25
+50.93.254.0/28
+50.93.254.16/29
+50.93.254.24/30
+50.93.254.28/31
+50.93.254.30/32
+50.93.254.32/27
+50.93.254.64/26
 50.93.254.128/27
 50.93.254.160/28
 50.93.254.176/30

@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_A_alibaba_ipset
 #   @uuid           ac9d86ac-12a0-309d-9558-01bad22c097d
-#   @updated        Sun Oct 04 07:54:16 UTC 2026
-#   @entries        15,189,320 ips
-#                   1,172 subnets
-#                   1,172 lines
+#   @updated        Mon Oct 05 08:05:28 UTC 2026
+#   @entries        15,189,576 ips
+#                   1,171 subnets
+#                   1,171 lines
 #   @asn            AS37963, AS45102, AS24429, AS134963
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -229,8 +229,7 @@
 43.109.19.0/24
 43.109.21.0/24
 43.109.22.0/24
-43.109.24.0/23
-43.109.26.0/24
+43.109.24.0/22
 43.109.28.0/24
 43.109.30.0/23
 43.109.32.0/23
