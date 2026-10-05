@@ -5,10 +5,10 @@
 #   @source         https://lists.blocklist.de/lists/sip.txt
 #   @id             3rdparty_blocklist_de_attacks_sip_ipset
 #   @uuid           cece620b-f239-39f3-b1ae-b450c71da695
-#   @updated        Mon Oct 05 03:04:30 UTC 2026
-#   @entries        0 ips
+#   @updated        Mon Oct 05 11:40:09 UTC 2026
+#   @entries        1 ips
 #                   0 subnets
-#                   0 lines
+#                   1 lines
 #   @expires        4 hours
 #   @category       3rdParty
 #
@@ -33,3 +33,4 @@
 #   environment requirements.
 # #
 
+112.216.129.27
