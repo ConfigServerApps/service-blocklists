@@ -5,10 +5,10 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_alibaba_ipset
 #   @uuid           2adb4568-db20-33bf-acfd-c9621d04eda6
-#   @updated        Mon Oct 05 07:21:18 UTC 2026
-#   @entries        23,592,887 ips
-#                   227 subnets
-#                   227 lines
+#   @updated        Tue Oct 06 08:00:47 UTC 2026
+#   @entries        23,592,631 ips
+#                   226 subnets
+#                   226 lines
 #   @asn            AS37963, AS45102, AS24429, AS134963
 #   @expires        4 hours
 #   @category       Uncategorized
@@ -83,7 +83,6 @@
 103.55.202.0/24
 103.73.158.0/24
 103.81.186.0/23
-103.94.238.0/24
 103.110.220.0/23
 103.127.242.0/23
 103.135.210.0/23

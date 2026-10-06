@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_F_fastly_ipset
 #   @uuid           e9149de1-abe4-3291-8077-e1059d79e393
-#   @updated        Mon Oct 05 08:06:25 UTC 2026
-#   @entries        364,888 ips
-#                   736 subnets
-#                   736 lines
+#   @updated        Tue Oct 06 08:44:26 UTC 2026
+#   @entries        365,145 ips
+#                   738 subnets
+#                   738 lines
 #   @asn            AS54113, AS394192, AS895
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -16,6 +16,7 @@
 #   Includes both IPv4 and IPv6 networks merged
 # #
 
+16.5.61.0/24
 23.154.64.0/24
 23.185.0.0/24
 23.235.32.0/23
@@ -178,7 +179,8 @@
 2a00:8c40:f060::/44
 2a00:8c40:f080::/41
 2a00:8c40:f100::/40
-2a00:8c40:f200::/42
+2a00:8c40:f200::/43
+2a00:8c40:f230::/44
 2a00:8c40:f240::/43
 2a00:8c40:f270::/44
 2a04:4e40:1000::/48
