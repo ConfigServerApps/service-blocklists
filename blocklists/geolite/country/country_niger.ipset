@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Oct  6 08:41:24 UTC 2026
-#   @entries        56,071 ips
-#                   138 subnets
-#                   138 lines
+#   @updated        Wed Oct  7 08:18:47 UTC 2026
+#   @entries        56,072 ips
+#                   139 subnets
+#                   139 lines
 #   @country        Niger (NE)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -105,6 +105,7 @@
 2401:3620:231:a6::/64
 2605:59c0:b00::/40
 2605:59c0:3500::/40
+2605:59c0:9b00::/40
 2606:54c0:4cb8::/45
 2606:54c1:1:176::/64
 2606:54c3:0:1101::/64

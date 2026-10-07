@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Oct  6 08:41:22 UTC 2026
-#   @entries        282,609 ips
-#                   774 subnets
-#                   774 lines
+#   @updated        Wed Oct  7 08:18:45 UTC 2026
+#   @entries        282,606 ips
+#                   772 subnets
+#                   772 lines
 #   @country        Myanmar (MM)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -260,8 +260,6 @@
 104.28.117.16/32
 104.28.120.15/32
 104.28.120.16/32
-104.28.148.183/32
-104.28.148.184/31
 104.28.187.94/31
 104.28.187.96/30
 104.28.187.100/31

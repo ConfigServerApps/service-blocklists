@@ -5,10 +5,10 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_sony_playstation_network_ipset
 #   @uuid           ebea1cab-59a0-3997-a5c1-1057747fd584
-#   @updated        Tue Oct 06 08:18:42 UTC 2026
-#   @entries        46,882 ips
-#                   61 subnets
-#                   61 lines
+#   @updated        Wed Oct 07 07:52:04 UTC 2026
+#   @entries        55,074 ips
+#                   62 subnets
+#                   62 lines
 #   @asn            AS33353, AS26580
 #   @expires        4 hours
 #   @category       Uncategorized
@@ -34,6 +34,7 @@
 160.33.162.0/24
 160.33.164.0/22
 160.33.168.0/23
+173.230.192.0/19
 185.48.96.0/22
 192.166.248.0/24
 194.5.216.0/22
