@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Oct  9 08:19:53 UTC 2026
-#   @entries        3,104 ips
-#                   547 subnets
-#                   547 lines
+#   @updated        Sat Oct 10 08:11:22 UTC 2026
+#   @entries        3,103 ips
+#                   546 subnets
+#                   546 lines
 #   @country        North Korea (KP)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -561,5 +561,4 @@
 2a0e:aa07:e222::/48
 2a0f:1cc6:bab9::/48
 2a14:67c1:a100::/44
-2a14:7580:d42::/48
 2a14:7583:f701::/48

@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Oct  9 08:19:14 UTC 2026
-#   @entries        43,265 ips
-#                   131 subnets
-#                   131 lines
+#   @updated        Sat Oct 10 08:10:38 UTC 2026
+#   @entries        43,777 ips
+#                   132 subnets
+#                   132 lines
 #   @country        Burundi (BI)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -19,6 +19,7 @@
 2.18.11.0/24
 5.62.60.61/32
 5.62.60.62/31
+9.170.228.0/23
 41.79.44.0/22
 41.79.224.0/22
 57.82.116.0/22
