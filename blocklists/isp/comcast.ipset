@@ -5,10 +5,10 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             isp_comcast_ipset
 #   @uuid           09606518-a08a-36f8-a001-3be67dedd4bd
-#   @updated        Sun Oct 11 07:57:25 UTC 2026
-#   @entries        69,924,405 ips
-#                   741 subnets
-#                   741 lines
+#   @updated        Mon Oct 12 08:06:21 UTC 2026
+#   @entries        69,924,149 ips
+#                   740 subnets
+#                   740 lines
 #   @asn            AS7922, AS33491, AS33651, AS7015, AS33667
 #                   AS33287, AS33657, AS7016, AS33659, AS13367
 #                   AS33668, AS33652, AS33650, AS7725, AS33660
@@ -259,7 +259,6 @@
 76.78.246.0/24
 76.96.0.0/11
 76.128.0.0/11
-77.111.118.0/24
 78.31.204.0/22
 91.200.136.0/22
 91.242.68.0/23
