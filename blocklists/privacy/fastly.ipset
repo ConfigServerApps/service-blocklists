@@ -5,10 +5,10 @@
 #   @source         https://api.fastly.com/public-ip-list
 #   @id             privacy_fastly_ipset
 #   @uuid           bc39e07e-ba7f-3724-bb6a-d250b2d443ff
-#   @updated        Mon Oct 12 07:56:36 UTC 2026
-#   @entries        304,130 ips
-#                   21 subnets
-#                   21 lines
+#   @updated        Tue Oct 13 08:14:33 UTC 2026
+#   @entries        353,283 ips
+#                   24 subnets
+#                   24 lines
 #   @expires        6 hours
 #   @category       Privacy
 #
@@ -26,6 +26,8 @@
 
 23.235.32.0/20
 43.249.72.0/22
+90.98.0.0/17
+90.98.128.0/18
 103.244.50.0/24
 103.245.222.0/23
 103.245.224.0/24
@@ -44,4 +46,5 @@
 199.27.72.0/21
 199.232.0.0/16
 2a04:4e40::/32
-2a04:4e42::/32
+2a04:4e42::/31
+2a04:4e44::/32
