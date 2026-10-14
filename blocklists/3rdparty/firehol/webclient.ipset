@@ -5,10 +5,10 @@
 #   @source         https://iplists.firehol.org/files/firehol_webclient.netset
 #   @id             3rdparty_firehol_webclient_ipset
 #   @uuid           63e8ab7f-8133-3dac-bd85-b0ab53e25e00
-#   @updated        Tue Oct 13 21:14:17 UTC 2026
-#   @entries        478 ips
+#   @updated        Wed Oct 14 02:47:11 UTC 2026
+#   @entries        479 ips
 #                   1 subnets
-#                   477 lines
+#                   478 lines
 #   @expires        4 hours
 #   @category       3rdParty
 #
@@ -98,6 +98,7 @@
 34.132.106.4
 34.134.134.13
 34.134.184.123
+34.141.17.36
 34.173.249.44
 34.243.223.99
 35.91.38.18
