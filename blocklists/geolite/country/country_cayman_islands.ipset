@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Oct 13 08:42:14 UTC 2026
-#   @entries        122,063 ips
-#                   248 subnets
-#                   248 lines
+#   @updated        Wed Oct 14 07:06:38 UTC 2026
+#   @entries        122,061 ips
+#                   246 subnets
+#                   246 lines
 #   @country        Cayman Islands (KY)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -205,7 +205,6 @@
 2001:470:f251::/48
 2001:470:fe23::/48
 2001:3786:5003:300::/56
-2401:3620:231:83::/64
 2602:fb4d::/36
 2604:1780::/32
 2605:59c8:6e00::/40
@@ -229,8 +228,7 @@
 2a02:26f7:e88c:4000::/64
 2a02:26f7:e88c:c440::/64
 2a02:26f7:e88d:4000::/64
-2a02:26f7:e890:4000::/64
-2a02:26f7:e890:c440::/64
+2a02:26f7:e890::/48
 2a02:26f7:e891:4000::/64
 2a04:4e41:361f::/48
 2a04:4e41:3a28::/48

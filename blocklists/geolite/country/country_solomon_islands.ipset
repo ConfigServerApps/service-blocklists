@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Oct 13 08:42:28 UTC 2026
-#   @entries        17,849 ips
-#                   122 subnets
-#                   122 lines
+#   @updated        Wed Oct 14 07:07:00 UTC 2026
+#   @entries        17,848 ips
+#                   121 subnets
+#                   121 lines
 #   @country        Solomon Islands (SB)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -90,7 +90,6 @@
 2001:df7:b580::/48
 2001:df7:eb80::/48
 2001:3786:5000:100::/56
-2401:3620:231:c5::/64
 2405:1cc0::/32
 2405:8300::/32
 2405:c0c0::/32

@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Oct 13 08:42:48 UTC 2026
-#   @entries        4,266 ips
-#                   92 subnets
-#                   92 lines
+#   @updated        Wed Oct 14 07:07:31 UTC 2026
+#   @entries        4,265 ips
+#                   91 subnets
+#                   91 lines
 #   @country        Wallis Futuna (WF)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -60,7 +60,6 @@
 2001:470:f334::/48
 2001:470:f3a6::/48
 2001:470:fe7c::/48
-2401:3620:231:f2::/64
 2406:2540::/32
 2406:2d40:2e00::/40
 2606:40:214d::/54

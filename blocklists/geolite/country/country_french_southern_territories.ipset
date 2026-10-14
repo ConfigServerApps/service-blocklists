@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Oct 13 08:42:31 UTC 2026
-#   @entries        23 ips
-#                   22 subnets
-#                   22 lines
+#   @updated        Wed Oct 14 07:07:04 UTC 2026
+#   @entries        22 ips
+#                   21 subnets
+#                   21 lines
 #   @country        French Southern Territories (TF)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -27,7 +27,6 @@
 140.248.62.215/32
 140.248.63.215/32
 143.246.176.218/32
-2401:3620:231:da::/64
 2a04:4e41:401d:7000::/52
 2a04:4e41:402d:7000::/52
 2a04:4e41:403d:7000::/52

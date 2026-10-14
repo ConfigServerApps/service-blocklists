@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Oct 13 08:42:24 UTC 2026
-#   @entries        81,278 ips
-#                   362 subnets
-#                   362 lines
+#   @updated        Wed Oct 14 07:06:54 UTC 2026
+#   @entries        81,277 ips
+#                   361 subnets
+#                   361 lines
 #   @country        Papua New Guinea (PG)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -301,7 +301,6 @@
 2400:9300::/32
 2400:94e0::/32
 2400:bd20::/32
-2401:3620:231:b4::/64
 2401:d540::/32
 2401:e8e0::/32
 2401:f680::/32

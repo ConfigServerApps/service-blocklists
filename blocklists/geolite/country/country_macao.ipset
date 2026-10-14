@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Oct 13 08:42:16 UTC 2026
-#   @entries        380,059 ips
-#                   745 subnets
-#                   745 lines
+#   @updated        Wed Oct 14 07:06:42 UTC 2026
+#   @entries        380,054 ips
+#                   743 subnets
+#                   743 lines
 #   @country        Macao (MO)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -30,7 +30,6 @@
 23.148.24.116/30
 23.148.24.120/29
 23.148.24.128/25
-23.158.20.140/30
 27.109.128.0/17
 31.24.85.0/27
 43.247.24.0/22
@@ -637,7 +636,6 @@
 2401:b60:14:b22b::/64
 2401:20e0::/32
 2401:3280::/32
-2401:3620:231:99::/64
 2401:75c0::/32
 2401:9100::/32
 2402:9280::/32

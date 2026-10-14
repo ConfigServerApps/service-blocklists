@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Oct 13 08:42:31 UTC 2026
-#   @entries        59,926 ips
-#                   149 subnets
-#                   149 lines
+#   @updated        Wed Oct 14 07:07:04 UTC 2026
+#   @entries        59,925 ips
+#                   148 subnets
+#                   148 lines
 #   @country        Eswatini (SZ)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -108,7 +108,6 @@
 2001:470:c8e8::/48
 2001:4338::/32
 2001:43f8:9b0::/47
-2401:3620:231:d7::/64
 2605:59ca:8700::/40
 2606:54c0:55a0::/45
 2606:54c1:1:be::/64
