@@ -5,10 +5,10 @@
 #   @source         whois.radb.net
 #   @id             isp_charter_spectrum_timewarnercable_ipset
 #   @uuid           c39b3c64-d363-3eca-bbe7-34a59dc0c0b5
-#   @updated        Wed Oct 14 06:45:48 UTC 2026
-#   @entries        55,415,519 ips
-#                   2,864 subnets
-#                   2,864 lines
+#   @updated        Thu Oct 15 06:32:34 UTC 2026
+#   @entries        55,415,263 ips
+#                   2,863 subnets
+#                   2,863 lines
 #   @asn            AS7843, AS10796, AS11427, AS20001, AS11351
 #                   AS11426, AS12271, AS20231, AS11955, AS10838
 #                   AS20115, AS40264, AS22677, AS22974, AS33588
@@ -1311,7 +1311,6 @@
 135.196.158.0/24
 135.196.160.0/24
 135.196.225.0/24
-136.0.209.0/24
 136.174.0.0/16
 136.175.152.0/22
 136.204.0.0/16

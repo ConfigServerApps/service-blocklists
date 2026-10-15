@@ -5,7 +5,7 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             isp_verizon_ipset
 #   @uuid           edc3bdf1-3ff0-3351-8660-c0c428c0cb0e
-#   @updated        Wed Oct 14 06:58:05 UTC 2026
+#   @updated        Thu Oct 15 06:46:23 UTC 2026
 #   @entries        89,596,785 ips
 #                   1,550 subnets
 #                   1,550 lines
