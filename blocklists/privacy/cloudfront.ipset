@@ -5,10 +5,10 @@
 #   @source         https://d7uri8nf7uskq.cloudfront.net/tools/list-cloudfront-ips
 #   @id             privacy_cloudfront_ipset
 #   @uuid           faac2d95-4e94-303c-9cbf-74304f75f5fa
-#   @updated        Thu Oct 15 06:23:28 UTC 2026
-#   @entries        4,224,645 ips
-#                   179 subnets
-#                   180 lines
+#   @updated        Fri Oct 16 06:19:37 UTC 2026
+#   @entries        4,225,413 ips
+#                   181 subnets
+#                   182 lines
 #   @expires        6 hours
 #   @category       Privacy
 #
@@ -118,6 +118,8 @@
 47.129.84.0/24
 51.44.234.0/23
 51.44.236.0/22
+51.74.20.0/23
+51.74.22.0/24
 51.74.192.0/18
 52.15.127.128/26
 52.46.0.0/18

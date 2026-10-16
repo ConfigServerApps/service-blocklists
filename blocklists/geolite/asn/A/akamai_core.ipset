@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_A_akamai_core_ipset
 #   @uuid           4f5f5672-5495-310b-a5b2-6be4402bfcee
-#   @updated        Thu Oct 15 06:54:42 UTC 2026
-#   @entries        4,449,790 ips
-#                   3,741 subnets
-#                   3,741 lines
+#   @updated        Fri Oct 16 06:50:43 UTC 2026
+#   @entries        4,449,789 ips
+#                   3,740 subnets
+#                   3,740 lines
 #   @asn            AS32787, AS35994, AS16625, AS36183, AS12222
 #                   AS17204, AS26008, AS393560, AS16702, AS35993
 #                   AS17334, AS22207, AS23454, AS30675, AS20189
@@ -2540,7 +2540,6 @@
 2a02:26f7:64::/48
 2a02:26f7:66::/48
 2a02:26f7:70::/48
-2a02:26f7:74::/48
 2a02:26f7:76::/48
 2a02:26f7:78::/48
 2a02:26f7:88::/48

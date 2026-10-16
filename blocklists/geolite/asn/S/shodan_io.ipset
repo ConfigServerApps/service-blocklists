@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_S_shodan_io_ipset
 #   @uuid           7389e625-927e-39ad-919b-450a2f4936ae
-#   @updated        Thu Oct 15 06:56:04 UTC 2026
-#   @entries        3,254,548 ips
-#                   208 subnets
-#                   208 lines
+#   @updated        Fri Oct 16 06:52:05 UTC 2026
+#   @entries        3,255,572 ips
+#                   209 subnets
+#                   209 lines
 #   @asn            AS10439, AS14061, AS12989
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -192,6 +192,7 @@
 198.199.64.0/18
 198.211.96.0/19
 201.79.0.0/18
+201.79.64.0/22
 204.48.16.0/20
 206.81.0.0/19
 206.189.0.0/16
