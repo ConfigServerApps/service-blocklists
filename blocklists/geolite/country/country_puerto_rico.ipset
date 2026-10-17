@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Oct 16 06:49:36 UTC 2026
-#   @entries        1,262,796 ips
-#                   1,062 subnets
-#                   1,062 lines
+#   @updated        Sat Oct 17 06:37:55 UTC 2026
+#   @entries        1,262,794 ips
+#                   1,060 subnets
+#                   1,060 lines
 #   @country        Puerto Rico (PR)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -1042,16 +1042,14 @@
 2a09:bac2:4fc8::/45
 2a09:bac2:4fd0::/45
 2a09:bac2:d4b0::/45
-2a09:bac2:d588::/45
-2a09:bac2:d590::/44
+2a09:bac2:d598::/45
 2a09:bac2:d5a0::/43
 2a09:bac2:d5c0::/42
 2a09:bac2:d600::/39
 2a09:bac3:4fc8::/45
 2a09:bac3:4fd0::/45
 2a09:bac3:d4b0::/45
-2a09:bac3:d588::/45
-2a09:bac3:d590::/44
+2a09:bac3:d598::/45
 2a09:bac3:d5a0::/43
 2a09:bac3:d5c0::/42
 2a09:bac3:d600::/39

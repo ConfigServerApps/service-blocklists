@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Oct 16 06:48:38 UTC 2026
-#   @entries        72,994 ips
-#                   381 subnets
-#                   381 lines
+#   @updated        Sat Oct 17 06:36:58 UTC 2026
+#   @entries        72,993 ips
+#                   380 subnets
+#                   380 lines
 #   @country        Andorra (AD)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -380,7 +380,6 @@
 2a09:bac4:1000::/45
 2a09:bac5::/45
 2a09:bac6::/45
-2a0a:6040:5616::/48
 2a0a:8f40:8::/48
 2a0a:9607::/47
 2a0b:4e07:3:200::/60

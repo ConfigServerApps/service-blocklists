@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Oct 16 06:48:44 UTC 2026
-#   @entries        1,221,352 ips
-#                   597 subnets
-#                   597 lines
+#   @updated        Sat Oct 17 06:37:04 UTC 2026
+#   @entries        1,221,864 ips
+#                   598 subnets
+#                   598 lines
 #   @country        Bolivia (BO)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -79,6 +79,7 @@
 87.81.250.224/31
 87.81.251.224/31
 91.202.214.0/24
+91.244.144.0/23
 95.134.69.0/24
 96.45.38.112/32
 98.159.34.160/28

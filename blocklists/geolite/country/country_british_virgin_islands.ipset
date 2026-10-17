@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Oct 16 06:50:05 UTC 2026
-#   @entries        754,329 ips
-#                   566 subnets
-#                   566 lines
+#   @updated        Sat Oct 17 06:38:23 UTC 2026
+#   @entries        754,585 ips
+#                   567 subnets
+#                   567 lines
 #   @country        British Virgin Islands (VG)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -224,6 +224,7 @@
 194.36.177.0/24
 194.40.240.0/23
 194.40.242.0/24
+194.53.55.0/24
 195.14.99.0/24
 195.39.238.0/24
 195.42.248.0/24
