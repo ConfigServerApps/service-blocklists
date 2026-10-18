@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_S_spacex_starlink_ipset
 #   @uuid           ed411cb7-f50c-3bb5-8ce8-7a7226213d9e
-#   @updated        Sat Oct 17 06:41:10 UTC 2026
-#   @entries        1,081,468 ips
-#                   12,679 subnets
-#                   12,679 lines
+#   @updated        Sun Oct 18 06:57:14 UTC 2026
+#   @entries        1,083,516 ips
+#                   12,680 subnets
+#                   12,680 lines
 #   @asn            AS14593, AS34602, AS45700, AS25076, AS212210
 #                   AS49854, AS50494, AS204791
 #   @expires        6 hours
@@ -18,6 +18,7 @@
 # #
 
 9.161.0.0/20
+9.161.16.0/21
 9.161.65.0/24
 9.161.66.0/24
 9.161.68.0/24
