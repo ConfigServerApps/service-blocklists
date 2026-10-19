@@ -5,7 +5,7 @@
 #   @source         https://raw.githubusercontent.com/bitwire-it/ipblocklist/main/inbound.txt
 #   @id             3rdparty_bitwire_inbound_ipset
 #   @uuid           21b38f33-9108-3a6f-9f11-a7488d001146
-#   @updated        Sun Oct 18 22:13:14 UTC 2026
+#   @updated        Mon Oct 19 02:26:28 UTC 2026
 #   @entries        23,982,182 ips
 #                   248,219 subnets
 #                   4,583,816 lines
