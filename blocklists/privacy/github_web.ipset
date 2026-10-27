@@ -5,10 +5,10 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_github_web_ipset
 #   @uuid           7f115707-9d27-30a9-9f20-40108de7006c
-#   @updated        Mon Oct 19 06:43:32 UTC 2026
-#   @entries        10,276 ips
+#   @updated        Tue Oct 27 06:52:49 UTC 2026
+#   @entries        10,277 ips
 #                   7 subnets
-#                   39 lines
+#                   40 lines
 #   @expires        4 hours
 #   @category       Uncategorized
 #
@@ -44,6 +44,7 @@
 20.217.135.5
 20.233.83.145
 20.233.83.148
+20.250.119.67
 48.202.248.40
 48.204.201.5
 140.82.112.0/20

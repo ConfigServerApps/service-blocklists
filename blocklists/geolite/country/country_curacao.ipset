@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Mon Oct 19 07:11:04 UTC 2026
-#   @entries        194,723 ips
-#                   202 subnets
-#                   202 lines
+#   @updated        Tue Oct 27 07:24:19 UTC 2026
+#   @entries        194,724 ips
+#                   203 subnets
+#                   203 lines
 #   @country        Curacao (CW)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -158,6 +158,7 @@
 2001:470:f545::/48
 2001:470:fe42::/48
 2001:13c7:6004::/47
+2401:3620:232:3e::/64
 2600:70ff:c829::/48
 2605:59c0:7200::/40
 2606:40:205e:2000::/54

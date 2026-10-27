@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Mon Oct 19 07:11:40 UTC 2026
-#   @entries        45,638 ips
-#                   172 subnets
-#                   172 lines
+#   @updated        Tue Oct 27 07:24:52 UTC 2026
+#   @entries        45,639 ips
+#                   173 subnets
+#                   173 lines
 #   @country        Liberia (LR)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -122,6 +122,7 @@
 2001:470:1f11:c8::/64
 2001:470:1f13:83f::/64
 2001:43f8:a60::/47
+2401:3620:232:89::/64
 2605:59c0:1900::/40
 2605:59c0:7f00::/40
 2606:40:2241:8000::/54

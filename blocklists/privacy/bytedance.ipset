@@ -5,10 +5,10 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_bytedance_ipset
 #   @uuid           2812b2c7-ef89-317d-9384-532828085f39
-#   @updated        Mon Oct 19 06:31:02 UTC 2026
-#   @entries        436,054 ips
-#                   62 subnets
-#                   62 lines
+#   @updated        Tue Oct 27 06:37:11 UTC 2026
+#   @entries        436,055 ips
+#                   63 subnets
+#                   63 lines
 #   @asn            AS396986, AS138699, AS150436
 #   @expires        4 hours
 #   @category       Uncategorized
@@ -75,6 +75,7 @@
 2404:9dc0:cd06::/48
 2404:9dc0:cd07::/48
 2404:9dc0:cd08::/48
+2405:3200:504::/48
 2605:340::/32
 2800:380:5001::/48
 2800:380:5002::/48

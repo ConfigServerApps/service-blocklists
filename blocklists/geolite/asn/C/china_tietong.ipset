@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_C_china_tietong_ipset
 #   @uuid           546a29ef-e495-36fa-a4cb-6fd28f4b9616
-#   @updated        Mon Oct 19 07:14:24 UTC 2026
-#   @entries        513,792 ips
-#                   21 subnets
-#                   21 lines
+#   @updated        Tue Oct 27 07:27:05 UTC 2026
+#   @entries        514,048 ips
+#                   22 subnets
+#                   22 lines
 #   @asn            AS9394, AS24138, AS45057
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -36,4 +36,5 @@
 161.207.18.0/23
 211.98.24.0/24
 222.35.0.0/16
+222.50.121.0/24
 222.50.123.0/24

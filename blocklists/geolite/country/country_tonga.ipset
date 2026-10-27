@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Mon Oct 19 07:12:07 UTC 2026
-#   @entries        14,597 ips
-#                   119 subnets
-#                   119 lines
+#   @updated        Tue Oct 27 07:25:19 UTC 2026
+#   @entries        14,598 ips
+#                   120 subnets
+#                   120 lines
 #   @country        Tonga (TO)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -88,6 +88,7 @@
 2001:df4:7480::/48
 2400:6400::/32
 2400:80e0::/32
+2401:3620:232:e0::/64
 2402:1940::/32
 2406:1500::/32
 2406:2d40:9f00::/40
