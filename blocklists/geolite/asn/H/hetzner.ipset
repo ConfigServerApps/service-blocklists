@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_H_hetzner_ipset
 #   @uuid           1c522355-892b-37e5-a83a-45235e7126f6
-#   @updated        Tue Oct 27 07:27:34 UTC 2026
-#   @entries        3,499,271 ips
-#                   93 subnets
-#                   93 lines
+#   @updated        Wed Oct 28 07:57:21 UTC 2026
+#   @entries        3,499,527 ips
+#                   94 subnets
+#                   94 lines
 #   @asn            AS24940, AS213230, AS215859, AS212317
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -58,6 +58,7 @@
 142.132.128.0/17
 144.76.0.0/16
 148.251.0.0/16
+149.245.242.0/24
 157.90.0.0/16
 157.180.0.0/17
 159.69.0.0/16

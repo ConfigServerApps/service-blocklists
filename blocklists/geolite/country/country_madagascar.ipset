@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Oct 27 07:24:55 UTC 2026
-#   @entries        590,403 ips
-#                   190 subnets
-#                   190 lines
+#   @updated        Wed Oct 28 07:54:10 UTC 2026
+#   @entries        590,402 ips
+#                   189 subnets
+#                   189 lines
 #   @country        Madagascar (MG)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -200,7 +200,6 @@
 2a0a:6044:6a78::/47
 2a0b:4e07:3:4500::/60
 2a0e:cbc0:165::/48
-2a13:241:3100::/40
 2a14:67c2:872::/48
 2c0f:1740::/32
 2c0f:f1c8::/32

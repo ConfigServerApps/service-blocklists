@@ -5,8 +5,8 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Oct 27 07:25:06 UTC 2026
-#   @entries        81,022 ips
+#   @updated        Wed Oct 28 07:54:22 UTC 2026
+#   @entries        81,277 ips
 #                   361 subnets
 #                   361 lines
 #   @country        Papua New Guinea (PG)
@@ -41,6 +41,7 @@
 45.207.62.0/23
 75.125.93.0/24
 99.196.217.0/28
+101.1.19.0/24
 103.3.168.0/22
 103.9.226.0/24
 103.11.160.0/22
@@ -375,5 +376,4 @@
 2a09:bac6:4f88::/45
 2a09:bac6:4f90::/45
 2a0b:4e07:3:5980::/60
-2a13:241:4200::/40
 2a14:67c2:8d8::/48

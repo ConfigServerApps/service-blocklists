@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Oct 27 07:25:43 UTC 2026
-#   @entries        241,223 ips
-#                   230 subnets
-#                   230 lines
+#   @updated        Wed Oct 28 07:55:00 UTC 2026
+#   @entries        241,222 ips
+#                   229 subnets
+#                   229 lines
 #   @country        Yemen (YE)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -244,5 +244,4 @@
 2a0d:3341:c800::/40
 2a0d:3341:ef00::/40
 2a10:9007:2:22::/64
-2a13:241:5b00::/40
 2a14:67c2:828::/48

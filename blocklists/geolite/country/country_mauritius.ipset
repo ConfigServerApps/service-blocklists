@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Oct 27 07:24:56 UTC 2026
-#   @entries        2,474,780 ips
-#                   643 subnets
-#                   643 lines
+#   @updated        Wed Oct 28 07:54:11 UTC 2026
+#   @entries        2,474,779 ips
+#                   642 subnets
+#                   642 lines
 #   @country        Mauritius (MU)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -523,7 +523,6 @@
 2a0a:6044:6ab4::/47
 2a0b:4e07:3:4800::/60
 2a10:9007:2:11::/64
-2a13:241:3600::/40
 2a13:a5c3:d16c::/46
 2a14:67c2:8d9::/48
 2c0f:4c20::/32

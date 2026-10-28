@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Oct 27 07:24:02 UTC 2026
-#   @entries        134,132 ips
-#                   265 subnets
-#                   265 lines
+#   @updated        Wed Oct 28 07:53:15 UTC 2026
+#   @entries        134,131 ips
+#                   264 subnets
+#                   264 lines
 #   @country        Antigua Barbuda (AG)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -279,5 +279,4 @@
 2a0a:6044:6722::/48
 2a0b:4e07:3:280::/60
 2a12:ef85:2000::/36
-2a13:240:fb00::/40
 2a14:67c2:8e2::/48

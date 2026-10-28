@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Oct 27 07:25:17 UTC 2026
-#   @entries        359,196 ips
-#                   146 subnets
-#                   146 lines
+#   @updated        Wed Oct 28 07:54:33 UTC 2026
+#   @entries        359,195 ips
+#                   145 subnets
+#                   145 lines
 #   @country        Togo (TG)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -154,7 +154,6 @@
 2a09:bac6:56a8::/45
 2a0b:4e07:3:7680::/60
 2a10:9007:2:1e::/64
-2a13:241:5300::/40
 2a14:67c2:87d::/48
 2c0f:4080::/32
 2c0f:4320::/32

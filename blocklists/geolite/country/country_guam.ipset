@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Oct 27 07:24:41 UTC 2026
-#   @entries        241,335 ips
-#                   264 subnets
-#                   264 lines
+#   @updated        Wed Oct 28 07:53:55 UTC 2026
+#   @entries        241,334 ips
+#                   263 subnets
+#                   263 lines
 #   @country        Guam (GU)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -278,5 +278,4 @@
 2a0a:8e00:3000::/47
 2a0a:9606:3000::/47
 2a0b:4e07:3:3160::/60
-2a13:241:1e00::/40
 2a14:67c2:883::/48

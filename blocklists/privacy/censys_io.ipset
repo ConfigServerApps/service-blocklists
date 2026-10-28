@@ -5,10 +5,10 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_censys_io_ipset
 #   @uuid           b1420874-4ab4-3b72-b5e7-883d31d03cef
-#   @updated        Tue Oct 27 06:37:25 UTC 2026
-#   @entries        6,147 ips
-#                   24 subnets
-#                   24 lines
+#   @updated        Wed Oct 28 07:08:21 UTC 2026
+#   @entries        6,915 ips
+#                   27 subnets
+#                   27 lines
 #   @asn            AS398324
 #   @expires        4 hours
 #   @category       Uncategorized
@@ -16,6 +16,7 @@
 #   No description provided
 # #
 
+64.255.24.0/24
 66.132.148.0/24
 66.132.153.0/24
 66.132.159.0/24
@@ -36,7 +37,9 @@
 162.142.125.0/24
 167.94.138.0/24
 167.248.133.0/24
+192.81.48.0/24
 206.168.32.0/22
+216.181.120.0/24
 2001:470:1a6::/48
 2602:80d:1000::/44
 2620:96:e000::/48
