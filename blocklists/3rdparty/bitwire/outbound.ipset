@@ -5,7 +5,7 @@
 #   @source         https://raw.githubusercontent.com/bitwire-it/ipblocklist/main/outbound.txt
 #   @id             3rdparty_bitwire_outbound_ipset
 #   @uuid           8f021a02-9afc-34c9-9fea-36549d4bc169
-#   @updated        Tue Oct 27 23:31:24 UTC 2026
+#   @updated        Wed Oct 28 03:09:35 UTC 2026
 #   @entries        118,204 ips
 #                   3,831 subnets
 #                   93,240 lines
