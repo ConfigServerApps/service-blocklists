@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_R_russia_crimeacom_south_llc_ipset
 #   @uuid           5bd17482-ee5f-36ae-8b8d-d3d22bfc07bb
-#   @updated        Wed Oct 28 07:57:45 UTC 2026
-#   @entries        7,681 ips
-#                   16 subnets
-#                   16 lines
+#   @updated        Thu Oct 29 08:14:42 UTC 2026
+#   @entries        8,705 ips
+#                   17 subnets
+#                   17 lines
 #   @asn            AS28761
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -31,4 +31,5 @@
 195.3.244.0/22
 195.26.80.0/23
 195.88.52.0/23
+195.211.160.0/22
 2a05:5840::/31
