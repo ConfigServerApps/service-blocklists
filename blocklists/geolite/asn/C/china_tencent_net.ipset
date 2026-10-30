@@ -5,7 +5,7 @@
 #   @source         None
 #   @id             geolite_asn_C_china_tencent_net_ipset
 #   @uuid           2c3a7a6d-3f12-38da-9645-014fb9f444b0
-#   @updated        Thu Oct 29 08:13:44 UTC 2026
+#   @updated        Fri Oct 30 08:50:02 UTC 2026
 #   @entries        8,641,439 ips
 #                   786 subnets
 #                   786 lines
@@ -745,7 +745,7 @@
 240d:c010:1f::/48
 240d:c010:1fa::/47
 240d:c010:1fc::/46
-240d:c010:201::/48
+240d:c010:200::/47
 240d:c010:202::/48
 240d:c010:209::/48
 240d:c010:20::/44
