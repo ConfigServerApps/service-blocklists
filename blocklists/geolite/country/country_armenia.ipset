@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Oct 30 08:46:23 UTC 2026
-#   @entries        600,830 ips
-#                   772 subnets
-#                   772 lines
+#   @updated        Sat Oct 31 08:03:05 UTC 2026
+#   @entries        609,278 ips
+#                   774 subnets
+#                   774 lines
 #   @country        Armenia (AM)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -66,6 +66,7 @@
 57.90.146.0/23
 62.3.16.0/24
 62.89.0.0/19
+62.144.61.0/24
 66.102.33.192/26
 72.14.201.67/32
 77.91.68.0/24
@@ -360,6 +361,7 @@
 196.199.39.0/24
 198.145.150.0/24
 200.162.145.0/24
+206.62.192.0/19
 212.34.224.0/19
 212.73.64.0/19
 213.109.197.0/24

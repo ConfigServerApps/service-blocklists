@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Oct 30 08:47:43 UTC 2026
-#   @entries        419,177 ips
-#                   233 subnets
-#                   233 lines
+#   @updated        Sat Oct 31 08:04:27 UTC 2026
+#   @entries        419,180 ips
+#                   235 subnets
+#                   235 lines
 #   @country        Senegal (SN)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -38,6 +38,7 @@
 87.81.249.228/31
 87.81.250.228/31
 87.81.251.228/31
+87.81.253.228/31
 95.142.125.0/24
 102.36.136.0/22
 102.36.147.0/24
@@ -216,6 +217,7 @@
 2a04:4e41:64:e400::/55
 2a04:4e41:68:e400::/55
 2a04:4e41:6c:e400::/55
+2a04:4e41:74:e400::/55
 2a04:4e41:812::/48
 2a04:4e41:401c:c000::/52
 2a04:4e41:402c:c000::/52

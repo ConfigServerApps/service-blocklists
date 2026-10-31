@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Oct 30 08:47:17 UTC 2026
-#   @entries        590,653 ips
-#                   620 subnets
-#                   620 lines
+#   @updated        Sat Oct 31 08:04:00 UTC 2026
+#   @entries        591,165 ips
+#                   622 subnets
+#                   622 lines
 #   @country        Lebanon (LB)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -162,6 +162,8 @@
 140.248.63.126/32
 141.105.80.0/20
 141.138.176.0/20
+143.20.43.0/24
+143.20.45.0/24
 143.246.176.129/32
 146.75.166.94/31
 146.75.166.96/31

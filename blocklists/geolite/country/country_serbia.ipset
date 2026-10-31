@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Oct 30 08:47:37 UTC 2026
-#   @entries        2,337,361 ips
-#                   1,393 subnets
-#                   1,393 lines
+#   @updated        Sat Oct 31 08:04:20 UTC 2026
+#   @entries        2,337,617 ips
+#                   1,394 subnets
+#                   1,394 lines
 #   @country        Serbia (RS)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -857,6 +857,7 @@
 188.255.152.0/22
 188.255.158.0/23
 188.255.160.0/23
+188.255.164.0/24
 188.255.166.0/23
 188.255.168.0/24
 188.255.172.0/24

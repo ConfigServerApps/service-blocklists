@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Oct 30 08:46:49 UTC 2026
-#   @entries        4,781,963 ips
-#                   405 subnets
-#                   405 lines
+#   @updated        Sat Oct 31 08:03:31 UTC 2026
+#   @entries        4,781,966 ips
+#                   407 subnets
+#                   407 lines
 #   @country        Algeria (DZ)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -44,6 +44,7 @@
 87.81.249.158/31
 87.81.250.158/31
 87.81.251.158/31
+87.81.253.158/31
 92.119.128.0/24
 95.142.112.0/24
 95.168.185.183/32
@@ -356,6 +357,7 @@
 2a04:4e41:64:9e00::/55
 2a04:4e41:68:9e00::/55
 2a04:4e41:6c:9e00::/55
+2a04:4e41:74:9e00::/55
 2a04:4e41:209::/48
 2a04:4e41:4013:d000::/52
 2a04:4e41:4023:d000::/52
