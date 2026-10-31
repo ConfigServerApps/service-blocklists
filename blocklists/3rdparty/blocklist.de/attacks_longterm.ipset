@@ -5,10 +5,10 @@
 #   @source         https://lists.blocklist.de/lists/strongips.txt
 #   @id             3rdparty_blocklist_de_attacks_longterm_ipset
 #   @uuid           64bf25f1-aed6-3475-b945-8203f7f286c8
-#   @updated        Sat Oct 31 16:40:42 UTC 2026
-#   @entries        292 ips
+#   @updated        Sat Oct 31 23:07:08 UTC 2026
+#   @entries        293 ips
 #                   2 subnets
-#                   290 lines
+#                   291 lines
 #   @expires        4 hours
 #   @category       3rdParty
 #
@@ -217,6 +217,7 @@
 180.167.207.234
 180.188.253.150
 181.28.101.14
+182.18.161.165
 182.93.7.194
 182.93.50.90
 182.253.156.184
