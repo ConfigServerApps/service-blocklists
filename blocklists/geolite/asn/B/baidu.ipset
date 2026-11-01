@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_B_baidu_ipset
 #   @uuid           a3cf36fe-b433-3181-b40a-cf31a21e0999
-#   @updated        Sat Oct 31 08:06:35 UTC 2026
-#   @entries        381,239 ips
-#                   111 subnets
-#                   111 lines
+#   @updated        Sun Nov 01 08:56:10 UTC 2026
+#   @entries        373,047 ips
+#                   110 subnets
+#                   110 lines
 #   @asn            AS38365, AS55967, AS38627
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -44,7 +44,6 @@
 154.85.44.0/23
 154.85.48.0/20
 156.240.112.0/20
-156.246.32.0/19
 180.76.0.0/20
 180.76.16.0/20
 180.76.32.0/19
