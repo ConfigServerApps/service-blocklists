@@ -5,10 +5,10 @@
 #   @source         https://sblam.com/blacklist.txt
 #   @id             3rdparty_sblam_blocklist_ipset
 #   @uuid           ff6dd157-e447-37cf-9e44-7134fb901680
-#   @updated        Mon Nov 02 03:44:28 UTC 2026
-#   @entries        1,101 ips
+#   @updated        Mon Nov 02 12:04:04 UTC 2026
+#   @entries        1,099 ips
 #                   50 subnets
-#                   1,017 lines
+#                   1,015 lines
 #   @expires        4 hours
 #   @category       3rdParty
 #
@@ -728,7 +728,6 @@
 185.192.20.168
 185.192.22.246
 185.195.71.244
-185.202.108.67
 185.207.107.216
 185.215.244.101
 185.219.163.83
@@ -1014,7 +1013,6 @@
 209.50.191.205
 209.127.17.183
 209.127.28.195
-212.34.141.234
 212.56.48.120
 212.87.219.160
 212.102.48.216
