@@ -5,15 +5,17 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_ai_claude_official_ipset
 #   @uuid           8acc71c8-3f03-3818-840e-d233021be1cd
-#   @updated        Mon Nov 02 07:59:25 UTC 2026
-#   @entries        2,049 ips
-#                   2 subnets
-#                   2 lines
+#   @updated        Tue Nov 03 08:23:03 UTC 2026
+#   @entries        7,169 ips
+#                   4 subnets
+#                   4 lines
 #   @expires        4 hours
 #   @category       Uncategorized
 #
 #   No description provided
 # #
 
+153.61.208.0/20
+153.61.224.0/22
 160.79.104.0/21
 2607:6bc0::/48
