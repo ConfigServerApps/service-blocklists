@@ -5,10 +5,10 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_sony_all_ipset
 #   @uuid           9cba2c77-319b-3e89-8acc-d8dd2476a08a
-#   @updated        Tue Nov 03 08:40:24 UTC 2026
-#   @entries        3,935,525 ips
-#                   139 subnets
-#                   139 lines
+#   @updated        Wed Nov 04 08:09:43 UTC 2026
+#   @entries        3,935,524 ips
+#                   138 subnets
+#                   138 lines
 #   @asn            AS2527, AS33353, AS26580, AS3725, AS62753
 #                   AS20410, AS25562
 #   @expires        4 hours
@@ -127,7 +127,6 @@
 2403:7940:fcd1::/48
 2403:7940:fcd2::/48
 2403:7940:fcd3::/48
-2403:7940:fcd4::/48
 240d::/27
 2604:8540::/33
 2604:8540:8000::/33
