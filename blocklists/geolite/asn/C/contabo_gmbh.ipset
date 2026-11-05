@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_C_contabo_gmbh_ipset
 #   @uuid           a48da521-da6c-3c75-8b50-191ac03f045e
-#   @updated        Wed Nov 04 08:50:39 UTC 2026
-#   @entries        542,722 ips
-#                   252 subnets
-#                   252 lines
+#   @updated        Thu Nov 05 08:57:16 UTC 2026
+#   @entries        548,866 ips
+#                   254 subnets
+#                   254 lines
 #   @asn            AS51167
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -24,6 +24,8 @@
 5.182.33.0/24
 5.189.128.0/18
 13.140.128.0/18
+13.140.200.0/21
+13.140.208.0/20
 31.187.74.0/24
 31.220.72.0/21
 31.220.80.0/20

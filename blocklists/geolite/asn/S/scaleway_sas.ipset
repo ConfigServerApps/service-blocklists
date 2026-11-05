@@ -5,8 +5,8 @@
 #   @source         None
 #   @id             geolite_asn_S_scaleway_sas_ipset
 #   @uuid           85aac2ad-fbdd-30b2-92ac-694390692f86
-#   @updated        Wed Nov 04 08:51:26 UTC 2026
-#   @entries        553,473 ips
+#   @updated        Thu Nov 05 08:57:52 UTC 2026
+#   @entries        553,217 ips
 #                   17 subnets
 #                   17 lines
 #   @asn            AS12876
@@ -24,7 +24,7 @@
 78.232.128.0/18
 151.115.0.0/17
 151.115.128.0/18
-151.115.192.0/23
+151.115.192.0/24
 151.115.208.0/20
 151.115.224.0/19
 163.172.0.0/16
