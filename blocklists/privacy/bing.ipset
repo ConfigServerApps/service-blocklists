@@ -5,10 +5,10 @@
 #   @source         https://bing.com/toolbox/bingbot.json
 #   @id             privacy_bing_ipset
 #   @uuid           242d7bf6-08d5-31e1-8a0d-37a730bed1b8
-#   @updated        Thu Nov 05 08:12:42 UTC 2026
-#   @entries        4,736 ips
-#                   28 subnets
-#                   28 lines
+#   @updated        Fri Nov 06 08:14:14 UTC 2026
+#   @entries        4,752 ips
+#                   29 subnets
+#                   29 lines
 #   @expires        6 hours
 #   @category       Privacy
 #
@@ -43,6 +43,7 @@
 40.79.131.208/28
 40.79.186.176/28
 51.105.67.0/28
+52.130.224.112/28
 52.167.144.0/24
 52.231.148.0/28
 65.55.210.0/24
