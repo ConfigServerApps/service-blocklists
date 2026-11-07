@@ -5,10 +5,10 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_ai_openai_gpt_chat_ipset
 #   @uuid           220cd78d-2085-3f93-956d-48a39e1af6b7
-#   @updated        Fri Nov 06 08:12:46 UTC 2026
-#   @entries        69,280 ips
-#                   224 subnets
-#                   224 lines
+#   @updated        Sat Nov 07 07:27:32 UTC 2026
+#   @entries        69,312 ips
+#                   225 subnets
+#                   225 lines
 #   @expires        4 hours
 #   @category       Uncategorized
 #
@@ -124,6 +124,7 @@
 51.8.155.48/28
 51.8.155.112/28
 51.57.0.96/28
+51.57.158.96/27
 51.59.24.64/27
 51.59.48.80/28
 51.116.2.80/28

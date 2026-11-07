@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Nov  6 08:57:43 UTC 2026
-#   @entries        5,948,442 ips
-#                   2,661 subnets
-#                   2,661 lines
+#   @updated        Sat Nov  7 08:07:16 UTC 2026
+#   @entries        5,948,186 ips
+#                   2,660 subnets
+#                   2,660 lines
 #   @country        Greece (GR)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -981,7 +981,6 @@
 166.0.203.0/24
 166.88.239.0/24
 167.167.183.0/24
-168.113.46.0/24
 169.150.252.0/24
 170.168.166.0/24
 170.168.177.0/24

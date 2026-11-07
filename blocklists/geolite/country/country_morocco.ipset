@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Nov  6 08:57:57 UTC 2026
-#   @entries        12,304,770 ips
-#                   714 subnets
-#                   714 lines
+#   @updated        Sat Nov  7 08:07:27 UTC 2026
+#   @entries        12,305,026 ips
+#                   715 subnets
+#                   715 lines
 #   @country        Morocco (MA)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -232,6 +232,7 @@
 141.8.236.120/30
 143.246.176.139/32
 145.79.152.0/24
+145.241.129.0/24
 146.75.132.74/31
 146.75.132.76/30
 146.75.160.74/31

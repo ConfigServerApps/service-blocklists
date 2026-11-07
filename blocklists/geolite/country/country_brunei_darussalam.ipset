@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Nov  6 08:57:09 UTC 2026
-#   @entries        222,228 ips
-#                   198 subnets
-#                   198 lines
+#   @updated        Sat Nov  7 08:06:49 UTC 2026
+#   @entries        222,356 ips
+#                   199 subnets
+#                   199 lines
 #   @country        Brunei Darussalam (BN)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -123,6 +123,7 @@
 185.8.100.0/22
 185.100.40.0/22
 186.247.189.0/24
+187.78.198.0/25
 192.23.185.0/24
 192.94.122.0/24
 192.109.41.80/29

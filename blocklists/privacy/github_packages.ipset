@@ -5,16 +5,17 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_github_packages_ipset
 #   @uuid           6a9a693d-9352-3c89-b9dd-fb004944e9a2
-#   @updated        Fri Nov 06 08:28:31 UTC 2026
-#   @entries        31 ips
-#                   1 subnets
-#                   30 lines
+#   @updated        Sat Nov 07 07:41:14 UTC 2026
+#   @entries        47 ips
+#                   2 subnets
+#                   31 lines
 #   @expires        4 hours
 #   @category       Uncategorized
 #
 #   No description provided
 # #
 
+4.207.215.240/28
 4.208.26.196
 4.225.11.196
 4.228.31.152

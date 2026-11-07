@@ -5,10 +5,10 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_ai_openai_gpt_all_ipset
 #   @uuid           e9c52625-1cd7-3288-9115-c30012135ad5
-#   @updated        Fri Nov 06 08:12:45 UTC 2026
-#   @entries        73,776 ips
-#                   266 subnets
-#                   266 lines
+#   @updated        Sat Nov 07 07:27:30 UTC 2026
+#   @entries        73,808 ips
+#                   267 subnets
+#                   267 lines
 #   @expires        4 hours
 #   @category       Uncategorized
 #
@@ -141,6 +141,7 @@
 51.8.155.48/28
 51.8.155.112/28
 51.57.0.96/28
+51.57.158.96/27
 51.59.24.64/27
 51.59.48.80/28
 51.116.2.80/28

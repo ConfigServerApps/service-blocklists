@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Nov  6 08:57:43 UTC 2026
-#   @entries        21,702 ips
-#                   121 subnets
-#                   121 lines
+#   @updated        Sat Nov  7 08:07:15 UTC 2026
+#   @entries        21,446 ips
+#                   120 subnets
+#                   120 lines
 #   @country        Equatorial Guinea (GQ)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -70,7 +70,6 @@
 164.137.119.0/24
 164.137.227.0/24
 164.160.84.0/22
-168.113.34.0/24
 169.239.112.0/22
 172.225.99.32/27
 172.225.243.0/28
