@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_F_facebook_ipset
 #   @uuid           afbb53ee-6225-38d8-989a-689b1765e5b3
-#   @updated        Sun Nov 08 08:23:10 UTC 2026
-#   @entries        479,018 ips
-#                   121 subnets
-#                   121 lines
+#   @updated        Mon Nov 09 08:55:45 UTC 2026
+#   @entries        479,274 ips
+#                   122 subnets
+#                   122 lines
 #   @asn            AS32934, AS63293, AS54115
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -74,6 +74,7 @@
 157.240.139.0/24
 157.240.140.0/24
 157.240.143.0/24
+157.240.144.0/24
 157.240.156.0/22
 157.240.169.0/24
 157.240.170.0/24
