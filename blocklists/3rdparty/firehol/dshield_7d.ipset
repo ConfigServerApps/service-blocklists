@@ -5,10 +5,10 @@
 #   @source         https://iplists.firehol.org/files/dshield_7d.netset
 #   @id             3rdparty_firehol_dshield_7d_ipset
 #   @uuid           91b3a613-75de-3c07-9b8b-cde7ce64d241
-#   @updated        Sun Nov 08 23:37:36 UTC 2026
-#   @entries        12,800 ips
-#                   47 subnets
-#                   47 lines
+#   @updated        Mon Nov 09 03:44:41 UTC 2026
+#   @entries        12,288 ips
+#                   46 subnets
+#                   46 lines
 #   @expires        4 hours
 #   @category       3rdParty
 #
@@ -36,8 +36,6 @@
 5.226.140.0/24
 31.14.254.0/24
 45.140.222.0/24
-45.148.10.0/24
-45.156.128.0/23
 45.198.224.0/24
 64.62.197.0/24
 64.205.72.0/24
@@ -62,6 +60,7 @@
 138.226.239.0/24
 147.185.132.0/23
 151.243.11.0/24
+154.80.128.0/24
 156.225.1.0/24
 160.119.76.0/24
 167.94.145.0/24

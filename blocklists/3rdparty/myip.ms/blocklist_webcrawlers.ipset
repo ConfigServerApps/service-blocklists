@@ -5,10 +5,10 @@
 #   @source         https://myip.ms/files/bots/live_webcrawlers.txt
 #   @id             3rdparty_myip_ms_blocklist_webcrawlers_ipset
 #   @uuid           31c262fb-dac7-3883-9f0e-19ddf28f676c
-#   @updated        Sun Nov 08 23:39:22 UTC 2026
-#   @entries        260,850 ips
+#   @updated        Mon Nov 09 03:46:15 UTC 2026
+#   @entries        260,852 ips
 #                   11,529 subnets
-#                   231,601 lines
+#                   231,603 lines
 #   @expires        4 hours
 #   @category       #   myip.ms › Web Bots & Spiders
 #   
@@ -59653,6 +59653,7 @@
 35.208.222.203
 35.208.223.63
 35.208.230.178
+35.208.240.118
 35.208.241.27
 35.208.245.52
 35.208.245.95
@@ -172734,6 +172735,7 @@
 74.125.214.190
 74.125.214.192/31
 74.125.214.194
+74.125.214.196
 74.125.214.198
 74.125.214.202
 74.125.214.204
