@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Nov 10 09:38:58 UTC 2026
-#   @entries        431,175 ips
-#                   582 subnets
-#                   582 lines
+#   @updated        Wed Nov 11 08:38:59 UTC 2026
+#   @entries        430,919 ips
+#                   586 subnets
+#                   586 lines
 #   @country        British Virgin Islands (VG)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -167,7 +167,11 @@
 177.28.128.0/17
 177.29.0.0/17
 177.29.128.0/18
-177.29.192.0/19
+177.29.192.0/23
+177.29.194.0/24
+177.29.196.0/22
+177.29.200.0/21
+177.29.208.0/20
 177.29.226.0/23
 177.29.228.0/22
 177.29.232.0/21

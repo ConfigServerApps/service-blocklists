@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Nov 10 09:37:14 UTC 2026
-#   @entries        131,333 ips
-#                   278 subnets
-#                   278 lines
+#   @updated        Wed Nov 11 08:37:58 UTC 2026
+#   @entries        131,077 ips
+#                   277 subnets
+#                   277 lines
 #   @country        Barbados (BB)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -136,7 +136,6 @@
 162.120.194.237/32
 162.120.202.200/32
 162.212.13.0/24
-162.212.14.0/24
 162.220.136.0/21
 162.246.104.0/21
 163.116.134.157/32

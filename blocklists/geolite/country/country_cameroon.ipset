@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Nov 10 09:37:25 UTC 2026
-#   @entries        605,595 ips
-#                   288 subnets
-#                   288 lines
+#   @updated        Wed Nov 11 08:38:04 UTC 2026
+#   @entries        604,571 ips
+#                   287 subnets
+#                   287 lines
 #   @country        Cameroon (CM)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -67,7 +67,6 @@
 102.208.124.0/22
 102.209.19.0/24
 102.210.68.0/22
-102.210.116.0/22
 102.211.54.0/24
 102.216.38.0/24
 102.218.165.0/24

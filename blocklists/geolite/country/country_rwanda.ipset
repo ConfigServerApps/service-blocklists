@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Nov 10 09:38:26 UTC 2026
-#   @entries        319,624 ips
-#                   196 subnets
-#                   196 lines
+#   @updated        Wed Nov 11 08:38:41 UTC 2026
+#   @entries        319,623 ips
+#                   195 subnets
+#                   195 lines
 #   @country        Rwanda (RW)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -199,7 +199,6 @@
 2a09:bac6:5200::/45
 2a0b:4e07:3:6460::/60
 2a10:9007:2:16::/64
-2a14:67c2:8e7::/48
 2c0e:7c00::/24
 2c0f:580::/32
 2c0f:9a0::/32

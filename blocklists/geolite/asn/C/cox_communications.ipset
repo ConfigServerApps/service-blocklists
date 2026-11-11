@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_C_cox_communications_ipset
 #   @uuid           8760ecc8-1336-3af2-8587-2f88bbce0a79
-#   @updated        Tue Nov 10 09:41:09 UTC 2026
-#   @entries        13,063,898 ips
-#                   26,877 subnets
-#                   26,877 lines
+#   @updated        Wed Nov 11 08:40:23 UTC 2026
+#   @entries        13,063,642 ips
+#                   26,876 subnets
+#                   26,876 lines
 #   @asn            AS22773, AS13432, AS26146, AS26204, AS31771
 #                   AS22318, AS15218, AS25904, AS13493, AS14710
 #                   AS12064, AS6298
@@ -658,7 +658,6 @@
 66.210.174.0/24
 66.210.176.0/20
 66.210.192.0/18
-66.225.255.0/24
 67.102.32.0/19
 67.102.64.0/18
 67.209.44.0/22

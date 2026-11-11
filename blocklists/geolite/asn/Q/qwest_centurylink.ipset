@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_Q_qwest_centurylink_ipset
 #   @uuid           e9ba905e-e174-3388-8845-0022168df4fb
-#   @updated        Tue Nov 10 09:41:48 UTC 2026
-#   @entries        24,096,965 ips
-#                   9,058 subnets
-#                   9,058 lines
+#   @updated        Wed Nov 11 08:40:51 UTC 2026
+#   @entries        24,097,477 ips
+#                   9,059 subnets
+#                   9,059 lines
 #   @asn            AS3908, AS3909, AS209, AS3561, AS3910
 #                   AS22561, AS6223, AS4297, AS6224, AS4296
 #                   AS2379, AS5778, AS11398, AS14905, AS17402
@@ -6616,6 +6616,7 @@
 188.119.144.0/22
 188.220.28.0/23
 188.220.44.0/23
+188.220.236.0/23
 188.221.68.0/23
 192.81.251.0/24
 192.107.118.0/24

@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Nov 10 09:38:04 UTC 2026
-#   @entries        38,189 ips
-#                   177 subnets
-#                   177 lines
+#   @updated        Wed Nov 11 08:38:28 UTC 2026
+#   @entries        38,445 ips
+#                   178 subnets
+#                   178 lines
 #   @country        Saint Lucia (LC)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -31,7 +31,7 @@
 69.57.232.0/24
 69.57.236.0/24
 69.57.239.0/24
-69.79.10.0/23
+69.79.11.0/24
 69.80.2.0/23
 69.80.4.0/22
 69.80.8.0/21
@@ -39,6 +39,7 @@
 69.80.32.0/22
 72.14.98.0/24
 72.14.99.0/25
+76.76.188.0/23
 94.192.73.160/31
 94.192.75.160/31
 94.192.77.160/31

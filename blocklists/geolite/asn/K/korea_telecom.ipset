@@ -5,8 +5,8 @@
 #   @source         None
 #   @id             geolite_asn_K_korea_telecom_ipset
 #   @uuid           920b9401-3747-37f3-95cd-73aeb22cea07
-#   @updated        Tue Nov 10 09:41:32 UTC 2026
-#   @entries        46,425,623 ips
+#   @updated        Wed Nov 11 08:40:39 UTC 2026
+#   @entries        46,425,879 ips
 #                   5,539 subnets
 #                   5,539 lines
 #   @asn            AS4766, AS45400, AS4040
@@ -2449,7 +2449,7 @@
 192.82.194.0/23
 192.100.68.0/24
 192.102.128.0/23
-192.120.42.0/24
+192.120.42.0/23
 192.120.124.0/23
 192.120.210.0/23
 192.132.200.0/24
