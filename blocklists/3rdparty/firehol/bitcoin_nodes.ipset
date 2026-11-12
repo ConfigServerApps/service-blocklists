@@ -5,7 +5,7 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             3rdparty_firehol_bitcoin_nodes_ipset
 #   @uuid           fdb1836f-3fe6-3e8f-8255-b3630310b226
-#   @updated        Thu Nov 12 12:14:06 UTC 2026
+#   @updated        Thu Nov 12 19:45:16 UTC 2026
 #   @entries        7,196 ips
 #                   29 subnets
 #                   7,163 lines
