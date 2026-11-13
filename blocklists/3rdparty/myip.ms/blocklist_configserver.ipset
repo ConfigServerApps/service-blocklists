@@ -5,7 +5,7 @@
 #   @source         https://myip.ms/files/blacklist/csf/latest_blacklist.txt
 #   @id             3rdparty_myip_ms_blocklist_configserver_ipset
 #   @uuid           08a07fb6-3cb0-39cf-aebe-3d9fe96f5496
-#   @updated        Fri Nov 13 11:55:30 UTC 2026
+#   @updated        Fri Nov 13 19:15:06 UTC 2026
 #   @entries        1,113 ips
 #                   75 subnets
 #                   932 lines
