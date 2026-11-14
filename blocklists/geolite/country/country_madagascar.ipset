@@ -5,8 +5,8 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Nov 13 09:14:31 UTC 2026
-#   @entries        588,366 ips
+#   @updated        Sat Nov 14 08:35:54 UTC 2026
+#   @entries        588,621 ips
 #                   189 subnets
 #                   189 lines
 #   @country        Madagascar (MG)
@@ -22,6 +22,7 @@
 41.74.16.0/20
 41.74.208.0/20
 41.77.16.0/21
+41.180.154.0/24
 41.188.0.0/18
 41.190.236.0/22
 41.204.96.0/19
@@ -200,7 +201,6 @@
 2a0a:6044:6a78::/47
 2a0b:4e07:3:4500::/60
 2a0e:cbc0:165::/48
-2a14:67c2:872::/48
 2c0f:1740::/32
 2c0f:f1c8::/32
 2c0f:f9f0::/32

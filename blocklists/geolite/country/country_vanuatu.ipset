@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Nov 13 09:15:10 UTC 2026
-#   @entries        16,166 ips
-#                   278 subnets
-#                   278 lines
+#   @updated        Sat Nov 14 08:36:37 UTC 2026
+#   @entries        16,165 ips
+#                   277 subnets
+#                   277 lines
 #   @country        Vanuatu (VU)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -293,4 +293,3 @@
 2a09:bac5:d470::/45
 2a09:bac6:d470::/45
 2a0b:4e07:3:5480::/60
-2a14:67c2:8c0::/48

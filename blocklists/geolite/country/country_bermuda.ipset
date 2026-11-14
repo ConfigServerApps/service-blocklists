@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Nov 13 09:13:53 UTC 2026
-#   @entries        124,888 ips
-#                   433 subnets
-#                   433 lines
+#   @updated        Sat Nov 14 08:35:12 UTC 2026
+#   @entries        124,886 ips
+#                   431 subnets
+#                   431 lines
 #   @country        Bermuda (BM)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -256,7 +256,6 @@
 192.40.84.0/22
 192.156.199.0/24
 193.84.183.64/28
-194.50.99.27/32
 195.123.237.60/32
 196.1.107.0/24
 196.12.64.0/18
@@ -448,4 +447,3 @@
 2a0a:a703:1002::/48
 2a0b:4e07:3:600::/60
 2a11:f887:1000::/47
-2a14:67c2:8ae::/48

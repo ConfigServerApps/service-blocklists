@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Nov 13 09:14:48 UTC 2026
-#   @entries        1,056 ips
-#                   34 subnets
-#                   34 lines
+#   @updated        Sat Nov 14 08:36:13 UTC 2026
+#   @entries        1,058 ips
+#                   36 subnets
+#                   36 lines
 #   @country        Saint Helena (SH)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -18,6 +18,7 @@
 
 104.28.13.16/31
 104.28.13.18/32
+136.22.16.189/32
 140.248.56.198/32
 140.248.57.198/32
 140.248.58.198/32
@@ -36,6 +37,7 @@
 2001:470:ed29::/48
 2401:3620:232:c9::/64
 2605:59c0:8700::/40
+2606:40:42:f400::/54
 2606:40:21c1:e000::/54
 2606:40:22c1:c000::/54
 2a04:4e41:401c:6000::/52

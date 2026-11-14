@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Nov 13 09:14:19 UTC 2026
-#   @entries        36,892 ips
-#                   253 subnets
-#                   253 lines
+#   @updated        Sat Nov 14 08:35:40 UTC 2026
+#   @entries        36,891 ips
+#                   252 subnets
+#                   252 lines
 #   @country        Greenland (GL)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -268,4 +268,3 @@
 2a0e:3b80::/29
 2a0f:2747:2000::/47
 2a0f:2747:2002::/48
-2a14:67c2:801::/48

@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Nov 13 09:14:50 UTC 2026
-#   @entries        7,882,504 ips
-#                   336 subnets
-#                   336 lines
+#   @updated        Sat Nov 14 08:36:16 UTC 2026
+#   @entries        7,882,503 ips
+#                   335 subnets
+#                   335 lines
 #   @country        Tunisia (TN)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -341,7 +341,6 @@
 2a0e:ec05:d900::/40
 2a0e:ec05:da00::/41
 2a10:9007:2:1f::/64
-2a14:67c2:888::/48
 2c0f:4280::/32
 2c0f:4840::/32
 2c0f:65c0::/32

@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Nov 13 09:14:20 UTC 2026
-#   @entries        8,232 ips
-#                   127 subnets
-#                   127 lines
+#   @updated        Sat Nov 14 08:35:41 UTC 2026
+#   @entries        8,231 ips
+#                   126 subnets
+#                   126 lines
 #   @country        Guinea-Bissau (GW)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -140,6 +140,5 @@
 2a0a:6044:6a2e::/48
 2a0b:4e07:3:6240::/60
 2a0d:3341:fd00::/40
-2a14:67c2:8d0::/48
 2c0f:ec50::/32
 2c0f:f928::/32

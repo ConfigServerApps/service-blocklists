@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Nov 13 09:14:32 UTC 2026
-#   @entries        21,470 ips
-#                   107 subnets
-#                   107 lines
+#   @updated        Sat Nov 14 08:35:55 UTC 2026
+#   @entries        21,469 ips
+#                   106 subnets
+#                   106 lines
 #   @country        Northern Mariana Islands (MP)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -122,4 +122,3 @@
 2a09:bac6:4960::/45
 2a0b:4e07:3:5800::/60
 2a0f:5707:ffa2::/48
-2a14:67c2:8b9::/48

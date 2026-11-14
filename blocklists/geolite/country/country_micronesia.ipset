@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Nov 13 09:14:13 UTC 2026
-#   @entries        10,205 ips
-#                   150 subnets
-#                   150 lines
+#   @updated        Sat Nov 14 08:35:34 UTC 2026
+#   @entries        10,204 ips
+#                   149 subnets
+#                   149 lines
 #   @country        Micronesia (FM)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -165,4 +165,3 @@
 2a09:bac5:31e0::/44
 2a09:bac6:31e0::/44
 2a0b:4e07:3:5830::/60
-2a14:67c2:817::/48
