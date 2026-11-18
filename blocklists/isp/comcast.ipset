@@ -5,7 +5,7 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             isp_comcast_ipset
 #   @uuid           09606518-a08a-36f8-a001-3be67dedd4bd
-#   @updated        Tue Nov 17 09:50:20 UTC 2026
+#   @updated        Wed Nov 18 09:14:55 UTC 2026
 #   @entries        69,860,405 ips
 #                   730 subnets
 #                   730 lines

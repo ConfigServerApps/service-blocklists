@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Nov 17 10:08:46 UTC 2026
-#   @entries        16,760,702 ips
-#                   3,871 subnets
-#                   3,871 lines
+#   @updated        Wed Nov 18 09:34:02 UTC 2026
+#   @entries        16,761,726 ips
+#                   3,874 subnets
+#                   3,874 lines
 #   @country        Vietnam (VN)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -257,6 +257,9 @@
 75.125.89.0/24
 75.125.220.128/25
 79.108.216.0/21
+79.135.154.0/24
+79.135.156.0/23
+79.135.158.0/24
 80.89.2.0/24
 80.246.230.0/24
 82.23.171.0/24

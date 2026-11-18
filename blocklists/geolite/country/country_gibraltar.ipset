@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Nov 17 10:07:55 UTC 2026
-#   @entries        103,427 ips
-#                   233 subnets
-#                   233 lines
+#   @updated        Wed Nov 18 09:32:58 UTC 2026
+#   @entries        103,429 ips
+#                   235 subnets
+#                   235 lines
 #   @country        Gibraltar (GI)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -125,6 +125,7 @@
 157.167.240.46/32
 157.167.240.153/32
 162.120.129.47/32
+162.120.131.61/32
 162.120.204.74/32
 162.120.214.5/32
 163.116.169.111/32
@@ -193,6 +194,7 @@
 2600:70ff:a9b8::/48
 2606:40:42:c000::/54
 2606:40:e8:bc00::/54
+2606:40:f0:f400::/54
 2606:40:22c0:a000::/54
 2606:40:22e1:4000::/54
 2606:54c0:3868::/45
