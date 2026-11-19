@@ -5,16 +5,17 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_perplexity_all_ipset
 #   @uuid           c1809076-8179-35c7-8aa6-f0f157670f49
-#   @updated        Wed Nov 18 09:10:10 UTC 2026
-#   @entries        23 ips
-#                   2 subnets
-#                   9 lines
+#   @updated        Thu Nov 19 09:36:25 UTC 2026
+#   @entries        31 ips
+#                   3 subnets
+#                   10 lines
 #   @expires        4 hours
 #   @category       Uncategorized
 #
 #   No description provided
 # #
 
+3.41.218.160/29
 3.222.232.239
 3.224.62.45
 18.97.1.228
