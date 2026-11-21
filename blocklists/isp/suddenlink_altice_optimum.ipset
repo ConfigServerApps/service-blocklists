@@ -5,21 +5,17 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             isp_suddenlink_altice_optimum_ipset
 #   @uuid           10b6335a-b4db-3e3e-a5f9-80a82a8db3f9
-#   @updated        Fri Nov 20 09:37:03 UTC 2026
-#   @entries        2,848,265 ips
-#                   90 subnets
-#                   90 lines
+#   @updated        Sat Nov 21 08:54:40 UTC 2026
+#   @entries        2,847,241 ips
+#                   86 subnets
+#                   86 lines
 #   @expires        4 hours
 #   @category       Uncategorized
 #
 #   No description provided
 # #
 
-24.31.17.0/24
 24.32.0.0/16
-24.49.194.0/24
-24.49.200.0/24
-24.54.114.0/24
 24.54.116.0/22
 24.72.175.0/24
 24.72.186.0/23
