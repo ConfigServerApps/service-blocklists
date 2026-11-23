@@ -5,7 +5,7 @@
 #   @source         https://www.spamhaus.org/drop/drop.txt
 #   @id             spam_spamhaus_ipset
 #   @uuid           58ac5de8-785d-356a-ab2b-8be8960e311b
-#   @updated        Sun Nov 22 21:44:05 UTC 2026
+#   @updated        Mon Nov 23 04:50:12 UTC 2026
 #   @entries        15,027,456 ips
 #                   1,617 subnets
 #                   1,617 lines
