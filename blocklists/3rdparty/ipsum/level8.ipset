@@ -5,10 +5,10 @@
 #   @source         https://raw.githubusercontent.com/stamparm/ipsum/master/levels/8.txt
 #   @id             3rdparty_ipsum_level8_ipset
 #   @uuid           55a04432-6618-3d2d-8da1-df6e8e1c4c29
-#   @updated        Mon Nov 23 04:49:48 UTC 2026
-#   @entries        32 ips
+#   @updated        Mon Nov 23 19:59:04 UTC 2026
+#   @entries        0 ips
 #                   0 subnets
-#                   32 lines
+#                   34 lines
 #   @expires        4 hours
 #   @category       3rdParty
 #
@@ -48,35 +48,37 @@
 #   environment requirements.
 # #
 
-3.129.187.38
-18.218.118.203
-35.210.88.112
-45.148.10.61
-46.151.178.14
-62.60.130.148
-62.60.130.219
-64.62.197.17
-64.62.197.92
-64.62.197.197
-66.132.172.217
-66.132.186.204
-66.132.195.48
-66.132.195.107
-66.132.195.210
-66.132.224.229
-77.239.124.181
-77.239.124.252
-93.174.95.106
-102.220.45.186
-119.204.122.94
-125.130.102.172
-138.226.239.233
-138.226.239.234
-151.243.11.108
-167.94.146.58
-193.32.162.15
-193.47.62.69
-193.187.110.158
-199.165.159.169
-199.165.159.193
-209.99.190.186
+<p>Backend.max_conn/32
+Backend.max_conn/32
+version="1.0"/32
+1.0/32
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"-//W3C//DTD
+<!DOCTYPE
+</body>
+</head>
+</html>
+<?xml
+<body>
+<h1>Error
+<h3>Error
+<head>
+<hr>
+<html>
+<p>Varnish
+<title>503
+PUBLIC
+Strict//EN"
+XHTML
+cache
+cache-bur-kbur8200051-BUR
+encoding="utf-8"?>
+html
+reached</h1>
+reached</p>
+reached</title>
+server</p>
+503
+54113</h3>
+1013808442</p>
+1795463944

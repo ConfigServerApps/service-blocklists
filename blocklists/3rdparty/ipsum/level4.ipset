@@ -5,47 +5,30 @@
 #   @source         https://raw.githubusercontent.com/stamparm/ipsum/master/levels/4.txt
 #   @id             3rdparty_ipsum_level4_ipset
 #   @uuid           e42eb264-b6c0-3369-af40-3c74b75a12af
-#   @updated        Mon Nov 23 04:49:46 UTC 2026
+#   @updated        Mon Nov 23 19:59:01 UTC 2026
 #   @entries        8,261 ips
 #                   760 subnets
 #                   6,373 lines
 #   @expires        4 hours
 #   @category       3rdParty
 #
-#   IPSum › Threat Intelligence Feeds
-#   
-#   A threat intelligence feed based on 30+ different publicly available
-#   lists of suspicious and/or malicious IP addresses. All lists are
-#   automatically retrieved and parsed on a daily (every 24 hours) basis
-#   and the final result is pushed to this repository.
-#   
-#   IPSum is a collection of 8 different blocklists which are broken into
-#   levels. The level number indicates how many blocklists a specific IP
-#   was detected in. The higher the number, the more hits, and the higher
-#   likelihood of it not being a false-positive.
-#       
-#       level1.txt          Lowest confidence. IPs seen in 1 blacklist.
-#                               Highest false-positive rate.
-#       level2.txt          Low confidence. IPs seen in 2 blacklists.
-#       level3.txt          Moderate-low confidence. IPs seen in 3 blacklists.
-#       level4.txt          Moderate confidence. IPs seen in 4 blacklists.
-#       level5.txt          Moderate confidence. IPs seen in 5 blacklists.
-#       level6.txt          High confidence. IPs seen in 6 blacklists.
-#       level7.txt          Very high confidenc. IPs seen in 7 blacklists.
-#       level8.txt          Highest confidence. IPs seen in 8 blacklists.
-#                               Lowest false-positive rate.
-#   
-#   Github Repository:
-#       https://github.com/stamparm/ipsum
-#   
-#   This third-party blocklist is not maintained by ConfigServer; IPs are
-#   sourced externally and not curated by us. We do however, validate the
-#   blocklist to ensure that it only contains properly validated IP addresses,
-#   and does not include any non-relevant or malicious data beyond the scope
-#   of the source.
-#   
-#   Use at the administrator's discretion based on risk tolerance and
-#   environment requirements.
+
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>503 Backend.max_conn reached</title>
+  </head>
+  <body>
+    <h1>Error 503 Backend.max_conn reached</h1>
+    <p>Backend.max_conn reached</p>
+    <h3>Error 54113</h3>
+    <p>Details: cache-bur-kbur8200166-BUR 1795463942 2877639213</p>
+    <hr>
+    <p>Varnish cache server</p>
+  </body>
+</html>
 # #
 
 1.1.220.166
