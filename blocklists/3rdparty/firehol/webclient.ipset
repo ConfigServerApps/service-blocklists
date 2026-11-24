@@ -5,27 +5,11 @@
 #   @source         https://iplists.firehol.org/files/firehol_webclient.netset
 #   @id             3rdparty_firehol_webclient_ipset
 #   @uuid           63e8ab7f-8133-3dac-bd85-b0ab53e25e00
-#   @updated        Mon Nov 23 19:58:41 UTC 2026
+#   @updated        Tue Nov 24 04:51:10 UTC 2026
 #   @entries        535 ips
 #                   1 subnets
 #                   534 lines
-#   @expires        
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-  <head>
-    <title>503 Backend.max_conn reached</title>
-  </head>
-  <body>
-    <h1>Error 503 Backend.max_conn reached</h1>
-    <p>Backend.max_conn reached</p>
-    <h3>Error 54113</h3>
-    <p>Details: cache-bur-kbur8200092-BUR 1795463922 258197492</p>
-    <hr>
-    <p>Varnish cache server</p>
-  </body>
-</html>
+#   @expires        4 hours
 #   @category       3rdParty
 #
 #   FireHOL IP Blocklist › Web Client

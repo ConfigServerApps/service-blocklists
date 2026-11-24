@@ -2,29 +2,13 @@
 #   🧱 Firewall Blocklist - blocklists/3rdparty/hagezi/threat_intelligence.ipset
 #
 #   @blocklist      https://raw.githubusercontent.com/ConfigServerApps/service-blocklists/main/blocklists/3rdparty/hagezi/threat_intelligence.ipset
-#   @source         
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-  <head>
-    <title>503 Backend.max_conn reached</title>
-  </head>
-  <body>
-    <h1>Error 503 Backend.max_conn reached</h1>
-    <p>Backend.max_conn reached</p>
-    <h3>Error 54113</h3>
-    <p>Details: cache-bur-kbur8200147-BUR 1795463929 2775083448</p>
-    <hr>
-    <p>Varnish cache server</p>
-  </body>
-</html>
+#   @source         https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/ips/tif.txt
 #   @id             3rdparty_hagezi_threat_intelligence_ipset
 #   @uuid           3a43bc64-4409-32a4-bc29-61afb1182bd3
-#   @updated        Mon Nov 23 19:58:48 UTC 2026
-#   @entries        35,620 ips
-#                   1,289 subnets
-#                   30,757 lines
+#   @updated        Tue Nov 24 04:51:13 UTC 2026
+#   @entries        35,618 ips
+#                   1,290 subnets
+#                   30,758 lines
 #   @expires        4 hours
 #   @category       3rdParty
 #
@@ -11333,7 +11317,6 @@
 91.224.92.16
 91.224.92.24
 91.229.52.22
-91.230.168.24
 91.230.168.40
 91.230.168.45
 91.230.168.65
@@ -11355,7 +11338,6 @@
 91.230.168.234
 91.230.168.236/31
 91.230.168.242
-91.231.89.24
 91.231.89.44
 91.231.89.60
 91.231.89.77
@@ -11992,7 +11974,9 @@
 100.29.192.14
 100.29.192.16
 100.29.192.19
-100.29.192.24/29
+100.29.192.25
+100.29.192.26/31
+100.29.192.28/30
 100.29.192.33
 100.29.192.38
 100.29.192.45
@@ -12287,7 +12271,6 @@
 102.222.20.184
 102.223.92.101
 102.223.221.28
-102.240.1.24
 103.1.43.24
 103.3.212.22
 103.4.32.22
@@ -21325,6 +21308,7 @@
 156.225.1.15
 156.225.1.16/31
 156.225.1.18
+156.225.1.24
 156.225.1.29
 156.225.1.30/31
 156.225.1.32/28
@@ -25603,7 +25587,6 @@
 185.81.68.24
 185.82.64.55
 185.82.110.106
-185.84.157.24
 185.86.78.61
 185.86.148.174
 185.87.121.1
@@ -25950,6 +25933,7 @@
 185.242.226.15
 185.242.226.17
 185.242.226.18/31
+185.242.226.24
 185.242.226.58/31
 185.242.226.60/31
 185.242.226.63
@@ -27125,6 +27109,7 @@
 195.178.191.5
 195.181.224.20
 195.182.16.23
+195.182.16.24
 195.182.16.183
 195.184.76.7
 195.184.76.24
