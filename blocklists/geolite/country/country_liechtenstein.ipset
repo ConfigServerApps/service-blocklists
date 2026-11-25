@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Nov 24 11:53:39 UTC 2026
-#   @entries        108,224 ips
-#                   494 subnets
-#                   494 lines
+#   @updated        Wed Nov 25 10:55:43 UTC 2026
+#   @entries        108,230 ips
+#                   500 subnets
+#                   500 lines
 #   @country        Liechtenstein (LI)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -433,7 +433,13 @@
 2a00:da60::/29
 2a00:f8c0::/32
 2a02:380::/31
-2a02:26f7:ba40::/42
+2a02:26f7:ba40::/46
+2a02:26f7:ba44:4000::/64
+2a02:26f7:ba44:cb40::/63
+2a02:26f7:ba45:4000::/64
+2a02:26f7:ba48:4000::/64
+2a02:26f7:ba48:cb40::/63
+2a02:26f7:ba49:4000::/64
 2a03:3420::/32
 2a03:43e0::/32
 2a03:4c80::/32

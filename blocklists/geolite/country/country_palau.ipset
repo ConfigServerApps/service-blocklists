@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Nov 24 11:53:52 UTC 2026
-#   @entries        11,058 ips
-#                   125 subnets
-#                   125 lines
+#   @updated        Wed Nov 25 10:55:59 UTC 2026
+#   @entries        8,498 ips
+#                   124 subnets
+#                   124 lines
 #   @country        Palau (PW)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -18,8 +18,7 @@
 
 31.209.97.0/24
 31.209.102.0/23
-38.150.36.0/22
-38.150.40.0/21
+38.150.36.0/23
 45.11.240.64/26
 45.138.10.52/30
 87.81.255.126/31

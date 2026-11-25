@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Tue Nov 24 11:53:00 UTC 2026
-#   @entries        827,800 ips
-#                   474 subnets
-#                   474 lines
+#   @updated        Wed Nov 25 10:55:02 UTC 2026
+#   @entries        828,054 ips
+#                   473 subnets
+#                   473 lines
 #   @country        Bosnia Herzegovina (BA)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -97,6 +97,7 @@
 81.94.0.0/20
 82.117.232.0/21
 82.118.0.0/20
+82.214.106.0/24
 82.214.109.211/32
 82.214.109.212/32
 84.41.104.0/24
@@ -222,8 +223,6 @@
 157.22.24.0/24
 157.167.60.0/24
 159.20.16.0/21
-160.25.104.105/32
-160.25.105.105/32
 160.224.182.0/24
 160.224.244.0/24
 162.120.136.22/32
