@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_S_shadowserver_foundation_ipset
 #   @uuid           0201de3f-7fae-3c10-abb2-af9f0cd6f3a0
-#   @updated        Wed Nov 25 10:59:10 UTC 2026
-#   @entries        40,456 ips
-#                   75 subnets
-#                   75 lines
+#   @updated        Thu Nov 26 10:32:18 UTC 2026
+#   @entries        40,712 ips
+#                   76 subnets
+#                   76 lines
 #   @asn            AS22168, AS394161
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -83,6 +83,7 @@
 216.23.38.0/23
 216.23.40.0/23
 216.23.42.0/24
+216.23.49.0/24
 2001:550:d0c::/48
 2620:137:d000::/46
 2620:137:d004::/47
