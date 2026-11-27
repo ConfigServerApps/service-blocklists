@@ -5,10 +5,10 @@
 #   @source         https://blocklist.configserver.dev/
 #   @id             privacy_oracle_all_ipset
 #   @uuid           de98b985-35b2-3d7d-ad3f-42649a948b14
-#   @updated        Thu Nov 26 10:04:39 UTC 2026
-#   @entries        4,483,082 ips
-#                   809 subnets
-#                   809 lines
+#   @updated        Fri Nov 27 10:21:11 UTC 2026
+#   @entries        4,589,578 ips
+#                   812 subnets
+#                   812 lines
 #   @expires        4 hours
 #   @category       Uncategorized
 #
@@ -109,6 +109,8 @@
 92.5.240.0/21
 92.5.248.0/22
 92.5.254.0/23
+92.6.0.0/16
+107.186.224.0/19
 129.38.64.0/18
 129.80.0.0/16
 129.91.0.0/22
@@ -199,6 +201,7 @@
 129.158.128.0/17
 129.159.0.0/16
 129.191.0.0/17
+129.203.128.0/17
 129.213.0.128/25
 129.213.2.128/25
 129.213.4.128/25
