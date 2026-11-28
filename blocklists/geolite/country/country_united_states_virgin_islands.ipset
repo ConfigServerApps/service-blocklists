@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Nov 27 10:52:25 UTC 2026
-#   @entries        155,422 ips
-#                   244 subnets
-#                   244 lines
+#   @updated        Sat Nov 28 10:05:00 UTC 2026
+#   @entries        155,423 ips
+#                   245 subnets
+#                   245 lines
 #   @country        United States Virgin Islands (VI)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -257,6 +257,7 @@
 2a12:bec4:12a0::/47
 2a12:bec4:12a4::/46
 2a12:bec4:12a8::/45
+2a13:9500:1e4:1af::/64
 2a14:7581:3b00::/40
 2a14:7581:9f60::/46
 2a14:c380:27::/48

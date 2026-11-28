@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Nov 27 10:51:18 UTC 2026
-#   @entries        73,302 ips
-#                   160 subnets
-#                   160 lines
+#   @updated        Sat Nov 28 10:04:06 UTC 2026
+#   @entries        73,303 ips
+#                   161 subnets
+#                   161 lines
 #   @country        Guyana (GY)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -176,3 +176,4 @@
 2a0e:ec05:a600::/40
 2a0e:ec05:a700::/41
 2a0e:ec05:a780::/42
+2a13:9500:1e4:3bc::/64

@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Nov 27 10:51:46 UTC 2026
-#   @entries        79,233 ips
-#                   231 subnets
-#                   231 lines
+#   @updated        Sat Nov 28 10:04:29 UTC 2026
+#   @entries        79,236 ips
+#                   234 subnets
+#                   234 lines
 #   @country        French Polynesia (PF)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -247,3 +247,6 @@
 2a09:bac6:4f70::/44
 2a09:bac6:4f80::/45
 2a0b:4e07:3:2580::/60
+2a13:9500:1e4:131::/64
+2a13:9500:1e4:c0d::/64
+2a13:9500:1e4:18d1::/64

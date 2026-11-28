@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Nov 27 10:52:24 UTC 2026
-#   @entries        2,492,821 ips
-#                   433 subnets
-#                   433 lines
+#   @updated        Sat Nov 28 10:04:59 UTC 2026
+#   @entries        2,492,823 ips
+#                   435 subnets
+#                   435 lines
 #   @country        Uruguay (UY)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -449,3 +449,5 @@
 2a0e:ec05:dc80::/41
 2a0e:ec05:dd00::/40
 2a0e:ec05:de00::/41
+2a13:9500:1e4:87::/64
+2a13:9500:1e4:75e::/64

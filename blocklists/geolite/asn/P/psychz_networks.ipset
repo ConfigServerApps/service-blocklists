@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_P_psychz_networks_ipset
 #   @uuid           6b1b716e-195a-3e56-9b6e-16ee895947ef
-#   @updated        Fri Nov 27 10:55:12 UTC 2026
-#   @entries        193,860 ips
-#                   369 subnets
-#                   369 lines
+#   @updated        Sat Nov 28 10:07:37 UTC 2026
+#   @entries        193,861 ips
+#                   370 subnets
+#                   370 lines
 #   @asn            AS40676
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -377,6 +377,7 @@
 2a0e:c80:743::/48
 2a0f:2c80::/48
 2a0f:6284:c000::/36
+2a0f:6287:3000::/36
 2a0f:9980:195::/48
 2a0f:9980:598::/48
 2a0f:9980:6::/48

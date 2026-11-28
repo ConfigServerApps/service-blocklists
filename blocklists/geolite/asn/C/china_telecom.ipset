@@ -5,10 +5,10 @@
 #   @source         None
 #   @id             geolite_asn_C_china_telecom_ipset
 #   @uuid           9438e3e3-38bf-30e5-9152-7c6b25c7e392
-#   @updated        Fri Nov 27 10:54:17 UTC 2026
-#   @entries        108,302,576 ips
-#                   17,699 subnets
-#                   17,699 lines
+#   @updated        Sat Nov 28 10:06:45 UTC 2026
+#   @entries        108,301,552 ips
+#                   17,698 subnets
+#                   17,698 lines
 #   @asn            AS4811, AS4134, AS131285, AS131325, AS132225
 #                   AS132437, AS132833, AS4816, AS4835, AS140359
 #                   AS23764, AS4809, AS4812
@@ -693,7 +693,6 @@
 43.231.96.0/20
 43.240.196.0/22
 43.242.96.0/23
-43.247.68.0/22
 43.247.100.0/22
 43.254.152.0/24
 43.254.156.0/22

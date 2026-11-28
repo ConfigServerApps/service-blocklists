@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Nov 27 10:51:33 UTC 2026
-#   @entries        197,620 ips
-#                   258 subnets
-#                   258 lines
+#   @updated        Sat Nov 28 10:04:18 UTC 2026
+#   @entries        197,621 ips
+#                   259 subnets
+#                   259 lines
 #   @country        Montenegro (ME)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -274,3 +274,4 @@
 2a10:100::/30
 2a10:9007:4:1::/64
 2a13:2640::/29
+2a13:9500:1e4:25d::/64

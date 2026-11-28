@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Nov 27 10:51:28 UTC 2026
-#   @entries        6,253 ips
-#                   200 subnets
-#                   200 lines
+#   @updated        Sat Nov 28 10:04:15 UTC 2026
+#   @entries        6,256 ips
+#                   203 subnets
+#                   203 lines
 #   @country        Kiribati (KI)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -216,3 +216,6 @@
 2a09:bac6:46f8::/45
 2a09:bac6:4700::/44
 2a0b:4e07:3:2960::/60
+2a13:9500:1e4:153::/64
+2a13:9500:1e4:c93::/64
+2a13:9500:1e4:eb9::/64

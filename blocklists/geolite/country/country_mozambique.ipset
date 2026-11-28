@@ -5,10 +5,10 @@
 #   @service        None
 #   @id             countries
 #   @uuid           356cd7cf-d7e8-3e39-82d3-2b023280cac8
-#   @updated        Fri Nov 27 10:51:36 UTC 2026
-#   @entries        475,908 ips
-#                   278 subnets
-#                   278 lines
+#   @updated        Sat Nov 28 10:04:21 UTC 2026
+#   @entries        475,909 ips
+#                   279 subnets
+#                   279 lines
 #   @country        Mozambique (MZ)
 #   @expires        6 hours
 #   @category       Uncategorized
@@ -279,6 +279,7 @@
 2a0a:6044:6ad0::/46
 2a0b:4e07:3:5080::/60
 2a10:9007:2:12::/64
+2a13:9500:1e4:342::/64
 2c0f:1040::/32
 2c0f:4420::/32
 2c0f:5580::/32
